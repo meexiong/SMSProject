@@ -58,10 +58,13 @@ public class FrmMain extends javax.swing.JFrame {
         btnSignUP = new javax.swing.JLabel();
         btnMStudentType = new javax.swing.JLabel();
         btnMNationality = new javax.swing.JLabel();
-        btnMReligion = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         Menu = new javax.swing.JLabel();
-        btnMReligion1 = new javax.swing.JLabel();
+        btnMReligion = new javax.swing.JLabel();
+        btnMEthnic = new javax.swing.JLabel();
+        btnMLevel = new javax.swing.JLabel();
+        btnMClassroom = new javax.swing.JLabel();
+        btnDatasource = new com.xzq.osc.JocHyperlink();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnTeacher = new javax.swing.JLabel();
@@ -161,7 +164,7 @@ public class FrmMain extends javax.swing.JFrame {
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_100px.png"))); // NOI18N
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 135, 100, 120));
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 135, 260, 120));
 
         lblPassword.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblPassword.setForeground(new java.awt.Color(0, 15, 255));
@@ -197,28 +200,20 @@ public class FrmMain extends javax.swing.JFrame {
 
         btnMStudentType.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMStudentType.setForeground(new java.awt.Color(0, 15, 255));
-        btnMStudentType.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMStudentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Database Administrator_30px.png"))); // NOI18N
+        btnMStudentType.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMStudentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Male_30px.png"))); // NOI18N
         btnMStudentType.setText("Student Type");
         btnMStudentType.setToolTipText("");
         btnMStudentType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnMStudentType, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 76, -1, -1));
+        jPanel3.add(btnMStudentType, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 76, 130, -1));
 
         btnMNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMNationality.setForeground(new java.awt.Color(0, 15, 255));
-        btnMNationality.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMNationality.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMNationality.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Flag Filled _30px.png"))); // NOI18N
         btnMNationality.setText("Nationality");
         btnMNationality.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnMNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 124, -1, -1));
-
-        btnMReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMReligion.setForeground(new java.awt.Color(0, 15, 255));
-        btnMReligion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
-        btnMReligion.setText("Religion");
-        btnMReligion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        jPanel3.add(btnMNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 124, 130, -1));
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -230,10 +225,10 @@ public class FrmMain extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
 
-        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 220, 220));
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 220, 150));
 
         Menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Menu_30px.png"))); // NOI18N
@@ -245,13 +240,48 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jPanel3.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 38, -1));
 
-        btnMReligion1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMReligion1.setForeground(new java.awt.Color(0, 15, 255));
-        btnMReligion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMReligion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
-        btnMReligion1.setText("Religion");
-        btnMReligion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.add(btnMReligion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 177, -1, -1));
+        btnMReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMReligion.setForeground(new java.awt.Color(0, 15, 255));
+        btnMReligion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
+        btnMReligion.setText("Religion");
+        btnMReligion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 172, 130, -1));
+
+        btnMEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMEthnic.setForeground(new java.awt.Color(0, 15, 255));
+        btnMEthnic.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMEthnic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Aztec Headdress_30px.png"))); // NOI18N
+        btnMEthnic.setText("Ethnic");
+        btnMEthnic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 220, 130, -1));
+
+        btnMLevel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMLevel.setForeground(new java.awt.Color(0, 15, 255));
+        btnMLevel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Level Up_30px.png"))); // NOI18N
+        btnMLevel.setText("Level");
+        btnMLevel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 268, 130, -1));
+
+        btnMClassroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMClassroom.setForeground(new java.awt.Color(0, 15, 255));
+        btnMClassroom.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMClassroom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_30px.png"))); // NOI18N
+        btnMClassroom.setText("Classroom");
+        btnMClassroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 316, 130, -1));
+
+        btnDatasource.setForeground(new java.awt.Color(0, 15, 255));
+        btnDatasource.setText("Datasource Setting");
+        btnDatasource.setUnvisitColor(new java.awt.Color(0, 15, 255));
+        btnDatasource.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnDatasource.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDatasourceActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnDatasource, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 250, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -550,8 +580,16 @@ int cnt=0;
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
         MenuSlide.setMenu(btnMStudentType);
         MenuSlide.setMenu(btnMNationality);
+        MenuSlide.setMenu(btnMLevel);
         MenuSlide.setMenu(btnMReligion);
+        MenuSlide.setMenu(btnMClassroom);
+        MenuSlide.setMenu(btnMEthnic);
     }//GEN-LAST:event_MenuMouseClicked
+
+    private void btnDatasourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatasourceActionPerformed
+        FrmDatasource frmDatasource = new FrmDatasource();
+        frmDatasource.setVisible(true);
+    }//GEN-LAST:event_btnDatasourceActionPerformed
 
     /**
      * @param args the command line arguments
@@ -590,10 +628,13 @@ int cnt=0;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Menu;
+    private com.xzq.osc.JocHyperlink btnDatasource;
     private javax.swing.JLabel btnExit;
+    private javax.swing.JLabel btnMClassroom;
+    private javax.swing.JLabel btnMEthnic;
+    private javax.swing.JLabel btnMLevel;
     private javax.swing.JLabel btnMNationality;
     private javax.swing.JLabel btnMReligion;
-    private javax.swing.JLabel btnMReligion1;
     private javax.swing.JLabel btnMStudentType;
     private javax.swing.JLabel btnMaximum;
     private javax.swing.JLabel btnMinimize;
