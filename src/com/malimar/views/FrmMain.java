@@ -6,6 +6,7 @@
 package com.malimar.views;
 
 import com.malimar.utils.Border;
+import com.malimar.utils.MenuSlide;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -43,33 +44,38 @@ public class FrmMain extends javax.swing.JFrame {
         btnExit = new javax.swing.JLabel();
         btnMaximum = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblSystemInfo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblPassword = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         txtPassword = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        btnSignUP = new javax.swing.JLabel();
+        btnMStudentType = new javax.swing.JLabel();
+        btnMNationality = new javax.swing.JLabel();
+        btnMReligion = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        Menu = new javax.swing.JLabel();
+        btnMReligion1 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        btn = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        btnTeacher = new javax.swing.JLabel();
+        lblTeacher = new javax.swing.JLabel();
+        lblReport = new javax.swing.JLabel();
         btnReport = new javax.swing.JLabel();
         btnSetting = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        lblSettingData = new javax.swing.JLabel();
         btnRegister = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lblRegistation = new javax.swing.JLabel();
+        lblStudentInfo = new javax.swing.JLabel();
         btnStudentInfo = new javax.swing.JLabel();
         btnPayment = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        lblPayment = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -110,13 +116,13 @@ public class FrmMain extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("School Management System");
-        jLabel1.setOpaque(true);
-        jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lblSystemInfo.setBackground(new java.awt.Color(255, 255, 255));
+        lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
+        lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemInfo.setText("School Management System");
+        lblSystemInfo.setOpaque(true);
+        jPanel4.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -146,124 +152,134 @@ public class FrmMain extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Menu_30px.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel4.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel4.setText("User Name");
+        lblUserName.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblUserName.setForeground(new java.awt.Color(0, 15, 255));
+        lblUserName.setText("User Name");
+        jPanel3.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 260, 255, -1));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_100px.png"))); // NOI18N
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(171, 135, 100, 120));
 
-        jLabel5.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel5.setText("Password");
+        lblPassword.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblPassword.setForeground(new java.awt.Color(0, 15, 255));
+        lblPassword.setText("Password");
+        jPanel3.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 333, 255, -1));
 
         txtUserName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtUserName.setBorder(null);
         txtUserName.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel3.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 284, 227, -1));
+        jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 307, 255, -1));
 
         txtPassword.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtPassword.setBorder(null);
         txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jPanel3.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 356, 227, -1));
+        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 379, 255, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_24px.png"))); // NOI18N
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 284, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Key_24px.png"))); // NOI18N
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 356, -1, -1));
 
-        jLabel8.setBackground(new java.awt.Color(0, 15, 255));
-        jLabel8.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Sign Up");
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel8.setOpaque(true);
+        btnSignUP.setBackground(new java.awt.Color(0, 15, 255));
+        btnSignUP.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
+        btnSignUP.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignUP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSignUP.setText("Sign Up");
+        btnSignUP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSignUP.setOpaque(true);
+        jPanel3.add(btnSignUP, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 450, 124, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtUserName))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPassword))
-                    .addComponent(jSeparator2)
-                    .addComponent(jSeparator1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72))
+        btnMStudentType.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMStudentType.setForeground(new java.awt.Color(0, 15, 255));
+        btnMStudentType.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMStudentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Database Administrator_30px.png"))); // NOI18N
+        btnMStudentType.setText("Student Type");
+        btnMStudentType.setToolTipText("");
+        btnMStudentType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMStudentType, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 76, -1, -1));
+
+        btnMNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMNationality.setForeground(new java.awt.Color(0, 15, 255));
+        btnMNationality.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMNationality.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Flag Filled _30px.png"))); // NOI18N
+        btnMNationality.setText("Nationality");
+        btnMNationality.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 124, -1, -1));
+
+        btnMReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMReligion.setForeground(new java.awt.Color(0, 15, 255));
+        btnMReligion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
+        btnMReligion.setText("Religion");
+        btnMReligion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(jLabel2)
-                .addGap(118, 118, 118)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
-                .addGap(2, 2, 2)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel5)
-                .addGap(2, 2, 2)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jLabel8)
-                .addContainerGap(198, Short.MAX_VALUE))
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 220, Short.MAX_VALUE)
         );
+
+        jPanel3.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 220, 220));
+
+        Menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Menu_30px.png"))); // NOI18N
+        Menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Menu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MenuMouseClicked(evt);
+            }
+        });
+        jPanel3.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 38, -1));
+
+        btnMReligion1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnMReligion1.setForeground(new java.awt.Color(0, 15, 255));
+        btnMReligion1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnMReligion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
+        btnMReligion1.setText("Religion");
+        btnMReligion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel3.add(btnMReligion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 177, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
-        btn.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Help_100px.png"))); // NOI18N
-        btn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnTeacher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnTeacher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Teacher Hiring_100px.png"))); // NOI18N
+        btnTeacher.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTeacher.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnMouseMoved(evt);
+                btnTeacherMouseMoved(evt);
             }
         });
-        btn.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnTeacher.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnMouseExited(evt);
+                btnTeacherMouseExited(evt);
             }
         });
 
-        jLabel19.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Exemple");
+        lblTeacher.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblTeacher.setForeground(new java.awt.Color(0, 15, 255));
+        lblTeacher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTeacher.setText("Teacher");
 
-        jLabel20.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("Report");
+        lblReport.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblReport.setForeground(new java.awt.Color(0, 15, 255));
+        lblReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReport.setText("Report");
 
         btnReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Analyze_100px.png"))); // NOI18N
@@ -280,7 +296,7 @@ public class FrmMain extends javax.swing.JFrame {
         });
 
         btnSetting.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Settings_100px.png"))); // NOI18N
+        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Add User Male_100px.png"))); // NOI18N
         btnSetting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSetting.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -293,10 +309,10 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel15.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel15.setText("Setting Data");
+        lblSettingData.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblSettingData.setForeground(new java.awt.Color(0, 15, 255));
+        lblSettingData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSettingData.setText("User Login");
 
         btnRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Registration_100px.png"))); // NOI18N
@@ -312,15 +328,15 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setText("Registation");
+        lblRegistation.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblRegistation.setForeground(new java.awt.Color(0, 15, 255));
+        lblRegistation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRegistation.setText("Registation");
 
-        jLabel16.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Student Info");
+        lblStudentInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblStudentInfo.setForeground(new java.awt.Color(0, 15, 255));
+        lblStudentInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblStudentInfo.setText("Student Info");
 
         btnStudentInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnStudentInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Male_100px.png"))); // NOI18N
@@ -350,74 +366,73 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel18.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(0, 15, 255));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setText("Payment");
+        lblPayment.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblPayment.setForeground(new java.awt.Color(0, 15, 255));
+        lblPayment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPayment.setText("Payment");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(73, 73, 73)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(144, Short.MAX_VALUE))
+                            .addComponent(lblSettingData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn, btnRegister, jLabel17, jLabel19});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnRegister, btnTeacher, lblRegistation, lblTeacher});
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnReport, btnStudentInfo, jLabel16, jLabel20});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnReport, btnStudentInfo, lblReport, lblStudentInfo});
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPayment, btnSetting, jLabel15, jLabel18});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPayment, btnSetting, lblPayment, lblSettingData});
 
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSettingData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -427,13 +442,13 @@ public class FrmMain extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(204, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -444,9 +459,9 @@ public class FrmMain extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -456,7 +471,7 @@ public class FrmMain extends javax.swing.JFrame {
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -524,13 +539,19 @@ int cnt=0;
         Border.WhiteColor(btnSetting);
     }//GEN-LAST:event_btnSettingMouseExited
 
-    private void btnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMouseExited
-        Border.WhiteColor(btn);
-    }//GEN-LAST:event_btnMouseExited
+    private void btnTeacherMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseExited
+        Border.WhiteColor(btnTeacher);
+    }//GEN-LAST:event_btnTeacherMouseExited
 
-    private void btnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMouseMoved
-        Border.blueColor(btn);
-    }//GEN-LAST:event_btnMouseMoved
+    private void btnTeacherMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseMoved
+        Border.blueColor(btnTeacher);
+    }//GEN-LAST:event_btnTeacherMouseMoved
+
+    private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
+        MenuSlide.setMenu(btnMStudentType);
+        MenuSlide.setMenu(btnMNationality);
+        MenuSlide.setMenu(btnMReligion);
+    }//GEN-LAST:event_MenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -568,37 +589,42 @@ int cnt=0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel btn;
+    private javax.swing.JLabel Menu;
     private javax.swing.JLabel btnExit;
+    private javax.swing.JLabel btnMNationality;
+    private javax.swing.JLabel btnMReligion;
+    private javax.swing.JLabel btnMReligion1;
+    private javax.swing.JLabel btnMStudentType;
     private javax.swing.JLabel btnMaximum;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnPayment;
     private javax.swing.JLabel btnRegister;
     private javax.swing.JLabel btnReport;
     private javax.swing.JLabel btnSetting;
+    private javax.swing.JLabel btnSignUP;
     private javax.swing.JLabel btnStudentInfo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel btnTeacher;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPayment;
+    private javax.swing.JLabel lblRegistation;
+    private javax.swing.JLabel lblReport;
+    private javax.swing.JLabel lblSettingData;
+    private javax.swing.JLabel lblStudentInfo;
+    private javax.swing.JLabel lblSystemInfo;
+    private javax.swing.JLabel lblTeacher;
+    private javax.swing.JLabel lblUserName;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
