@@ -1,14 +1,14 @@
 
 package com.malimar.views;
 
-import com.malimar.controllers.AccessDBManager;
+import com.malimar.controllers.DatabaseManagerAccess;
 import com.malimar.models.AccessDatasource;
 import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
 
 public class FrmDatasource extends javax.swing.JFrame {
     AccessDatasource ad = new AccessDatasource();
-    AccessDBManager am = new AccessDBManager();
+    DatabaseManagerAccess am = new DatabaseManagerAccess();
     public FrmDatasource() {
         initComponents();
     }
@@ -116,6 +116,9 @@ public class FrmDatasource extends javax.swing.JFrame {
             }
         });
         btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnSaveMouseExited(evt);
             }
@@ -253,9 +256,7 @@ public class FrmDatasource extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,6 +328,10 @@ public class FrmDatasource extends javax.swing.JFrame {
             MsgBox.msgWarning();
         }
     }//GEN-LAST:event_btnTestMouseClicked
+
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        am.insertDatasource(ad);
+    }//GEN-LAST:event_btnSaveMouseClicked
 
     /**
      * @param args the command line arguments

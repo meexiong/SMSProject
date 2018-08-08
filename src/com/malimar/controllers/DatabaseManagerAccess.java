@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class AccessDBManager {
+public class DatabaseManagerAccess {
     String sql;
     public void readDatasource(AccessDatasource ad){
         try {

@@ -5,8 +5,10 @@
  */
 package com.malimar.views;
 
+import com.malimar.controllers.LoginManager;
 import com.malimar.utils.Border;
 import com.malimar.utils.MenuSlide;
+import com.malimar.utils.MsgBox;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -196,6 +198,11 @@ public class FrmMain extends javax.swing.JFrame {
         btnSignUP.setText("Sign Up");
         btnSignUP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignUP.setOpaque(true);
+        btnSignUP.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSignUPMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnSignUP, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 450, 124, -1));
 
         btnMStudentType.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -590,6 +597,17 @@ int cnt=0;
         FrmDatasource frmDatasource = new FrmDatasource();
         frmDatasource.setVisible(true);
     }//GEN-LAST:event_btnDatasourceActionPerformed
+
+    private void btnSignUPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUPMouseClicked
+        LoginManager login = new LoginManager();
+        login.setUserName(txtUserName.getText().trim());
+        login.setPassword(txtPassword.getText().trim());
+        if (login.verifyUser()) {
+            MsgBox.msgInfo();
+        } else {
+            MsgBox.msgWarning();
+        }
+    }//GEN-LAST:event_btnSignUPMouseClicked
 
     /**
      * @param args the command line arguments
