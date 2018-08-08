@@ -5,8 +5,9 @@
  */
 package com.malimar.views;
 
+import com.malimar.controllers.GetLabel;
 import com.malimar.models.STType;
-import com.malimar.utils.module;
+import com.malimar.controllers.ModuleMaxID;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,10 +31,8 @@ public class FrmSTCategory extends javax.swing.JFrame {
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.PLAIN, 12));
         
-        lblName_L1.setText(module.hmapLang.get("lblName_L1".concat(frm).toUpperCase())[module.x]);
-        lblName_L2.setText(module.hmapLang.get("lblName_L2".concat(frm).toUpperCase())[module.x]);
-        btnSave.setText(module.hmapLang.get("btnSave".concat(frm).toUpperCase())[module.x]);
-        btnExit.setText(module.hmapLang.get("btnClose".concat(frm).toUpperCase())[module.x]);
+        
+        
         
     }
     
@@ -76,6 +75,11 @@ public class FrmSTCategory extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 15, 255), 1, true));
@@ -234,9 +238,9 @@ public class FrmSTCategory extends javax.swing.JFrame {
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         try {
-            module.field = "STCID";
-            module.tbl = "tbl_STTYPE";
-            module.countmax(module.field, module.tbl);
+            ModuleMaxID.field = "STCID";
+            ModuleMaxID.tbl = "tbl_STTYPE";
+            ModuleMaxID.countmax(ModuleMaxID.field, ModuleMaxID.tbl);
                         
             STType st = new STType();
             st.setStcid(cnt);
@@ -248,6 +252,19 @@ public class FrmSTCategory extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnSaveMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            GetLabel.getLabels();
+            lblName_L1.setText(GetLabel.hmapLang.get("lblName_L1".concat(frm).toUpperCase())[GetLabel.x]);
+            lblName_L2.setText(GetLabel.hmapLang.get("lblName_L2".concat(frm).toUpperCase())[GetLabel.x]);
+            btnSave.setText(GetLabel.hmapLang.get("btnSave".concat(frm).toUpperCase())[GetLabel.x]);
+            btnExit.setText(GetLabel.hmapLang.get("btnClose".concat(frm).toUpperCase())[GetLabel.x]);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

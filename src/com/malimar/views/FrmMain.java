@@ -9,6 +9,7 @@ import com.malimar.controllers.LoginManager;
 import com.malimar.utils.Border;
 import com.malimar.utils.MenuSlide;
 import com.malimar.utils.MsgBox;
+import com.malimar.controllers.ModuleMaxID;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -212,6 +213,11 @@ public class FrmMain extends javax.swing.JFrame {
         btnMStudentType.setText("Student Type");
         btnMStudentType.setToolTipText("");
         btnMStudentType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMStudentType.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMStudentTypeMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMStudentType, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 76, 130, -1));
 
         btnMNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -608,6 +614,15 @@ int cnt=0;
             MsgBox.msgWarning();
         }
     }//GEN-LAST:event_btnSignUPMouseClicked
+
+    private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked
+        try {
+            FrmSTCategory st = new FrmSTCategory();            
+            st.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnMStudentTypeMouseClicked
 
     /**
      * @param args the command line arguments

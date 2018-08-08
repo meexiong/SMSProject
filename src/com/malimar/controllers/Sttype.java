@@ -7,7 +7,6 @@ package com.malimar.controllers;
 
 import com.malimar.models.STType;
 import com.malimar.utils.MsgBox;
-import com.malimar.utils.module;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -25,14 +24,14 @@ public class Sttype {
                 MsgBox.msgError();
                 return;
             }
-            if (module.sumcounts==0){
+            if (ModuleMaxID.sumcounts==0){
                 String sql = "Insert into tbl_Sttype (stcid, stname_l1, stname_l2) values (?,?,?)";
                 PreparedStatement p = c.prepareStatement(sql);
-                p.setInt(1, module.sumcounts);
+                p.setInt(1, ModuleMaxID.sumcounts);
                 p.setString(2, st.getStname_L1());
                 p.setString(3, st.getStname_L2());
                 if (p.executeUpdate()!=-1){
-                    module.sumcounts=0;
+                    ModuleMaxID.sumcounts=0;
                     MsgBox.msgInfo();
                 }
             }else{
@@ -40,9 +39,9 @@ public class Sttype {
                 PreparedStatement p = c.prepareStatement(sql);                
                 p.setString(1, st.getStname_L1());
                 p.setString(2, st.getStname_L2());
-                p.setInt(3, module.sumcounts);
+                p.setInt(3, ModuleMaxID.sumcounts);
                 if (p.executeUpdate()!=-1){
-                    module.sumcounts=0;
+                    ModuleMaxID.sumcounts=0;
                     MsgBox.msgInfo();
                 }
             }
