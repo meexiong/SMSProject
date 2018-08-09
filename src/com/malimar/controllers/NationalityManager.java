@@ -3,9 +3,13 @@ package com.malimar.controllers;
 
 import com.malimar.models.Nationality;
 import com.malimar.utils.MsgBox;
+import com.malimar.utils.RemoveTableIndex;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -39,8 +43,21 @@ public class NationalityManager {
             p.executeUpdate();
             p.close();
             return true;
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return false;
+    }
+    public void getTableData(JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            String query = "Select * from tbl_Nationality";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                Object[] obj = new Object[]{rs.getInt(1),rs.getString(2),rs.getString(3)};
+                model.addRow(obj);
+            }
+            table.setModel(model);
+        } catch (SQLException e) {
+        }
     }
 }

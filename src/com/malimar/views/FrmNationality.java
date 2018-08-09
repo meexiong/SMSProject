@@ -7,6 +7,7 @@ import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.SetText;
 import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,14 +19,17 @@ public class FrmNationality extends javax.swing.JFrame {
      * Creates new form FrmNationality
      */
     NationalityManager nm = new NationalityManager();
+    DefaultTableModel model = new DefaultTableModel();
     public FrmNationality() {
         initComponents();
+        model = (DefaultTableModel) jTable1.getModel();
         SetText.disableText(txtID);
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jTable1.setShowGrid(true);
         jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
+        nm.getTableData(jTable1, model);
     }
 
     /**
@@ -330,7 +334,8 @@ public class FrmNationality extends javax.swing.JFrame {
         try {
             int row = jTable1.getSelectedRow();
             txtID.setText(jTable1.getValueAt(row, 0).toString());
-//            txtNationality_L1.
+            txtNationality_L1.setText(jTable1.getValueAt(row, 1).toString());
+            txtNationality_L2.setText(jTable1.getValueAt(row, 2).toString());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jTable1MouseClicked
