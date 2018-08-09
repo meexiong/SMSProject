@@ -51,10 +51,10 @@ public class FrmNationality extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lblNationalityID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        lblNationality_L1 = new javax.swing.JLabel();
         txtNationality_L1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -165,8 +165,8 @@ public class FrmNationality extends javax.swing.JFrame {
 
         jPanel5.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jLabel1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel1.setText("ID");
+        lblNationalityID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblNationalityID.setText("ID");
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setText("New");
@@ -177,8 +177,8 @@ public class FrmNationality extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel2.setText("Nationality L1");
+        lblNationality_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblNationality_L1.setText("Nationality L1");
 
         txtNationality_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtNationality_L1.setBorder(null);
@@ -218,12 +218,12 @@ public class FrmNationality extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNationalityID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addComponent(jSeparator1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                    .addComponent(lblNationality_L1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
                     .addComponent(txtNationality_L1)
                     .addComponent(jSeparator2))
                 .addGap(18, 18, 18)
@@ -242,13 +242,13 @@ public class FrmNationality extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel1)
+                            .addComponent(lblNationalityID)
                             .addGap(1, 1, 1)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel3Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
+                            .addComponent(lblNationality_L1)
                             .addGap(1, 1, 1)
                             .addComponent(txtNationality_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
@@ -379,8 +379,6 @@ public class FrmNationality extends javax.swing.JFrame {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -392,6 +390,8 @@ public class FrmNationality extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblNationalityID;
+    private javax.swing.JLabel lblNationality_L1;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNationality_L1;

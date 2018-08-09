@@ -31,5 +31,10 @@ public class SetText {
 //        txt.setDisabledTextColor(Color.BLACK);
         txt.setDisabledTextColor(Color.BLACK);
     }
-    
+    public static void setVisibleFalse(JLabel lbl){
+        lbl.setVisible(false);
+    }
+    public static void setVisibleTrue(JLabel lbl){
+        lbl.setVisible(true);
+    }
 }

@@ -47,6 +47,17 @@ public class NationalityManager {
         }
         return false;
     }
+    public boolean deleteNationalty(Nationality nt){
+        try {
+            String delete = "Delete tbl_Nationality where NTID=?";
+            PreparedStatement p = c.prepareStatement(delete);
+            p.setInt(1, nt.getNationalID());
+            p.executeUpdate();
+            p.close();
+        } catch (SQLException e) {
+        }
+        return false;
+    }
     public void getTableData(JTable table, DefaultTableModel model){
         try {
             RemoveTableIndex.removeTable(table, model);

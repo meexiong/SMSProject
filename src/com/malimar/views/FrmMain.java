@@ -1,8 +1,10 @@
 
 package com.malimar.views;
 
+import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.LoginManager;
 import com.malimar.utils.Border;
+import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.utils.SetText;
 import com.malimar.utils.MenuSlide;
 import com.malimar.utils.MsgBox;
@@ -25,26 +27,27 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel5.setLayout( new GridBagLayout() );
         jPanel5.add(jPanel6, new GridBagConstraints());
         beforeLogin();
+        langLao();
     }
     private void beforeLogin() {
         SetText.disableLabel(Menu);
-        SetText.disableLabel(btnRegister);
-        SetText.disableLabel(btnStudentInfo);
-        SetText.disableLabel(btnPayment);
-        SetText.disableLabel(btnTeacher);
-        SetText.disableLabel(btnExam);
-        SetText.disableLabel(btnScore);
-        SetText.disableLabel(lblRegistation);
-        SetText.disableLabel(lblStudentInfo);
-        SetText.disableLabel(lblPayment);
-        SetText.disableLabel(lblTeacher);
-        SetText.disableLabel(lblExam);
-        SetText.disableLabel(lblReport);
-        SetText.disableLabel(lblScore);
-        SetText.disableLabel(lblReport);
-        SetText.disableLabel(lblSettingData);
-        SetText.disableLabel(btnReport);
-        SetText.disableLabel(btnSetting);
+        SetText.setVisibleFalse(btnRegister);
+        SetText.setVisibleFalse(btnStudentInfo);
+        SetText.setVisibleFalse(btnPayment);
+        SetText.setVisibleFalse(btnTeacher);
+        SetText.setVisibleFalse(btnExam);
+        SetText.setVisibleFalse(btnScore);
+        SetText.setVisibleFalse(lblRegistation);
+        SetText.setVisibleFalse(lblStudentInfo);
+        SetText.setVisibleFalse(lblPayment);
+        SetText.setVisibleFalse(lblTeacher);
+        SetText.setVisibleFalse(lblExam);
+        SetText.setVisibleFalse(lblReport);
+        SetText.setVisibleFalse(lblScore);
+        SetText.setVisibleFalse(lblReport);
+        SetText.setVisibleFalse(lblSettingData);
+        SetText.setVisibleFalse(btnReport);
+        SetText.setVisibleFalse(btnSetting);
         txtUserName.setVisible(true);
         txtPassword.setVisible(true);
         btnLogOut.setVisible(true);
@@ -62,23 +65,23 @@ public class FrmMain extends javax.swing.JFrame {
 
     private void afterLogin() {
         SetText.enableLabel(Menu);
-        SetText.enableLabel(btnRegister);
-        SetText.enableLabel(btnStudentInfo);
-        SetText.enableLabel(btnPayment);
-        SetText.enableLabel(btnTeacher);
-        SetText.enableLabel(btnExam);
-        SetText.enableLabel(btnScore);
-        SetText.enableLabel(lblRegistation);
-        SetText.enableLabel(lblStudentInfo);
-        SetText.enableLabel(lblPayment);
-        SetText.enableLabel(lblTeacher);
-        SetText.enableLabel(lblExam);
-        SetText.enableLabel(lblReport);
-        SetText.enableLabel(lblScore);
-        SetText.enableLabel(lblReport);
-        SetText.enableLabel(lblSettingData);
-        SetText.enableLabel(btnReport);
-        SetText.enableLabel(btnSetting);
+        SetText.setVisibleTrue(btnRegister);
+        SetText.setVisibleTrue(btnStudentInfo);
+        SetText.setVisibleTrue(btnPayment);
+        SetText.setVisibleTrue(btnTeacher);
+        SetText.setVisibleTrue(btnExam);
+        SetText.setVisibleTrue(btnScore);
+        SetText.setVisibleTrue(lblRegistation);
+        SetText.setVisibleTrue(lblStudentInfo);
+        SetText.setVisibleTrue(lblPayment);
+        SetText.setVisibleTrue(lblTeacher);
+        SetText.setVisibleTrue(lblExam);
+        SetText.setVisibleTrue(lblReport);
+        SetText.setVisibleTrue(lblScore);
+        SetText.setVisibleTrue(lblReport);
+        SetText.setVisibleTrue(lblSettingData);
+        SetText.setVisibleTrue(btnReport);
+        SetText.setVisibleTrue(btnSetting);
 //        txtUserName.setVisible(false);
 //        txtPassword.setVisible(false);
 //        btnSignUP.setVisible(false);
@@ -98,15 +101,32 @@ public class FrmMain extends javax.swing.JFrame {
         login.setUserName(txtUserName.getText().trim());
         login.setPassword(txtPassword.getText().trim());
         if (login.verifyUser()) {
+            LabelManager.getLabelLang();
             afterLogin();
         } else {
             MsgBox.msgWarning();
         }
     }
+    private void langLao(){
+        lblUserName.setText("ເຂົ້າລະບົບ");
+        lblPassword.setText("ລະຫັດຜ່ານ");
+        lblUserName.setText("ອີເມວ");
+        btnDatasource.setText("ຕັ້ງຄ່າຖານຂໍ້ມູນ");
+        btnSignUP.setText("ເຂົ້າໃຊ້ລະບົບ");
+        btnLogOut.setText("ອອກຈາກໃຊ້ລະບົບ");
+    }
+    private void langEN(){
+//        lblUserName.setText("User Name");
+        lblPassword.setText("Password");
+        lblUserName.setText("Email");
+        btnDatasource.setText("Datasource Setting");
+        btnSignUP.setText("Logout");
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnMinimize = new javax.swing.JLabel();
@@ -134,6 +154,8 @@ public class FrmMain extends javax.swing.JFrame {
         btnMClassroom = new javax.swing.JLabel();
         btnDatasource = new com.xzq.osc.JocHyperlink();
         btnSignUP = new javax.swing.JLabel();
+        radLao = new javax.swing.JRadioButton();
+        radEnglish = new javax.swing.JRadioButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnTeacher = new javax.swing.JLabel();
@@ -231,16 +253,14 @@ public class FrmMain extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblUserName.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblUserName.setForeground(new java.awt.Color(0, 15, 255));
         lblUserName.setText("User Name");
         jPanel3.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 382, 255, -1));
 
         lblLoginIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_100px.png"))); // NOI18N
-        jPanel3.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 250, 260, 120));
+        jPanel3.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 250, 260, 80));
 
         lblPassword.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblPassword.setForeground(new java.awt.Color(0, 15, 255));
         lblPassword.setText("Password");
         jPanel3.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 452, 255, -1));
 
@@ -357,16 +377,16 @@ public class FrmMain extends javax.swing.JFrame {
         btnMClassroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel3.add(btnMClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 316, 130, -1));
 
-        btnDatasource.setForeground(new java.awt.Color(0, 15, 255));
+        btnDatasource.setForeground(new java.awt.Color(0, 0, 0));
         btnDatasource.setText("Datasource Setting");
-        btnDatasource.setUnvisitColor(new java.awt.Color(0, 15, 255));
+        btnDatasource.setUnvisitColor(new java.awt.Color(0, 0, 0));
         btnDatasource.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnDatasource.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDatasourceActionPerformed(evt);
             }
         });
-        jPanel3.add(btnDatasource, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 250, -1));
+        jPanel3.add(btnDatasource, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 250, -1));
 
         btnSignUP.setBackground(new java.awt.Color(0, 15, 255));
         btnSignUP.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
@@ -381,6 +401,30 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
         jPanel3.add(btnSignUP, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 540, 180, -1));
+
+        radLao.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(radLao);
+        radLao.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        radLao.setText("Lao");
+        radLao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        radLao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radLaoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(radLao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 70, -1));
+
+        radEnglish.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(radEnglish);
+        radEnglish.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        radEnglish.setText("English");
+        radEnglish.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        radEnglish.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radEnglishActionPerformed(evt);
+            }
+        });
+        jPanel3.add(radEnglish, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -790,6 +834,17 @@ int cnt=0;
         }
     }//GEN-LAST:event_btnMStudentTypeMouseClicked
 
+    private void radLaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radLaoActionPerformed
+        langLao();
+        LangType="L1";
+
+    }//GEN-LAST:event_radLaoActionPerformed
+
+    private void radEnglishActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radEnglishActionPerformed
+        langEN();
+        LangType="L2";
+    }//GEN-LAST:event_radEnglishActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -847,6 +902,7 @@ int cnt=0;
     private javax.swing.JLabel btnSignUP;
     private javax.swing.JLabel btnStudentInfo;
     private javax.swing.JLabel btnTeacher;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -868,6 +924,8 @@ int cnt=0;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JLabel lblTeacher;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JRadioButton radEnglish;
+    private javax.swing.JRadioButton radLao;
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JSeparator txtsparetorName;
