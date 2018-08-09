@@ -784,8 +784,7 @@ int cnt=0;
 
     private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked
         try {
-            FrmSTCategory st = new FrmSTCategory();            
-            st.setVisible(true);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
