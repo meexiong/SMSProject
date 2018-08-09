@@ -4,6 +4,7 @@ package com.malimar.views;
 import com.malimar.controllers.NationalityManager;
 import com.malimar.models.Nationality;
 import com.malimar.utils.Border;
+import com.malimar.utils.MsgBox;
 import com.malimar.utils.SetText;
 import java.awt.Color;
 
@@ -300,12 +301,20 @@ public class FrmNationality extends javax.swing.JFrame {
         if(txtID.getText().equals("New")){
             nt.setNationalName_L1(txtNationality_L1.getText());
             nt.setNationalName_L2(txtNationality_L2.getText());
-            nm.insertNationality(nt);
+            if(nm.insertNationality(nt)==true){
+                MsgBox.msgInfo();
+            }else{
+                MsgBox.msgWarning();
+            }
         }else{
             nt.setNationalID(Integer.parseInt(txtID.getText()));
             nt.setNationalName_L1(txtNationality_L1.getText().trim());
             nt.setNationalName_L2(txtNationality_L2.getText().trim());
-            nm.updateNationality(nt);
+            if(nm.updateNationality(nt)==true){
+              MsgBox.msgInfo();
+            }else{
+                MsgBox.msgWarning();
+            }
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 
