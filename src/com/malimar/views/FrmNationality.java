@@ -1,6 +1,8 @@
 
 package com.malimar.views;
 
+import com.malimar.controllers.NationalityManager;
+import com.malimar.models.Nationality;
 import com.malimar.utils.Border;
 import com.malimar.utils.SetText;
 import java.awt.Color;
@@ -14,6 +16,7 @@ public class FrmNationality extends javax.swing.JFrame {
     /**
      * Creates new form FrmNationality
      */
+    NationalityManager nm = new NationalityManager();
     public FrmNationality() {
         initComponents();
         SetText.disableText(txtID);
@@ -52,7 +55,7 @@ public class FrmNationality extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtNationality_L2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        btnRead = new javax.swing.JLabel();
+        btnSave = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -140,6 +143,11 @@ public class FrmNationality extends javax.swing.JFrame {
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         jTable1.setRowHeight(27);
         jTable1.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(100);
@@ -176,21 +184,21 @@ public class FrmNationality extends javax.swing.JFrame {
         txtNationality_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtNationality_L2.setBorder(null);
 
-        btnRead.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        btnRead.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnRead.setText("Save");
-        btnRead.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRead.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSave.setText("Save");
+        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSave.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnReadMouseMoved(evt);
+                btnSaveMouseMoved(evt);
             }
         });
-        btnRead.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnReadMouseClicked(evt);
+                btnSaveMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnReadMouseExited(evt);
+                btnSaveMouseExited(evt);
             }
         });
 
@@ -219,7 +227,7 @@ public class FrmNationality extends javax.swing.JFrame {
                     .addComponent(txtNationality_L2)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnRead, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
         jPanel3Layout.setVerticalGroup(
@@ -246,7 +254,7 @@ public class FrmNationality extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addGap(1, 1, 1)
                                 .addComponent(txtNationality_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnRead, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
@@ -283,21 +291,40 @@ public class FrmNationality extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnExitMouseClicked
 
-    private void btnReadMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReadMouseMoved
-        Border.blueColor(btnRead);
-    }//GEN-LAST:event_btnReadMouseMoved
+    private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
+        Border.blueColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseMoved
 
-    private void btnReadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReadMouseClicked
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        Nationality nt = new Nationality();
+        if(txtID.getText().equals("New")){
+            nt.setNationalName_L1(txtNationality_L1.getText());
+            nt.setNationalName_L2(txtNationality_L2.getText());
+            nm.insertNationality(nt);
+        }else{
+            nt.setNationalID(Integer.parseInt(txtID.getText()));
+            nt.setNationalName_L1(txtNationality_L1.getText().trim());
+            nt.setNationalName_L2(txtNationality_L2.getText().trim());
+            nm.updateNationality(nt);
+        }
+    }//GEN-LAST:event_btnSaveMouseClicked
 
-    }//GEN-LAST:event_btnReadMouseClicked
-
-    private void btnReadMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReadMouseExited
-        Border.WhiteColor(btnRead);
-    }//GEN-LAST:event_btnReadMouseExited
+    private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
+        Border.WhiteColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseExited
 
     private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        try {
+            int row = jTable1.getSelectedRow();
+            txtID.setText(jTable1.getValueAt(row, 0).toString());
+//            txtNationality_L1.
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -337,7 +364,7 @@ public class FrmNationality extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
-    private javax.swing.JLabel btnRead;
+    private javax.swing.JLabel btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
