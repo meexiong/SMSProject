@@ -9,7 +9,7 @@ package com.malimar.models;
  *
  * @author Malimar
  */
-public class STType {
+public class StudentType {
     private int stycid;
     private String stname_l1;
     private String stname_l2;
