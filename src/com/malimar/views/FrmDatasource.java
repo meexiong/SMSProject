@@ -322,6 +322,11 @@ public class FrmDatasource extends javax.swing.JFrame {
     }//GEN-LAST:event_btnReadMouseClicked
 
     private void btnTestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTestMouseClicked
+        ad.setServerName(txtServerName.getText());
+        ad.setDatabaseName(txtDatabaseName.getText());
+        ad.setUserLogin(txtUserLogin.getText());
+        ad.setPassword(txtPassword.getText());
+        ad.setPort(txtPort.getText());
         if(am.testDatasource(ad)==true){
             MsgBox.msgInfo();
         }else{

@@ -4,6 +4,7 @@ package com.malimar.controllers;
 import static com.malimar.controllers.AESecrp.decrypt;
 import static com.malimar.controllers.AESecrp.encrypt;
 import com.malimar.models.AccessDatasource;
+import com.malimar.utils.MsgBox;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -39,14 +40,18 @@ public class DatabaseManagerAccess {
             ps.setString(4, encrypt(ad.getPassword()));
             ps.setString(5, encrypt(ad.getPort()));
             ps.setInt(6, 1001);
-           ps.executeUpdate() ; 
+            ps.executeUpdate() ; 
+           MsgBox.msgInfo();
         } catch (Exception e) {
+            MsgBox.msgWarning();
         }
     }
     public boolean testDatasource(AccessDatasource ad){
         try {
-            String Ser="jdbc:sqlserver://"+ad.getServerName()+";"+"DatabaseName="+ad.getDatabaseName();
+            String Ser="jdbc:sqlserver://"+ad.getServerName()+"; DatabaseName="+ad.getDatabaseName();
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            String a =ad.getUserLogin();
+            String b =ad.getPassword();
             Connection c = DriverManager.getConnection(Ser, ad.getUserLogin(), ad.getPassword());
             return true;
         } catch (Exception e) {
