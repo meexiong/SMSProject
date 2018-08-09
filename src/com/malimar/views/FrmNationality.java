@@ -1,6 +1,8 @@
 
 package com.malimar.views;
 
+import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.NationalityManager;
 import com.malimar.models.Nationality;
 import com.malimar.utils.Border;
@@ -20,8 +22,10 @@ public class FrmNationality extends javax.swing.JFrame {
      */
     NationalityManager nm = new NationalityManager();
     DefaultTableModel model = new DefaultTableModel();
+    String frm;
     public FrmNationality() {
         initComponents();
+        frm=this.getClass().getSimpleName();
         model = (DefaultTableModel) jTable1.getModel();
         SetText.disableText(txtID);
         jScrollPane1.getViewport().setBackground(Color.WHITE);
@@ -30,6 +34,7 @@ public class FrmNationality extends javax.swing.JFrame {
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
         nm.getTableData(jTable1, model);
+        lblNationalityID.setText(hmapLang.get("lblNationalityID".concat(frm).toUpperCase()) [LN]);
     }
 
     /**

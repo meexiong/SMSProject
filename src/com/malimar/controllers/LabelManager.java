@@ -22,7 +22,7 @@ public class LabelManager {
         try {
             String sql;
             Connection c = DatabaseManagerSQL.getConnection();
-            sql="EXEC pd_ChangeLabelLang";
+            sql="EXEC pd_ChangeLabel";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
               hmapLang.put(rs.getString(1), new String[]{rs.getString(2),rs.getString(3)});
