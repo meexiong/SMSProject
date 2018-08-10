@@ -18,6 +18,7 @@ public class LabelManager {
     public static int LN;
     public static String LangType;
     public static HashMap<String , String[]> hmapLang = new HashMap();
+    public static HashMap<String , String[]> hmapForm = new HashMap();
     public static String getLabelLang(){
         try {
             String sql;
@@ -44,4 +45,21 @@ public class LabelManager {
         }
         return null;
     }
+    
+    public static String getLabelForm(){
+        try {
+            String sql;
+            Connection c = DatabaseManagerSQL.getConnection();
+            sql="Exec pd_LabelForm";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+              hmapForm.put(rs.getString(1), new String[]{rs.getString(2), rs.getString(3)});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    
 }

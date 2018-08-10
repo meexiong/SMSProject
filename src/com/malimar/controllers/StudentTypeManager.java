@@ -7,8 +7,12 @@ package com.malimar.controllers;
 
 import com.malimar.models.StudentType;
 import com.malimar.utils.MsgBox;
+import com.malimar.utils.RemoveTableIndex;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -37,10 +41,10 @@ public class StudentTypeManager {
     }
     public boolean updateSttype(StudentType stm){
         try {
-            String sql ="Update tbl_StudentType set = STName_L1 = ?, STName_L2 = ? where stycid= (?)";
+            String sql ="Update tbl_StudentType set STName_L1 = ?, STName_L2 = ? where stycid= (?)";
             PreparedStatement p = c.prepareStatement(sql);
-            p.setString(1, stm.getStname_l1());
-            p.setString(2, stm.getStname_l2());
+            p.setString(1, stm.getStname_l1().trim());
+            p.setString(2, stm.getStname_l2().trim());
             p.setInt(3, stm.getStycid());            
             if (p.executeUpdate()!=-1){
                 p.close();
@@ -52,5 +56,17 @@ public class StudentTypeManager {
         }
         return false;
     }
-    
+    public void showData(JTable jtable, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(jtable, model);
+            String sql = "Select * from tbl_studenttype order by stycid";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[] {rs.getString("stycid"), rs.getString("stname_l1"), rs.getString("Stname_l2")});                
+            }
+            jtable.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

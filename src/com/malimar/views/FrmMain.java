@@ -121,6 +121,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         login.setPassword(txtPassword.getText().trim());
         if (login.verifyUser()) {
             LabelManager.getLabelLang();
+            LabelManager.getLabelForm();
             afterLogin();
             getMainLabel();
             am.saveSeasion(txtUserName.getText());
@@ -380,6 +381,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
         btnMReligion.setText("Religion");
         btnMReligion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMReligion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMReligionMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 172, 130, -1));
 
         btnMEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -923,6 +929,14 @@ int cnt=0;
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnMEthnicMouseClicked
+
+    private void btnMReligionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMReligionMouseClicked
+        try {
+            FrmRegion r = new FrmRegion();
+            r.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnMReligionMouseClicked
 
     /**
      * @param args the command line arguments
