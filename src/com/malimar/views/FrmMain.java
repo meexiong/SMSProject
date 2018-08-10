@@ -111,6 +111,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         radLao.setEnabled(false);
     }
     private void login(){
+        if(radLao.isSelected()){
+            LN=0;
+        }else{
+            LN=1;
+        }
         LoginManager login = new LoginManager();
         login.setUserName(txtUserName.getText().trim());
         login.setPassword(txtPassword.getText().trim());
