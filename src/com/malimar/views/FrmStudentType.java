@@ -5,10 +5,10 @@
  */
 package com.malimar.views;
 
-import com.lowagie.text.Font;
+
 import com.malimar.controllers.DatabaseManagerSQL;
-import com.malimar.controllers.STTypeManager;
-import com.malimar.models.STType;
+import com.malimar.controllers.StudentTypeManager;
+import com.malimar.models.StudentType;
 import com.malimar.utils.Border;
 import com.malimar.utils.SetText;
 import java.awt.Color;
@@ -27,7 +27,7 @@ public class FrmStudentType extends javax.swing.JFrame {
     Connection c = DatabaseManagerSQL.getConnection();
     String sql, frm;
     DefaultTableModel model = new DefaultTableModel();
-    STTypeManager stm = new STTypeManager();
+    StudentTypeManager stm = new StudentTypeManager();
     
     public FrmStudentType() {
         initComponents();
@@ -40,6 +40,8 @@ public class FrmStudentType extends javax.swing.JFrame {
         jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
+        
+        txtID.setEnabled(false);
     }
 
     /**
@@ -66,14 +68,16 @@ public class FrmStudentType extends javax.swing.JFrame {
         txtID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         lblName_L1 = new javax.swing.JLabel();
-        txtNationality_L1 = new javax.swing.JTextField();
+        txtStudentType_L1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         lblName_L2 = new javax.swing.JLabel();
-        txtNationality_L2 = new javax.swing.JTextField();
+        txtStudentType_L2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btnSave = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -192,14 +196,14 @@ public class FrmStudentType extends javax.swing.JFrame {
         lblName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblName_L1.setText("STName_L1");
 
-        txtNationality_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtNationality_L1.setBorder(null);
+        txtStudentType_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtStudentType_L1.setBorder(null);
 
         lblName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblName_L2.setText("STName_L2");
 
-        txtNationality_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtNationality_L2.setBorder(null);
+        txtStudentType_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtStudentType_L2.setBorder(null);
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -236,12 +240,12 @@ public class FrmStudentType extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblName_L1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                    .addComponent(txtNationality_L1)
+                    .addComponent(txtStudentType_L1)
                     .addComponent(jSeparator2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblName_L2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtNationality_L2)
+                    .addComponent(txtStudentType_L2)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,7 +266,7 @@ public class FrmStudentType extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createSequentialGroup()
                             .addComponent(lblName_L1)
                             .addGap(1, 1, 1)
-                            .addComponent(txtNationality_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtStudentType_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel5Layout.createSequentialGroup()
@@ -270,7 +274,7 @@ public class FrmStudentType extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(lblName_L2)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtNationality_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtStudentType_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -299,6 +303,7 @@ public class FrmStudentType extends javax.swing.JFrame {
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
@@ -327,15 +332,15 @@ public class FrmStudentType extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        STType sty = new STType();
+        StudentType sty = new StudentType();
         if(txtID.getText().equals("New")){
-            sty.setStname_l1(txtNationality_L1.getText());
-            sty.setStname_l2(txtNationality_L2.getText());
+            sty.setStname_l1(txtStudentType_L1.getText());
+            sty.setStname_l2(txtStudentType_L2.getText());
             stm.insertSttype(sty);
         }else{
             sty.setStycid(Integer.parseInt(txtID.getText()));
-            sty.setStname_l1(txtNationality_L1.getText().trim());
-            sty.setStname_l2(txtNationality_L2.getText().trim());
+            sty.setStname_l1(txtStudentType_L1.getText().trim());
+            sty.setStname_l2(txtStudentType_L2.getText().trim());
             stm.insertSttype(sty);
         }
     }//GEN-LAST:event_btnSaveMouseClicked
@@ -399,7 +404,7 @@ public class FrmStudentType extends javax.swing.JFrame {
     private javax.swing.JLabel lblName_L2;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtNationality_L1;
-    private javax.swing.JTextField txtNationality_L2;
+    private javax.swing.JTextField txtStudentType_L1;
+    private javax.swing.JTextField txtStudentType_L2;
     // End of variables declaration//GEN-END:variables
 }
