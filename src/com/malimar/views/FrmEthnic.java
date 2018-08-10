@@ -45,7 +45,7 @@ public class FrmEthnic extends javax.swing.JFrame {
             TableColumnModel tcm = th.getColumnModel();
             jTable1.getColumnCount();
             for(int i=0; i < jTable1.getColumnCount(); i++){
-                TableColumn tc = tcm.getColumn(i);            
+                TableColumn tc = tcm.getColumn(i);
                 tc.setHeaderValue(LabelManager.hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LabelManager.LN]);                
             }
                jTable1.setAutoCreateRowSorter(true);
