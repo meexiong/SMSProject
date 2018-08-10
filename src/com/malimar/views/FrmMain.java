@@ -388,6 +388,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMEthnic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Aztec Headdress_30px.png"))); // NOI18N
         btnMEthnic.setText("Ethnic");
         btnMEthnic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMEthnic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMEthnicMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 220, 130, -1));
 
         btnMLevel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -910,6 +915,14 @@ int cnt=0;
     private void btnLogOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseMoved
         Border.blueColor(btnLogOut);
     }//GEN-LAST:event_btnLogOutMouseMoved
+
+    private void btnMEthnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMEthnicMouseClicked
+        try {
+            FrmEthnic fe = new FrmEthnic();
+            fe.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnMEthnicMouseClicked
 
     /**
      * @param args the command line arguments
