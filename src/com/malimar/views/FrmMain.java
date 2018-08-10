@@ -1,13 +1,17 @@
 
 package com.malimar.views;
 
+import com.malimar.controllers.DatabaseManagerAccess;
 import com.malimar.controllers.LabelManager;
+import static com.malimar.controllers.LabelManager.LN;
 import com.malimar.controllers.LoginManager;
 import com.malimar.utils.Border;
 import static com.malimar.controllers.LabelManager.LangType;
+import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.utils.SetText;
 import com.malimar.utils.MenuSlide;
 import com.malimar.utils.MsgBox;
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -16,18 +20,20 @@ import java.awt.GridBagLayout;
  * @author Malimar
  */
 public class FrmMain extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FrmMain
-     */
+DatabaseManagerAccess am = new DatabaseManagerAccess();
+    String frm;
     public FrmMain() {
         initComponents();
+        frm = this.getClass().getSimpleName();
         //this.setExtendedState(FrmMain.MAXIMIZED_BOTH);
 //        jPanel5.setAlignmentX(Component.CENTER_ALIGNMENT);
         jPanel5.setLayout( new GridBagLayout() );
         jPanel5.add(jPanel6, new GridBagConstraints());
+        radLao.setSelected(true);
         beforeLogin();
         langLao();
+        this.txtUserName.setText(am.getUserLogin());
+        txtPassword.requestFocus();
     }
     private void beforeLogin() {
         SetText.disableLabel(Menu);
@@ -45,7 +51,7 @@ public class FrmMain extends javax.swing.JFrame {
         SetText.setVisibleFalse(lblReport);
         SetText.setVisibleFalse(lblScore);
         SetText.setVisibleFalse(lblReport);
-        SetText.setVisibleFalse(lblSettingData);
+        SetText.setVisibleFalse(lblSettingUser);
         SetText.setVisibleFalse(btnReport);
         SetText.setVisibleFalse(btnSetting);
         txtUserName.setVisible(true);
@@ -61,6 +67,15 @@ public class FrmMain extends javax.swing.JFrame {
         lblIconPass.setVisible(true);
         btnLogOut.setVisible(true);
         btnDatasource.setVisible(true);
+        txtUserName.setEnabled(true);
+        txtPassword.setEnabled(true);
+        btnSignUP.setEnabled(true);
+        btnDatasource.setEnabled(true);
+        txtUserName.setOpaque(true);
+        txtPassword.setOpaque(true);
+        txtPassword.setText("");
+        radEnglish.setEnabled(true);
+        radLao.setEnabled(true);
     }
 
     private void afterLogin() {
@@ -79,22 +94,21 @@ public class FrmMain extends javax.swing.JFrame {
         SetText.setVisibleTrue(lblReport);
         SetText.setVisibleTrue(lblScore);
         SetText.setVisibleTrue(lblReport);
-        SetText.setVisibleTrue(lblSettingData);
+        SetText.setVisibleTrue(lblSettingUser);
         SetText.setVisibleTrue(btnReport);
         SetText.setVisibleTrue(btnSetting);
-//        txtUserName.setVisible(false);
-//        txtPassword.setVisible(false);
-//        btnSignUP.setVisible(false);
-//        btnDatasource.setVisible(false);
-        lblLoginIcon.setVisible(false);
-//        lblUserName.setVisible(false);
-//        lblIconUser.setVisible(false);
-//        txtsparetorName.setVisible(false);
-//        lblPassword.setVisible(false);
-//        lblSparetorPass.setVisible(false);
-//        lblIconPass.setVisible(false);
-//        btnSignUP.setVisible(false);
-//        btnDatasource.setVisible(false);
+        txtUserName.setEnabled(false);
+        txtPassword.setEnabled(false);
+        btnSignUP.setEnabled(false);
+        btnDatasource.setEnabled(false);
+        txtUserName.setDisabledTextColor(Color.BLACK);
+        txtUserName.setBackground(Color.WHITE);
+        txtUserName.setOpaque(false);
+        txtPassword.setDisabledTextColor(Color.BLACK);
+        txtPassword.setBackground(Color.WHITE);
+        txtPassword.setOpaque(false);
+        radEnglish.setEnabled(false);
+        radLao.setEnabled(false);
     }
     private void login(){
         LoginManager login = new LoginManager();
@@ -103,6 +117,8 @@ public class FrmMain extends javax.swing.JFrame {
         if (login.verifyUser()) {
             LabelManager.getLabelLang();
             afterLogin();
+            getMainLabel();
+            am.saveSeasion(txtUserName.getText());
         } else {
             MsgBox.msgWarning();
         }
@@ -120,8 +136,20 @@ public class FrmMain extends javax.swing.JFrame {
         lblPassword.setText("Password");
         lblUserName.setText("Email");
         btnDatasource.setText("Datasource Setting");
-        btnSignUP.setText("Logout");
+        btnSignUP.setText("Sign Up");
+        btnLogOut.setText("Logout");
     }
+    private void getMainLabel(){
+        lblRegistation.setText(hmapLang.get("lblRegistation".concat(frm).toUpperCase()) [LN]);
+        lblStudentInfo.setText(hmapLang.get("lblStudentInfo".concat(frm).toUpperCase()) [LN]);
+        lblPayment.setText(hmapLang.get("lblPayment".concat(frm).toUpperCase()) [LN]);
+        lblTeacher.setText(hmapLang.get("lblTeacher".concat(frm).toUpperCase()) [LN]);
+        lblExam.setText(hmapLang.get("lblExam".concat(frm).toUpperCase()) [LN]);
+        lblScore.setText(hmapLang.get("lblScore".concat(frm).toUpperCase()) [LN]);
+        lblReport.setText(hmapLang.get("lblReport".concat(frm).toUpperCase()) [LN]);
+        lblSettingUser.setText(hmapLang.get("lblSettingUser".concat(frm).toUpperCase()) [LN]);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -140,7 +168,6 @@ public class FrmMain extends javax.swing.JFrame {
         lblPassword = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
         txtsparetorName = new javax.swing.JSeparator();
-        txtPassword = new javax.swing.JTextField();
         lblSparetorPass = new javax.swing.JSeparator();
         lblIconUser = new javax.swing.JLabel();
         lblIconPass = new javax.swing.JLabel();
@@ -156,6 +183,7 @@ public class FrmMain extends javax.swing.JFrame {
         btnSignUP = new javax.swing.JLabel();
         radLao = new javax.swing.JRadioButton();
         radEnglish = new javax.swing.JRadioButton();
+        txtPassword = new javax.swing.JPasswordField();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnTeacher = new javax.swing.JLabel();
@@ -173,7 +201,7 @@ public class FrmMain extends javax.swing.JFrame {
         lblReport = new javax.swing.JLabel();
         btnReport = new javax.swing.JLabel();
         btnSetting = new javax.swing.JLabel();
-        lblSettingData = new javax.swing.JLabel();
+        lblSettingUser = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -275,17 +303,6 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jPanel3.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 407, 227, -1));
         jPanel3.add(txtsparetorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 430, 255, -1));
-
-        txtPassword.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtPassword.setBorder(null);
-        txtPassword.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtPassword.setDisabledTextColor(new java.awt.Color(255, 255, 255));
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
-            }
-        });
-        jPanel3.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 477, 227, -1));
         jPanel3.add(lblSparetorPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 500, 255, -1));
 
         lblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_24px.png"))); // NOI18N
@@ -294,16 +311,23 @@ public class FrmMain extends javax.swing.JFrame {
         lblIconPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Key_24px.png"))); // NOI18N
         jPanel3.add(lblIconPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 475, -1, -1));
 
-        btnLogOut.setBackground(new java.awt.Color(0, 15, 255));
+        btnLogOut.setBackground(new java.awt.Color(255, 255, 255));
         btnLogOut.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
-        btnLogOut.setForeground(new java.awt.Color(255, 255, 255));
         btnLogOut.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnLogOut.setText("LogOut");
         btnLogOut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnLogOut.setOpaque(true);
+        btnLogOut.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnLogOutMouseMoved(evt);
+            }
+        });
         btnLogOut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLogOutMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLogOutMouseExited(evt);
             }
         });
         jPanel3.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 640, 180, -1));
@@ -388,16 +412,23 @@ public class FrmMain extends javax.swing.JFrame {
         });
         jPanel3.add(btnDatasource, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 250, -1));
 
-        btnSignUP.setBackground(new java.awt.Color(0, 15, 255));
+        btnSignUP.setBackground(new java.awt.Color(255, 255, 255));
         btnSignUP.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
-        btnSignUP.setForeground(new java.awt.Color(255, 255, 255));
         btnSignUP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnSignUP.setText("Sign Up");
         btnSignUP.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSignUP.setOpaque(true);
+        btnSignUP.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSignUPMouseMoved(evt);
+            }
+        });
         btnSignUP.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnSignUPMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSignUPMouseExited(evt);
             }
         });
         jPanel3.add(btnSignUP, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 540, 180, -1));
@@ -405,7 +436,7 @@ public class FrmMain extends javax.swing.JFrame {
         radLao.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radLao);
         radLao.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        radLao.setText("Lao");
+        radLao.setText("ລາວ");
         radLao.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         radLao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,6 +456,15 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
         jPanel3.add(radEnglish, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+
+        txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtPassword.setBorder(null);
+        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPasswordActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 479, 227, 20));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -577,10 +617,10 @@ public class FrmMain extends javax.swing.JFrame {
             }
         });
 
-        lblSettingData.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblSettingData.setForeground(new java.awt.Color(0, 15, 255));
-        lblSettingData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSettingData.setText("User Login");
+        lblSettingUser.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblSettingUser.setForeground(new java.awt.Color(0, 15, 255));
+        lblSettingUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSettingUser.setText("User Login");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -620,7 +660,7 @@ public class FrmMain extends javax.swing.JFrame {
                         .addGap(73, 73, 73)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnSetting, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE)
-                            .addComponent(lblSettingData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(lblSettingUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -659,7 +699,7 @@ public class FrmMain extends javax.swing.JFrame {
                     .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSettingData, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(23, 23, 23))
         );
@@ -790,7 +830,11 @@ int cnt=0;
     }//GEN-LAST:event_btnDatasourceActionPerformed
 
     private void btnLogOutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseClicked
-        
+        radLao.setSelected(true);
+        beforeLogin();
+        langLao();
+        this.txtUserName.setText(am.getUserLogin());
+        txtPassword.requestFocus();
     }//GEN-LAST:event_btnLogOutMouseClicked
 
     private void btnReportMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseMoved
@@ -812,10 +856,6 @@ int cnt=0;
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         txtPassword.requestFocus();
     }//GEN-LAST:event_txtUserNameActionPerformed
-
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
-        login();
-    }//GEN-LAST:event_txtPasswordActionPerformed
 
     private void btnSignUPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUPMouseClicked
         login();
@@ -844,6 +884,26 @@ int cnt=0;
         langEN();
         LangType="L2";
     }//GEN-LAST:event_radEnglishActionPerformed
+
+    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+        login();
+    }//GEN-LAST:event_txtPasswordActionPerformed
+
+    private void btnSignUPMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUPMouseExited
+       Border.WhiteColor(btnSignUP);
+    }//GEN-LAST:event_btnSignUPMouseExited
+
+    private void btnSignUPMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUPMouseMoved
+        Border.blueColor(btnSignUP);
+    }//GEN-LAST:event_btnSignUPMouseMoved
+
+    private void btnLogOutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseExited
+        Border.WhiteColor(btnLogOut);
+    }//GEN-LAST:event_btnLogOutMouseExited
+
+    private void btnLogOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseMoved
+        Border.blueColor(btnLogOut);
+    }//GEN-LAST:event_btnLogOutMouseMoved
 
     /**
      * @param args the command line arguments
@@ -918,7 +978,7 @@ int cnt=0;
     private javax.swing.JLabel lblRegistation;
     private javax.swing.JLabel lblReport;
     private javax.swing.JLabel lblScore;
-    private javax.swing.JLabel lblSettingData;
+    private javax.swing.JLabel lblSettingUser;
     private javax.swing.JSeparator lblSparetorPass;
     private javax.swing.JLabel lblStudentInfo;
     private javax.swing.JLabel lblSystemInfo;
@@ -926,7 +986,7 @@ int cnt=0;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JRadioButton radEnglish;
     private javax.swing.JRadioButton radLao;
-    private javax.swing.JTextField txtPassword;
+    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtUserName;
     private javax.swing.JSeparator txtsparetorName;
     // End of variables declaration//GEN-END:variables
