@@ -9,7 +9,11 @@ import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.SetText;
 import java.awt.Color;
+import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -25,6 +29,7 @@ public class FrmNationality extends javax.swing.JFrame {
     String frm;
     public FrmNationality() {
         initComponents();
+        jTable1.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD,12));
         frm=this.getClass().getSimpleName();
         model = (DefaultTableModel) jTable1.getModel();
         SetText.disableText(txtID);
@@ -34,10 +39,24 @@ public class FrmNationality extends javax.swing.JFrame {
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
         nm.getTableData(jTable1, model);
-        lblNationalityID.setText(hmapLang.get("lblNationalityID".concat(frm).toUpperCase()) [LN]);
+        getNationalityLabel();
 //        txtID.setDisabledTextColor(Color.BLACK);
     }
-
+     public void getNationalityLabel() {
+        lblNationalityID.setText(hmapLang.get("lblNationalityID".concat(frm).toUpperCase())[LN]);
+        lblNationality_L1.setText(hmapLang.get("lblNationality_L1".concat(frm).toUpperCase())[LN]);
+        lblNationality_L2.setText(hmapLang.get("lblNationality_L2".concat(frm).toUpperCase())[LN]);
+        btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
+        JTableHeader th = jTable1.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            jTable1.getColumnCount();
+            for(int i=0; i < jTable1.getColumnCount(); i++){
+                TableColumn tc = tcm.getColumn(i);            
+                tc.setHeaderValue(hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LN]);
+            }
+            jTable1.setAutoCreateRowSorter(true);
+            th.repaint(); 
+    }
      public void clearText(){
          txtID.setText("New");
          txtNationality_L1.setText("");
@@ -64,7 +83,7 @@ public class FrmNationality extends javax.swing.JFrame {
         lblNationality_L1 = new javax.swing.JLabel();
         txtNationality_L1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        lblNationality_L2 = new javax.swing.JLabel();
         txtNationality_L2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btnSave = new javax.swing.JLabel();
@@ -141,7 +160,7 @@ public class FrmNationality extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "lblID", "lblNationality_L1", "lblNationality_L2"
+                "lblNationalityID", "lblNationality_L1", "lblNationality_L2"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -199,8 +218,8 @@ public class FrmNationality extends javax.swing.JFrame {
         txtNationality_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtNationality_L1.setBorder(null);
 
-        jLabel3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel3.setText("Nationality L2");
+        lblNationality_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblNationality_L2.setText("Nationality L2");
 
         txtNationality_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtNationality_L2.setBorder(null);
@@ -244,7 +263,7 @@ public class FrmNationality extends javax.swing.JFrame {
                     .addComponent(jSeparator2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblNationality_L2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtNationality_L2)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -272,7 +291,7 @@ public class FrmNationality extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lblNationality_L2)
                                 .addGap(1, 1, 1)
                                 .addComponent(txtNationality_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -402,7 +421,6 @@ public class FrmNationality extends javax.swing.JFrame {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -415,6 +433,7 @@ public class FrmNationality extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblNationalityID;
     private javax.swing.JLabel lblNationality_L1;
+    private javax.swing.JLabel lblNationality_L2;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNationality_L1;

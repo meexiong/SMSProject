@@ -6,24 +6,54 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
+import com.malimar.controllers.LabelManager;
+import static com.malimar.controllers.LabelManager.LangType;
+import static com.malimar.controllers.LabelManager.fieldName;
+import static com.malimar.controllers.LabelManager.frameName;
 import com.malimar.utils.Border;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
  * @author Malimar
  */
 public class FrmChangeLabel extends javax.swing.JFrame {
-
+    
     Connection c = DatabaseManagerSQL.getConnection();
     String sql;
     String frm;
     String form;
+    LabelManager lm = new LabelManager();
     public FrmChangeLabel() {
         initComponents();
         frm = this.getClass().getSimpleName();
+        if("L1".equals(LangType)){
+            lblLao.setText("ລາວ");
+            lblEN.setText("ອັງກິດ");
+            btnSave.setText("ບັນທຶກ");
+        }else{
+            lblLao.setText("Lao");
+            lblEN.setText("English");
+            btnSave.setText("Save");
+        }
     }
-
+    public void showLang(){
+        try {
+            sql = "Select * from tbl_SysLang where Sys_Name = '"+ fieldName +"' and FormID = N'"+ frameName +"'";
+            try (ResultSet rs = c.createStatement().executeQuery(sql)) {
+                if (rs.next()){
+                    txtName_L1.setText(rs.getString("Lang_L1"));
+                    txtName_L2.setText(rs.getString("Lang_L2"));
+                    txtFieldName.setText(rs.getString("Sys_Name"));
+                    form = rs.getString("FormID");
+                }
+            }
+        } catch (SQLException e) {
+             e.printStackTrace();
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,32 +64,41 @@ public class FrmChangeLabel extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblLao = new javax.swing.JLabel();
         txtName_L1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel2 = new javax.swing.JLabel();
+        lblEN = new javax.swing.JLabel();
         txtName_L2 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         txtFieldName = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblFieldName = new javax.swing.JLabel();
         btnSave = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        btnExit = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        lblSystemInfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
 
-        jLabel1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Lao");
+        lblLao.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblLao.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblLao.setText("Lao");
 
         txtName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtName_L1.setBorder(null);
 
-        jLabel2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("English");
+        lblEN.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEN.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEN.setText("English");
 
         txtName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtName_L2.setBorder(null);
@@ -67,9 +106,9 @@ public class FrmChangeLabel extends javax.swing.JFrame {
         txtFieldName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtFieldName.setText("0");
 
-        jLabel4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Lao");
+        lblFieldName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblFieldName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblFieldName.setText("Field Name");
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -89,19 +128,61 @@ public class FrmChangeLabel extends javax.swing.JFrame {
             }
         });
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
+
+        btnExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Close Window_30px.png"))); // NOI18N
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnExitMouseClicked(evt);
+            }
+        });
+
+        jPanel5.setLayout(new java.awt.BorderLayout());
+
+        lblSystemInfo.setBackground(new java.awt.Color(255, 255, 255));
+        lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
+        lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSystemInfo.setText("Change Label");
+        lblSystemInfo.setOpaque(true);
+        jPanel5.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(2, 2, 2))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(lblFieldName, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE)
+                            .addComponent(lblLao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFieldName, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -112,29 +193,29 @@ public class FrmChangeLabel extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jSeparator1, jSeparator2, txtFieldName, txtName_L1, txtName_L2});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel4});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFieldName)
-                    .addComponent(jLabel4))
+                    .addComponent(lblFieldName))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(lblLao))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtName_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(lblEN))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -142,7 +223,7 @@ public class FrmChangeLabel extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jLabel1, txtFieldName, txtName_L1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblLao, txtFieldName, txtName_L1});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -155,12 +236,20 @@ public class FrmChangeLabel extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-
+        lm.saveLabel(txtName_L1.getText(), txtName_L2.getText(), txtFieldName.getText(), form, this);
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
         Border.WhiteColor(btnSave);
     }//GEN-LAST:event_btnSaveMouseExited
+
+    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
+        dispose();
+    }//GEN-LAST:event_btnExitMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        showLang();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -198,13 +287,17 @@ public class FrmChangeLabel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnSave;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lblEN;
+    private javax.swing.JLabel lblFieldName;
+    private javax.swing.JLabel lblLao;
+    private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JLabel txtFieldName;
     private javax.swing.JTextField txtName_L1;
     private javax.swing.JTextField txtName_L2;
