@@ -113,8 +113,10 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
     private void login(){
         if(radLao.isSelected()){
             LN=0;
+            LangType = "L1";
         }else{
             LN=1;
+            LangType = "L2";
         }
         LoginManager login = new LoginManager();
         login.setUserName(txtUserName.getText().trim());
@@ -420,6 +422,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMClassroom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_30px.png"))); // NOI18N
         btnMClassroom.setText("Classroom");
         btnMClassroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMClassroom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMClassroomMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 316, 130, -1));
 
         btnDatasource.setForeground(new java.awt.Color(0, 0, 0));
@@ -950,6 +957,14 @@ int cnt=0;
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnMLevelMouseClicked
+
+    private void btnMClassroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMClassroomMouseClicked
+        try {
+            FrmClass fc = new FrmClass();
+            fc.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnMClassroomMouseClicked
 
     /**
      * @param args the command line arguments
