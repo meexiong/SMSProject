@@ -55,6 +55,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleFalse(lblSettingUser);
         SetText.setVisibleFalse(btnReport);
         SetText.setVisibleFalse(btnSetting);
+        SetText.setVisibleFalse(lblLoginIcon);
         txtUserName.setVisible(true);
         txtPassword.setVisible(true);
         btnLogOut.setVisible(true);
@@ -98,6 +99,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleTrue(lblSettingUser);
         SetText.setVisibleTrue(btnReport);
         SetText.setVisibleTrue(btnSetting);
+        SetText.setVisibleTrue(lblLoginIcon);
         txtUserName.setEnabled(false);
         txtPassword.setEnabled(false);
         btnSignUP.setEnabled(false);
@@ -906,20 +908,6 @@ int cnt=0;
         login();
     }//GEN-LAST:event_btnSignUPMouseClicked
 
-    private void btnMNationalityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMNationalityMouseClicked
-        FrmNationality frmNationality =  new FrmNationality();
-        frmNationality.setVisible(true);
-    }//GEN-LAST:event_btnMNationalityMouseClicked
-
-    private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked
-        try {
-            FrmStudentType styp = new FrmStudentType();
-            styp.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnMStudentTypeMouseClicked
-
     private void radLaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radLaoActionPerformed
         langLao();
         LangType="L1";
@@ -954,6 +942,40 @@ int cnt=0;
     private void lblStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudentInfoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_lblStudentInfoMouseClicked
+
+    private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
+        WindowChangeLabel("lblRegistation", frm, evt);
+    }//GEN-LAST:event_lblRegistationMouseClicked
+
+    private void btnMReligionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMReligionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMReligionMouseClicked
+
+    private void btnMEthnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMEthnicMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMEthnicMouseClicked
+
+    private void btnMLevelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMLevelMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMLevelMouseClicked
+
+    private void btnMClassroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMClassroomMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMClassroomMouseClicked
+
+    private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked
+        try {
+            FrmStudentType styp = new FrmStudentType();
+            styp.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnMStudentTypeMouseClicked
+
+    private void btnMNationalityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMNationalityMouseClicked
+        FrmNationality frmNationality =  new FrmNationality();
+        frmNationality.setVisible(true);
+    }//GEN-LAST:event_btnMNationalityMouseClicked
 
 
     /**
