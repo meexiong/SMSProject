@@ -352,7 +352,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMStudentType.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMStudentType.setForeground(new java.awt.Color(0, 15, 255));
         btnMStudentType.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMStudentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Male_30px.png"))); // NOI18N
+        btnMStudentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Male_24px.png"))); // NOI18N
         btnMStudentType.setText("Student Type");
         btnMStudentType.setToolTipText("");
         btnMStudentType.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -366,7 +366,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMNationality.setForeground(new java.awt.Color(0, 15, 255));
         btnMNationality.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMNationality.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Flag Filled _30px.png"))); // NOI18N
+        btnMNationality.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Flag Filled _24px.png"))); // NOI18N
         btnMNationality.setText("Nationality");
         btnMNationality.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMNationality.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -389,7 +389,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMReligion.setForeground(new java.awt.Color(0, 15, 255));
         btnMReligion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
+        btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_24px.png"))); // NOI18N
         btnMReligion.setText("Religion");
         btnMReligion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMReligion.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -402,7 +402,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMEthnic.setForeground(new java.awt.Color(0, 15, 255));
         btnMEthnic.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMEthnic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Aztec Headdress_30px.png"))); // NOI18N
+        btnMEthnic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Aztec Headdress_24px.png"))); // NOI18N
         btnMEthnic.setText("Ethnic");
         btnMEthnic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMEthnic.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -415,7 +415,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMLevel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMLevel.setForeground(new java.awt.Color(0, 15, 255));
         btnMLevel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Level Up_30px.png"))); // NOI18N
+        btnMLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Level Up_24px.png"))); // NOI18N
         btnMLevel.setText("Level");
         btnMLevel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMLevel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -428,7 +428,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMClassroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnMClassroom.setForeground(new java.awt.Color(0, 15, 255));
         btnMClassroom.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMClassroom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_30px.png"))); // NOI18N
+        btnMClassroom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_24px.png"))); // NOI18N
         btnMClassroom.setText("Classroom");
         btnMClassroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMClassroom.addMouseListener(new java.awt.event.MouseAdapter() {
