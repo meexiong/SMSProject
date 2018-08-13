@@ -407,6 +407,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Level Up_30px.png"))); // NOI18N
         btnMLevel.setText("Level");
         btnMLevel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMLevel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMLevelMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 268, 130, -1));
 
         btnMClassroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -937,6 +942,14 @@ int cnt=0;
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnMReligionMouseClicked
+
+    private void btnMLevelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMLevelMouseClicked
+        try {
+            FrmClassLevel fl = new FrmClassLevel();
+            fl.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnMLevelMouseClicked
 
     /**
      * @param args the command line arguments
