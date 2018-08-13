@@ -56,6 +56,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleFalse(btnReport);
         SetText.setVisibleFalse(btnSetting);
         SetText.setVisibleFalse(lblLoginIcon);
+        SetText.setVisibleTrue(lblLoginIcon);
         txtUserName.setVisible(true);
         txtPassword.setVisible(true);
         btnLogOut.setVisible(true);
@@ -100,6 +101,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleTrue(btnReport);
         SetText.setVisibleTrue(btnSetting);
         SetText.setVisibleTrue(lblLoginIcon);
+        SetText.setVisibleFalse(lblLoginIcon);
         txtUserName.setEnabled(false);
         txtPassword.setEnabled(false);
         btnSignUP.setEnabled(false);
@@ -165,6 +167,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMEthnic.setText(hmapLang.get("btnMEthnic".concat(frm).toUpperCase()) [LN]);
         btnMLevel.setText(hmapLang.get("btnMLevel".concat(frm).toUpperCase()) [LN]);
         btnMClassroom.setText(hmapLang.get("btnMClassroom".concat(frm).toUpperCase()) [LN]);
+        btnMWorkStatus.setText(hmapLang.get("btnMWorkStatus".concat(frm).toUpperCase()) [LN]);
     }
     
     @SuppressWarnings("unchecked")
@@ -201,6 +204,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         radLao = new javax.swing.JRadioButton();
         radEnglish = new javax.swing.JRadioButton();
         txtPassword = new javax.swing.JPasswordField();
+        btnMWorkStatus = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnTeacher = new javax.swing.JLabel();
@@ -349,8 +353,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
         jPanel3.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 640, 180, -1));
 
-        btnMStudentType.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMStudentType.setForeground(new java.awt.Color(0, 15, 255));
+        btnMStudentType.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMStudentType.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMStudentType.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Male_24px.png"))); // NOI18N
         btnMStudentType.setText("Student Type");
@@ -363,8 +366,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
         jPanel3.add(btnMStudentType, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 76, 130, -1));
 
-        btnMNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMNationality.setForeground(new java.awt.Color(0, 15, 255));
+        btnMNationality.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMNationality.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMNationality.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Flag Filled _24px.png"))); // NOI18N
         btnMNationality.setText("Nationality");
@@ -374,7 +376,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMNationalityMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 124, 130, -1));
+        jPanel3.add(btnMNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 110, 130, -1));
 
         Menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Menu_30px.png"))); // NOI18N
@@ -386,8 +388,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
         jPanel3.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 38, -1));
 
-        btnMReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMReligion.setForeground(new java.awt.Color(0, 15, 255));
+        btnMReligion.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMReligion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_24px.png"))); // NOI18N
         btnMReligion.setText("Religion");
@@ -397,10 +398,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMReligionMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 172, 130, -1));
+        jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 144, 130, -1));
 
-        btnMEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMEthnic.setForeground(new java.awt.Color(0, 15, 255));
+        btnMEthnic.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMEthnic.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMEthnic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Aztec Headdress_24px.png"))); // NOI18N
         btnMEthnic.setText("Ethnic");
@@ -410,10 +410,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMEthnicMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 220, 130, -1));
+        jPanel3.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 178, 130, -1));
 
-        btnMLevel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMLevel.setForeground(new java.awt.Color(0, 15, 255));
+        btnMLevel.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMLevel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Level Up_24px.png"))); // NOI18N
         btnMLevel.setText("Level");
@@ -423,10 +422,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMLevelMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 268, 130, -1));
+        jPanel3.add(btnMLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 212, 130, -1));
 
-        btnMClassroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        btnMClassroom.setForeground(new java.awt.Color(0, 15, 255));
+        btnMClassroom.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMClassroom.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnMClassroom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_24px.png"))); // NOI18N
         btnMClassroom.setText("Classroom");
@@ -436,7 +434,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMClassroomMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 316, 130, -1));
+        jPanel3.add(btnMClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 246, 130, -1));
 
         btnDatasource.setForeground(new java.awt.Color(0, 0, 0));
         btnDatasource.setText("Datasource Setting");
@@ -503,6 +501,18 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
         jPanel3.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 479, 227, 20));
 
+        btnMWorkStatus.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnMWorkStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMWorkStatus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Connection Status On_24px.png"))); // NOI18N
+        btnMWorkStatus.setText("Work Status");
+        btnMWorkStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMWorkStatus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMWorkStatusMouseClicked(evt);
+            }
+        });
+        jPanel3.add(btnMWorkStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 280, 130, -1));
+
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
@@ -522,12 +532,10 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         lblTeacher.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblTeacher.setForeground(new java.awt.Color(0, 15, 255));
         lblTeacher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTeacher.setText("Teacher");
 
         lblExam.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblExam.setForeground(new java.awt.Color(0, 15, 255));
         lblExam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblExam.setText("Exam");
 
@@ -560,7 +568,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         lblScore.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblScore.setForeground(new java.awt.Color(0, 15, 255));
         lblScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblScore.setText("Score");
 
@@ -579,7 +586,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         lblRegistation.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblRegistation.setForeground(new java.awt.Color(0, 15, 255));
         lblRegistation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegistation.setText("Registation");
         lblRegistation.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -589,7 +595,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         lblStudentInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblStudentInfo.setForeground(new java.awt.Color(0, 15, 255));
         lblStudentInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblStudentInfo.setText("Student Info");
         lblStudentInfo.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -627,12 +632,10 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         lblPayment.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblPayment.setForeground(new java.awt.Color(0, 15, 255));
         lblPayment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPayment.setText("Payment");
 
         lblReport.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblReport.setForeground(new java.awt.Color(0, 15, 255));
         lblReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblReport.setText("Report");
 
@@ -665,7 +668,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         lblSettingUser.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblSettingUser.setForeground(new java.awt.Color(0, 15, 255));
         lblSettingUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSettingUser.setText("User Login");
 
@@ -735,7 +737,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                     .addComponent(btnScore, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExam, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblScore, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblExam, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -744,7 +746,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -869,6 +871,7 @@ int cnt=0;
         MenuSlide.setMenu(btnMReligion);
         MenuSlide.setMenu(btnMClassroom);
         MenuSlide.setMenu(btnMEthnic);
+        MenuSlide.setMenu(btnMWorkStatus);
     }//GEN-LAST:event_MenuMouseClicked
 
     private void btnDatasourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatasourceActionPerformed
@@ -985,6 +988,10 @@ int cnt=0;
         frmNationality.setVisible(true);
     }//GEN-LAST:event_btnMNationalityMouseClicked
 
+    private void btnMWorkStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMWorkStatusMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMWorkStatusMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -1033,6 +1040,7 @@ int cnt=0;
     private javax.swing.JLabel btnMNationality;
     private javax.swing.JLabel btnMReligion;
     private javax.swing.JLabel btnMStudentType;
+    private javax.swing.JLabel btnMWorkStatus;
     private javax.swing.JLabel btnMaximum;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnPayment;
