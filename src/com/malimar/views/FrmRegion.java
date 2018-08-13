@@ -5,15 +5,12 @@
  */
 package com.malimar.views;
 
-
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
-import com.malimar.controllers.StudentTypeManager;
-import com.malimar.models.StudentType;
-import com.malimar.utils.Border;
+import com.malimar.controllers.RegionManager;
+import com.malimar.models.Region;
 import com.malimar.utils.MsgBox;
-import com.malimar.utils.SetText;
-import java.awt.Color;
+import java.awt.Font;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -24,28 +21,29 @@ import javax.swing.table.TableColumnModel;
  *
  * @author Malimar
  */
-public class FrmStudentType extends javax.swing.JFrame {
+public class FrmRegion extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmStudentType
+     * Creates new form FrmRegion
      */
     Connection c = DatabaseManagerSQL.getConnection();
     String sql, frm;
     DefaultTableModel model = new DefaultTableModel();
-    StudentTypeManager stm = new StudentTypeManager();
-    StudentType sty = new StudentType();
     
-    public FrmStudentType() {
+    Region re = new Region();
+    RegionManager rm = new RegionManager();
+    
+    public FrmRegion() {
         initComponents();
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
-        jTable1.getTableHeader().setFont(new java.awt.Font("Saysettha OT", java.awt.Font.BOLD, 12));
+        jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
-        jScrollPane1.getViewport().setBackground(Color.WHITE);
-        jTable1.setShowGrid(true);
-        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
-        jTable1.getTableHeader().setForeground(Color.WHITE);
-        jTable1.getTableHeader().setOpaque(false);
+        txtID.setEnabled(false);
+        
+        lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblRegion_L1.setText(LabelManager.hmapLang.get("lblRegion_l1".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblRegion_L2.setText(LabelManager.hmapLang.get("lblRegion_L2".concat(frm).toUpperCase())[LabelManager.LN]);
         
         JTableHeader th = jTable1.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();
@@ -57,21 +55,16 @@ public class FrmStudentType extends javax.swing.JFrame {
                jTable1.setAutoCreateRowSorter(true);
             th.repaint();
         
-        txtID.setEnabled(false);
-        lblName_L1.setText(LabelManager.hmapLang.get("lblName_L1".concat(frm).toUpperCase())[LabelManager.LN]);
-        lblName_L2.setText(LabelManager.hmapLang.get("lblName_L2".concat(frm).toUpperCase())[LabelManager.LN]);
-        lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
-        btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
-        
     }
     public void showClear(){
         try {
             txtID.setText("New");
-            txtStudentType_L1.setText("");
-            txtStudentType_L2.setText("");
-            txtStudentType_L1.requestFocus();
+            txtRE_Name_L1.setText("");
+            txtRE_Name_L2.setText("");
+            txtRE_Name_L1.requestFocus();
             
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -87,22 +80,24 @@ public class FrmStudentType extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         btnMinimize = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        lblSystemInfo = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        lblSystemInfo = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         lblID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        lblName_L1 = new javax.swing.JLabel();
-        txtStudentType_L1 = new javax.swing.JTextField();
+        lblRegion_L1 = new javax.swing.JLabel();
+        txtRE_Name_L1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        lblName_L2 = new javax.swing.JLabel();
-        txtStudentType_L2 = new javax.swing.JTextField();
+        lblRegion_L2 = new javax.swing.JLabel();
+        txtRE_Name_L2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btnSave = new javax.swing.JLabel();
 
@@ -117,11 +112,15 @@ public class FrmStudentType extends javax.swing.JFrame {
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
+        jPanel2.setLayout(new java.awt.BorderLayout());
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
 
         btnMinimize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Minimize Window_30px.png"))); // NOI18N
@@ -141,44 +140,44 @@ public class FrmStudentType extends javax.swing.JFrame {
             }
         });
 
-        jPanel4.setLayout(new java.awt.BorderLayout());
+        jPanel6.setLayout(new java.awt.BorderLayout());
 
         lblSystemInfo.setBackground(new java.awt.Color(255, 255, 255));
         lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
         lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemInfo.setText("Student Type");
+        lblSystemInfo.setText("Region");
         lblSystemInfo.setOpaque(true);
-        jPanel4.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
+        jPanel6.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
         );
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
 
-        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new java.awt.BorderLayout());
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setLayout(new java.awt.BorderLayout());
 
         jTable1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -186,7 +185,7 @@ public class FrmStudentType extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "lblName_L1", "lblName_L1", "lblName_L2"
+                "lblID", "lblRegion_L1", "lblRegion_L2"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -215,7 +214,7 @@ public class FrmStudentType extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(2).setMaxWidth(350);
         }
 
-        jPanel6.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        jPanel8.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblID.setText("ID");
@@ -235,20 +234,20 @@ public class FrmStudentType extends javax.swing.JFrame {
             }
         });
 
-        lblName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblName_L1.setText("STName_L1");
+        lblRegion_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblRegion_L1.setText("RegionName_L1");
 
-        txtStudentType_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtStudentType_L1.setBorder(null);
+        txtRE_Name_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtRE_Name_L1.setBorder(null);
 
-        lblName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblName_L2.setText("STName_L2");
+        lblRegion_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblRegion_L2.setText("RegionName_L2");
 
-        txtStudentType_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtStudentType_L2.setBorder(null);
-        txtStudentType_L2.addActionListener(new java.awt.event.ActionListener() {
+        txtRE_Name_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtRE_Name_L2.setBorder(null);
+        txtRE_Name_L2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtStudentType_L2ActionPerformed(evt);
+                txtRE_Name_L2ActionPerformed(evt);
             }
         });
 
@@ -270,80 +269,84 @@ public class FrmStudentType extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addComponent(jSeparator1))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblName_L1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                    .addComponent(txtStudentType_L1)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblRegion_L1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                    .addComponent(txtRE_Name_L1)
                     .addComponent(jSeparator2))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblName_L2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtStudentType_L2)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblRegion_L2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtRE_Name_L2)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
                             .addComponent(lblID)
                             .addGap(1, 1, 1)
                             .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel5Layout.createSequentialGroup()
-                            .addComponent(lblName_L1)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addComponent(lblRegion_L1)
                             .addGap(1, 1, 1)
-                            .addComponent(txtStudentType_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRE_Name_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(0, 0, 0)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel5Layout.createSequentialGroup()
-                                .addComponent(lblName_L2)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addComponent(lblRegion_L2)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtStudentType_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtRE_Name_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel3.add(jPanel4, java.awt.BorderLayout.CENTER);
+
+        jPanel2.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -365,76 +368,92 @@ public class FrmStudentType extends javax.swing.JFrame {
         try {
             int row = jTable1.getSelectedRow();
             txtID.setText(jTable1.getValueAt(row, 0).toString());
-            txtStudentType_L1.setText(jTable1.getValueAt(row, 1).toString());
-            txtStudentType_L2.setText(jTable1.getValueAt(row,2).toString());
+            txtRE_Name_L1.setText(jTable1.getValueAt(row, 1).toString());
+            txtRE_Name_L2.setText(jTable1.getValueAt(row, 2).toString());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jTable1MouseClicked
-
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
-
-    private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
-        Border.blueColor(btnSave);
-    }//GEN-LAST:event_btnSaveMouseMoved
-
-    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        if (txtStudentType_L1.getText().equals("")||txtStudentType_L2.getText().equals("")){
-            MsgBox.msgError();
-            return;
-        }
-        if(txtID.getText().equals("New")){
-            sty.setStname_l1(txtStudentType_L1.getText());
-            sty.setStname_l2(txtStudentType_L2.getText());
-            stm.insertSttype(sty);
-            stm.showData(jTable1, model);
-        }else{
-            sty.setStycid(Integer.parseInt(txtID.getText()));
-            sty.setStname_l1(txtStudentType_L1.getText().trim());
-            sty.setStname_l2(txtStudentType_L2.getText().trim());
-            stm.updateSttype(sty);
-            stm.showData(jTable1, model);
-        }
-    }//GEN-LAST:event_btnSaveMouseClicked
-
-    private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
-        Border.WhiteColor(btnSave);
-    }//GEN-LAST:event_btnSaveMouseExited
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        stm.showData(jTable1, model);
-        lblSystemInfo.setText(LabelManager.hmapForm.get("FRMSTCATEGORY".toUpperCase())[LabelManager.LN]);    
-    }//GEN-LAST:event_formWindowOpened
 
     private void txtIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseClicked
         try {
             if (evt.getClickCount()==2){
                 showClear();
-                stm.showData(jTable1, model);
+                rm.showData(jTable1, model);
             }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_txtIDMouseClicked
 
-    private void txtStudentType_L2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtStudentType_L2ActionPerformed
-        if (txtStudentType_L1.getText().equals("")||txtStudentType_L2.getText().equals("")){
-            MsgBox.msgError();
-            return;
+    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDActionPerformed
+
+    private void txtRE_Name_L2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRE_Name_L2ActionPerformed
+        try {
+            if (txtRE_Name_L1.getText().equals("")||txtRE_Name_L2.getText().equals("")){
+                MsgBox.msgError();
+                return;
+            }
+            re.setRE_Name_L1(txtRE_Name_L1.getText());
+            re.setRe_Name_L2(txtRE_Name_L2.getText());
+            if (txtID.getText().equals("New")){                
+                rm.insertRegion(re);
+                rm.showData(jTable1, model);
+                MsgBox.msgInfo();
+                showClear();
+            }else{
+                re.setREID(Integer.parseInt(txtID.getText()));               
+                rm.updateRegion(re);
+                rm.showData(jTable1, model);
+                MsgBox.msgInfo();                
+                showClear();
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        if(txtID.getText().equals("New")){
-            sty.setStname_l1(txtStudentType_L1.getText());
-            sty.setStname_l2(txtStudentType_L2.getText());
-            stm.insertSttype(sty);
-            stm.showData(jTable1, model);
-        }else{
-            sty.setStycid(Integer.parseInt(txtID.getText()));
-            sty.setStname_l1(txtStudentType_L1.getText().trim());
-            sty.setStname_l2(txtStudentType_L2.getText().trim());
-            stm.updateSttype(sty);
-            stm.showData(jTable1, model);
+    }//GEN-LAST:event_txtRE_Name_L2ActionPerformed
+
+    private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
+        //Border.blueColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseMoved
+
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        try {
+            if (txtRE_Name_L1.getText().equals("")||txtRE_Name_L2.getText().equals("")){
+                MsgBox.msgError();
+                return;
+            }
+            re.setRE_Name_L1(txtRE_Name_L1.getText());
+            re.setRe_Name_L2(txtRE_Name_L2.getText());
+            if (txtID.getText().equals("New")){                
+                rm.insertRegion(re);
+                rm.showData(jTable1, model);
+                showClear();
+            }else{
+                re.setREID(Integer.parseInt(txtID.getText()));               
+                rm.updateRegion(re);
+                rm.showData(jTable1, model); 
+                showClear();
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }//GEN-LAST:event_txtStudentType_L2ActionPerformed
+    }//GEN-LAST:event_btnSaveMouseClicked
+
+    private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
+
+    }//GEN-LAST:event_btnSaveMouseExited
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            rm.showData(jTable1, model);            
+            lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -453,20 +472,20 @@ public class FrmStudentType extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmStudentType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmStudentType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmStudentType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmStudentType.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmStudentType().setVisible(true);
+                new FrmRegion().setVisible(true);
             }
         });
     }
@@ -481,17 +500,19 @@ public class FrmStudentType extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblName_L1;
-    private javax.swing.JLabel lblName_L2;
+    private javax.swing.JLabel lblRegion_L1;
+    private javax.swing.JLabel lblRegion_L2;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtStudentType_L1;
-    private javax.swing.JTextField txtStudentType_L2;
+    private javax.swing.JTextField txtRE_Name_L1;
+    private javax.swing.JTextField txtRE_Name_L2;
     // End of variables declaration//GEN-END:variables
 }

@@ -114,14 +114,17 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
     private void login(){
         if(radLao.isSelected()){
             LN=0;
+            LangType = "L1";
         }else{
             LN=1;
+            LangType = "L2";
         }
         LoginManager login = new LoginManager();
         login.setUserName(txtUserName.getText().trim());
         login.setPassword(txtPassword.getText().trim());
         if (login.verifyUser()) {
             LabelManager.getLabelLang();
+            LabelManager.getLabelForm();
             afterLogin();
             getMainLabel();
             am.saveSeasion(txtUserName.getText());
@@ -387,6 +390,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMReligion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Pray_30px.png"))); // NOI18N
         btnMReligion.setText("Religion");
         btnMReligion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMReligion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMReligionMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 172, 130, -1));
 
         btnMEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -395,6 +403,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMEthnic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Aztec Headdress_30px.png"))); // NOI18N
         btnMEthnic.setText("Ethnic");
         btnMEthnic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMEthnic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMEthnicMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 220, 130, -1));
 
         btnMLevel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -403,6 +416,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMLevel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Level Up_30px.png"))); // NOI18N
         btnMLevel.setText("Level");
         btnMLevel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMLevel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMLevelMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 268, 130, -1));
 
         btnMClassroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -411,6 +429,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMClassroom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_30px.png"))); // NOI18N
         btnMClassroom.setText("Classroom");
         btnMClassroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMClassroom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMClassroomMouseClicked(evt);
+            }
+        });
         jPanel3.add(btnMClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 316, 130, -1));
 
         btnDatasource.setForeground(new java.awt.Color(0, 0, 0));
@@ -885,7 +908,8 @@ int cnt=0;
 
     private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked
         try {
-
+            FrmStudentType styp = new FrmStudentType();
+            styp.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -922,9 +946,6 @@ int cnt=0;
         Border.blueColor(btnLogOut);
     }//GEN-LAST:event_btnLogOutMouseMoved
 
-    private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
-        WindowChangeLabel("lblRegistation",frm, evt);
-    }//GEN-LAST:event_lblRegistationMouseClicked
 
     /**
      * @param args the command line arguments
