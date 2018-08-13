@@ -7,6 +7,7 @@ import static com.malimar.controllers.LabelManager.LN;
 import com.malimar.controllers.LoginManager;
 import com.malimar.utils.Border;
 import static com.malimar.controllers.LabelManager.LangType;
+import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.utils.SetText;
 import com.malimar.utils.MenuSlide;
@@ -153,6 +154,12 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblScore.setText(hmapLang.get("lblScore".concat(frm).toUpperCase()) [LN]);
         lblReport.setText(hmapLang.get("lblReport".concat(frm).toUpperCase()) [LN]);
         lblSettingUser.setText(hmapLang.get("lblSettingUser".concat(frm).toUpperCase()) [LN]);
+        btnMStudentType.setText(hmapLang.get("btnMStudentType".concat(frm).toUpperCase()) [LN]);
+        btnMNationality.setText(hmapLang.get("btnMNationality".concat(frm).toUpperCase()) [LN]);
+        btnMReligion.setText(hmapLang.get("btnMReligion".concat(frm).toUpperCase()) [LN]);
+        btnMEthnic.setText(hmapLang.get("btnMEthnic".concat(frm).toUpperCase()) [LN]);
+        btnMLevel.setText(hmapLang.get("btnMLevel".concat(frm).toUpperCase()) [LN]);
+        btnMClassroom.setText(hmapLang.get("btnMClassroom".concat(frm).toUpperCase()) [LN]);
     }
     
     @SuppressWarnings("unchecked")
@@ -550,6 +557,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblRegistation.setForeground(new java.awt.Color(0, 15, 255));
         lblRegistation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRegistation.setText("Registation");
+        lblRegistation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegistationMouseClicked(evt);
+            }
+        });
 
         lblStudentInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblStudentInfo.setForeground(new java.awt.Color(0, 15, 255));
@@ -909,6 +921,10 @@ int cnt=0;
     private void btnLogOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseMoved
         Border.blueColor(btnLogOut);
     }//GEN-LAST:event_btnLogOutMouseMoved
+
+    private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
+        WindowChangeLabel("lblRegistation",frm, evt);
+    }//GEN-LAST:event_lblRegistationMouseClicked
 
     /**
      * @param args the command line arguments
