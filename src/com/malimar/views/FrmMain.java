@@ -590,6 +590,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblStudentInfo.setForeground(new java.awt.Color(0, 15, 255));
         lblStudentInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblStudentInfo.setText("Student Info");
+        lblStudentInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStudentInfoMouseClicked(evt);
+            }
+        });
 
         btnStudentInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnStudentInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Male_100px.png"))); // NOI18N
@@ -945,6 +950,10 @@ int cnt=0;
     private void btnLogOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLogOutMouseMoved
         Border.blueColor(btnLogOut);
     }//GEN-LAST:event_btnLogOutMouseMoved
+
+    private void lblStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudentInfoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblStudentInfoMouseClicked
 
 
     /**

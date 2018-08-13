@@ -19,7 +19,6 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
-import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -62,25 +61,6 @@ public class FrmClass extends javax.swing.JFrame {
         jTable1.setAutoCreateRowSorter(true);
         th.repaint();
         
-    }
-    public void showArray(){
-        try {
-            DefaultComboBoxModel mode = new DefaultComboBoxModel();
-            sql = "Select clid, clname_"+ LabelManager.LangType +" AS clname from tbl_ClassLevel\n" +
-                    "order by clid";
-            arr_Class.clear();
-            mode.removeAllElements();
-            ResultSet rs = c.createStatement().executeQuery(sql);
-            while (rs.next()){
-                arr_Class.add(rs.getString("clid"));
-                mode.addElement(rs.getString("clname"));
-            }
-            cbbClassLevel.setModel(mode);
-            AutoCompleteDecorator.decorate(cbbClassLevel);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /**
@@ -469,7 +449,7 @@ public class FrmClass extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            showArray();
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_formWindowOpened
