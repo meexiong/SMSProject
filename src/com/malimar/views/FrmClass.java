@@ -55,6 +55,7 @@ public class FrmClass extends javax.swing.JFrame {
         lblClassL2.setText(LabelManager.hmapLang.get("lblClassL2".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblClassLevel.setText(LabelManager.hmapLang.get("lblClassLevel".concat(frm).toUpperCase())[LabelManager.LN]);
         
         JTableHeader th = jTable1.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
@@ -253,6 +254,11 @@ public class FrmClass extends javax.swing.JFrame {
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -271,12 +277,22 @@ public class FrmClass extends javax.swing.JFrame {
 
         lblClassL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblClassL1.setText("ClassName_L1");
+        lblClassL1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblClassL1MouseClicked(evt);
+            }
+        });
 
         txtClassName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtClassName_L1.setBorder(null);
 
         lblClassL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblClassL2.setText("ClassName_L2");
+        lblClassL2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblClassL2MouseClicked(evt);
+            }
+        });
 
         txtClassName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtClassName_L2.setBorder(null);
@@ -306,6 +322,11 @@ public class FrmClass extends javax.swing.JFrame {
 
         lblClassLevel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblClassLevel.setText("Class Level");
+        lblClassLevel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblClassLevelMouseClicked(evt);
+            }
+        });
 
         cbbClassLevel.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbClassLevel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -448,15 +469,7 @@ public class FrmClass extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void txtClassName_L2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtClassName_L2ActionPerformed
-        
-    }//GEN-LAST:event_txtClassName_L2ActionPerformed
-
-    private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
-        //Border.blueColor(btnSave);
-    }//GEN-LAST:event_btnSaveMouseMoved
-
-    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        try {
+        try {            
             if (txtClassName_L1.getText().equals("")||txtClassName_L2.getText().equals("")){
                 MsgBox.msgError();
                 return;
@@ -467,6 +480,46 @@ public class FrmClass extends javax.swing.JFrame {
                 cls.setClnameL1(txtClassName_L1.getText());
                 cls.setClnameL2(txtClassName_L2.getText());
                 clsm.insertClass(cls);         
+                clsm.showData(jTable1, model);
+                showClear();
+            }else{
+                cls.setClid(Integer.parseInt(mapLevel.get(x)[0].toString()));
+                cls.setClnameL1(txtClassName_L1.getText().trim());
+                cls.setClnameL2(txtClassName_L2.getText().trim());
+                cls.setClsid(Integer.parseInt(txtID.getText()));
+                cls.setClid(Integer.parseInt(mapLevel.get(x)[0].toString()));
+                clsm.updateClass(cls);
+                clsm.showData(jTable1, model);
+                clidclick = 0;
+                showClear();
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtClassName_L2ActionPerformed
+
+    private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
+        //Border.blueColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseMoved
+
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnSave", frm, evt);
+            }        
+             
+            if (txtClassName_L1.getText().equals("")||txtClassName_L2.getText().equals("")){
+                MsgBox.msgError();
+                return;
+            }
+            String x = cbbClassLevel.getSelectedItem().toString();  
+            if (txtID.getText().equals("New")){       
+                cls.setClid(Integer.parseInt(mapLevel.get(x)[0].toString()));
+                cls.setClnameL1(txtClassName_L1.getText());
+                cls.setClnameL2(txtClassName_L2.getText());
+                clsm.insertClass(cls);         
+                clsm.showData(jTable1, model);
                 showClear();
             }else{
                 cls.setClid(Integer.parseInt(mapLevel.get(x)[0].toString()));
@@ -496,6 +549,33 @@ public class FrmClass extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+        try {
+           if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblID", frm, evt);
+            }             
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblClassLevelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClassLevelMouseClicked
+         if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblClassLevel", frm, evt);
+            }            
+    }//GEN-LAST:event_lblClassLevelMouseClicked
+
+    private void lblClassL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClassL1MouseClicked
+         if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblClassL1", frm, evt);
+            }        
+    }//GEN-LAST:event_lblClassL1MouseClicked
+
+    private void lblClassL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClassL2MouseClicked
+        if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblClassL2", frm, evt);
+          }          
+    }//GEN-LAST:event_lblClassL2MouseClicked
 
     /**
      * @param args the command line arguments

@@ -69,7 +69,7 @@ HashMap<String, Object[]> mapLevel = null;
             sql = "Select ca.clsid, ca.clid, cl.clname_"+ LangType +" AS names, ca.clrname_l1, ca.clrname_l2\n" +
                     "from tbl_Class ca \n" +
                     "left join tbl_ClassLevel cl on ca.CLID = cl.CLID\n" +
-                    "order by ca.CLRName_"+ LangType+"";
+                    "order by cl.CLID desc";
             ResultSet rs  = c.createStatement().executeQuery(sql);
             while (rs.next()){
                 model.addRow(new Object[]{rs.getString("clsid"), rs.getString("clid"), rs.getString("names"), rs.getString("clrname_l1"), rs.getString("clrname_L2")});
