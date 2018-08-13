@@ -5,10 +5,15 @@
  */
 package com.malimar.controllers;
 
+import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.ClassL;
 import com.malimar.utils.MsgBox;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
 
 /**
  *
@@ -36,5 +41,25 @@ public class ClassManager {
         }
         return false;
     }
-    
+    public HashMap<String,Object[]>getClassLevel(){
+        HashMap<String,Object[]> map = new HashMap<>();
+        Connection c = DatabaseManagerSQL.getConnection();
+        Statement st;
+        ResultSet rs;
+        String sql;
+        try {
+            sql="Select CLID,CLName_L1,CLName_L2 from tbl_ClassLevel";
+            st=c.createStatement();
+            rs=st.executeQuery(sql);
+//            map.clear();
+            while(rs.next()){
+                map.put(rs.getString("CLName_"+LangType+""), new Object[]{rs.getInt("CLID"), rs.getString("CLName_L1"), rs.getString("CLName_L2")});
+            }
+            rs.close();
+            st.close();
+            c.close();
+        } catch (SQLException e) {
+        }
+        return map;
+    }
 }
