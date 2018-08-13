@@ -956,11 +956,19 @@ int cnt=0;
     }//GEN-LAST:event_btnMEthnicMouseClicked
 
     private void btnMLevelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMLevelMouseClicked
-        // TODO add your handling code here:
+        try {
+            FrmClassLevel fl = new FrmClassLevel();
+            fl.setVisible(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnMLevelMouseClicked
 
     private void btnMClassroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMClassroomMouseClicked
-        // TODO add your handling code here:
+        try {
+            FrmClass fc = new FrmClass();
+            fc.setVisible(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnMClassroomMouseClicked
 
     private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked

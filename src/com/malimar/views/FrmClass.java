@@ -15,10 +15,15 @@ import java.awt.Font;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -31,16 +36,16 @@ public class FrmClass extends javax.swing.JFrame {
      */
     Connection c = DatabaseManagerSQL.getConnection();
     String sql, frm;
-    
-    ArrayList<String> arr_Class = new ArrayList<String>();
-    
+    DefaultTableModel model = new DefaultTableModel();   
     ClassL cls = new ClassL();
-    ClassManager clsm = new ClassManager();
-    
+    ClassManager clsm = new ClassManager();    
+    HashMap<String, Object[]> mapLevel = null;
+    int clidclick =0;
     
     public FrmClass() {
         initComponents();
         frm = this.getClass().getSimpleName();        
+        model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
         txtID.setEnabled(false);
@@ -62,6 +67,29 @@ public class FrmClass extends javax.swing.JFrame {
         th.repaint();
         
     }
+    private void getCustomer() {
+        try {
+            mapLevel = clsm.getClassLevel();
+            Map<String, Object[]> SortMap = new TreeMap<>(mapLevel);
+            cbbClassLevel.removeAllItems();
+            SortMap.keySet().forEach((s) -> {
+                cbbClassLevel.addItem(s);
+            });
+            cbbClassLevel.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbClassLevel);
+        } catch (Exception e) {
+        }
+    }
+    public void showClear(){
+        try {
+            txtClassName_L1.setText("");
+            txtClassName_L2.setText("");
+            txtClassName_L1.requestFocus();
+            txtID.setText("New");
+        } catch (Exception e) {
+        }
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -399,15 +427,19 @@ public class FrmClass extends javax.swing.JFrame {
         try {
             int row = jTable1.getSelectedRow();
             txtID.setText(jTable1.getValueAt(row, 0).toString());
-            txtClassName_L1.setText(jTable1.getValueAt(row, 1).toString());
-            txtClassName_L2.setText(jTable1.getValueAt(row, 2).toString());
+            //cls.setClid(Integer.parseInt(jTable1.getValueAt(row, 1).toString()));
+            clidclick = Integer.parseInt(jTable1.getValueAt(row,1).toString());
+            cbbClassLevel.setSelectedItem(jTable1.getValueAt(row, 2).toString());
+            txtClassName_L1.setText(jTable1.getValueAt(row, 3).toString());
+            txtClassName_L2.setText(jTable1.getValueAt(row, 4).toString());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void txtIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseClicked
         if (evt.getClickCount()==2){
-          
+          showClear();
+          clsm.showData(jTable1, model);
         }
     }//GEN-LAST:event_txtIDMouseClicked
 
@@ -429,13 +461,23 @@ public class FrmClass extends javax.swing.JFrame {
                 MsgBox.msgError();
                 return;
             }
-            if (txtID.getText().equals("New")){
-                int index = cbbClassLevel.getSelectedIndex();
-                cls.setClid(index);
+            String x = cbbClassLevel.getSelectedItem().toString();  
+            if (txtID.getText().equals("New")){       
+                cls.setClid(Integer.parseInt(mapLevel.get(x)[0].toString()));
                 cls.setClnameL1(txtClassName_L1.getText());
                 cls.setClnameL2(txtClassName_L2.getText());
-                clsm.insertClass(cls);
-                
+                clsm.insertClass(cls);         
+                showClear();
+            }else{
+                cls.setClid(Integer.parseInt(mapLevel.get(x)[0].toString()));
+                cls.setClnameL1(txtClassName_L1.getText().trim());
+                cls.setClnameL2(txtClassName_L2.getText().trim());
+                cls.setClsid(Integer.parseInt(txtID.getText()));
+                cls.setClid(Integer.parseInt(mapLevel.get(x)[0].toString()));
+                clsm.updateClass(cls);
+                clsm.showData(jTable1, model);
+                clidclick = 0;
+                showClear();
             }
             
         } catch (Exception e) {
@@ -449,7 +491,8 @@ public class FrmClass extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            
+            getCustomer();
+            clsm.showData(jTable1, model);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_formWindowOpened
