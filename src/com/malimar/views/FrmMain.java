@@ -627,6 +627,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         btnStudentInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStudentInfoMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnStudentInfoMouseExited(evt);
             }
@@ -1077,6 +1080,11 @@ int cnt=0;
             WindowChangeLabel("lblSettingUser", frm);
         }
     }//GEN-LAST:event_lblSettingUserMouseClicked
+
+    private void btnStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseClicked
+        FrmStudent frmStudent = new FrmStudent();
+        frmStudent.setVisible(true);
+    }//GEN-LAST:event_btnStudentInfoMouseClicked
 
 
     /**
