@@ -27,7 +27,7 @@ public class ClassManager {
     Connection c = DatabaseManagerSQL.getConnection();
     String sql;
     
-HashMap<String, Object[]> mapLevel = null;
+
     public boolean insertClass(ClassL cl){
         try {
             GetMaxID gm = new GetMaxID();

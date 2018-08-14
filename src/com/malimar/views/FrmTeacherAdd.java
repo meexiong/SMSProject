@@ -7,8 +7,13 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.TeacherAddManager;
 import com.malimar.utils.Border;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -21,6 +26,10 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
      */
     Connection c = DatabaseManagerSQL.getConnection();
     String frm, sql;
+    
+    HashMap<String, Object[]>mapGender = null;
+    
+    TeacherAddManager tam = new TeacherAddManager();
     
     public FrmTeacherAdd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -58,6 +67,21 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
        
         
         
+    }
+    private void getGender(){
+        try {
+            mapGender = tam.getMapGender();
+            Map<String, Object[]> smap = new TreeMap<>(mapGender);
+            cbbGender.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbGender.addItem(s);
+        });
+            cbbGender.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbGender);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -657,7 +681,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-           
+            getGender();
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
