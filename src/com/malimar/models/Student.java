@@ -20,6 +20,7 @@ public class Student {
     int stdEthnic;
     int stdReligion;
     boolean stdStudying;
+    String Blood;
     float stdWeight;
     float stdHeight;
     boolean stdCongenialDisease;
@@ -28,7 +29,7 @@ public class Student {
     String stdSchoolLevel;
     String stdSchoolMobile;
     String stdNote;
-    String stdPark;
+    int stdPark;
     String path;
     public Student(){
         
@@ -97,6 +98,10 @@ public class Student {
         this.stdStudying = stdStudying;
     }
 
+    public void setBlood(String Blood) {
+        this.Blood = Blood;
+    }
+
     public void setStdWeight(float stdWeight) {
         this.stdWeight = stdWeight;
     }
@@ -129,7 +134,7 @@ public class Student {
         this.stdNote = stdNote;
     }
 
-    public void setStdPark(String stdPark) {
+    public void setStdPark(int stdPark) {
         this.stdPark = stdPark;
     }
 
@@ -201,6 +206,10 @@ public class Student {
         return stdStudying;
     }
 
+    public String getBlood() {
+        return Blood;
+    }
+
     public float getStdWeight() {
         return stdWeight;
     }
@@ -233,7 +242,7 @@ public class Student {
         return stdNote;
     }
 
-    public String getStdPark() {
+    public int getStdPark() {
         return stdPark;
     }
 
