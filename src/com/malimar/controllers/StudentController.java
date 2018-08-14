@@ -8,8 +8,10 @@ package com.malimar.controllers;
 import com.malimar.models.Student;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class StudentController {
@@ -63,7 +65,7 @@ public class StudentController {
                     p.setNull(27, java.sql.Types.BLOB);
                 }
             return p.executeUpdate()==1;
-        } catch (Exception e) {
+        } catch (FileNotFoundException | SQLException e) {
         }
         return false;
     }
