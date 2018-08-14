@@ -947,7 +947,11 @@ int cnt=0;
     }//GEN-LAST:event_lblStudentInfoMouseClicked
 
     private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
-        WindowChangeLabel("lblRegistation", frm, evt);
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblRegistation", frm);
+        }else{
+            
+        }
     }//GEN-LAST:event_lblRegistationMouseClicked
 
     private void btnMReligionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMReligionMouseClicked

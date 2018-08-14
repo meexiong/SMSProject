@@ -506,7 +506,7 @@ public class FrmClass extends javax.swing.JFrame {
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         try {
             if (evt.getModifiers()==6){
-                LabelManager.WindowChangeLabel("btnSave", frm, evt);
+                LabelManager.WindowChangeLabel("btnSave", frm);
             }        
              
             if (txtClassName_L1.getText().equals("")||txtClassName_L2.getText().equals("")){
@@ -553,7 +553,7 @@ public class FrmClass extends javax.swing.JFrame {
     private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
         try {
            if (evt.getModifiers()==6){
-                LabelManager.WindowChangeLabel("lblID", frm, evt);
+                LabelManager.WindowChangeLabel("lblID", frm);
             }             
         } catch (Exception e) {
         }
@@ -561,19 +561,19 @@ public class FrmClass extends javax.swing.JFrame {
 
     private void lblClassLevelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClassLevelMouseClicked
          if (evt.getModifiers()==6){
-                LabelManager.WindowChangeLabel("lblClassLevel", frm, evt);
+                LabelManager.WindowChangeLabel("lblClassLevel", frm);
             }            
     }//GEN-LAST:event_lblClassLevelMouseClicked
 
     private void lblClassL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClassL1MouseClicked
          if (evt.getModifiers()==6){
-                LabelManager.WindowChangeLabel("lblClassL1", frm, evt);
+                LabelManager.WindowChangeLabel("lblClassL1", frm);
             }        
     }//GEN-LAST:event_lblClassL1MouseClicked
 
     private void lblClassL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblClassL2MouseClicked
         if (evt.getModifiers()==6){
-                LabelManager.WindowChangeLabel("lblClassL2", frm, evt);
+                LabelManager.WindowChangeLabel("lblClassL2", frm);
           }          
     }//GEN-LAST:event_lblClassL2MouseClicked
 

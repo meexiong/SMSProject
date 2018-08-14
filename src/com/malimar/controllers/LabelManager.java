@@ -41,14 +41,12 @@ public class LabelManager {
         return null;
     }
 
-    public static void WindowChangeLabel(String s, String frm, java.awt.event.MouseEvent evt) {
+    public static void WindowChangeLabel(String s, String frm) {
         try {
-            if (evt.getModifiers() == 6) {
                 FrmChangeLabel ch = new FrmChangeLabel();
                 fieldName = s;
                 frameName = frm;
                 ch.setVisible(true);
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
