@@ -1039,7 +1039,15 @@ int cnt=0;
     }//GEN-LAST:event_btnMNationalityMouseClicked
 
     private void btnMWorkStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMWorkStatusMouseClicked
-        // TODO add your handling code here:
+        try {
+            if (evt.getModifiers()==6){
+                WindowChangeLabel("btnMworkstatus", frm);
+            }else{
+                FrmWorkStatus fw = new FrmWorkStatus();
+                fw.setVisible(true);
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnMWorkStatusMouseClicked
 
     private void lblPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseClicked

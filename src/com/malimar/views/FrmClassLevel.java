@@ -9,6 +9,7 @@ import com.malimar.controllers.ClassLevelManager;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.models.ClassLevel;
+import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
 import java.awt.Font;
 import java.sql.Connection;
@@ -416,7 +417,7 @@ public class FrmClassLevel extends javax.swing.JFrame {
     }//GEN-LAST:event_txtClassName_L2ActionPerformed
 
     private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
-        //Border.blueColor(btnSave);
+        Border.blueColor(btnSave);
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked

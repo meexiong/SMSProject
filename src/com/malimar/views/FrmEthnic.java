@@ -9,6 +9,7 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.EthnicManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.models.Ethnic;
+import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -386,7 +387,7 @@ public class FrmEthnic extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
-        //Border.blueColor(btnSave);
+        Border.blueColor(btnSave);
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
