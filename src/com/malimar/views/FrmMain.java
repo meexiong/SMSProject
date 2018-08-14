@@ -1081,7 +1081,11 @@ int cnt=0;
     }//GEN-LAST:event_btnTeacherMouseExited
 
     private void btnTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseClicked
-        // TODO add your handling code here:
+        try {
+            FrmTeacherDetails fd = new FrmTeacherDetails();
+            fd.setVisible(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnTeacherMouseClicked
 
     private void btnTeacherMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseMoved
