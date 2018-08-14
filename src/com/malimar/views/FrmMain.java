@@ -860,10 +860,6 @@ int cnt=0;
         Border.blueColor(btnRegister);
     }//GEN-LAST:event_btnRegisterMouseMoved
 
-    private void btnStudentInfoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseMoved
-        Border.blueColor(btnStudentInfo);
-    }//GEN-LAST:event_btnStudentInfoMouseMoved
-
     private void btnPaymentMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseMoved
         Border.blueColor(btnPayment);
     }//GEN-LAST:event_btnPaymentMouseMoved
@@ -876,10 +872,6 @@ int cnt=0;
         Border.blueColor(btnScore);
     }//GEN-LAST:event_btnScoreMouseMoved
 
-    private void btnStudentInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseExited
-        Border.WhiteColor(btnStudentInfo);
-    }//GEN-LAST:event_btnStudentInfoMouseExited
-
     private void btnPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseExited
         Border.WhiteColor(btnPayment);
     }//GEN-LAST:event_btnPaymentMouseExited
@@ -891,14 +883,6 @@ int cnt=0;
     private void btnScoreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScoreMouseExited
         Border.WhiteColor(btnScore);
     }//GEN-LAST:event_btnScoreMouseExited
-
-    private void btnTeacherMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseExited
-        Border.WhiteColor(btnTeacher);
-    }//GEN-LAST:event_btnTeacherMouseExited
-
-    private void btnTeacherMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseMoved
-        Border.blueColor(btnTeacher);
-    }//GEN-LAST:event_btnTeacherMouseMoved
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
         MenuSlide.setMenu(btnMStudentType);
@@ -1091,6 +1075,30 @@ int cnt=0;
             WindowChangeLabel("lblSettingUser", frm);
         }
     }//GEN-LAST:event_lblSettingUserMouseClicked
+
+    private void btnTeacherMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseExited
+        Border.WhiteColor(btnTeacher);
+    }//GEN-LAST:event_btnTeacherMouseExited
+
+    private void btnTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTeacherMouseClicked
+
+    private void btnTeacherMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseMoved
+        Border.blueColor(btnTeacher);
+    }//GEN-LAST:event_btnTeacherMouseMoved
+
+    private void btnStudentInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseExited
+        Border.WhiteColor(btnStudentInfo);
+    }//GEN-LAST:event_btnStudentInfoMouseExited
+
+    private void btnStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnStudentInfoMouseClicked
+
+    private void btnStudentInfoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseMoved
+        Border.blueColor(btnStudentInfo);
+    }//GEN-LAST:event_btnStudentInfoMouseMoved
 
 
     /**
