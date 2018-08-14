@@ -534,10 +534,20 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblTeacher.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblTeacher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTeacher.setText("Teacher");
+        lblTeacher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTeacherMouseClicked(evt);
+            }
+        });
 
         lblExam.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblExam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblExam.setText("Exam");
+        lblExam.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblExamMouseClicked(evt);
+            }
+        });
 
         btnExam.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnExam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Exam_100px.png"))); // NOI18N
@@ -570,6 +580,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblScore.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblScore.setText("Score");
+        lblScore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblScoreMouseClicked(evt);
+            }
+        });
 
         btnRegister.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnRegister.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Student Registration_100px.png"))); // NOI18N
@@ -634,10 +649,20 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblPayment.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblPayment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPayment.setText("Payment");
+        lblPayment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPaymentMouseClicked(evt);
+            }
+        });
 
         lblReport.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblReport.setText("Report");
+        lblReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblReportMouseClicked(evt);
+            }
+        });
 
         btnReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Analyze_100px.png"))); // NOI18N
@@ -670,6 +695,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblSettingUser.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSettingUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSettingUser.setText("User Login");
+        lblSettingUser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSettingUserMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -943,7 +973,11 @@ int cnt=0;
     }//GEN-LAST:event_btnLogOutMouseMoved
 
     private void lblStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudentInfoMouseClicked
-        // TODO add your handling code here:
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblStudentInfo", frm);
+        }else{
+            
+        }
     }//GEN-LAST:event_lblStudentInfoMouseClicked
 
     private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
@@ -964,37 +998,101 @@ int cnt=0;
 
     private void btnMLevelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMLevelMouseClicked
         try {
-            FrmClassLevel fl = new FrmClassLevel();
-            fl.setVisible(true);
+            if (evt.getModifiers() == 6) {
+                WindowChangeLabel("btnMLevel", frm);
+            } else {
+                FrmClassLevel fl = new FrmClassLevel();
+                fl.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnMLevelMouseClicked
 
     private void btnMClassroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMClassroomMouseClicked
         try {
-            FrmClass fc = new FrmClass();
-            fc.setVisible(true);
+            if (evt.getModifiers() == 6) {
+                WindowChangeLabel("btnMClassroom", frm);
+            } else {
+                FrmClass fc = new FrmClass();
+                fc.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnMClassroomMouseClicked
 
     private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked
         try {
-            FrmStudentType styp = new FrmStudentType();
-            styp.setVisible(true);
+            if (evt.getModifiers() == 6) {
+                WindowChangeLabel("btnMStudentType", frm);
+            } else {
+                FrmStudentType styp = new FrmStudentType();
+                styp.setVisible(true);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnMStudentTypeMouseClicked
 
     private void btnMNationalityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMNationalityMouseClicked
-        FrmNationality frmNationality =  new FrmNationality();
-        frmNationality.setVisible(true);
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("btnMNationality", frm);
+        } else {
+            FrmNationality frmNationality = new FrmNationality();
+            frmNationality.setVisible(true);
+        }
     }//GEN-LAST:event_btnMNationalityMouseClicked
 
     private void btnMWorkStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMWorkStatusMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnMWorkStatusMouseClicked
+
+    private void lblPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblPayment", frm);
+        }else{
+            
+        }
+    }//GEN-LAST:event_lblPaymentMouseClicked
+
+    private void lblTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTeacherMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblTeacher", frm);
+        }else{
+            
+        }
+    }//GEN-LAST:event_lblTeacherMouseClicked
+
+    private void lblExamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblExam", frm);
+        }else{
+            
+        }
+    }//GEN-LAST:event_lblExamMouseClicked
+
+    private void lblScoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblScoreMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblScore", frm);
+        }else{
+            
+        }
+    }//GEN-LAST:event_lblScoreMouseClicked
+
+    private void lblReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblReport", frm);
+        }else{
+            
+        }
+    }//GEN-LAST:event_lblReportMouseClicked
+
+    private void lblSettingUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingUserMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblSettingUser", frm);
+        }else{
+            
+        }
+    }//GEN-LAST:event_lblSettingUserMouseClicked
 
 
     /**
