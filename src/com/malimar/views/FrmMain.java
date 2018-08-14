@@ -975,16 +975,12 @@ int cnt=0;
     private void lblStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudentInfoMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblStudentInfo", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblStudentInfoMouseClicked
 
     private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblRegistation", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblRegistationMouseClicked
 
@@ -1049,48 +1045,36 @@ int cnt=0;
     private void lblPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblPayment", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblPaymentMouseClicked
 
     private void lblTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTeacherMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblTeacher", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblTeacherMouseClicked
 
     private void lblExamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblExamMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblExam", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblExamMouseClicked
 
     private void lblScoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblScoreMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblScore", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblScoreMouseClicked
 
     private void lblReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblReport", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblReportMouseClicked
 
     private void lblSettingUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSettingUserMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblSettingUser", frm);
-        }else{
-            
         }
     }//GEN-LAST:event_lblSettingUserMouseClicked
 
