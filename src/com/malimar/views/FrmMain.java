@@ -168,6 +168,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMLevel.setText(hmapLang.get("btnMLevel".concat(frm).toUpperCase()) [LN]);
         btnMClassroom.setText(hmapLang.get("btnMClassroom".concat(frm).toUpperCase()) [LN]);
         btnMWorkStatus.setText(hmapLang.get("btnMWorkStatus".concat(frm).toUpperCase()) [LN]);
+        btnMStudentPark.setText(hmapLang.get("btnMStudentPark".concat(frm).toUpperCase()) [LN]);
     }
     
     @SuppressWarnings("unchecked")
@@ -204,6 +205,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         radLao = new javax.swing.JRadioButton();
         radEnglish = new javax.swing.JRadioButton();
         txtPassword = new javax.swing.JPasswordField();
+        btnMStudentPark = new javax.swing.JLabel();
         btnMWorkStatus = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -307,7 +309,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
 
         lblLoginIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_100px.png"))); // NOI18N
-        jPanel3.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(11, 250, 260, 80));
+        jPanel3.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 250, 160, 80));
 
         lblPassword.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblPassword.setText("Password");
@@ -500,6 +502,18 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         jPanel3.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 479, 227, 20));
+
+        btnMStudentPark.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnMStudentPark.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMStudentPark.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Term_24px.png"))); // NOI18N
+        btnMStudentPark.setText("Student Park");
+        btnMStudentPark.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMStudentPark.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMStudentParkMouseClicked(evt);
+            }
+        });
+        jPanel3.add(btnMStudentPark, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 314, 130, -1));
 
         btnMWorkStatus.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMWorkStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -891,6 +905,7 @@ int cnt=0;
         MenuSlide.setMenu(btnMReligion);
         MenuSlide.setMenu(btnMClassroom);
         MenuSlide.setMenu(btnMEthnic);
+        MenuSlide.setMenu(btnMStudentPark);
         MenuSlide.setMenu(btnMWorkStatus);
     }//GEN-LAST:event_MenuMouseClicked
 
@@ -1028,17 +1043,9 @@ int cnt=0;
         }
     }//GEN-LAST:event_btnMNationalityMouseClicked
 
-    private void btnMWorkStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMWorkStatusMouseClicked
-        try {
-            if (evt.getModifiers()==6){
-                WindowChangeLabel("btnMworkstatus", frm);
-            }else{
-                FrmWorkStatus fw = new FrmWorkStatus();
-                fw.setVisible(true);
-            }
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_btnMWorkStatusMouseClicked
+    private void btnMStudentParkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentParkMouseClicked
+        
+    }//GEN-LAST:event_btnMStudentParkMouseClicked
 
     private void lblPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseClicked
         if(evt.getModifiers()==6){
@@ -1093,12 +1100,25 @@ int cnt=0;
     }//GEN-LAST:event_btnStudentInfoMouseExited
 
     private void btnStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseClicked
-        // TODO add your handling code here:
+        FrmStudent frmStudent = new FrmStudent();
+        frmStudent.setVisible(true);
     }//GEN-LAST:event_btnStudentInfoMouseClicked
 
     private void btnStudentInfoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseMoved
         Border.blueColor(btnStudentInfo);
     }//GEN-LAST:event_btnStudentInfoMouseMoved
+
+    private void btnMWorkStatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMWorkStatusMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                WindowChangeLabel("btnMworkstatus", frm);
+            }else{
+                FrmWorkStatus fw = new FrmWorkStatus();
+                fw.setVisible(true);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnMWorkStatusMouseClicked
 
 
     /**
@@ -1147,6 +1167,7 @@ int cnt=0;
     private javax.swing.JLabel btnMLevel;
     private javax.swing.JLabel btnMNationality;
     private javax.swing.JLabel btnMReligion;
+    private javax.swing.JLabel btnMStudentPark;
     private javax.swing.JLabel btnMStudentType;
     private javax.swing.JLabel btnMWorkStatus;
     private javax.swing.JLabel btnMaximum;

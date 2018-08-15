@@ -2,6 +2,7 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
+import com.malimar.controllers.LabelManager;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.utils.Border;
@@ -272,7 +273,11 @@ public class FrmStudent extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewMouseMoved
 
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
-
+        if(evt.getModifiers()==6){
+            LabelManager.WindowChangeLabel("btnNew", frm);
+        }else{
+           
+        }
     }//GEN-LAST:event_btnNewMouseClicked
 
     private void btnNewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseExited
