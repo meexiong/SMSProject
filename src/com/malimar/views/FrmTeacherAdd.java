@@ -6,8 +6,20 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
+import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.TeacherAddManager;
 import com.malimar.utils.Border;
+import static com.malimar.utils.ResizeScall.ResizeScall;
+import java.awt.Image;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -20,14 +32,152 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
      */
     Connection c = DatabaseManagerSQL.getConnection();
     String frm, sql;
+    String path;
+    
+    private ImageIcon format = null;
+    
+    HashMap<String, Object[]>mapGender = null;
+    HashMap<String, Object[]>mapWorkStatus = null;
+    HashMap<String, Object[]>mapClassRoom = null;
+    HashMap<String, Object[]>mapInternationality= null;
+    HashMap<String, Object[]>mapParkStudy= null;
+    HashMap<String, Object[]>mapEthnic = null;
+    HashMap<String, Object[]>mapRegion = null;
+    TeacherAddManager tam = new TeacherAddManager();
     
     public FrmTeacherAdd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         frm = this.getClass().getSimpleName();
         
+        txtID.setEnabled(false);
+        txtnameL1.requestFocus();
+        
+        Border.blueColor(btnSave);
+        
+        lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
+        lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblTeachL1.setText(LabelManager.hmapLang.get("lblteachl1".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblTeachL2.setText(LabelManager.hmapLang.get("lblteachl2".concat(frm).toUpperCase())[LabelManager.LN]);
+        lbldob.setText(LabelManager.hmapLang.get("lbldob".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblstartwork.setText(LabelManager.hmapLang.get("lblstartwork".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblemail.setText(LabelManager.hmapLang.get("lblemail".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblphone1.setText(LabelManager.hmapLang.get("lblphone1".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblphone2.setText(LabelManager.hmapLang.get("lblphone2".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblclassroom.setText(LabelManager.hmapLang.get("lblclassroom".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblnationality.setText(LabelManager.hmapLang.get("lblnationality".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblparkteach.setText(LabelManager.hmapLang.get("lblparkteach".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblethnic.setText(LabelManager.hmapLang.get("lblehnic".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblAddress.setText(LabelManager.hmapLang.get("lbladdress".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblRegion.setText(LabelManager.hmapLang.get("lblregion".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblMoreInfo.setText(LabelManager.hmapLang.get("lblmoreinfo".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblLeaveDate.setText(LabelManager.hmapLang.get("lblleavedate".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblWorking.setText(LabelManager.hmapLang.get("lblworking".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblTeachDaily.setText(LabelManager.hmapLang.get("lblteachdaily".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblgender.setText(LabelManager.hmapLang.get("lblgender".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblworkstatus.setText(LabelManager.hmapLang.get("lblWorkstatus".concat(frm).toUpperCase())[LabelManager.LN]);
+
         
         
+    }
+    private void getGender(){
+        try {
+            mapGender = tam.getMapGender();
+            Map<String, Object[]> smap = new TreeMap<>(mapGender);
+            cbbGender.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbGender.addItem(s);
+        });
+            cbbGender.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbGender);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void getWorkStatus(){
+        try {
+            mapWorkStatus = tam.getMapWorkStatus();
+            Map<String, Object[]> smap = new TreeMap<>(mapWorkStatus);
+            cbbworkstatus.removeAllItems();
+            smap.keySet().forEach((s)->{
+                cbbworkstatus.addItem(s);
+            });
+            cbbworkstatus.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbworkstatus);
+        } catch (Exception e) {
+        }
+    }
+    private void getClassRoom(){
+        try {
+            mapClassRoom = tam.getMapClassRoom();
+            Map<String, Object[]>smap = new TreeMap<>(mapClassRoom);
+            cbbroom.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbroom.addItem(s);
+            });
+            cbbroom.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbroom);
+            
+        } catch (Exception e) {
+        }
+    }
+    private void getNationality(){
+        try {
+            mapInternationality = tam.getMapNationality();
+            Map<String, Object[]>smap = new TreeMap<>(mapInternationality);
+            cbbNationality.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbNationality.addItem(s);
+            });
+            cbbNationality.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbNationality);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void getParkSchool(){
+        try {
+            mapParkStudy = tam.getParkSchool();
+            Map<String, Object[]>smap = new TreeMap<>(mapParkStudy);
+            cbbpark.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbpark.addItem(s);
+            });
+            cbbpark.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbpark);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void getEthnic(){
+        try {
+            mapEthnic = tam.getMapEthnic();
+            Map<String, Object[]> smap = new TreeMap<>(mapEthnic);
+            cbbEthnic.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbEthnic.addItem(s);
+            });
+            cbbEthnic.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbEthnic);
+            
+        } catch (Exception e) {
+        }
+    }
+    private void getRegion(){
+        try {
+            mapRegion = tam.getMapRegion();
+            Map<String, Object[]>smap = new TreeMap<>(mapRegion);
+            cbbregion.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbregion.addItem(s);
+            });
+            cbbregion.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbregion);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -52,56 +202,61 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        lblEthnic_L1 = new javax.swing.JLabel();
-        txtEthnic_L1 = new javax.swing.JTextField();
+        lblTeachL1 = new javax.swing.JLabel();
+        txtnameL1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        lblEthnic_L2 = new javax.swing.JLabel();
-        txtEthnic_L2 = new javax.swing.JTextField();
+        lblTeachL2 = new javax.swing.JLabel();
+        txtnameL2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btnSave = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblEthnic_L4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        lblEthnic_L5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        lblEthnic_L6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        lblEthnic_L7 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        lbl_image = new javax.swing.JLabel();
+        lbldob = new javax.swing.JLabel();
+        dob = new com.toedter.calendar.JDateChooser();
+        lblstartwork = new javax.swing.JLabel();
+        startwork = new com.toedter.calendar.JDateChooser();
+        lblgender = new javax.swing.JLabel();
+        cbbGender = new javax.swing.JComboBox<>();
+        lblworkstatus = new javax.swing.JLabel();
+        cbbworkstatus = new javax.swing.JComboBox<>();
         jSeparator4 = new javax.swing.JSeparator();
-        txtEthnic_L3 = new javax.swing.JTextField();
-        lblEthnic_L3 = new javax.swing.JLabel();
-        lblEthnic_L8 = new javax.swing.JLabel();
-        txtEthnic_L4 = new javax.swing.JTextField();
+        txtemail = new javax.swing.JTextField();
+        lblemail = new javax.swing.JLabel();
+        lblphone1 = new javax.swing.JLabel();
+        txtphone1 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel9 = new javax.swing.JPanel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        lblEthnic_L9 = new javax.swing.JLabel();
-        txtEthnic_L5 = new javax.swing.JTextField();
+        lblWorking = new javax.swing.JCheckBox();
+        lblTeachDaily = new javax.swing.JCheckBox();
+        lblphone2 = new javax.swing.JLabel();
+        txtphone2 = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        lblEthnic_L10 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        lblEthnic_L11 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
-        lblEthnic_L12 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        lblEthnic_L13 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox<>();
-        lblEthnic_L14 = new javax.swing.JLabel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
-        lblEthnic_L15 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox<>();
-        lblEthnic_L16 = new javax.swing.JLabel();
-        txtEthnic_L6 = new javax.swing.JTextField();
+        lblclassroom = new javax.swing.JLabel();
+        cbbroom = new javax.swing.JComboBox<>();
+        lblnationality = new javax.swing.JLabel();
+        cbbNationality = new javax.swing.JComboBox<>();
+        lblethnic = new javax.swing.JLabel();
+        cbbEthnic = new javax.swing.JComboBox<>();
+        lblRegion = new javax.swing.JLabel();
+        cbbregion = new javax.swing.JComboBox<>();
+        lblLeaveDate = new javax.swing.JLabel();
+        leaveDate = new com.toedter.calendar.JDateChooser();
+        lblparkteach = new javax.swing.JLabel();
+        cbbpark = new javax.swing.JComboBox<>();
+        lblAddress = new javax.swing.JLabel();
+        txtaddress = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        lblEthnic_L17 = new javax.swing.JLabel();
-        txtEthnic_L7 = new javax.swing.JTextField();
+        lblMoreInfo = new javax.swing.JLabel();
+        txtMoreInfo = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -188,20 +343,20 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             }
         });
 
-        lblEthnic_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L1.setText("TeacherName_L1");
+        lblTeachL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblTeachL1.setText("TeacherName_L1");
 
-        txtEthnic_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic_L1.setBorder(null);
+        txtnameL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtnameL1.setBorder(null);
 
-        lblEthnic_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L2.setText("TeacherName_L2");
+        lblTeachL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblTeachL2.setText("TeacherName_L2");
 
-        txtEthnic_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic_L2.setBorder(null);
-        txtEthnic_L2.addActionListener(new java.awt.event.ActionListener() {
+        txtnameL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtnameL2.setBorder(null);
+        txtnameL2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEthnic_L2ActionPerformed(evt);
+                txtnameL2ActionPerformed(evt);
             }
         });
 
@@ -226,50 +381,57 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         jPanel8.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 15, 255), 1, true));
         jPanel8.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel8.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lbl_image.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lbl_image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_image.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lbl_image.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_imageMouseClicked(evt);
+            }
+        });
+        jPanel8.add(lbl_image, java.awt.BorderLayout.CENTER);
 
-        lblEthnic_L4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L4.setText("Dob");
+        lbldob.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lbldob.setText("Dob");
 
-        lblEthnic_L5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L5.setText("Start Work");
+        lblstartwork.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblstartwork.setText("Start Work");
 
-        lblEthnic_L6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L6.setText("Gender");
+        lblgender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblgender.setText("Gender");
 
-        jComboBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbGender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbGender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblEthnic_L7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L7.setText("Work Status");
+        lblworkstatus.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblworkstatus.setText("Work Status");
 
-        jComboBox2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbworkstatus.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbworkstatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        txtEthnic_L3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic_L3.setBorder(null);
+        txtemail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtemail.setBorder(null);
 
-        lblEthnic_L3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L3.setText("Email");
+        lblemail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblemail.setText("Email");
 
-        lblEthnic_L8.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L8.setText("Phone 1");
+        lblphone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblphone1.setText("Phone 1");
 
-        txtEthnic_L4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic_L4.setBorder(null);
+        txtphone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtphone1.setBorder(null);
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jCheckBox1.setText("Working");
-        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblWorking.setBackground(new java.awt.Color(255, 255, 255));
+        lblWorking.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblWorking.setText("Working");
+        lblWorking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
-        jCheckBox2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jCheckBox2.setText("Teach Daily");
-        jCheckBox2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblTeachDaily.setBackground(new java.awt.Color(255, 255, 255));
+        lblTeachDaily.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblTeachDaily.setText("Teach Daily");
+        lblTeachDaily.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -278,65 +440,70 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                    .addComponent(lblWorking, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTeachDaily, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jCheckBox1)
+                .addComponent(lblWorking)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox2)
+                .addComponent(lblTeachDaily)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        lblEthnic_L9.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L9.setText("Phone 2");
+        lblphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblphone2.setText("Phone 2");
 
-        txtEthnic_L5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic_L5.setBorder(null);
+        txtphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtphone2.setBorder(null);
 
-        lblEthnic_L10.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L10.setText("Class Room");
+        lblclassroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblclassroom.setText("Class Room");
 
-        jComboBox3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblEthnic_L11.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L11.setText("Nationality");
+        lblnationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblnationality.setText("Nationality");
 
-        jComboBox4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbNationality.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblEthnic_L12.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L12.setText("Ethnic");
+        lblethnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblethnic.setText("Ethnic");
 
-        jComboBox5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbEthnic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblEthnic_L13.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L13.setText("Region");
+        lblRegion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblRegion.setText("Region");
 
-        jComboBox6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbregion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbregion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblEthnic_L14.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L14.setText("Leave Date");
+        lblLeaveDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblLeaveDate.setText("Leave Date");
 
-        lblEthnic_L15.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L15.setText("Park Teach");
+        lblparkteach.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblparkteach.setText("Park Teach");
 
-        jComboBox7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbpark.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbpark.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblEthnic_L16.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L16.setText("Address");
+        lblAddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblAddress.setText("Address");
 
-        txtEthnic_L6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic_L6.setBorder(null);
+        txtaddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtaddress.setBorder(null);
 
-        lblEthnic_L17.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblEthnic_L17.setText("More Info");
+        lblMoreInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblMoreInfo.setText("More Info");
 
-        txtEthnic_L7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic_L7.setBorder(null);
+        txtMoreInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtMoreInfo.setBorder(null);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -346,7 +513,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
@@ -358,89 +525,89 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblEthnic_L1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtEthnic_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblTeachL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtnameL1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(10, 10, 10)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblEthnic_L2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtEthnic_L2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(lblTeachL2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtnameL2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                                .addComponent(dob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                                .addComponent(lbldob, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(startwork, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblstartwork, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
+                                .addComponent(cbbGender, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblgender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbbworkstatus, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblworkstatus, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblEthnic_L3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEthnic_L3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblemail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblEthnic_L8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEthnic_L4, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblphone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtphone1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblEthnic_L12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbbEthnic, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblethnic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblEthnic_L16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtEthnic_L6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblEthnic_L11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cbbNationality, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblnationality, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jComboBox7, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblEthnic_L15, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbbpark, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblparkteach, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jDateChooser3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(leaveDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblLeaveDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(217, 217, 217))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblEthnic_L9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEthnic_L5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblphone2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtphone2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(cbbroom, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblclassroom, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jComboBox6, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbbregion, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblRegion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblEthnic_L17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtEthnic_L7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblMoreInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtMoreInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(10, 10, 10))
         );
@@ -451,12 +618,12 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblEthnic_L2)
-                            .addComponent(lblEthnic_L1))
+                            .addComponent(lblTeachL2)
+                            .addComponent(lblTeachL1))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtEthnic_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEthnic_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtnameL2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnameL1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -472,94 +639,91 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(lblEthnic_L9)
+                                        .addComponent(lblphone2)
                                         .addGap(1, 1, 1)
-                                        .addComponent(txtEthnic_L5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtphone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(lblEthnic_L10)
+                                        .addComponent(lblclassroom)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cbbroom, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(lblEthnic_L11)
+                                        .addComponent(lblnationality)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cbbNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(lblEthnic_L15)
+                                        .addComponent(lblparkteach)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cbbpark, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(lblEthnic_L12)
+                                        .addComponent(lblethnic)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbbEthnic, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblEthnic_L13)
+                                        .addComponent(lblRegion)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cbbregion, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(lblEthnic_L14))
+                                        .addComponent(lblLeaveDate))
                                     .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(lblEthnic_L16)
+                                        .addComponent(lblAddress)
                                         .addGap(1, 1, 1)
-                                        .addComponent(txtEthnic_L6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblEthnic_L17)
+                                        .addComponent(lblMoreInfo)
                                         .addGap(1, 1, 1)
-                                        .addComponent(txtEthnic_L7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtMoreInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(2, 2, 2)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11))
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))
+                                    .addComponent(leaveDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(lblEthnic_L5)
+                                .addComponent(lblstartwork)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(startwork, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblEthnic_L7)
+                                .addComponent(lblworkstatus)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbbworkstatus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(lblEthnic_L4)
+                                .addComponent(lbldob)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblEthnic_L6)
+                                .addComponent(lblgender)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(cbbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(lblEthnic_L3)
+                                .addComponent(lblemail)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtEthnic_L3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(lblEthnic_L8)
+                                .addComponent(lblphone1)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtEthnic_L4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtphone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -567,7 +731,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -605,12 +771,12 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    private void txtEthnic_L2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEthnic_L2ActionPerformed
+    private void txtnameL2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameL2ActionPerformed
         
-    }//GEN-LAST:event_txtEthnic_L2ActionPerformed
+    }//GEN-LAST:event_txtnameL2ActionPerformed
 
     private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
-        Border.blueColor(btnSave);
+        
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
@@ -620,6 +786,36 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
 
     }//GEN-LAST:event_btnSaveMouseExited
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            getGender();
+            getWorkStatus();
+            getClassRoom();
+            getNationality();
+            getParkSchool();
+            getEthnic();
+            getRegion();
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
+
+    private void lbl_imageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_imageMouseClicked
+         try {
+            JFileChooser choose = new JFileChooser();
+            choose.showOpenDialog(null);
+            path = choose.getSelectedFile().getAbsolutePath();
+            Image img = new ImageIcon(path).getImage();
+            Image ic = ResizeScall(img, lbl_image.getWidth(), lbl_image.getHeight());
+            lbl_image.setIcon(new ImageIcon(ic));
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_lbl_imageMouseClicked
 
     /**
      * @param args the command line arguments
@@ -667,19 +863,14 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private javax.swing.JComboBox<String> jComboBox6;
-    private javax.swing.JComboBox<String> jComboBox7;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> cbbEthnic;
+    private javax.swing.JComboBox<String> cbbGender;
+    private javax.swing.JComboBox<String> cbbNationality;
+    private javax.swing.JComboBox<String> cbbpark;
+    private javax.swing.JComboBox<String> cbbregion;
+    private javax.swing.JComboBox<String> cbbroom;
+    private javax.swing.JComboBox<String> cbbworkstatus;
+    private com.toedter.calendar.JDateChooser dob;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -697,32 +888,37 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JLabel lblEthnic_L1;
-    private javax.swing.JLabel lblEthnic_L10;
-    private javax.swing.JLabel lblEthnic_L11;
-    private javax.swing.JLabel lblEthnic_L12;
-    private javax.swing.JLabel lblEthnic_L13;
-    private javax.swing.JLabel lblEthnic_L14;
-    private javax.swing.JLabel lblEthnic_L15;
-    private javax.swing.JLabel lblEthnic_L16;
-    private javax.swing.JLabel lblEthnic_L17;
-    private javax.swing.JLabel lblEthnic_L2;
-    private javax.swing.JLabel lblEthnic_L3;
-    private javax.swing.JLabel lblEthnic_L4;
-    private javax.swing.JLabel lblEthnic_L5;
-    private javax.swing.JLabel lblEthnic_L6;
-    private javax.swing.JLabel lblEthnic_L7;
-    private javax.swing.JLabel lblEthnic_L8;
-    private javax.swing.JLabel lblEthnic_L9;
+    private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblLeaveDate;
+    private javax.swing.JLabel lblMoreInfo;
+    private javax.swing.JLabel lblRegion;
     private javax.swing.JLabel lblSystemInfo;
-    private javax.swing.JTextField txtEthnic_L1;
-    private javax.swing.JTextField txtEthnic_L2;
-    private javax.swing.JTextField txtEthnic_L3;
-    private javax.swing.JTextField txtEthnic_L4;
-    private javax.swing.JTextField txtEthnic_L5;
-    private javax.swing.JTextField txtEthnic_L6;
-    private javax.swing.JTextField txtEthnic_L7;
+    private javax.swing.JCheckBox lblTeachDaily;
+    private javax.swing.JLabel lblTeachL1;
+    private javax.swing.JLabel lblTeachL2;
+    private javax.swing.JCheckBox lblWorking;
+    private javax.swing.JLabel lbl_image;
+    private javax.swing.JLabel lblclassroom;
+    private javax.swing.JLabel lbldob;
+    private javax.swing.JLabel lblemail;
+    private javax.swing.JLabel lblethnic;
+    private javax.swing.JLabel lblgender;
+    private javax.swing.JLabel lblnationality;
+    private javax.swing.JLabel lblparkteach;
+    private javax.swing.JLabel lblphone1;
+    private javax.swing.JLabel lblphone2;
+    private javax.swing.JLabel lblstartwork;
+    private javax.swing.JLabel lblworkstatus;
+    private com.toedter.calendar.JDateChooser leaveDate;
+    private com.toedter.calendar.JDateChooser startwork;
     private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtMoreInfo;
+    private javax.swing.JTextField txtaddress;
+    private javax.swing.JTextField txtemail;
+    private javax.swing.JTextField txtnameL1;
+    private javax.swing.JTextField txtnameL2;
+    private javax.swing.JTextField txtphone1;
+    private javax.swing.JTextField txtphone2;
     // End of variables declaration//GEN-END:variables
 }

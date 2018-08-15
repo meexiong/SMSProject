@@ -1044,7 +1044,11 @@ int cnt=0;
     }//GEN-LAST:event_btnMNationalityMouseClicked
 
     private void btnMStudentParkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentParkMouseClicked
-        
+        try {
+            FrmStudentPark sp = new FrmStudentPark();
+            sp.setVisible(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnMStudentParkMouseClicked
 
     private void lblPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseClicked
@@ -1088,7 +1092,11 @@ int cnt=0;
     }//GEN-LAST:event_btnTeacherMouseExited
 
     private void btnTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseClicked
-        // TODO add your handling code here:
+        try {
+            FrmTeacherDetails fd = new FrmTeacherDetails();
+            fd.setVisible(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnTeacherMouseClicked
 
     private void btnTeacherMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseMoved

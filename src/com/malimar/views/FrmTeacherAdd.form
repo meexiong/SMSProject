@@ -9,6 +9,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -19,7 +22,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-126,0,0,2,124"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,97,0,0,2,-114"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -74,7 +77,10 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jPanel7" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -208,7 +214,7 @@
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="lblID" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtID" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtID" alignment="0" pref="200" max="32767" attributes="0"/>
                                       <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -223,13 +229,13 @@
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="lblEthnic_L1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtEthnic_L1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="lblTeachL1" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtnameL1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="lblEthnic_L2" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtEthnic_L2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="lblTeachL2" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtnameL2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -239,39 +245,39 @@
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jDateChooser1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L4" alignment="0" pref="213" max="32767" attributes="0"/>
+                                                  <Component id="dob" alignment="0" pref="213" max="32767" attributes="0"/>
+                                                  <Component id="lbldob" alignment="0" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jDateChooser2" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="startwork" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblstartwork" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L6" alignment="0" pref="213" max="32767" attributes="0"/>
+                                                  <Component id="cbbGender" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblgender" alignment="0" pref="213" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jComboBox2" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L7" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="cbbworkstatus" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblworkstatus" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="lblEthnic_L3" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtEthnic_L3" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                      <Component id="lblemail" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtemail" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="jSeparator4" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="lblEthnic_L8" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtEthnic_L4" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                      <Component id="lblphone1" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtphone1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="jSeparator5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
@@ -279,49 +285,49 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jComboBox5" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblEthnic_L12" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                              <Component id="cbbEthnic" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblethnic" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="lblEthnic_L16" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtEthnic_L6" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="lblAddress" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtaddress" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jSeparator7" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jComboBox4" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblEthnic_L11" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                              <Component id="cbbNationality" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblnationality" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="jComboBox7" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblEthnic_L15" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                              <Component id="cbbpark" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblparkteach" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jDateChooser3" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L14" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="leaveDate" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblLeaveDate" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="lblEthnic_L9" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtEthnic_L5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                      <Component id="lblphone2" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtphone2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="jSeparator6" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jComboBox3" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L10" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="cbbroom" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblclassroom" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -329,14 +335,14 @@
                                           <Component id="btnSave" min="-2" pref="103" max="-2" attributes="0"/>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jComboBox6" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L13" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="cbbregion" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="lblRegion" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="lblEthnic_L17" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="txtEthnic_L7" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                      <Component id="lblMoreInfo" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="txtMoreInfo" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Component id="jSeparator8" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
@@ -354,13 +360,13 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="lblEthnic_L2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lblEthnic_L1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblTeachL2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblTeachL1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="txtEthnic_L2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txtEthnic_L1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtnameL2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="txtnameL1" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
@@ -381,58 +387,58 @@
                                       <Group type="102" attributes="0">
                                           <Component id="jPanel8" min="-2" pref="187" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblEthnic_L9" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblphone2" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                          <Component id="txtEthnic_L5" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtphone2" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblEthnic_L10" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblclassroom" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jComboBox3" min="-2" pref="28" max="-2" attributes="0"/>
+                                                          <Component id="cbbroom" min="-2" pref="28" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblEthnic_L11" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblnationality" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jComboBox4" min="-2" pref="28" max="-2" attributes="0"/>
+                                                          <Component id="cbbNationality" min="-2" pref="28" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblEthnic_L15" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblparkteach" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jComboBox7" min="-2" pref="28" max="-2" attributes="0"/>
+                                                          <Component id="cbbpark" min="-2" pref="28" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblEthnic_L12" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblethnic" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jComboBox5" min="-2" pref="28" max="-2" attributes="0"/>
+                                                          <Component id="cbbEthnic" min="-2" pref="28" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lblEthnic_L13" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblRegion" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="jComboBox6" min="-2" pref="28" max="-2" attributes="0"/>
+                                                          <Component id="cbbregion" min="-2" pref="28" max="-2" attributes="0"/>
                                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                          <Component id="lblEthnic_L14" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblLeaveDate" min="-2" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="lblEthnic_L16" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                          <Component id="txtEthnic_L6" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtaddress" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="lblEthnic_L17" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="lblMoreInfo" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                          <Component id="txtEthnic_L7" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtMoreInfo" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
                                                           <Component id="jSeparator8" min="-2" pref="10" max="-2" attributes="0"/>
                                                       </Group>
@@ -440,57 +446,53 @@
                                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Component id="btnSave" min="-2" pref="29" max="-2" attributes="0"/>
-                                                      <Component id="jDateChooser3" min="-2" pref="30" max="-2" attributes="0"/>
+                                                      <Component id="leaveDate" min="-2" pref="30" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="jPanel9" max="32767" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                              </Group>
+                                              <Component id="jPanel9" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="lblEthnic_L5" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblstartwork" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jDateChooser2" min="-2" pref="30" max="-2" attributes="0"/>
+                                                  <Component id="startwork" min="-2" pref="30" max="-2" attributes="0"/>
                                                   <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="lblEthnic_L7" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblworkstatus" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jComboBox2" min="-2" pref="28" max="-2" attributes="0"/>
+                                                  <Component id="cbbworkstatus" min="-2" pref="28" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
-                                                  <Component id="lblEthnic_L4" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lbldob" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jDateChooser1" min="-2" pref="30" max="-2" attributes="0"/>
+                                                  <Component id="dob" min="-2" pref="30" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="lblEthnic_L6" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblgender" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="jComboBox1" min="-2" pref="28" max="-2" attributes="0"/>
+                                                  <Component id="cbbGender" min="-2" pref="28" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="1" attributes="0">
                                               <Group type="102" attributes="0">
-                                                  <Component id="lblEthnic_L3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblemail" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                  <Component id="txtEthnic_L3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtemail" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" attributes="0">
-                                                  <Component id="lblEthnic_L8" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="lblphone1" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                  <Component id="txtEthnic_L4" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="txtphone1" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -523,7 +525,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator1">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L1">
+                        <Component class="javax.swing.JLabel" name="lblTeachL1">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -531,7 +533,7 @@
                             <Property name="text" type="java.lang.String" value="TeacherName_L1"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEthnic_L1">
+                        <Component class="javax.swing.JTextField" name="txtnameL1">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -543,7 +545,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator2">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L2">
+                        <Component class="javax.swing.JLabel" name="lblTeachL2">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -551,7 +553,7 @@
                             <Property name="text" type="java.lang.String" value="TeacherName_L2"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEthnic_L2">
+                        <Component class="javax.swing.JTextField" name="txtnameL2">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -561,7 +563,7 @@
                             </Property>
                           </Properties>
                           <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtEthnic_L2ActionPerformed"/>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnameL2ActionPerformed"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator3">
@@ -596,7 +598,7 @@
 
                           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel1">
+                            <Component class="javax.swing.JLabel" name="lbl_image">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -606,6 +608,9 @@
                                   <Color id="Hand Cursor"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_imageMouseClicked"/>
+                              </Events>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                                   <BorderConstraints direction="Center"/>
@@ -614,7 +619,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L4">
+                        <Component class="javax.swing.JLabel" name="lbldob">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -622,9 +627,9 @@
                             <Property name="text" type="java.lang.String" value="Dob"/>
                           </Properties>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+                        <Component class="com.toedter.calendar.JDateChooser" name="dob">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L5">
+                        <Component class="javax.swing.JLabel" name="lblstartwork">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -632,9 +637,9 @@
                             <Property name="text" type="java.lang.String" value="Start Work"/>
                           </Properties>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+                        <Component class="com.toedter.calendar.JDateChooser" name="startwork">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L6">
+                        <Component class="javax.swing.JLabel" name="lblgender">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -642,7 +647,7 @@
                             <Property name="text" type="java.lang.String" value="Gender"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox1">
+                        <Component class="javax.swing.JComboBox" name="cbbGender">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -650,12 +655,15 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L7">
+                        <Component class="javax.swing.JLabel" name="lblworkstatus">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -663,13 +671,16 @@
                             <Property name="text" type="java.lang.String" value="Work Status"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox2">
+                        <Component class="javax.swing.JComboBox" name="cbbworkstatus">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
                             </Property>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
+                            </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
                             </Property>
                           </Properties>
                           <AuxValues>
@@ -678,7 +689,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator4">
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEthnic_L3">
+                        <Component class="javax.swing.JTextField" name="txtemail">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -688,7 +699,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L3">
+                        <Component class="javax.swing.JLabel" name="lblemail">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -696,7 +707,7 @@
                             <Property name="text" type="java.lang.String" value="Email"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L8">
+                        <Component class="javax.swing.JLabel" name="lblphone1">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -704,7 +715,7 @@
                             <Property name="text" type="java.lang.String" value="Phone 1"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEthnic_L4">
+                        <Component class="javax.swing.JTextField" name="txtphone1">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -729,8 +740,8 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox1" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="jCheckBox2" alignment="1" pref="170" max="32767" attributes="0"/>
+                                          <Component id="lblWorking" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="lblTeachDaily" alignment="1" pref="170" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -740,16 +751,16 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblWorking" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblTeachDaily" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+                            <Component class="javax.swing.JCheckBox" name="lblWorking">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -763,7 +774,7 @@
                                 </Property>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+                            <Component class="javax.swing.JCheckBox" name="lblTeachDaily">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -779,7 +790,7 @@
                             </Component>
                           </SubComponents>
                         </Container>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L9">
+                        <Component class="javax.swing.JLabel" name="lblphone2">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -787,7 +798,7 @@
                             <Property name="text" type="java.lang.String" value="Phone 2"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEthnic_L5">
+                        <Component class="javax.swing.JTextField" name="txtphone2">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -799,7 +810,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator6">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L10">
+                        <Component class="javax.swing.JLabel" name="lblclassroom">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -807,7 +818,7 @@
                             <Property name="text" type="java.lang.String" value="Class Room"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox3">
+                        <Component class="javax.swing.JComboBox" name="cbbroom">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -815,12 +826,15 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L11">
+                        <Component class="javax.swing.JLabel" name="lblnationality">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -828,7 +842,7 @@
                             <Property name="text" type="java.lang.String" value="Nationality"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox4">
+                        <Component class="javax.swing.JComboBox" name="cbbNationality">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -836,12 +850,15 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L12">
+                        <Component class="javax.swing.JLabel" name="lblethnic">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -849,7 +866,7 @@
                             <Property name="text" type="java.lang.String" value="Ethnic"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox5">
+                        <Component class="javax.swing.JComboBox" name="cbbEthnic">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -857,12 +874,15 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L13">
+                        <Component class="javax.swing.JLabel" name="lblRegion">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -870,7 +890,7 @@
                             <Property name="text" type="java.lang.String" value="Region"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox6">
+                        <Component class="javax.swing.JComboBox" name="cbbregion">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -878,12 +898,15 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L14">
+                        <Component class="javax.swing.JLabel" name="lblLeaveDate">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -891,9 +914,9 @@
                             <Property name="text" type="java.lang.String" value="Leave Date"/>
                           </Properties>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser3">
+                        <Component class="com.toedter.calendar.JDateChooser" name="leaveDate">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L15">
+                        <Component class="javax.swing.JLabel" name="lblparkteach">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -901,7 +924,7 @@
                             <Property name="text" type="java.lang.String" value="Park Teach"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JComboBox" name="jComboBox7">
+                        <Component class="javax.swing.JComboBox" name="cbbpark">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -909,12 +932,15 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L16">
+                        <Component class="javax.swing.JLabel" name="lblAddress">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -922,7 +948,7 @@
                             <Property name="text" type="java.lang.String" value="Address"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEthnic_L6">
+                        <Component class="javax.swing.JTextField" name="txtaddress">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -934,7 +960,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator7">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblEthnic_L17">
+                        <Component class="javax.swing.JLabel" name="lblMoreInfo">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -942,7 +968,7 @@
                             <Property name="text" type="java.lang.String" value="More Info"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JTextField" name="txtEthnic_L7">
+                        <Component class="javax.swing.JTextField" name="txtMoreInfo">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
