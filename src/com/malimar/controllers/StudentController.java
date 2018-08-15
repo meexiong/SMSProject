@@ -18,14 +18,24 @@ import java.text.SimpleDateFormat;
 public class StudentController {
     Connection c = DatabaseManagerSQL.getConnection();
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//    public String get
+    public String getPreFix(){
+        try {
+            String query = "Select SystemValue from tbl_SystemSetting where SSIS=1";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            if(rs.next()){
+                return rs.getString("SystemValue");
+            }
+        } catch (SQLException e) {
+        }
+        return null;
+    }
     public String getStudenNumber(){
         try {
             String query = "Select isnull(Max(SubString(StdNbr,3,9)),0)+1 as MaxID from tbl_Student";
             ResultSet rs = c.createStatement().executeQuery(query);
             if(rs.next()){
                 String strMaxID = String.valueOf(rs.getInt("MaxID"));
-//                return "ST"
+                return getPreFix()+("0000000"+strMaxID).substring(strMaxID.length());
             }
         } catch (SQLException e) {
         }
@@ -38,7 +48,7 @@ public class StudentController {
                     + "StdHeight,Congenital_diseases,Congenital_diseases_Info,SchoolName,School_Levels,School_Mobile,stdNote,PSID,Stdimg) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(insert);
             p.setInt(1, gm.getIntID("tbl_Student", "StdID"));
-            p.setString(2, sd.getStdNbr());
+            p.setString(2, getStudenNumber());
             p.setInt(3, sd.getStdType());
             p.setString(4, sd.getStdName_L1());
             p.setString(5, sd.getStdName_L2());

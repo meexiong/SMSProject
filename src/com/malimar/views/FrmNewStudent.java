@@ -13,6 +13,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmNewStudent
+     * @param parent
      */
     public FrmNewStudent(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -49,6 +50,41 @@ public class FrmNewStudent extends javax.swing.JDialog {
         jComboBox3 = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
         jComboBox4 = new javax.swing.JComboBox<>();
+        jLabel16 = new javax.swing.JLabel();
+        jComboBox5 = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBox6 = new javax.swing.JComboBox<>();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel20 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel8 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jSeparator8 = new javax.swing.JSeparator();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField6 = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel21 = new javax.swing.JLabel();
+        jTextField10 = new javax.swing.JTextField();
+        jSeparator10 = new javax.swing.JSeparator();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField11 = new javax.swing.JTextField();
+        jSeparator11 = new javax.swing.JSeparator();
+        jLabel23 = new javax.swing.JLabel();
+        jTextField12 = new javax.swing.JTextField();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel24 = new javax.swing.JLabel();
+        jTextField13 = new javax.swing.JTextField();
+        jSeparator13 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -61,17 +97,8 @@ public class FrmNewStudent extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
+        jPanel7 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -136,58 +163,187 @@ public class FrmNewStudent extends javax.swing.JDialog {
 
         jTextField7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTextField7.setBorder(null);
-        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 200, 25));
+        jPanel3.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 200, 25));
 
         jLabel10.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("Birthday");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, 25));
-        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 35, 200, 10));
+        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 110, 25));
+        jPanel3.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 200, 10));
 
         jLabel11.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Email");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 110, 25));
+        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 110, 25));
 
         jDateChooser1.setDateFormatString("dd-MM-yyyy");
         jDateChooser1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 140, 25));
+        jPanel3.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 140, 25));
 
         jLabel12.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Start Date");
-        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 110, 25));
+        jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 110, 25));
 
         jDateChooser2.setDateFormatString("dd-MM-yyyy");
         jDateChooser2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jPanel3.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 140, 25));
+        jPanel3.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 140, 25));
 
         jLabel13.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText("End Date");
-        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 110, 25));
+        jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 110, 25));
 
         jDateChooser3.setDateFormatString("dd-MM-yyyy");
         jDateChooser3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jPanel3.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 140, 25));
+        jPanel3.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 140, 25));
 
         jLabel14.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText("Nationality");
-        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 110, 25));
+        jPanel3.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 110, 25));
 
         jComboBox3.setEditable(true);
         jComboBox3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 200, 25));
+        jPanel3.add(jComboBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 200, 25));
 
         jLabel15.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText("Ethnic");
-        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 110, 25));
+        jPanel3.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 110, 25));
 
         jComboBox4.setEditable(true);
         jComboBox4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jPanel3.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, 200, 25));
+        jPanel3.add(jComboBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, 200, 25));
+
+        jLabel16.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("Religion");
+        jPanel3.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 110, 25));
+
+        jComboBox5.setEditable(true);
+        jComboBox5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jPanel3.add(jComboBox5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 350, 200, 25));
+
+        jLabel17.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setText("Studying");
+        jPanel3.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 380, 110, 25));
+
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 380, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText("Blood Group");
+        jPanel3.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 110, 25));
+
+        jComboBox6.setEditable(true);
+        jComboBox6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jPanel3.add(jComboBox6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 200, 25));
+
+        jTextField8.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField8.setText("0");
+        jTextField8.setBorder(null);
+        jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 200, 25));
+
+        jLabel19.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("Weight");
+        jPanel3.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, 110, 25));
+        jPanel3.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 200, 10));
+
+        jLabel20.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText("Height");
+        jPanel3.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, 110, 25));
+
+        jTextField9.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField9.setText("0");
+        jTextField9.setBorder(null);
+        jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 200, 25));
+        jPanel3.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 200, 10));
+
+        jLabel8.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel8.setText("Phone Number");
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 110, 25));
+
+        jTextField5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField5.setBorder(null);
+        jPanel3.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 200, 25));
+        jPanel3.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 135, 200, 10));
+
+        jLabel9.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel9.setText("Phone Number");
+        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 75, 110, 25));
+
+        jTextField6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField6.setBorder(null);
+        jPanel3.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 75, 200, 25));
+        jPanel3.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 200, 10));
+
+        jLabel21.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel21.setText("Diseases");
+        jPanel3.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 90, 110, 25));
+
+        jTextField10.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField10.setBorder(null);
+        jPanel3.add(jTextField10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, 200, 25));
+        jPanel3.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 120, 200, 10));
+
+        jCheckBox2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 100, -1, -1));
+
+        jLabel22.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel22.setText("School Name");
+        jPanel3.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 110, 25));
+
+        jTextField11.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField11.setBorder(null);
+        jPanel3.add(jTextField11, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 130, 200, 25));
+        jPanel3.add(jSeparator11, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, 200, 10));
+
+        jLabel23.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel23.setText("School Level");
+        jPanel3.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 110, 25));
+
+        jTextField12.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField12.setBorder(null);
+        jPanel3.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, 200, 25));
+        jPanel3.add(jSeparator12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 200, 10));
+
+        jLabel24.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("School Mobile");
+        jPanel3.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 210, 110, 25));
+
+        jTextField13.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTextField13.setBorder(null);
+        jPanel3.add(jTextField13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 210, 200, 25));
+        jPanel3.add(jSeparator13, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, 200, 10));
+
+        jLabel4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setText("Gender");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, 25));
+
+        jComboBox1.setEditable(true);
+        jComboBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jPanel3.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 200, 25));
+
+        jComboBox2.setEditable(true);
+        jComboBox2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jPanel3.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 200, 25));
+
+        jLabel7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel7.setText("Student type");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 110, 25));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -231,45 +387,20 @@ public class FrmNewStudent extends javax.swing.JDialog {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("Student Name(Lao)");
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, 25));
-
-        jLabel4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Gender");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 90, 110, 25));
         jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 75, 200, 10));
 
-        jComboBox2.setEditable(true);
-        jComboBox2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 200, 25));
+        jPanel7.setBackground(new java.awt.Color(0, 15, 255));
 
-        jLabel7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Student type");
-        jPanel4.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 110, 25));
-
-        jComboBox1.setEditable(true);
-        jComboBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 90, 200, 25));
-
-        jLabel8.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel8.setText("Phone Number");
-        jPanel4.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 110, 25));
-
-        jTextField5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jTextField5.setBorder(null);
-        jPanel4.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 200, 25));
-        jPanel4.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 155, 200, 10));
-
-        jLabel9.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel9.setText("Phone Number");
-        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 130, 110, 25));
-
-        jTextField6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jTextField6.setBorder(null);
-        jPanel4.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, 200, 25));
-        jPanel4.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 155, 200, 10));
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 6, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -283,7 +414,8 @@ public class FrmNewStudent extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -291,11 +423,13 @@ public class FrmNewStudent extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -353,10 +487,14 @@ public class FrmNewStudent extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
+    private javax.swing.JComboBox<String> jComboBox5;
+    private javax.swing.JComboBox<String> jComboBox6;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
@@ -367,7 +505,16 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -381,20 +528,33 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField10;
+    private javax.swing.JTextField jTextField11;
+    private javax.swing.JTextField jTextField12;
+    private javax.swing.JTextField jTextField13;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblNewStudentTitle;
     // End of variables declaration//GEN-END:variables
 }
