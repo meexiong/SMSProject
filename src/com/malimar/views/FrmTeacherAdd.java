@@ -8,7 +8,9 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.TeacherAddManager;
+import com.malimar.models.TeacherAdd;
 import com.malimar.utils.Border;
+import com.malimar.utils.MsgBox;
 import static com.malimar.utils.ResizeScall.ResizeScall;
 import java.awt.Image;
 import java.io.File;
@@ -19,6 +21,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import org.bson.types.Binary;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
@@ -43,7 +46,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     HashMap<String, Object[]>mapParkStudy= null;
     HashMap<String, Object[]>mapEthnic = null;
     HashMap<String, Object[]>mapRegion = null;
+    
     TeacherAddManager tam = new TeacherAddManager();
+    TeacherAdd ta = new TeacherAdd();
+    
+    Image ic;
     
     public FrmTeacherAdd(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -780,7 +787,30 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        
+        try {
+            if (txtnameL1.getText().equals("")||txtnameL2.getText().equals("")){
+                MsgBox.msgError();
+                return;
+            }
+            
+//            File ff = new File(path);
+//            FileInputStream fis = new FileInputStream(ff);
+//            int len = (int) ff.length();
+            //p.setBinaryStream(14, fis, len);
+                                    
+            if (txtID.getText().equals("New")){ //This is insert tbl_teacher
+                sql = "Inser into tbl_teacher () values (?)";
+                ta.setTname_l1(txtnameL1.getText());
+                ta.setTname_l2(txtnameL2.getText());
+                
+                
+                
+            }
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
@@ -809,7 +839,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             choose.showOpenDialog(null);
             path = choose.getSelectedFile().getAbsolutePath();
             Image img = new ImageIcon(path).getImage();
-            Image ic = ResizeScall(img, lbl_image.getWidth(), lbl_image.getHeight());
+            ic = ResizeScall(img, lbl_image.getWidth(), lbl_image.getHeight());
             lbl_image.setIcon(new ImageIcon(ic));
             
         } catch (Exception e) {

@@ -6,6 +6,7 @@
 package com.malimar.models;
 
 import ij.plugin.filter.Binary;
+import java.awt.Image;
 import java.util.Date;
 
 /**
@@ -22,8 +23,7 @@ public class TeacherAdd {
     String tPhone1;
     String tPhone2;
     String tEmail;
-    int CLSID;
-    Binary t_img;
+    int CLSID;       
     int ntid;
     int etid;
     int reid;
@@ -73,10 +73,6 @@ public class TeacherAdd {
 
     public void setCLSID(int CLSID) {
         this.CLSID = CLSID;
-    }
-
-    public void setT_img(Binary t_img) {
-        this.t_img = t_img;
     }
 
     public void setNtid(int ntid) {
@@ -159,9 +155,6 @@ public class TeacherAdd {
         return CLSID;
     }
 
-    public Binary getT_img() {
-        return t_img;
-    }
 
     public int getNtid() {
         return ntid;
