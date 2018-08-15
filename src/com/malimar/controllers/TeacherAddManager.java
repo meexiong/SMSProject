@@ -107,5 +107,22 @@ public class TeacherAddManager {
         }
         return null;
     }
+    public HashMap<String, Object[]>getMapRegion(){
+        try {
+            HashMap<String, Object[]>map = new HashMap();
+            sql = "select reid, re_name_l1, re_name_l2 from tbl_Region\n" +
+                "order by REID";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                map.put(rs.getString("Re_name_"+ LangType +""), new Object[]{rs.getString("reid"), rs.getString("re_name_l1"), rs.getString("Re_name_L2")});
+            }
+            rs.close();
+            return map;
+            
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    
     
 }

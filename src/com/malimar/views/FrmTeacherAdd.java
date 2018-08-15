@@ -33,7 +33,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     HashMap<String, Object[]>mapInternationality= null;
     HashMap<String, Object[]>mapParkStudy= null;
     HashMap<String, Object[]>mapEthnic = null;
-    
+    HashMap<String, Object[]>mapRegion = null;
     TeacherAddManager tam = new TeacherAddManager();
     
     public FrmTeacherAdd(java.awt.Frame parent, boolean modal) {
@@ -131,7 +131,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     }
     private void getParkSchool(){
         try {
-            mapParkStudy = tam.getMapClassRoom();
+            mapParkStudy = tam.getParkSchool();
             Map<String, Object[]>smap = new TreeMap<>(mapParkStudy);
             cbbpark.removeAllItems();
             smap.keySet().forEach((s)->{
@@ -155,6 +155,19 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             cbbEthnic.setSelectedIndex(-1);
             AutoCompleteDecorator.decorate(cbbEthnic);
             
+        } catch (Exception e) {
+        }
+    }
+    private void getRegion(){
+        try {
+            mapRegion = tam.getMapRegion();
+            Map<String, Object[]>smap = new TreeMap<>(mapRegion);
+            cbbregion.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbregion.addItem(s);
+            });
+            cbbregion.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbroom);
         } catch (Exception e) {
         }
     }
@@ -769,6 +782,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             getNationality();
             getParkSchool();
             getEthnic();
+            getRegion();
             
             
         } catch (Exception e) {
