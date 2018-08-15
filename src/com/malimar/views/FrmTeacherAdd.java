@@ -28,6 +28,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     String frm, sql;
     
     HashMap<String, Object[]>mapGender = null;
+    HashMap<String, Object[]>mapWorkStatus = null;
+    HashMap<String, Object[]>mapClassRoom = null;
+    HashMap<String, Object[]>mapInternationality= null;
+    HashMap<String, Object[]>mapParkStudy= null;
+    HashMap<String, Object[]>mapEthnic = null;
     
     TeacherAddManager tam = new TeacherAddManager();
     
@@ -81,6 +86,76 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    private void getWorkStatus(){
+        try {
+            mapWorkStatus = tam.getMapWorkStatus();
+            Map<String, Object[]> smap = new TreeMap<>(mapWorkStatus);
+            cbbworkstatus.removeAllItems();
+            smap.keySet().forEach((s)->{
+                cbbworkstatus.addItem(s);
+            });
+            cbbworkstatus.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbworkstatus);
+        } catch (Exception e) {
+        }
+    }
+    private void getClassRoom(){
+        try {
+            mapClassRoom = tam.getMapClassRoom();
+            Map<String, Object[]>smap = new TreeMap<>(mapClassRoom);
+            cbbroom.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbroom.addItem(s);
+            });
+            cbbroom.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbroom);
+            
+        } catch (Exception e) {
+        }
+    }
+    private void getNationality(){
+        try {
+            mapInternationality = tam.getMapNationality();
+            Map<String, Object[]>smap = new TreeMap<>(mapInternationality);
+            cbbNationality.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbNationality.addItem(s);
+            });
+            cbbNationality.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbNationality);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void getParkSchool(){
+        try {
+            mapParkStudy = tam.getMapClassRoom();
+            Map<String, Object[]>smap = new TreeMap<>(mapParkStudy);
+            cbbpark.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbpark.addItem(s);
+            });
+            cbbpark.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbpark);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void getEthnic(){
+        try {
+            mapEthnic = tam.getMapEthnic();
+            Map<String, Object[]> smap = new TreeMap<>(mapEthnic);
+            cbbEthnic.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbEthnic.addItem(s);
+            });
+            cbbEthnic.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbEthnic);
+            
+        } catch (Exception e) {
         }
     }
 
@@ -300,11 +375,13 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblgender.setText("Gender");
 
         cbbGender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbGender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblworkstatus.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblworkstatus.setText("Work Status");
 
         cbbworkstatus.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbworkstatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         txtemail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtemail.setBorder(null);
@@ -361,21 +438,25 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblclassroom.setText("Class Room");
 
         cbbroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblnationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblnationality.setText("Nationality");
 
         cbbNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbNationality.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblethnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblethnic.setText("Ethnic");
 
         cbbEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbEthnic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblRegion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblRegion.setText("Region");
 
         cbbregion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbregion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblLeaveDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblLeaveDate.setText("Leave Date");
@@ -384,6 +465,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblparkteach.setText("Park Teach");
 
         cbbpark.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbpark.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblAddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblAddress.setText("Address");
@@ -682,6 +764,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             getGender();
+            getWorkStatus();
+            getClassRoom();
+            getNationality();
+            getParkSchool();
+            getEthnic();
             
             
         } catch (Exception e) {

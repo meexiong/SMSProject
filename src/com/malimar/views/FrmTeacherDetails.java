@@ -35,7 +35,8 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         btnNew.setText(LabelManager.hmapLang.get("btnNew".concat(frm).toUpperCase())[LabelManager.LN]);
         btnRefresh.setText(LabelManager.hmapLang.get("btnRefresh".concat(frm).toUpperCase())[LabelManager.LN]);
         
-        
+        Border.blueColor(btnNew);
+        Border.blueColor(btnRefresh);
         
     }
 
@@ -297,7 +298,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnNewMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseMoved
-        Border.blueColor(btnNew);
+        
     }//GEN-LAST:event_btnNewMouseMoved
 
     private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
