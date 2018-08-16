@@ -276,7 +276,8 @@ public class FrmStudent extends javax.swing.JFrame {
         if(evt.getModifiers()==6){
             LabelManager.WindowChangeLabel("btnNew", frm);
         }else{
-           
+           FrmNewStudent frmNewSTD = new FrmNewStudent(this, rootPaneCheckingEnabled);
+           frmNewSTD.setVisible(true);
         }
     }//GEN-LAST:event_btnNewMouseClicked
 
