@@ -188,11 +188,11 @@ public class TeacherAddManager {
             p.setInt(15, ta.getPSID());
             p.setString(16, ta.getT_address());
             p.setBoolean(17, ta.gettWorking());
-            p.setBoolean(18, ta.gettDailyTeach());
+            p.setBoolean(18, ta.gettDailyTeach());            
             p.setDate(19, (Date) ta.getT_Startdate());
-            p.setDate(20, (Date) ta.getT_EndDate());
-            p.setString(21, ta.getT_moreinfo());
-            
+            p.setString(20, ta.getT_moreinfo());            
+            p.setDate(21, (Date) ta.getT_EndDate());     
+           
             if (ta.getPath() != null) {
                 File ff = new File(ta.getPath());
                 FileInputStream fis = new FileInputStream(ff);

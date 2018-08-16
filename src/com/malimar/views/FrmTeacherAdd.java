@@ -24,6 +24,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import org.bson.types.Binary;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
+import java.util.Date;
 
 /**
  *
@@ -87,7 +88,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblgender.setText(LabelManager.hmapLang.get("lblgender".concat(frm).toUpperCase())[LabelManager.LN]);
         lblworkstatus.setText(LabelManager.hmapLang.get("lblWorkstatus".concat(frm).toUpperCase())[LabelManager.LN]);
         btnNew.setText(LabelManager.hmapLang.get("btnNew".concat(frm).toUpperCase())[LabelManager.LN]);       
-        
+        lbltnbr.setText(LabelManager.hmapLang.get("lbltnbr".concat(frm).toUpperCase())[LabelManager.LN]);  
     }
     private void getGender(){
         try {
@@ -275,6 +276,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         txtMoreInfo = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         btnNew = new javax.swing.JLabel();
+        lbltnbr = new javax.swing.JLabel();
+        txtt_nbr = new javax.swing.JTextField();
+        jSeparator9 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -483,7 +487,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 .addComponent(cbWorking)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbTeachDaily)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         lblphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -557,22 +561,52 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             }
         });
 
+        lbltnbr.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lbltnbr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbltnbr.setText("Number");
+
+        txtt_nbr.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        txtt_nbr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtt_nbr.setText("0");
+        txtt_nbr.setBorder(null);
+        txtt_nbr.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtt_nbr.setOpaque(false);
+        txtt_nbr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtt_nbrMouseClicked(evt);
+            }
+        });
+        txtt_nbr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtt_nbrActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(2, 2, 2)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(2, 2, 2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbltnbr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtt_nbr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(jPanel7Layout.createSequentialGroup()
@@ -691,10 +725,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(193, 193, 193)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(lblphone2)
@@ -705,8 +738,18 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(lblclassroom)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbbroom, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cbbroom, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addComponent(lbltnbr)
+                                .addGap(1, 1, 1)
+                                .addComponent(txtt_nbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel7Layout.createSequentialGroup()
                                         .addComponent(lblnationality)
@@ -746,7 +789,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(leaveDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -869,7 +912,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.settDailyTeach(cbTeachDaily.isSelected());
                 ta.settWorking(cbWorking.isSelected());
                 ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));
+                
                 ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));
+               
                 ta.setT_moreinfo(txtMoreInfo.getText());
                 
                 tam.insertTeacher(ta);
@@ -887,14 +932,18 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            getGender();
-            getWorkStatus();
-            getClassRoom();
-            getNationality();
-            getParkSchool();
-            getEthnic();
-            getRegion();
-            
+            if (ta.getTeid()==0){
+                getGender();
+                getWorkStatus();
+                getClassRoom();
+                getNationality();
+                getParkSchool();
+                getEthnic();
+                getRegion();
+            }else{
+                //this is 
+                
+            }
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -933,6 +982,14 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private void btnNewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNewMouseExited
+
+    private void txtt_nbrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtt_nbrMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtt_nbrMouseClicked
+
+    private void txtt_nbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtt_nbrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtt_nbrActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1008,6 +1065,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JLabel lblAddress;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblLeaveDate;
@@ -1027,6 +1085,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JLabel lblphone1;
     private javax.swing.JLabel lblphone2;
     private javax.swing.JLabel lblstartwork;
+    private javax.swing.JLabel lbltnbr;
     private javax.swing.JLabel lblworkstatus;
     private com.toedter.calendar.JDateChooser leaveDate;
     private com.toedter.calendar.JDateChooser startwork;
@@ -1038,5 +1097,6 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JTextField txtnameL2;
     private javax.swing.JTextField txtphone1;
     private javax.swing.JTextField txtphone2;
+    private javax.swing.JTextField txtt_nbr;
     // End of variables declaration//GEN-END:variables
 }

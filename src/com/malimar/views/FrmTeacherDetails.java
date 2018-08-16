@@ -7,11 +7,16 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.TeacherAddManager;
 import com.malimar.controllers.TeacherDetailsManager;
+import com.malimar.models.TeacherAdd;
 import com.malimar.utils.Border;
 import java.awt.Font;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -27,6 +32,8 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     
     TeacherDetailsManager tdm = new TeacherDetailsManager();
+    TeacherAdd  ta = new TeacherAdd();
+    TeacherAddManager tad = new TeacherAddManager();
     
     public FrmTeacherDetails() {
         initComponents();
@@ -42,6 +49,16 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
           Border.blueColor(btnNew);
           Border.blueColor(btnRefresh);
         
+          JTableHeader th = jTable1.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            jTable1.getColumnCount();
+            for(int i=0; i < jTable1.getColumnCount(); i++){
+                TableColumn tc = tcm.getColumn(i);            
+                tc.setHeaderValue(LabelManager.hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LabelManager.LN]);                
+            }
+               jTable1.setAutoCreateRowSorter(true);
+            th.repaint();
+            
     }
 
     /**
@@ -160,7 +177,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true, true, true, true, true, true, true, true, true, true
+                false, false, false, false, true, false, false, false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -179,7 +196,34 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(14).setResizable(false);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(150);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(250);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(250);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(120);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(120);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(80);
+            jTable1.getColumnModel().getColumn(5).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(5).setMaxWidth(150);
+            jTable1.getColumnModel().getColumn(6).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(150);
+            jTable1.getColumnModel().getColumn(7).setMinWidth(200);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(200);
+            jTable1.getColumnModel().getColumn(8).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(8).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(9).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(9).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(10).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(10).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(11).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(12).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(12).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(13).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(13).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(14).setMinWidth(400);
+            jTable1.getColumnModel().getColumn(14).setMaxWidth(400);
         }
 
         jPanel8.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -194,6 +238,11 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
 
         txtSearch.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtSearch.setBorder(null);
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
+        });
 
         btnNew.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnNew.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -238,22 +287,18 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jSeparator2)
-                        .addGap(530, 530, 530))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRefresh, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(lblSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(0, 6, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,7 +353,16 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+        try {
+           if (evt.getClickCount()==2){
+            int index = jTable1.getSelectedRow();
+            ta.setTeid(Integer.parseInt(jTable1.getValueAt(index, 0).toString()));
+            FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled);
+            fa.setVisible(true);
+           }
+            
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void btnNewMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseMoved
@@ -340,7 +394,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnRefresh", frm);
             }else{
-                
+                tdm.showData(jTable1, model);
             }
         } catch (Exception e) {
         }
@@ -366,6 +420,13 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
+        try {
+            tdm.showSearchData(jTable1, model, txtSearch.getText());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_txtSearchKeyPressed
 
     /**
      * @param args the command line arguments

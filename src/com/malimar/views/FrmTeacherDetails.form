@@ -211,27 +211,21 @@
                               <Group type="102" attributes="0">
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jPanel8" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="lblSearch" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jPanel8" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="jSeparator2" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="530" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="txtSearch" min="-2" pref="612" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtSearch" alignment="0" pref="612" max="32767" attributes="0"/>
+                                          </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="btnNew" min="-2" pref="103" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnRefresh" min="-2" pref="103" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="lblSearch" max="32767" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -287,18 +281,18 @@
                                         <Column editable="false" title="t_nbr" type="java.lang.Object"/>
                                         <Column editable="false" title="t_nbr" type="java.lang.Object"/>
                                         <Column editable="false" title="t_name" type="java.lang.Object"/>
-                                        <Column editable="true" title="dob" type="java.lang.Object"/>
+                                        <Column editable="false" title="dob" type="java.lang.Object"/>
                                         <Column editable="true" title="gender" type="java.lang.Object"/>
-                                        <Column editable="true" title="phone1" type="java.lang.Object"/>
-                                        <Column editable="true" title="phone2" type="java.lang.Object"/>
-                                        <Column editable="true" title="email" type="java.lang.Object"/>
-                                        <Column editable="true" title="room" type="java.lang.Object"/>
-                                        <Column editable="true" title="nationality" type="java.lang.Object"/>
-                                        <Column editable="true" title="religion" type="java.lang.Object"/>
-                                        <Column editable="true" title="ethnic" type="java.lang.Object"/>
-                                        <Column editable="true" title="startdate" type="java.lang.Object"/>
-                                        <Column editable="true" title="enddate" type="java.lang.Object"/>
-                                        <Column editable="true" title="moreinfo" type="java.lang.Object"/>
+                                        <Column editable="false" title="phone1" type="java.lang.Object"/>
+                                        <Column editable="false" title="phone2" type="java.lang.Object"/>
+                                        <Column editable="false" title="email" type="java.lang.Object"/>
+                                        <Column editable="false" title="room" type="java.lang.Object"/>
+                                        <Column editable="false" title="nationality" type="java.lang.Object"/>
+                                        <Column editable="false" title="religion" type="java.lang.Object"/>
+                                        <Column editable="false" title="ethnic" type="java.lang.Object"/>
+                                        <Column editable="false" title="startdate" type="java.lang.Object"/>
+                                        <Column editable="false" title="enddate" type="java.lang.Object"/>
+                                        <Column editable="false" title="moreinfo" type="java.lang.Object"/>
                                       </Table>
                                     </Property>
                                     <Property name="autoResizeMode" type="int" value="0"/>
@@ -309,72 +303,72 @@
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="150" minWidth="150" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="80" minWidth="80" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="150" minWidth="150" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="150" minWidth="150" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="200" minWidth="200" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
                                         </Column>
-                                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                        <Column maxWidth="400" minWidth="400" prefWidth="-1" resizable="true">
                                           <Title/>
                                           <Editor/>
                                           <Renderer/>
@@ -417,6 +411,9 @@
                               <Border info="null"/>
                             </Property>
                           </Properties>
+                          <Events>
+                            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSearchKeyPressed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator2">
                         </Component>
