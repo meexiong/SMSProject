@@ -34,6 +34,15 @@ public class TeacherAdd {
     Date t_Startdate;
     Date t_EndDate;
     String t_moreinfo;
+    String path;
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getPath() {
+        return path;
+    }
 
     public void setTeid(int teid) {
         this.teid = teid;

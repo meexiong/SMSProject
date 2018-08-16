@@ -10,6 +10,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.TeacherAddManager;
 import com.malimar.models.TeacherAdd;
 import com.malimar.utils.Border;
+import com.malimar.utils.ConvertDateSQL;
 import com.malimar.utils.MsgBox;
 import static com.malimar.utils.ResizeScall.ResizeScall;
 import java.awt.Image;
@@ -79,8 +80,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblRegion.setText(LabelManager.hmapLang.get("lblregion".concat(frm).toUpperCase())[LabelManager.LN]);
         lblMoreInfo.setText(LabelManager.hmapLang.get("lblmoreinfo".concat(frm).toUpperCase())[LabelManager.LN]);
         lblLeaveDate.setText(LabelManager.hmapLang.get("lblleavedate".concat(frm).toUpperCase())[LabelManager.LN]);
-        lblWorking.setText(LabelManager.hmapLang.get("lblworking".concat(frm).toUpperCase())[LabelManager.LN]);
-        lblTeachDaily.setText(LabelManager.hmapLang.get("lblteachdaily".concat(frm).toUpperCase())[LabelManager.LN]);
+        cbWorking.setText(LabelManager.hmapLang.get("lblworking".concat(frm).toUpperCase())[LabelManager.LN]);
+        cbTeachDaily.setText(LabelManager.hmapLang.get("lblteachdaily".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
         lblgender.setText(LabelManager.hmapLang.get("lblgender".concat(frm).toUpperCase())[LabelManager.LN]);
         lblworkstatus.setText(LabelManager.hmapLang.get("lblWorkstatus".concat(frm).toUpperCase())[LabelManager.LN]);
@@ -233,8 +234,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         txtphone1 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jPanel9 = new javax.swing.JPanel();
-        lblWorking = new javax.swing.JCheckBox();
-        lblTeachDaily = new javax.swing.JCheckBox();
+        cbWorking = new javax.swing.JCheckBox();
+        cbTeachDaily = new javax.swing.JCheckBox();
         lblphone2 = new javax.swing.JLabel();
         txtphone2 = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
@@ -401,8 +402,12 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lbldob.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lbldob.setText("Dob");
 
+        dob.setDateFormatString("dd-MM-yyyy");
+
         lblstartwork.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblstartwork.setText("Start Work");
+
+        startwork.setDateFormatString("dd-MM-yyyy");
 
         lblgender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblgender.setText("Gender");
@@ -430,15 +435,15 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblWorking.setBackground(new java.awt.Color(255, 255, 255));
-        lblWorking.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblWorking.setText("Working");
-        lblWorking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbWorking.setBackground(new java.awt.Color(255, 255, 255));
+        cbWorking.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbWorking.setText("Working");
+        cbWorking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblTeachDaily.setBackground(new java.awt.Color(255, 255, 255));
-        lblTeachDaily.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblTeachDaily.setText("Teach Daily");
-        lblTeachDaily.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbTeachDaily.setBackground(new java.awt.Color(255, 255, 255));
+        cbTeachDaily.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbTeachDaily.setText("Teach Daily");
+        cbTeachDaily.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -447,17 +452,17 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblWorking, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTeachDaily, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
+                    .addComponent(cbWorking, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cbTeachDaily, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblWorking)
+                .addComponent(cbWorking)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblTeachDaily)
+                .addComponent(cbTeachDaily)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -493,6 +498,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
         lblLeaveDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblLeaveDate.setText("Leave Date");
+
+        leaveDate.setDateFormatString("dd-MM-yyyy");
 
         lblparkteach.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblparkteach.setText("Park Teach");
@@ -792,19 +799,38 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 MsgBox.msgError();
                 return;
             }
-            
-//            File ff = new File(path);
-//            FileInputStream fis = new FileInputStream(ff);
-//            int len = (int) ff.length();
-            //p.setBinaryStream(14, fis, len);
-                                    
-            if (txtID.getText().equals("New")){ //This is insert tbl_teacher
-                sql = "Inser into tbl_teacher () values (?)";
+             String workid = cbbworkstatus.getSelectedItem().toString();
+             String clsid = cbbroom.getSelectedItem().toString();
+             String ntid = cbbNationality.getSelectedItem().toString();
+             String etid = cbbEthnic.getSelectedItem().toString();
+             String reid = cbbregion.getSelectedItem().toString();
+             String psid = cbbpark.getSelectedItem().toString();
+             String genid = cbbGender.getSelectedItem().toString();
+             
+             
+            if (txtID.getText().equals("New")){ //This is insert tbl_teacher                
                 ta.setTname_l1(txtnameL1.getText());
                 ta.setTname_l2(txtnameL2.getText());
+                ta.setDob(ConvertDateSQL.convertUtilDateToSqlDate(dob.getDate()));
+                ta.setWorkid(Integer.parseInt(mapWorkStatus.get(workid)[0].toString()));
+                ta.settPhone1(txtphone1.getText());
+                ta.settPhone2(txtphone2.getText());
+                ta.settEmail(txtemail.getText());
+                ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));
+                ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));
+                ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
+                ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
+                ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
+                ta.setPSID(Integer.parseInt(mapParkStudy.get(psid)[0].toString()));
+                ta.setPath(path);
+                ta.setT_address(txtaddress.getText());
+                ta.settDailyTeach(cbTeachDaily.isSelected());
+                ta.settWorking(cbWorking.isSelected());
+                ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));
+                ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));
+                ta.setT_moreinfo(txtMoreInfo.getText());
                 
-                
-                
+                tam.insertTeacher(ta);
             }
             
             
@@ -841,6 +867,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             Image img = new ImageIcon(path).getImage();
             ic = ResizeScall(img, lbl_image.getWidth(), lbl_image.getHeight());
             lbl_image.setIcon(new ImageIcon(ic));
+           
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -893,6 +920,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
+    private javax.swing.JCheckBox cbTeachDaily;
+    private javax.swing.JCheckBox cbWorking;
     private javax.swing.JComboBox<String> cbbEthnic;
     private javax.swing.JComboBox<String> cbbGender;
     private javax.swing.JComboBox<String> cbbNationality;
@@ -924,10 +953,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JLabel lblMoreInfo;
     private javax.swing.JLabel lblRegion;
     private javax.swing.JLabel lblSystemInfo;
-    private javax.swing.JCheckBox lblTeachDaily;
     private javax.swing.JLabel lblTeachL1;
     private javax.swing.JLabel lblTeachL2;
-    private javax.swing.JCheckBox lblWorking;
     private javax.swing.JLabel lbl_image;
     private javax.swing.JLabel lblclassroom;
     private javax.swing.JLabel lbldob;

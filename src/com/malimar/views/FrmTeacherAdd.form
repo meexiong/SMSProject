@@ -628,6 +628,9 @@
                           </Properties>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="dob">
+                          <Properties>
+                            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblstartwork">
                           <Properties>
@@ -638,6 +641,9 @@
                           </Properties>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="startwork">
+                          <Properties>
+                            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblgender">
                           <Properties>
@@ -740,8 +746,8 @@
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="lblWorking" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblTeachDaily" alignment="1" pref="170" max="32767" attributes="0"/>
+                                          <Component id="cbWorking" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="cbTeachDaily" alignment="1" pref="170" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -751,16 +757,16 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblWorking" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbWorking" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblTeachDaily" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbTeachDaily" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JCheckBox" name="lblWorking">
+                            <Component class="javax.swing.JCheckBox" name="cbWorking">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -774,7 +780,7 @@
                                 </Property>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JCheckBox" name="lblTeachDaily">
+                            <Component class="javax.swing.JCheckBox" name="cbTeachDaily">
                               <Properties>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -915,6 +921,9 @@
                           </Properties>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="leaveDate">
+                          <Properties>
+                            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+                          </Properties>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblparkteach">
                           <Properties>
