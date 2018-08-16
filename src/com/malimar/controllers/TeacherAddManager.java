@@ -125,7 +125,7 @@ public class TeacherAddManager {
     public HashMap<String, Object[]> getMapRegion() {
         try {
             HashMap<String, Object[]> map = new HashMap();
-            sql = "select reid, re_name_l1, re_name_l2 from tbl_Region\n"
+            sql = "select reid, re_name_l1, re_name_l2 from tbl_Religion\n"
                     + "order by REID";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()) {
