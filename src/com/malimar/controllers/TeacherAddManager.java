@@ -9,6 +9,8 @@ import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.TeacherAdd;
 import com.malimar.utils.ConvertDateSQL;
 import com.malimar.utils.MsgBox;
+import com.malimar.views.FrmTeacherAdd;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.Connection;
@@ -17,6 +19,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -26,6 +29,7 @@ public class TeacherAddManager {
 
     Connection c = DatabaseManagerSQL.getConnection();
     String sql;
+    TeacherAdd tas= new TeacherAdd();
 
     public HashMap<String, Object[]> getMapGender() {
         try {
@@ -210,6 +214,46 @@ public class TeacherAddManager {
             e.printStackTrace();
         }
         return false;
+    }
+    
+     public void showOpenClickTable(int x){
+        try {
+            sql = "select * from tbl_teacher where teid = "+ x +" order by T_Nbr";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            if (rs.next()){
+                tas.setT_nbr(rs.getString("t_nbr"));
+                tas.setTname_l1(rs.getString("t_name_l1"));
+                tas.setTname_l2(rs.getString("T_name_l2"));
+                tas.setDob(rs.getDate("T_DOB"));
+                tas.setGenid(rs.getInt("genid"));
+                tas.setWorkid(rs.getInt("Workid"));
+                tas.settPhone1(rs.getString("tphone1"));
+                tas.settPhone2(rs.getString("tPhone2"));
+                tas.settEmail(rs.getString("temail"));
+                tas.setCLSID(rs.getInt("clsid"));
+                tas.setNtid(rs.getInt("ntid"));
+                tas.setEtid(rs.getInt("etid"));
+                tas.setReid(rs.getInt("reid"));
+                tas.setPSID(rs.getInt("PSID"));
+                tas.setT_address(rs.getString("t_address"));
+                tas.settWorking(rs.getBoolean("t_working"));
+                tas.settDailyTeach(rs.getBoolean("t_dailyteach"));
+                tas.setT_Startdate(rs.getDate("t_startdate"));
+                tas.setT_EndDate(rs.getDate("t_endDate"));
+                tas.setT_moreinfo(rs.getString("t_moreinfo"));                
+                               
+                ImageIcon format = null;
+                tas.imageB = rs.getBytes("T_img");
+                format = new ImageIcon(tas.imageB);
+                FrmTeacherAdd fa = new FrmTeacherAdd(null, true);
+                Image ic = format.getImage().getScaledInstance(fa.lbl_image.getWidth(), fa.lbl_image.getHeight(), Image.SCALE_DEFAULT);
+                fa.lbl_image.setIcon(new ImageIcon(ic));
+                
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

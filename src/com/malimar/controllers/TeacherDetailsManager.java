@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
 public class TeacherDetailsManager {
     Connection c = DatabaseManagerSQL.getConnection();
     String sql;
-    TeacherAdd ta = new TeacherAdd();
     
     public void showData(JTable table, DefaultTableModel model){
         try {
@@ -56,20 +55,6 @@ public class TeacherDetailsManager {
             table.setModel(model);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-    
-    public void showOpenClickTable(int x){
-        try {
-            sql = "select * from vw_TeacherDetails where teid = "+ x +" order by T_Nbr";
-            ResultSet rs = c.createStatement().executeQuery(sql);
-            if (rs.next()){
-                
-                ta.setTname_l1(rs.getString("t_name_l1"));
-                
-            }
-            
-        } catch (Exception e) {
         }
     }
     

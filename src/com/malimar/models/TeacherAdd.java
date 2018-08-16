@@ -5,9 +5,9 @@
  */
 package com.malimar.models;
 
-import ij.plugin.filter.Binary;
 import java.awt.Image;
 import java.util.Date;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -35,6 +35,25 @@ public class TeacherAdd {
     Date t_EndDate;
     String t_moreinfo;
     String path;
+    String t_nbr;
+    Image img;
+    public byte[] imageB;
+
+    public void setImg(Image img) {
+        this.img = img;
+    }
+
+    public Image getImg() {
+        return img;
+    }
+
+    public String getT_nbr() {
+        return t_nbr;
+    }
+
+    public void setT_nbr(String t_nbr) {
+        this.t_nbr = t_nbr;
+    }
 
     public void setPath(String path) {
         this.path = path;

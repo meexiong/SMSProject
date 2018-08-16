@@ -357,6 +357,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
            if (evt.getClickCount()==2){
             int index = jTable1.getSelectedRow();
             ta.setTeid(Integer.parseInt(jTable1.getValueAt(index, 0).toString()));
+            
             FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled);
             fa.setVisible(true);
            }

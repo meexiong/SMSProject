@@ -942,6 +942,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 getRegion();
             }else{
                 //this is 
+                tam.showOpenClickTable(ta.getTeid());
                 
             }
             
@@ -1074,7 +1075,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JLabel lblTeachL1;
     private javax.swing.JLabel lblTeachL2;
-    private javax.swing.JLabel lbl_image;
+    public static javax.swing.JLabel lbl_image;
     private javax.swing.JLabel lblclassroom;
     private javax.swing.JLabel lbldob;
     private javax.swing.JLabel lblemail;
