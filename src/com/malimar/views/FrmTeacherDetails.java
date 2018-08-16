@@ -7,6 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.TeacherDetailsManager;
 import com.malimar.utils.Border;
 import java.awt.Font;
 import java.sql.Connection;
@@ -25,9 +26,12 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
     String frm, sql;
     DefaultTableModel model = new DefaultTableModel();
     
+    TeacherDetailsManager tdm = new TeacherDetailsManager();
+    
     public FrmTeacherDetails() {
         initComponents();
         frm = this.getClass().getSimpleName();
+        model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
@@ -71,6 +75,11 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -144,14 +153,14 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "lblEthnic_L1", "lblEthnic_L1", "lblEthnic_L2"
+                "t_nbr", "t_nbr", "t_name", "dob", "gender", "phone1", "phone2", "email", "room", "nationality", "religion", "ethnic", "startdate", "enddate", "moreinfo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, true, true, true, true, true, true, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -167,6 +176,11 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTable1.getColumnModel().getColumn(14).setResizable(false);
+        }
 
         jPanel8.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -344,6 +358,14 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_lblSearchMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            tdm.showData(jTable1, model);
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments

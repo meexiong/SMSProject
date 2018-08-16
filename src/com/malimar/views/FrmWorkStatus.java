@@ -226,6 +226,7 @@ public class FrmWorkStatus extends javax.swing.JFrame {
         txtID.setText("New");
         txtID.setBorder(null);
         txtID.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtID.setEnabled(false);
         txtID.setOpaque(false);
         txtID.addMouseListener(new java.awt.event.MouseAdapter() {

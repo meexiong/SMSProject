@@ -265,6 +265,8 @@ public class FrmClass extends javax.swing.JFrame {
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtID.setText("New");
         txtID.setBorder(null);
+        txtID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtID.setOpaque(false);
         txtID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtIDMouseClicked(evt);
