@@ -30,6 +30,9 @@ public class TeacherAddManager {
     Connection c = DatabaseManagerSQL.getConnection();
     String sql;
     TeacherAdd tas= new TeacherAdd();
+    
+    public int clickteid=0;
+    
 
     public HashMap<String, Object[]> getMapGender() {
         try {

@@ -282,7 +282,7 @@
                                         <Column editable="false" title="t_nbr" type="java.lang.Object"/>
                                         <Column editable="false" title="t_name" type="java.lang.Object"/>
                                         <Column editable="false" title="dob" type="java.lang.Object"/>
-                                        <Column editable="true" title="gender" type="java.lang.Object"/>
+                                        <Column editable="false" title="gender" type="java.lang.Object"/>
                                         <Column editable="false" title="phone1" type="java.lang.Object"/>
                                         <Column editable="false" title="phone2" type="java.lang.Object"/>
                                         <Column editable="false" title="email" type="java.lang.Object"/>
