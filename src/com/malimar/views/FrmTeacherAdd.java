@@ -62,6 +62,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         txtnameL1.requestFocus();
         
         Border.blueColor(btnSave);
+        Border.blueColor(btnNew);
         
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
@@ -85,8 +86,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
         lblgender.setText(LabelManager.hmapLang.get("lblgender".concat(frm).toUpperCase())[LabelManager.LN]);
         lblworkstatus.setText(LabelManager.hmapLang.get("lblWorkstatus".concat(frm).toUpperCase())[LabelManager.LN]);
-
-        
+        btnNew.setText(LabelManager.hmapLang.get("btnNew".concat(frm).toUpperCase())[LabelManager.LN]);       
         
     }
     private void getGender(){
@@ -187,6 +187,23 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
+    private void showClear(){
+        try {
+            txtID.setText("New");
+            txtMoreInfo.setText("");
+            txtaddress.setText("");
+            txtemail.setText("");
+            txtnameL1.setText("");
+            txtnameL2.setText("");
+            txtphone1.setText("");
+            txtphone2.setText("");
+            lbl_image.setIcon(null);
+            txtnameL1.requestFocus();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -257,6 +274,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblMoreInfo = new javax.swing.JLabel();
         txtMoreInfo = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
+        btnNew = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -519,6 +537,24 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         txtMoreInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtMoreInfo.setBorder(null);
 
+        btnNew.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnNew.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnNew.setText("New");
+        btnNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnNew.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnNewMouseMoved(evt);
+            }
+        });
+        btnNew.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNewMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNewMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -600,7 +636,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(leaveDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(lblLeaveDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(217, 217, 217))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(104, 104, 104))
                         .addGroup(jPanel7Layout.createSequentialGroup()
                             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -702,7 +740,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                                         .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(2, 2, 2)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(leaveDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -866,13 +906,31 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             path = choose.getSelectedFile().getAbsolutePath();
             Image img = new ImageIcon(path).getImage();
             ic = ResizeScall(img, lbl_image.getWidth(), lbl_image.getHeight());
-            lbl_image.setIcon(new ImageIcon(ic));
-           
+            lbl_image.setIcon(new ImageIcon(ic));           
             
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }//GEN-LAST:event_lbl_imageMouseClicked
+
+    private void btnNewMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewMouseMoved
+
+    private void btnNewMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnNew", frm);
+            }else{
+                showClear();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnNewMouseClicked
+
+    private void btnNewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNewMouseExited
 
     /**
      * @param args the command line arguments
@@ -919,6 +977,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
+    private javax.swing.JLabel btnNew;
     private javax.swing.JLabel btnSave;
     private javax.swing.JCheckBox cbTeachDaily;
     private javax.swing.JCheckBox cbWorking;

@@ -141,7 +141,7 @@ public class TeacherAddManager {
 
     public String getPreFix() {
         try {
-            String query = "Select SystemValue from tbl_SystemSetting where SSIS=2";
+            String query = "Select SystemValue from tbl_SystemSetting where SSID=2";
             ResultSet rs = c.createStatement().executeQuery(query);
             if (rs.next()) {
                 return rs.getString("SystemValue");
@@ -153,7 +153,7 @@ public class TeacherAddManager {
 
     public String getTeacherNumber() {
         try {
-            String query = "Select isnull(Max(SubString(StdNbr,3,9)),0)+1 as MaxID from tbl_Teacher";
+            String query = "Select isnull(Max(SubString(T_Nbr,3,9)),0)+1 as MaxID from tbl_Teacher";
             ResultSet rs = c.createStatement().executeQuery(query);
             if (rs.next()) {
                 String strMaxID = String.valueOf(rs.getInt("MaxID"));

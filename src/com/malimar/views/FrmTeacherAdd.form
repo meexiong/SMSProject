@@ -314,7 +314,9 @@
                                                   <Component id="leaveDate" alignment="0" max="32767" attributes="0"/>
                                                   <Component id="lblLeaveDate" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               </Group>
-                                              <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnNew" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="0" attributes="0">
@@ -445,7 +447,10 @@
                                                   </Group>
                                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="btnSave" min="-2" pref="29" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="3" attributes="0">
+                                                          <Component id="btnSave" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                                          <Component id="btnNew" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
+                                                      </Group>
                                                       <Component id="leaveDate" min="-2" pref="30" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
@@ -988,6 +993,23 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator8">
+                        </Component>
+                        <Component class="javax.swing.JLabel" name="btnNew">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Saysettha OT" size="12" style="1"/>
+                            </Property>
+                            <Property name="horizontalAlignment" type="int" value="0"/>
+                            <Property name="text" type="java.lang.String" value="New"/>
+                            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                              <Color id="Hand Cursor"/>
+                            </Property>
+                          </Properties>
+                          <Events>
+                            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnNewMouseMoved"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNewMouseClicked"/>
+                            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnNewMouseExited"/>
+                          </Events>
                         </Component>
                       </SubComponents>
                     </Container>
