@@ -37,14 +37,14 @@ public class TeacherAdd {
     String path;
     String t_nbr;
     Image img;
-    public byte[] imageB;
+    byte[] imageB;
 
-    public void setImg(Image img) {
-        this.img = img;
+    public void setImageB(byte[] imageB) {
+        this.imageB = imageB;
     }
 
-    public Image getImg() {
-        return img;
+    public byte[] getImageB() {
+        return imageB;
     }
 
     public String getT_nbr() {

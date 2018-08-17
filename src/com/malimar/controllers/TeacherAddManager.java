@@ -32,7 +32,6 @@ public class TeacherAddManager {
 
     Connection c = DatabaseManagerSQL.getConnection();
     String sql;
-    TeacherAdd tas= new TeacherAdd();
     
     public static int clickteid=0;
     
@@ -222,11 +221,11 @@ public class TeacherAddManager {
         return false;
     }
     
-     public void showOpenClickTable(int x){
+     public void showOpenClickTable(TeacherAdd tas, int x){
         try {
             sql = "select * from tbl_teacher where teid = "+ x +" order by T_Nbr";
             ResultSet rs = c.createStatement().executeQuery(sql);
-            if (rs.next()){
+            if (rs.next()){                
                 tas.setT_nbr(rs.getString("t_nbr"));
                 tas.setTname_l1(rs.getString("t_name_l1"));
                 tas.setTname_l2(rs.getString("T_name_l2"));
@@ -248,12 +247,7 @@ public class TeacherAddManager {
                 tas.setT_EndDate(rs.getDate("t_endDate"));
                 tas.setT_moreinfo(rs.getString("t_moreinfo"));                
                                
-                ImageIcon format = null;
-                tas.imageB = rs.getBytes("T_img");
-                format = new ImageIcon(tas.imageB);
-                FrmTeacherAdd fa = new FrmTeacherAdd(null, true,null);
-                Image ic = format.getImage().getScaledInstance(fa.lbl_image.getWidth(), fa.lbl_image.getHeight(), Image.SCALE_DEFAULT);
-                fa.lbl_image.setIcon(new ImageIcon(ic));
+                tas.setImageB(rs.getBytes("T_img"));
                 
             }
             

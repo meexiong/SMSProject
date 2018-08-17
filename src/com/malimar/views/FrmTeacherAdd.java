@@ -54,6 +54,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     
     Image ic;
     String tcID;
+    String ids;
+    
     public FrmTeacherAdd(java.awt.Frame parent, boolean modal, String id) {
         super(parent, modal);
         initComponents();
@@ -61,7 +63,10 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         
         txtID.setEnabled(false);
         txtnameL1.requestFocus();
+        
         txtID.setText(id);
+        ids = id;
+        
         Border.blueColor(btnSave);
         Border.blueColor(btnNew);
         
@@ -932,7 +937,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {   
-            if (TeacherAddManager.clickteid==0){
+            if (ids.equals("0")){
                 getGender();
                 getWorkStatus();
                 getClassRoom();
@@ -941,9 +946,29 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 getEthnic();
                 getRegion();
             }else{
-                //this is 
+                //this is         
+                tam.showOpenClickTable(ta, Integer.parseInt(txtID.getText()));
+                txtt_nbr.setText(ta.getT_nbr());
+                txtnameL1.setText(ta.getTname_l1());
+                txtnameL2.setText(ta.getTname_l2());
+                txtemail.setText(ta.gettEmail());
+                txtphone1.setText(ta.gettPhone1());
+                txtphone2.setText(ta.gettPhone2());
+                txtaddress.setText(ta.getT_address());
+                txtMoreInfo.setText(ta.getT_moreinfo());
+                cbWorking.setSelected(ta.gettWorking());
+                cbTeachDaily.setSelected(ta.gettDailyTeach());
+                dob.setDate(ta.getDob());
+                startwork.setDate(ta.getT_Startdate());
+                leaveDate.setDate(ta.getT_EndDate());
                 
-                tam.showOpenClickTable(Integer.parseInt(txtID.getText()));                 
+                ImageIcon format =null;
+                format = new ImageIcon(ta.getImageB());
+                Image ic = format.getImage().getScaledInstance(lbl_image.getWidth(), lbl_image.getHeight(), Image.SCALE_DEFAULT);
+                lbl_image.setIcon(new ImageIcon(ic));
+                
+                
+                
             }
             
         } catch (Exception e) {

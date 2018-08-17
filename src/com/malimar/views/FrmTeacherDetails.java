@@ -43,18 +43,18 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         btnNew.setText(LabelManager.hmapLang.get("btnNew".concat(frm).toUpperCase())[LabelManager.LN]);
         btnRefresh.setText(LabelManager.hmapLang.get("btnRefresh".concat(frm).toUpperCase())[LabelManager.LN]);
         
-          Border.blueColor(btnNew);
-          Border.blueColor(btnRefresh);
-        
-          JTableHeader th = jTable1.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            jTable1.getColumnCount();
-            for(int i=0; i < jTable1.getColumnCount(); i++){
-                TableColumn tc = tcm.getColumn(i);            
-                tc.setHeaderValue(LabelManager.hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LabelManager.LN]);                
-            }
-               jTable1.setAutoCreateRowSorter(true);
-            th.repaint();
+      Border.blueColor(btnNew);
+      Border.blueColor(btnRefresh);
+
+      JTableHeader th = jTable1.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        jTable1.getColumnCount();
+        for(int i=0; i < jTable1.getColumnCount(); i++){
+            TableColumn tc = tcm.getColumn(i);            
+            tc.setHeaderValue(LabelManager.hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LabelManager.LN]);                
+        }
+           jTable1.setAutoCreateRowSorter(true);
+        th.repaint();
             
     }
 
@@ -355,7 +355,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             int index = jTable1.getSelectedRow();
             String id= jTable1.getValueAt(index, 0).toString();
             
-            FrmTeacherAdd fa = new FrmTeacherAdd(null, true,id);
+            FrmTeacherAdd fa = new FrmTeacherAdd(null, true, id);
             fa.setVisible(true);
            }
             
@@ -372,7 +372,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnNew", frm);
             }else{
-                FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled,"New");
+                FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled, "New");
                 fa.setVisible(true);
             }
         } catch (Exception e) {
