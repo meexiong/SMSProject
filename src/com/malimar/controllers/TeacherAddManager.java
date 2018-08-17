@@ -9,6 +9,7 @@ import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.TeacherAdd;
 import com.malimar.utils.ConvertDateSQL;
 import com.malimar.utils.MsgBox;
+import com.malimar.utils.RemoveTableIndex;
 import com.malimar.views.FrmTeacherAdd;
 import java.awt.Image;
 import java.io.File;
@@ -20,6 +21,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -248,7 +251,7 @@ public class TeacherAddManager {
                 ImageIcon format = null;
                 tas.imageB = rs.getBytes("T_img");
                 format = new ImageIcon(tas.imageB);
-                FrmTeacherAdd fa = new FrmTeacherAdd(null, true);
+                FrmTeacherAdd fa = new FrmTeacherAdd(null, true,null);
                 Image ic = format.getImage().getScaledInstance(fa.lbl_image.getWidth(), fa.lbl_image.getHeight(), Image.SCALE_DEFAULT);
                 fa.lbl_image.setIcon(new ImageIcon(ic));
                 
@@ -258,5 +261,44 @@ public class TeacherAddManager {
             e.printStackTrace();
         }
     }
+     
+     
+     public void showDatas(JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "select teid, t_nbr, t_name_"+ LangType +" AS tname, dob, gen_"+ LangType +" AS gender, tphone1, tphone2, temail, clname_"+ LangType +" AS classlevel, nt_name_"+ LangType +" AS nationality, "
+                    + "re_name_"+ LangType +" AS religion, et_name_"+ LangType +" AS ethnic, startdate, enddate, t_moreinfo\n" +
+                    "from vw_TeacherDetails where T_Working = 1\n" +
+                    "order by T_Nbr";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("teid"), rs.getString("t_nbr"), rs.getString("tname"), rs.getString("dob"), rs.getString("gender"), rs.getString("tphone1"), rs.getString("tPhone2"), rs.getString("temail"), rs.getString("classlevel"), rs.getString("nationality"), 
+                rs.getString("religion"), rs.getString("ethnic"), rs.getString("startDate"), rs.getString("enddate"), rs.getString("t_moreinfo")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showSearchData(JTable table, DefaultTableModel model, String txt){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "select teid, t_nbr, t_name_"+ LangType +" AS tname, dob, gen_"+ LangType +" AS gender, tphone1, tphone2, temail, clname_"+ LangType +" AS classlevel, nt_name_"+ LangType +" AS nationality, "
+                    + "re_name_"+ LangType +" AS religion, et_name_"+ LangType +" AS ethnic, startdate, enddate, t_moreinfo\n" +
+                    "from vw_TeacherDetails where t_nbr like N'"+ txt +"%' or t_name_L1 like N'"+ txt +"%' or t_name_L2 like N'"+ txt +"%' or "
+                    + "tphone1 like N'"+ txt +"%' or tphone2 like N'"+ txt +"%' or temail like N'"+ txt +"%' or t_moreinfo like N'"+ txt +"%'\n" +
+                    "order by T_Nbr";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("teid"), rs.getString("t_nbr"), rs.getString("tname"), rs.getString("dob"), rs.getString("gender"), rs.getString("tphone1"), rs.getString("tPhone2"), rs.getString("temail"), rs.getString("classlevel"), rs.getString("nationality"), 
+                rs.getString("religion"), rs.getString("ethnic"), rs.getString("startDate"), rs.getString("enddate"), rs.getString("t_moreinfo")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+     
 
 }

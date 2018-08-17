@@ -53,15 +53,15 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     TeacherAdd ta = new TeacherAdd();
     
     Image ic;
-    
-    public FrmTeacherAdd(java.awt.Frame parent, boolean modal) {
+    String tcID;
+    public FrmTeacherAdd(java.awt.Frame parent, boolean modal, String id) {
         super(parent, modal);
         initComponents();
         frm = this.getClass().getSimpleName();
         
         txtID.setEnabled(false);
         txtnameL1.requestFocus();
-        
+        txtID.setText(id);
         Border.blueColor(btnSave);
         Border.blueColor(btnNew);
         
@@ -942,11 +942,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 getRegion();
             }else{
                 //this is 
-                txtID.setText(String.valueOf(tam.clickteid));
-                tam.showOpenClickTable(Integer.parseInt(txtID.getText()));
-                txtnameL1.setText(ta.getTname_l1());   
                 
-                
+                tam.showOpenClickTable(Integer.parseInt(txtID.getText()));                 
             }
             
         } catch (Exception e) {
@@ -1025,7 +1022,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmTeacherAdd dialog = new FrmTeacherAdd(new javax.swing.JFrame(), true);
+                FrmTeacherAdd dialog = new FrmTeacherAdd(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

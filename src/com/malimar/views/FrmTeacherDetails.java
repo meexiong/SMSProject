@@ -8,7 +8,6 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.TeacherAddManager;
-import com.malimar.controllers.TeacherDetailsManager;
 import com.malimar.models.TeacherAdd;
 import com.malimar.utils.Border;
 import java.awt.Font;
@@ -31,8 +30,6 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
     String frm, sql;
     DefaultTableModel model = new DefaultTableModel();
     
-    TeacherDetailsManager tdm = new TeacherDetailsManager();
-    TeacherAdd  ta = new TeacherAdd();
     TeacherAddManager tad = new TeacherAddManager();
     
     public FrmTeacherDetails() {
@@ -356,12 +353,9 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         try {
            if (evt.getClickCount()==2){
             int index = jTable1.getSelectedRow();
-            //TeacherAddManager tam = new TeacherAddManager();
-            TeacherAddManager.clickteid = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
-//            FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled);
-//            fa.setVisible(true);
-//            
-            FrmTeacherAdd fa = new FrmTeacherAdd(null, true);
+            String id= jTable1.getValueAt(index, 0).toString();
+            
+            FrmTeacherAdd fa = new FrmTeacherAdd(null, true,id);
             fa.setVisible(true);
            }
             
@@ -378,7 +372,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnNew", frm);
             }else{
-                FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled);
+                FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled,"New");
                 fa.setVisible(true);
             }
         } catch (Exception e) {
@@ -398,7 +392,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnRefresh", frm);
             }else{
-                tdm.showData(jTable1, model);
+                tad.showDatas(jTable1, model);
             }
         } catch (Exception e) {
         }
@@ -419,7 +413,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            tdm.showData(jTable1, model);
+            tad.showDatas(jTable1, model);
             
         } catch (Exception e) {
         }
@@ -427,7 +421,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyPressed
         try {
-            tdm.showSearchData(jTable1, model, txtSearch.getText());
+            tad.showSearchData(jTable1, model, txtSearch.getText());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_txtSearchKeyPressed
