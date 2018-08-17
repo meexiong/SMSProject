@@ -31,7 +31,7 @@ public class TeacherAddManager {
     String sql;
     TeacherAdd tas= new TeacherAdd();
     
-    public int clickteid=0;
+    public static int clickteid=0;
     
 
     public HashMap<String, Object[]> getMapGender() {

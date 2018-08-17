@@ -356,13 +356,13 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         try {
            if (evt.getClickCount()==2){
             int index = jTable1.getSelectedRow();
-            TeacherAddManager tam = new TeacherAddManager();
-            tam.clickteid = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
-            FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled);
-            fa.setVisible(true);
-//            
-//            FrmTeacherAdd fa = new FrmTeacherAdd(null, true);
+            //TeacherAddManager tam = new TeacherAddManager();
+            TeacherAddManager.clickteid = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
+//            FrmTeacherAdd fa = new FrmTeacherAdd(this, rootPaneCheckingEnabled);
 //            fa.setVisible(true);
+//            
+            FrmTeacherAdd fa = new FrmTeacherAdd(null, true);
+            fa.setVisible(true);
            }
             
         } catch (Exception e) {

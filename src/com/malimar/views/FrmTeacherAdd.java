@@ -932,7 +932,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {   
-            if (tam.clickteid==0){
+            if (TeacherAddManager.clickteid==0){
                 getGender();
                 getWorkStatus();
                 getClassRoom();
@@ -944,7 +944,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 //this is 
                 txtID.setText(String.valueOf(tam.clickteid));
                 tam.showOpenClickTable(Integer.parseInt(txtID.getText()));
-                txtnameL1.setText(ta.getTname_l1());    
+                txtnameL1.setText(ta.getTname_l1());   
+                
                 
             }
             
