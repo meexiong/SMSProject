@@ -25,9 +25,9 @@ public class MsgBox {
 
     public static void msgWarning() {
         if ("L1".equals(LangType)) {
-            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "ລົ້ມເຫຼວ" + "</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "ຂໍ້ມູນຂອງທ່ານບໍ່ພຽງພໍ" + "</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.WARNING_MESSAGE);
         } else {
-            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Failed" + "</font></p></html>", "MESSAGE", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Your Data is not enought" + "</font></p></html>", "MESSAGE", JOptionPane.WARNING_MESSAGE);
         }
     }
     public static void msgError() {

@@ -214,7 +214,68 @@ public class TeacherAddManager {
             p.executeUpdate();
             p.close();
             MsgBox.msgInfo();
+            return true;
 
+        } catch (Exception e) {
+           // e.printStackTrace();
+            MsgBox.msgWarning();
+        }
+        return false;
+    }
+    public boolean updateTeacherAdd(TeacherAdd ta){
+        try {
+            sql = "Update tbl_teacher set T_name_L1=?, T_Name_L2=?, T_dob=?, Genid=?, workid=?, tphone1=?, tphone2=?, temail=?, clsid=?, "
+                    + "ntid=?, etid=?, reid=?, psid=?, t_address=?, T_working=?, t_dailyteach=?, t_Startdate=?, T_moreinfo=?, t_enddate=? where TeID= (?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setString(1, ta.getTname_l1());
+            p.setString(2, ta.getTname_l2());
+            p.setDate(3, (Date) ta.getDob());
+            p.setInt(4, ta.getGenid());
+            p.setInt(5, ta.getWorkid());
+            p.setString(6, ta.gettPhone1());
+            p.setString(7, ta.gettPhone2());
+            p.setString(8, ta.gettEmail());
+            p.setInt(9, ta.getCLSID());
+            p.setInt(10, ta.getNtid());
+            p.setInt(11, ta.getEtid());
+            p.setInt(12, ta.getReid());
+            p.setInt(13, ta.getPSID());
+            p.setString(14, ta.getT_address());
+            p.setBoolean(15, ta.gettWorking());
+            p.setBoolean(16, ta.gettDailyTeach());            
+            p.setDate(17, (Date) ta.getT_Startdate());
+            p.setString(18, ta.getT_moreinfo());            
+            p.setDate(19, (Date) ta.getT_EndDate());                 
+            p.setInt(20, ta.getTeid());
+            
+            p.executeUpdate();
+            p.close();            
+            MsgBox.msgInfo();
+            return true;
+        } catch (Exception e) {
+            //e.printStackTrace();
+            MsgBox.msgWarning();
+        }
+        return false;
+    }
+    public boolean updateImageTeacherAdd(TeacherAdd ta){
+        try {
+            sql = "Update tbl_Teacher set T_img=? where Teid = (?)";
+            PreparedStatement p =c.prepareStatement(sql);
+            if (ta.getPath() != null) {
+                File ff = new File(ta.getPath());
+                FileInputStream fis = new FileInputStream(ff);
+                int len = (int) ff.length();
+                p.setBinaryStream(1, fis, len);
+            } else {
+                p.setNull(1, java.sql.Types.BLOB);
+            }
+            p.setInt(2, ta.getTeid());
+            p.executeUpdate();
+            p.close();
+            MsgBox.msgInfo();
+            return true;
+                        
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -223,7 +284,24 @@ public class TeacherAddManager {
     
      public void showOpenClickTable(TeacherAdd tas, int x){
         try {
-            sql = "select * from tbl_teacher where teid = "+ x +" order by T_Nbr";
+            sql = "select t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +" AS gender, t.tphone1, t.tphone2, t.temail, cs.clname_"+ LangType +" AS classRoom, "
+                    + "n.nt_name_"+ LangType +" AS nationality, r.re_name_"+ LangType +" AS religionname,\n" +
+                    "e.et_name_"+ LangType +" AS ethnicname, t.t_startDate, t.t_endDate, t.t_moreinfo, t.T_Working, t.T_img, t.genid, t.workid, t.clsid, t.t_address, t.t_dailyteach, "
+                    + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +" AS workname, p.PSName_"+ LangType +" AS psname\n" +
+                    "from tbl_Teacher t \n" +
+                    "left join tbl_Gender g on g.Genid = t.genid\n" +
+                    "left join tbl_Nationality n on n.NTID = t.Ntid\n" +
+                    "left join tbl_Ethnic e on e.ETID = t.etid\n" +
+                    "left join tbl_religion r on r.reid = t.reid\n" +
+                    "left join tbl_Class cl on cl.CLID = t.CLSID\n" +
+                    "left join tbl_ClassLevel cs on cs.CLID = cl.CLID "
+                    + "left join tbl_workstatus w on w.workid = t.workid "
+                    + "left join tbl_ParkStudy p on p.psid = t.psid\n" +
+                    "where t.teid = "+ x +" "
+                    + "group by t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +", t.tphone1, t.tphone2, t.temail, cs.clname_"+ LangType +", "
+                    + "n.nt_name_"+ LangType +", r.re_name_"+ LangType +",\n" +
+                    "e.et_name_"+ LangType +", t.t_startDate, t.t_endDate, t.t_moreinfo, t.T_Working, t.T_img, t.genid, t.workid, t.clsid, t.t_address, t.t_dailyteach, "
+                    + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +", p.PSName_"+ LangType +"";
             ResultSet rs = c.createStatement().executeQuery(sql);
             if (rs.next()){                
                 tas.setT_nbr(rs.getString("t_nbr"));
@@ -245,9 +323,16 @@ public class TeacherAddManager {
                 tas.settDailyTeach(rs.getBoolean("t_dailyteach"));
                 tas.setT_Startdate(rs.getDate("t_startdate"));
                 tas.setT_EndDate(rs.getDate("t_endDate"));
-                tas.setT_moreinfo(rs.getString("t_moreinfo"));                
-                               
+                tas.setT_moreinfo(rs.getString("t_moreinfo")); 
                 tas.setImageB(rs.getBytes("T_img"));
+                
+                tas.setGendername(rs.getString("gender"));
+                tas.setClassroom(rs.getString("classRoom"));
+                tas.setNationalityname(rs.getString("nationality"));
+                tas.setRename(rs.getString("religionname"));
+                tas.setEthnicname(rs.getString("ethnicname"));
+                tas.setPSName(rs.getString("psname"));
+                tas.setWorkingname(rs.getString("workname"));
                 
             }
             
@@ -255,8 +340,6 @@ public class TeacherAddManager {
             e.printStackTrace();
         }
     }
-     
-     
      public void showDatas(JTable table, DefaultTableModel model){
         try {
             RemoveTableIndex.removeTable(table, model);
@@ -293,6 +376,4 @@ public class TeacherAddManager {
             e.printStackTrace();
         }
     }
-     
-
 }

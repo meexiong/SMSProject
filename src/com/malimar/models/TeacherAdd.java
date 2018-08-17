@@ -38,6 +38,70 @@ public class TeacherAdd {
     String t_nbr;
     Image img;
     byte[] imageB;
+    
+    String gendername;
+    String classroom;
+    String nationalityname;
+    String ethnicname;
+    String rename;
+    String PSName;
+    String Workingname;
+
+    public void setGendername(String gendername) {
+        this.gendername = gendername;
+    }
+
+    public void setClassroom(String classroom) {
+        this.classroom = classroom;
+    }
+
+    public void setNationalityname(String nationalityname) {
+        this.nationalityname = nationalityname;
+    }
+
+    public void setEthnicname(String ethnicname) {
+        this.ethnicname = ethnicname;
+    }
+
+    public void setRename(String rename) {
+        this.rename = rename;
+    }
+
+    public void setPSName(String PSName) {
+        this.PSName = PSName;
+    }
+
+    public void setWorkingname(String Workingname) {
+        this.Workingname = Workingname;
+    }
+
+    public String getGendername() {
+        return gendername;
+    }
+
+    public String getClassroom() {
+        return classroom;
+    }
+
+    public String getNationalityname() {
+        return nationalityname;
+    }
+
+    public String getEthnicname() {
+        return ethnicname;
+    }
+
+    public String getRename() {
+        return rename;
+    }
+
+    public String getPSName() {
+        return PSName;
+    }
+
+    public String getWorkingname() {
+        return Workingname;
+    }
 
     public void setImageB(byte[] imageB) {
         this.imageB = imageB;

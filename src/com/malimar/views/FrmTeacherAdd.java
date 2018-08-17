@@ -66,6 +66,9 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         
         txtID.setText(id);
         ids = id;
+        txtID.setVisible(false);
+        lblID.setVisible(false);
+        txtt_nbr.setEnabled(false);
         
         Border.blueColor(btnSave);
         Border.blueColor(btnNew);
@@ -916,15 +919,38 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.setT_address(txtaddress.getText());
                 ta.settDailyTeach(cbTeachDaily.isSelected());
                 ta.settWorking(cbWorking.isSelected());
-                ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));
-                
-                ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));
-               
-                ta.setT_moreinfo(txtMoreInfo.getText());
-                
+                ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));                
+                ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
+                ta.setT_moreinfo(txtMoreInfo.getText());                
                 tam.insertTeacher(ta);
+                tam.showOpenClickTable(ta, Integer.parseInt(txtID.getText()));
+                txtt_nbr.setText(ta.getT_nbr());
+            }else{
+                ta.setTeid(Integer.parseInt(txtID.getText()));
+                ta.setTname_l1(txtnameL1.getText());
+                ta.setTname_l2(txtnameL2.getText());
+                ta.setDob(ConvertDateSQL.convertUtilDateToSqlDate(dob.getDate()));
+                ta.setWorkid(Integer.parseInt(mapWorkStatus.get(workid)[0].toString()));
+                ta.settPhone1(txtphone1.getText());
+                ta.settPhone2(txtphone2.getText());
+                ta.settEmail(txtemail.getText());
+                ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));
+                ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));
+                ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
+                ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
+                ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
+                ta.setPSID(Integer.parseInt(mapParkStudy.get(psid)[0].toString()));
+                //ta.setPath(path);
+                ta.setT_address(txtaddress.getText());
+                ta.settDailyTeach(cbTeachDaily.isSelected());
+                ta.settWorking(cbWorking.isSelected());
+                ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));                
+                ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
+                ta.setT_moreinfo(txtMoreInfo.getText());                
+                tam.updateTeacherAdd(ta);
+                tam.showOpenClickTable(ta, Integer.parseInt(txtID.getText()));
+                txtt_nbr.setText(ta.getT_nbr());
             }
-            
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -936,15 +962,17 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSaveMouseExited
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try {   
-            if (ids.equals("0")){
-                getGender();
-                getWorkStatus();
-                getClassRoom();
-                getNationality();
-                getParkSchool();
-                getEthnic();
-                getRegion();
+        try {  
+            getGender();
+            getWorkStatus();
+            getClassRoom();
+            getNationality();
+            getParkSchool();
+            getEthnic();
+            getRegion();
+            
+            if (txtID.getText().equals("New")){
+                
             }else{
                 //this is         
                 tam.showOpenClickTable(ta, Integer.parseInt(txtID.getText()));
@@ -962,6 +990,14 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 startwork.setDate(ta.getT_Startdate());
                 leaveDate.setDate(ta.getT_EndDate());
                 
+                cbbEthnic.setSelectedItem(ta.getEthnicname());
+                cbbGender.setSelectedItem(ta.getGendername());
+                cbbNationality.setSelectedItem(ta.getNationalityname());
+                cbbpark.setSelectedItem(ta.getPSName());
+                cbbregion.setSelectedItem(ta.getRename());
+                cbbroom.setSelectedItem(ta.getClassroom());
+                cbbworkstatus.setSelectedItem(ta.getWorkingname());
+                
                 ImageIcon format =null;
                 format = new ImageIcon(ta.getImageB());
                 Image ic = format.getImage().getScaledInstance(lbl_image.getWidth(), lbl_image.getHeight(), Image.SCALE_DEFAULT);
@@ -978,15 +1014,23 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
     private void lbl_imageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_imageMouseClicked
          try {
+             
             JFileChooser choose = new JFileChooser();
             choose.showOpenDialog(null);
-            path = choose.getSelectedFile().getAbsolutePath();
+            path = choose.getSelectedFile().getAbsolutePath();            
             Image img = new ImageIcon(path).getImage();
             ic = ResizeScall(img, lbl_image.getWidth(), lbl_image.getHeight());
-            lbl_image.setIcon(new ImageIcon(ic));           
+            lbl_image.setIcon(new ImageIcon(ic));             
+            if (txtID.getText().equals("New")){
+                
+            }else{                
+                ta.setTeid(Integer.parseInt(txtID.getText().trim()));
+                ta.setPath(path);
+                tam.updateImageTeacherAdd(ta);               
+            }
             
         } catch (Exception e) {
-            //e.printStackTrace();
+           // e.printStackTrace();
         }
     }//GEN-LAST:event_lbl_imageMouseClicked
 
