@@ -199,6 +199,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private void showClear(){
         try {
             txtID.setText("New");
+            txtt_nbr.setText("");
             txtMoreInfo.setText("");
             txtaddress.setText("");
             txtemail.setText("");
@@ -208,6 +209,17 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             txtphone2.setText("");
             lbl_image.setIcon(null);
             txtnameL1.requestFocus();
+            
+            dob.setDate(null);
+            startwork.setDate(null);
+            
+            getGender();
+            getWorkStatus();
+            getClassRoom();
+            getNationality();
+            getParkSchool();
+            getEthnic();
+            getRegion();
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -575,7 +587,6 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
         txtt_nbr.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtt_nbr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtt_nbr.setText("0");
         txtt_nbr.setBorder(null);
         txtt_nbr.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         txtt_nbr.setOpaque(false);
@@ -749,11 +760,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                                         .addComponent(cbbroom, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                                 .addComponent(lbltnbr)
-                                .addGap(1, 1, 1)
-                                .addComponent(txtt_nbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -811,11 +818,17 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addComponent(lbldob)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblgender)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cbbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(dob, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblgender)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel7Layout.createSequentialGroup()
+                                        .addComponent(txtt_nbr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
@@ -921,10 +934,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.settWorking(cbWorking.isSelected());
                 ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));                
                 ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
-                ta.setT_moreinfo(txtMoreInfo.getText());                
+                ta.setT_moreinfo(txtMoreInfo.getText()); 
                 tam.insertTeacher(ta);
-                tam.showOpenClickTable(ta, Integer.parseInt(txtID.getText()));
+                tam.showT_Nbr(ta, txtnameL1.getText());                
                 txtt_nbr.setText(ta.getT_nbr());
+                
             }else{
                 ta.setTeid(Integer.parseInt(txtID.getText()));
                 ta.setTname_l1(txtnameL1.getText());
@@ -934,13 +948,12 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.settPhone1(txtphone1.getText());
                 ta.settPhone2(txtphone2.getText());
                 ta.settEmail(txtemail.getText());
-                ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));
-                ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));
+                ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));                
+                ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));                
                 ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
                 ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
                 ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
                 ta.setPSID(Integer.parseInt(mapParkStudy.get(psid)[0].toString()));
-                //ta.setPath(path);
                 ta.setT_address(txtaddress.getText());
                 ta.settDailyTeach(cbTeachDaily.isSelected());
                 ta.settWorking(cbWorking.isSelected());
@@ -948,8 +961,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
                 ta.setT_moreinfo(txtMoreInfo.getText());                
                 tam.updateTeacherAdd(ta);
-                tam.showOpenClickTable(ta, Integer.parseInt(txtID.getText()));
-                txtt_nbr.setText(ta.getT_nbr());
+                
             }
             
         } catch (Exception e) {
@@ -1003,12 +1015,10 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 Image ic = format.getImage().getScaledInstance(lbl_image.getWidth(), lbl_image.getHeight(), Image.SCALE_DEFAULT);
                 lbl_image.setIcon(new ImageIcon(ic));
                 
-                
-                
             }
             
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
 

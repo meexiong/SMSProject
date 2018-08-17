@@ -284,7 +284,7 @@ public class TeacherAddManager {
     
      public void showOpenClickTable(TeacherAdd tas, int x){
         try {
-            sql = "select t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +" AS gender, t.tphone1, t.tphone2, t.temail, cs.clname_"+ LangType +" AS classRoom, "
+            sql = "select t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +" AS gender, t.tphone1, t.tphone2, t.temail, cl.clrname_"+ LangType +" AS classRoom, "
                     + "n.nt_name_"+ LangType +" AS nationality, r.re_name_"+ LangType +" AS religionname,\n" +
                     "e.et_name_"+ LangType +" AS ethnicname, t.t_startDate, t.t_endDate, t.t_moreinfo, t.T_Working, t.T_img, t.genid, t.workid, t.clsid, t.t_address, t.t_dailyteach, "
                     + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +" AS workname, p.PSName_"+ LangType +" AS psname\n" +
@@ -298,7 +298,7 @@ public class TeacherAddManager {
                     + "left join tbl_workstatus w on w.workid = t.workid "
                     + "left join tbl_ParkStudy p on p.psid = t.psid\n" +
                     "where t.teid = "+ x +" "
-                    + "group by t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +", t.tphone1, t.tphone2, t.temail, cs.clname_"+ LangType +", "
+                    + "group by t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +", t.tphone1, t.tphone2, t.temail, cl.clrname_"+ LangType +", "
                     + "n.nt_name_"+ LangType +", r.re_name_"+ LangType +",\n" +
                     "e.et_name_"+ LangType +", t.t_startDate, t.t_endDate, t.t_moreinfo, t.T_Working, t.T_img, t.genid, t.workid, t.clsid, t.t_address, t.t_dailyteach, "
                     + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +", p.PSName_"+ LangType +"";
@@ -345,7 +345,7 @@ public class TeacherAddManager {
             RemoveTableIndex.removeTable(table, model);
             sql = "select teid, t_nbr, t_name_"+ LangType +" AS tname, dob, gen_"+ LangType +" AS gender, tphone1, tphone2, temail, clname_"+ LangType +" AS classlevel, nt_name_"+ LangType +" AS nationality, "
                     + "re_name_"+ LangType +" AS religion, et_name_"+ LangType +" AS ethnic, startdate, enddate, t_moreinfo\n" +
-                    "from vw_TeacherDetails where T_Working = 1\n" +
+                    "from vw_TeacherDetails where T_Working = 1 and enddate is null\n" +
                     "order by T_Nbr";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
@@ -376,4 +376,15 @@ public class TeacherAddManager {
             e.printStackTrace();
         }
     }
+    public void showT_Nbr(TeacherAdd ta, String namel1){
+        try {
+            sql = "Select t_nbr from tbl_Teacher where T_Name_L1 = N'"+ namel1 +"'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            if (rs.next()){
+                ta.setT_nbr(rs.getString("t_nbr"));
+            }
+        } catch (Exception e) {
+        }
+    }
+    
 }

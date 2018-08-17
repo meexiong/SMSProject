@@ -414,6 +414,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             tad.showDatas(jTable1, model);
+            btnNew.requestFocus();
             
         } catch (Exception e) {
         }
