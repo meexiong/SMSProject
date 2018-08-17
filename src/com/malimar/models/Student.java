@@ -7,9 +7,11 @@ public class Student {
     int stdID;
     String stdNbr;
     int stdType;
+    String stdTypeName;
     String stdName_L1;
     String stdName_L2;
     int gendID;
+    String genderName;
     String stdPhone1;
     String stdPhone2;
     String stdEmail;
@@ -17,8 +19,11 @@ public class Student {
     Date stdStartDate;
     Date stdEndDate;
     int stdNationlity;
+    String stdNationalName;
     int stdEthnic;
+    String stdEthnicName;
     int stdReligion;
+    String stdReligionName;
     boolean stdStudying;
     String Blood;
     float stdWeight;
@@ -30,10 +35,17 @@ public class Student {
     String stdSchoolMobile;
     String stdNote;
     int stdPark;
+    String stdParkName;
     String path;
+    byte[] picture;
     public Student(){
         
     }
+
+    public void setPicture(byte[] picture) {
+        this.picture = picture;
+    }
+    
     public void setStdID(int stdID) {
         this.stdID = stdID;
     }
@@ -46,6 +58,10 @@ public class Student {
         this.stdType = stdType;
     }
 
+    public void setStdTypeName(String stdTypeName) {
+        this.stdTypeName = stdTypeName;
+    }
+
     public void setStdName_L1(String stdName_L1) {
         this.stdName_L1 = stdName_L1;
     }
@@ -56,6 +72,10 @@ public class Student {
 
     public void setGendID(int gendID) {
         this.gendID = gendID;
+    }
+
+    public void setGenderName(String genderName) {
+        this.genderName = genderName;
     }
 
     public void setStdPhone1(String stdPhone1) {
@@ -142,6 +162,22 @@ public class Student {
         this.path = path;
     }
 
+    public void setStdNationalName(String stdNationalName) {
+        this.stdNationalName = stdNationalName;
+    }
+
+    public void setStdEthnicName(String stdEthnicName) {
+        this.stdEthnicName = stdEthnicName;
+    }
+
+    public void setStdReligionName(String stdReligionName) {
+        this.stdReligionName = stdReligionName;
+    }
+
+    public void setStdParkName(String stdParkName) {
+        this.stdParkName = stdParkName;
+    }
+
     public int getStdID() {
         return stdID;
     }
@@ -154,6 +190,10 @@ public class Student {
         return stdType;
     }
 
+    public String getStdTypeName() {
+        return stdTypeName;
+    }
+
     public String getStdName_L1() {
         return stdName_L1;
     }
@@ -164,6 +204,10 @@ public class Student {
 
     public int getGendID() {
         return gendID;
+    }
+
+    public String getGenderName() {
+        return genderName;
     }
 
     public String getStdPhone1() {
@@ -248,6 +292,26 @@ public class Student {
 
     public String getPath() {
         return path;
+    }
+
+    public String getStdNationalName() {
+        return stdNationalName;
+    }
+
+    public String getStdEthnicName() {
+        return stdEthnicName;
+    }
+
+    public String getStdReligionName() {
+        return stdReligionName;
+    }
+
+    public String getStdParkName() {
+        return stdParkName;
+    }
+
+    public byte[] getPicture() {
+        return picture;
     }
     
 }

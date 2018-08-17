@@ -16,10 +16,11 @@ import com.malimar.models.Student;
 import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
 import java.awt.Color;
-import java.text.SimpleDateFormat;
+import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import javax.swing.ImageIcon;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
@@ -36,9 +37,11 @@ public class FrmNewStudent extends javax.swing.JDialog {
     HashMap<String, Object[]> mapEthnic = null;
     HashMap<String, Object[]> mapReligion = null;
     HashMap<String, Object[]> mapPark = null;
-    public FrmNewStudent(java.awt.Frame parent, boolean modal) {
+    String stdnbr;
+    public FrmNewStudent(java.awt.Frame parent, boolean modal, String nbr) {
         super(parent, modal);
         initComponents();
+        stdnbr=nbr;
         frm = this.getClass().getSimpleName();
         getNewStudentLabel();
         showGenderComboBox();
@@ -47,11 +50,17 @@ public class FrmNewStudent extends javax.swing.JDialog {
         showEthnicComboBox();
         showReligionComboBox();
         showParkComboBox();
-        chStdStudying.setSelected(true);
-        cmbBloodGroup.setSelectedIndex(-1);
-        txtStdDiseases.setEnabled(false);
-        txtStdDiseases.setOpaque(false);
-        txtStdDiseases.setDisabledTextColor(Color.BLACK);
+        txtStdNbr.setText(nbr);
+        if("New".equals(nbr)) {
+            chStdStudying.setSelected(true);
+            cmbBloodGroup.setSelectedIndex(-1);
+            txtStdDiseases.setEnabled(false);
+            txtStdDiseases.setOpaque(false);
+            txtStdDiseases.setDisabledTextColor(Color.BLACK);
+        }else{
+            showData();
+        }
+        
     }
     private void getNewStudentLabel(){
         lblStdNbr.setText(hmapLang.get("lblStdNbr".concat(frm).toUpperCase())[LN]);
@@ -189,6 +198,41 @@ public class FrmNewStudent extends javax.swing.JDialog {
         txtStdDiseases.setEnabled(false);
         txtStdDiseases.setOpaque(false);
         txtStdDiseases.setDisabledTextColor(Color.BLACK);
+    }
+    private void showData() {
+        sd.setStdNbr(stdnbr);
+        sm.LoadEdit(sd);
+        txtStdName_L1.setText(sd.getStdName_L1());
+        txtStdName_L2.setText(sd.getStdName_L2());
+        cmbGender.setSelectedItem(sd.getGenderName());
+        cmbStdType.setSelectedItem(sd.getStdTypeName());
+        txtStdMobile.setText(sd.getStdPhone1());
+        txtHmoneNumber.setText(sd.getStdPhone2());
+        txtStdEmail.setText(sd.getStdEmail());
+        txtStdDOB.setDate(sd.getStdDOB());
+        txtStdStartDate.setDate(sd.getStdStartDate());
+        txtStdEndDate.setDate(sd.getStdEndDate());
+        cmbStdNationality.setSelectedItem(sd.getStdNationalName());
+        cmbStdEthnic.setSelectedItem(sd.getStdEthnicName());
+        cmbStdReligion.setSelectedItem(sd.getStdReligionName());
+        chStdStudying.setSelected(sd.isStdStudying());
+        cmbBloodGroup.setSelectedItem(sd.getBlood());
+        cmbStdPark.setSelectedItem(sd.getStdParkName());
+        txtStdWeight.setText(String.valueOf(sd.getStdWeight()));
+        txtStdHeight.setText(String.valueOf(sd.getStdHeight()));
+        chDiseases.setSelected(sd.isStdCongenialDisease());
+        txtStdDiseases.setText(sd.getStdCongenialDiseaseInfo());
+        txtStdSchoolName.setText(sd.getStdSchoolName());
+        txtStdSchoolLevel.setText(sd.getStdSchoolLevel());
+        txtStdSchoolMobile.setText(sd.getStdSchoolMobile());
+        txtStdNote.setText(sd.getStdNote());
+        if (sd.getPicture() == null) {
+            lblImage.setIcon(null);
+        } else {
+            Image img1 = new ImageIcon(sd.getPicture()).getImage();
+            Image ic = OpenPicture.ResizeScall(img1, lblImage.getWidth(), lblImage.getHeight());
+            lblImage.setIcon(new ImageIcon(ic));
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -845,13 +889,19 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 if (txtStdNbr.getText().equals("New")) {
                     if (sm.insertStudent(sd)) {
                         MsgBox.msgInfo();
+                        clearText();
+                    }else{
+                        MsgBox.msgError();
                     }
                 } else {
                     if (sm.updateStudent(sd)) {
+                        sm.updateStudentPicture(sd);
                         MsgBox.msgInfo();
+                        clearText();
+                    }else{
+                        MsgBox.msgError();
                     }
                 }
-                clearText();
             }
         }
     }//GEN-LAST:event_btnSaveMouseClicked
@@ -1057,7 +1107,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmNewStudent dialog = new FrmNewStudent(new javax.swing.JFrame(), true);
+                FrmNewStudent dialog = new FrmNewStudent(new javax.swing.JFrame(), true,null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

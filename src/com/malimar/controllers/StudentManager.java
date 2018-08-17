@@ -7,6 +7,7 @@ package com.malimar.controllers;
 
 import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.Student;
+import com.malimar.utils.ClearTable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,10 +17,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
-import javax.swing.JComboBox;
+import javax.swing.table.DefaultTableModel;
 
 public class StudentManager {
     Connection c = DatabaseManagerSQL.getConnection();
@@ -99,7 +99,9 @@ public class StudentManager {
     }
     public boolean updateStudent(Student sd){
         try {
-            String update = "Update tbl_Student set STypeID=?,StdName_L1=?,StdName_L2=?,Genid=?,StdPhone1=?,StdPhone2=?,StdEmail=?,StdDOB=?,StdStartDate=?,StdEndDate=?,NTID=?,ETID=?,REID=?,StdStudying=?,StdBlood=?,StdWeight=?,StdHeight=?,Congenital_diseases=?,Congenital_diseases_Info=?,SchoolName=?,School_Levels=?,School_Mobile=?,stdNote=?,PSID=? where StdID=?";
+            String update = "Update tbl_Student set STypeID=?,StdName_L1=?,StdName_L2=?,Genid=?,StdPhone1=?,StdPhone2=?,StdEmail=?,StdDOB=?,StdStartDate=?,StdEndDate=?,"
+                    + "NTID=?,ETID=?,REID=?,StdStudying=?,StdBlood=?,StdWeight=?,StdHeight=?,Congenital_diseases=?,Congenital_diseases_Info=?,SchoolName=?,School_Levels=?,"
+                    + "School_Mobile=?,stdNote=?,PSID=? where StdNbr=?";
             PreparedStatement p = c.prepareStatement(update);
             p.setInt(1, sd.getStdType());
             p.setString(2, sd.getStdName_L1());
@@ -128,7 +130,8 @@ public class StudentManager {
             p.setString(21, sd.getStdSchoolLevel());
             p.setString(22, sd.getStdSchoolMobile());
             p.setString(23, sd.getStdNote());
-            p.setInt(24, sd.getStdID());
+            p.setInt(24, sd.getStdPark());
+            p.setString(25, sd.getStdNbr());
             return p.executeUpdate()==1;
         } catch (SQLException e) {
         }
@@ -136,13 +139,13 @@ public class StudentManager {
     }
     public boolean updateStudentPicture(Student sd){
         try {
-            String update = "Update tbl_Student set Stdimg=? where StdID=?";
+            String update = "Update tbl_Student set Stdimg=? where StdNbr=?";
             PreparedStatement p = c.prepareStatement(update);
             File ff = new File(sd.getPath());
             FileInputStream fis = new FileInputStream(ff);
             int len = (int) ff.length();
             p.setBinaryStream(1, fis, len);
-            p.setInt(2, sd.getStdID());
+            p.setString(2, sd.getStdNbr());
             return p.executeUpdate()==1;
         } catch (FileNotFoundException | SQLException e) {
         }
@@ -255,5 +258,86 @@ public class StudentManager {
         } catch (SQLException e) {
         }
         return map;
+    }
+    public void Load(DefaultTableModel model){
+        try {
+            String query = "Exec pd_StudentInfo";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt("StdID");
+                String nbr = rs.getString("StdNbr");
+                String name = rs.getString("StdName_"+LangType+"");
+                String sex = rs.getString("Gen_"+LangType+"");
+                String dob = rs.getString("DOB");
+                String start = rs.getString("StartDate");
+                String end = rs.getString("EndDate");
+                String phone = rs.getString("StdPhone1");
+                String email =  rs.getString("StdEmail");
+                String religion = rs.getString("RE_Name_"+LangType+"");
+                String ethnic = rs.getString("ET_Name_"+LangType+"");
+                String national = rs.getString("NT_Name_"+LangType+"");
+                Object[] obj = new Object[]{id,nbr,name,sex,dob,start,end,phone,email,religion,ethnic,national};
+                model.addRow(obj);
+            }
+        } catch (SQLException e) {
+        }
+    }
+    public void LoadEdit(Student sd){
+        try {
+            String query = "Exec pd_StudentInfoByNbr '"+sd.getStdNbr()+"'";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                sd.setStdName_L1(rs.getString("StdName_L1"));
+                sd.setStdName_L2(rs.getString("StdName_L2"));
+                sd.setGenderName(rs.getString("Gen_"+LangType+""));
+                sd.setStdTypeName(rs.getString("STName_"+LangType+""));
+                sd.setStdPhone1(rs.getString("StdPhone1"));
+                sd.setStdPhone2(rs.getString("StdPhone2"));
+                sd.setStdEmail(rs.getString("StdEmail"));
+                sd.setStdDOB(rs.getDate("StdDOB"));
+                sd.setStdStartDate(rs.getDate("StdStartDate"));
+                sd.setStdEndDate(rs.getDate("StdEndDate"));
+                sd.setStdNationalName(rs.getString("NT_Name_"+LangType+""));
+                sd.setStdEthnicName(rs.getString("ET_Name_"+LangType+""));
+                sd.setStdReligionName(rs.getString("RE_Name_"+LangType+""));
+                sd.setStdStudying(rs.getBoolean("StdStudying"));
+                sd.setBlood(rs.getString("StdBlood"));
+                sd.setStdParkName(rs.getString("PSName_"+LangType+""));
+                sd.setStdWeight(rs.getFloat("StdWeight"));
+                sd.setStdHeight(rs.getFloat("StdHeight"));
+                sd.setStdCongenialDisease(rs.getBoolean("Congenital_diseases"));
+                sd.setStdCongenialDiseaseInfo(rs.getString("Congenital_diseases_Info"));
+                sd.setStdSchoolName(rs.getString("SchoolName"));
+                sd.setStdSchoolLevel(rs.getString("School_Levels"));
+                sd.setStdSchoolMobile(rs.getString("School_Mobile"));
+                sd.setStdNote(rs.getString("stdNote"));
+                sd.setPicture(rs.getBytes("Stdimg"));
+            }
+        } catch (SQLException e) {
+        }
+    }
+    public void Search(DefaultTableModel model, String txt){
+        try {
+            String query = "Exec pd_StudentInfoByConditionals N'"+txt+"'";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt("StdID");
+                String nbr = rs.getString("StdNbr");
+                String name = rs.getString("StdName_"+LangType+"");
+                String sex = rs.getString("Gen_"+LangType+"");
+                String dob = rs.getString("DOB");
+                String start = rs.getString("StartDate");
+                String end = rs.getString("EndDate");
+                String phone = rs.getString("StdPhone1");
+                String email =  rs.getString("StdEmail");
+                String religion = rs.getString("RE_Name_"+LangType+"");
+                String ethnic = rs.getString("ET_Name_"+LangType+"");
+                String national = rs.getString("NT_Name_"+LangType+"");
+                Object[] obj = new Object[]{id,nbr,name,sex,dob,start,end,phone,email,religion,ethnic,national};
+                model.addRow(obj);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
