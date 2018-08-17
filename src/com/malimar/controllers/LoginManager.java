@@ -5,6 +5,8 @@
  */
 package com.malimar.controllers;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author Malimar
@@ -13,13 +15,14 @@ public class LoginManager {
     private String userName;
     private String password;
     DatabaseManagerSQL dm =new DatabaseManagerSQL();
-    public LoginManager(){     
+    public LoginManager(){
+        
     }
     public boolean verifyUser(){
         String dbPass = null;
         try {
          dbPass = dm.getUserPassword(userName);   
-        } catch (Exception e) {
+        } catch (SQLException e) {
         } 
         return this.password.equals(dbPass);
     }
