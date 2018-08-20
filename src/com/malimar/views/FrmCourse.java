@@ -1,20 +1,64 @@
 
 package com.malimar.views;
 
+import com.malimar.controllers.CourseManager;
+import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.models.Course;
 import com.malimar.utils.Border;
+import com.malimar.utils.ClearTable;
+import com.malimar.utils.MsgBox;
 import java.awt.Color;
+import java.awt.Font;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 public class FrmCourse extends javax.swing.JFrame {
-    
+    DefaultTableModel model = new DefaultTableModel();
+    String frm;
+    CourseManager cm = new CourseManager();
+    Course cs = new Course();
     public FrmCourse() {
         initComponents();
+        model = (DefaultTableModel) table.getModel();
+        startFrame();
+        ClearTable.clearFirstLoad(table, model);
+        cm.load(model);
+    }
+    private void startFrame(){
+        frm = this.getClass().getSimpleName();
+        table.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD,12));
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         table.setShowGrid(true);
         table.getTableHeader().setBackground(Color.decode("#4169E1"));
         table.getTableHeader().setForeground(Color.WHITE);
         table.getTableHeader().setOpaque(false);
+        lblCourseID.setText(hmapLang.get("lblCourseID".concat(frm).toUpperCase())[LN]);
+        lblCourseInfo.setText(hmapLang.get("lblCourseInfo".concat(frm).toUpperCase())[LN]);
+        lblCourseName_L1.setText(hmapLang.get("lblCourseName_L1".concat(frm).toUpperCase())[LN]);
+        lblCourseName_L2.setText(hmapLang.get("lblCourseName_L2".concat(frm).toUpperCase())[LN]);
+        lblPrice.setText(hmapLang.get("lblPrice".concat(frm).toUpperCase())[LN]);
+        JTableHeader th = table.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            table.getColumnCount();
+            for(int i=0; i < table.getColumnCount(); i++){
+                TableColumn tc = tcm.getColumn(i);            
+                tc.setHeaderValue(hmapLang.get(table.getModel().getColumnName(i).concat(frm).toUpperCase()) [LN]);
+            }
+            table.setAutoCreateRowSorter(true);
+            th.repaint(); 
     }
-
+    private void clearText(){
+        txtCourseID.setText("New");
+        txtCourseName_L1.setText("");
+        txtCourseName_L2.setText("");
+        txtPrice.setText("0");
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -23,25 +67,24 @@ public class FrmCourse extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        lblCourseID = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnMinimize = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        lblSystemInfo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblCourseInfo = new javax.swing.JLabel();
+        txtCourseID = new javax.swing.JTextField();
+        lblCourseName_L1 = new javax.swing.JLabel();
+        txtCourseName_L1 = new javax.swing.JTextField();
+        txtCourseName_L2 = new javax.swing.JTextField();
+        lblCourseName_L2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel4 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jLabel5 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        lblPrice = new javax.swing.JLabel();
         btnSave = new javax.swing.JLabel();
+        txtPrice = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -55,14 +98,14 @@ public class FrmCourse extends javax.swing.JFrame {
         table.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null}
+                {null, null, null, null}
             },
             new String [] {
-                "lblID", "lblCourseName_L1", "lblCourseName_L2", "lblStartDate", "lblEndDate"
+                "lblCourseID", "lblCourseName_L1", "lblCourseName_L2", "lblPrice"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -71,6 +114,11 @@ public class FrmCourse extends javax.swing.JFrame {
         });
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setRowHeight(25);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(0).setMinWidth(0);
@@ -79,16 +127,14 @@ public class FrmCourse extends javax.swing.JFrame {
             table.getColumnModel().getColumn(1).setMaxWidth(250);
             table.getColumnModel().getColumn(2).setMinWidth(250);
             table.getColumnModel().getColumn(2).setMaxWidth(250);
-            table.getColumnModel().getColumn(3).setMinWidth(80);
-            table.getColumnModel().getColumn(3).setMaxWidth(80);
-            table.getColumnModel().getColumn(4).setMinWidth(80);
-            table.getColumnModel().getColumn(4).setMaxWidth(80);
+            table.getColumnModel().getColumn(3).setMinWidth(150);
+            table.getColumnModel().getColumn(3).setMaxWidth(150);
         }
 
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        jLabel1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel1.setText("ID");
+        lblCourseID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblCourseID.setText("ID");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
@@ -113,20 +159,20 @@ public class FrmCourse extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        lblSystemInfo.setBackground(new java.awt.Color(255, 255, 255));
-        lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
-        lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemInfo.setText("Nationlity Information");
-        lblSystemInfo.setOpaque(true);
-        jPanel4.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
+        lblCourseInfo.setBackground(new java.awt.Color(255, 255, 255));
+        lblCourseInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblCourseInfo.setForeground(new java.awt.Color(0, 15, 255));
+        lblCourseInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCourseInfo.setText("Course Information");
+        lblCourseInfo.setOpaque(true);
+        jPanel4.add(lblCourseInfo, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,33 +190,33 @@ public class FrmCourse extends javax.swing.JFrame {
                 .addGap(2, 2, 2))
         );
 
-        jTextField1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jTextField1.setText("New");
-        jTextField1.setBorder(null);
+        txtCourseID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtCourseID.setText("New");
+        txtCourseID.setBorder(null);
+        txtCourseID.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtCourseID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtCourseID.setEnabled(false);
+        txtCourseID.setOpaque(false);
+        txtCourseID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCourseIDMouseClicked(evt);
+            }
+        });
 
-        jLabel2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel2.setText("Course_L1");
+        lblCourseName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblCourseName_L1.setText("Course_L1");
 
-        jTextField2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jTextField2.setBorder(null);
+        txtCourseName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtCourseName_L1.setBorder(null);
 
-        jTextField3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jTextField3.setBorder(null);
+        txtCourseName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtCourseName_L2.setBorder(null);
 
-        jLabel3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel3.setText("Course_L2");
+        lblCourseName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblCourseName_L2.setText("Course_L2");
 
-        jLabel4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel4.setText("Start Date");
-
-        jDateChooser1.setDateFormatString("dd-MM-yyyy");
-        jDateChooser1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-
-        jLabel5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel5.setText("End Date");
-
-        jDateChooser2.setDateFormatString("dd-MM-yyyy");
-        jDateChooser2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPrice.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPrice.setText("Start Date");
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -190,6 +236,16 @@ public class FrmCourse extends javax.swing.JFrame {
             }
         });
 
+        txtPrice.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtPrice.setText("0");
+        txtPrice.setBorder(null);
+        txtPrice.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtPrice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPriceMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -203,37 +259,35 @@ public class FrmCourse extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblCourseName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtCourseName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCourseName_L2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jSeparator1)
-                                        .addComponent(jTextField3)
+                                        .addComponent(txtCourseName_L2)
                                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jSeparator4)
+                                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jSeparator3, jTextField1});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jSeparator3, txtCourseID});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,41 +295,41 @@ public class FrmCourse extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCourseID)
+                    .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCourseName_L1)
+                    .addComponent(txtCourseName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblCourseName_L2)
+                    .addComponent(txtCourseName_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE)
+                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(lblPrice)
+                            .addGap(45, 45, 45))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(14, 14, 14))))
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jDateChooser1, jLabel1, jLabel2, jLabel3, jLabel4, jTextField1, jTextField2, jTextField3});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblCourseID, lblCourseName_L1, lblCourseName_L2, lblPrice, txtCourseID, txtCourseName_L1, txtCourseName_L2});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -296,12 +350,57 @@ public class FrmCourse extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-
+        if(evt.getModifiers()==6){
+            
+        }else{
+            cs.setCourseName_L1(txtCourseName_L1.getText());
+            cs.setCourseName_L2(txtCourseName_L2.getText());
+            cs.setCoursePrice(Double.parseDouble(txtPrice.getText()));
+            if(txtCourseID.getText().equals("New")){
+                if(cm.insert(cs)){
+                    MsgBox.msgInfo();
+                    clearText();
+                }else{
+                    MsgBox.msgError();
+                }
+            }else{
+                cs.setCourseID(Integer.parseInt(txtCourseID.getText()));
+                if(cm.update(cs)){
+                    MsgBox.msgInfo();
+                    clearText();
+                }else{
+                    MsgBox.msgError();
+                }
+            }
+            ClearTable.clearFirstLoad(table, model);
+            cm.load(model);
+        }
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
         Border.WhiteColor(btnSave);
     }//GEN-LAST:event_btnSaveMouseExited
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        try {
+            int rowIndex = table.getSelectedRow();
+            txtCourseID.setText(table.getValueAt(rowIndex, 0).toString());
+            txtCourseName_L1.setText(table.getValueAt(rowIndex, 1).toString());
+            txtCourseName_L2.setText(table.getValueAt(rowIndex, 2).toString());
+            txtPrice.setText("0");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void txtCourseIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCourseIDMouseClicked
+        if(evt.getClickCount()==2){
+            clearText();
+        }
+    }//GEN-LAST:event_txtCourseIDMouseClicked
+
+    private void txtPriceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPriceMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPriceMouseClicked
 
     /**
      * @param args the command line arguments
@@ -342,13 +441,6 @@ public class FrmCourse extends javax.swing.JFrame {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -357,10 +449,16 @@ public class FrmCourse extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JLabel lblSystemInfo;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel lblCourseID;
+    private javax.swing.JLabel lblCourseInfo;
+    private javax.swing.JLabel lblCourseName_L1;
+    private javax.swing.JLabel lblCourseName_L2;
+    private javax.swing.JLabel lblPrice;
     private javax.swing.JTable table;
+    private javax.swing.JTextField txtCourseID;
+    private javax.swing.JTextField txtCourseName_L1;
+    private javax.swing.JTextField txtCourseName_L2;
+    private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 }
