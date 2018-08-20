@@ -819,6 +819,7 @@
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="cbWorking" alignment="1" max="32767" attributes="0"/>
                                           <Component id="cbTeachDaily" alignment="1" pref="170" max="32767" attributes="0"/>
+                                          <Component id="cbTeacher" alignment="1" pref="170" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -831,7 +832,9 @@
                                       <Component id="cbWorking" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cbTeachDaily" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace pref="176" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbTeacher" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="145" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -863,6 +866,20 @@
                                   <Font name="Saysettha OT" size="12" style="0"/>
                                 </Property>
                                 <Property name="text" type="java.lang.String" value="Teach Daily"/>
+                                <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                  <Color id="Hand Cursor"/>
+                                </Property>
+                              </Properties>
+                            </Component>
+                            <Component class="javax.swing.JCheckBox" name="cbTeacher">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                  <Font name="Saysettha OT" size="12" style="0"/>
+                                </Property>
+                                <Property name="text" type="java.lang.String" value="Teacher"/>
                                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                                   <Color id="Hand Cursor"/>
                                 </Property>

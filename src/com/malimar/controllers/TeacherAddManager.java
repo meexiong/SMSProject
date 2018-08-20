@@ -19,6 +19,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
@@ -175,10 +176,12 @@ public class TeacherAddManager {
 
     public boolean insertTeacher(TeacherAdd ta) {
         try {
+            DecimalFormat df = new DecimalFormat("###");
+            
             GetMaxID gm = new GetMaxID();
             sql = "Insert into tbl_teacher (Teid, t_nbr, T_name_L1, T_Name_L2, T_dob, Genid, workid, tphone1, tphone2, temail, clsid, "
-                    + "ntid, etid, reid, T_Salary, t_address, T_working, t_dailyteach, t_Startdate, T_moreinfo, t_enddate, T_img) "
-                    + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                    + "ntid, etid, reid, T_Salary, t_address, T_working, t_dailyteach, t_Startdate, T_moreinfo, t_enddate, Teacher, T_img) "
+                    + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setInt(1, gm.getIntID("tbl_teacher", "teid"));
             p.setString(2, getTeacherNumber());
@@ -194,21 +197,24 @@ public class TeacherAddManager {
             p.setInt(12, ta.getNtid());
             p.setInt(13, ta.getEtid());
             p.setInt(14, ta.getReid());
+            
             p.setFloat(15, ta.getSalary());
+            
             p.setString(16, ta.getT_address());
             p.setBoolean(17, ta.gettWorking());
             p.setBoolean(18, ta.gettDailyTeach());            
             p.setDate(19, (Date) ta.getT_Startdate());
             p.setString(20, ta.getT_moreinfo());            
             p.setDate(21, (Date) ta.getT_EndDate());     
+            p.setBoolean(22, ta.getTeacher());
            
             if (ta.getPath() != null) {
                 File ff = new File(ta.getPath());
                 FileInputStream fis = new FileInputStream(ff);
                 int len = (int) ff.length();
-                p.setBinaryStream(22, fis, len);
+                p.setBinaryStream(23, fis, len);
             } else {
-                p.setNull(22, java.sql.Types.BLOB);
+                p.setNull(23, java.sql.Types.BLOB);
             }
             
             p.executeUpdate();
@@ -224,8 +230,10 @@ public class TeacherAddManager {
     }
     public boolean updateTeacherAdd(TeacherAdd ta){
         try {
+            DecimalFormat df = new DecimalFormat("###");
+            
             sql = "Update tbl_teacher set T_name_L1=?, T_Name_L2=?, T_dob=?, Genid=?, workid=?, tphone1=?, tphone2=?, temail=?, clsid=?, "
-                    + "ntid=?, etid=?, reid=?, T_Salary=?, t_address=?, T_working=?, t_dailyteach=?, t_Startdate=?, T_moreinfo=?, t_enddate=? where TeID= (?)";
+                    + "ntid=?, etid=?, reid=?, T_Salary=?, t_address=?, T_working=?, t_dailyteach=?, t_Startdate=?, T_moreinfo=?, t_enddate=?, Teacher = ? where TeID= (?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setString(1, ta.getTname_l1());
             p.setString(2, ta.getTname_l2());
@@ -239,14 +247,17 @@ public class TeacherAddManager {
             p.setInt(10, ta.getNtid());
             p.setInt(11, ta.getEtid());
             p.setInt(12, ta.getReid());
+        
             p.setFloat(13, ta.getSalary());
+            
             p.setString(14, ta.getT_address());
             p.setBoolean(15, ta.gettWorking());
             p.setBoolean(16, ta.gettDailyTeach());            
             p.setDate(17, (Date) ta.getT_Startdate());
             p.setString(18, ta.getT_moreinfo());            
-            p.setDate(19, (Date) ta.getT_EndDate());                 
-            p.setInt(20, ta.getTeid());
+            p.setDate(19, (Date) ta.getT_EndDate());    
+            p.setBoolean(20, ta.getTeacher());
+            p.setInt(21, ta.getTeid());
             
             p.executeUpdate();
             p.close();            

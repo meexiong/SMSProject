@@ -31,6 +31,15 @@ public class TeacherAdd {
     String t_address;
     Boolean tWorking;
     Boolean tDailyTeach;
+    Boolean Teacher;
+
+    public void setTeacher(Boolean Teacher) {
+        this.Teacher = Teacher;
+    }
+
+    public Boolean getTeacher() {
+        return Teacher;
+    }
     Date t_Startdate;
     Date t_EndDate;
     String t_moreinfo;
