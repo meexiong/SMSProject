@@ -177,7 +177,7 @@ public class TeacherAddManager {
         try {
             GetMaxID gm = new GetMaxID();
             sql = "Insert into tbl_teacher (Teid, t_nbr, T_name_L1, T_Name_L2, T_dob, Genid, workid, tphone1, tphone2, temail, clsid, "
-                    + "ntid, etid, reid, psid, t_address, T_working, t_dailyteach, t_Startdate, T_moreinfo, t_enddate, T_img) "
+                    + "ntid, etid, reid, T_Salary, t_address, T_working, t_dailyteach, t_Startdate, T_moreinfo, t_enddate, T_img) "
                     + "values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setInt(1, gm.getIntID("tbl_teacher", "teid"));
@@ -194,7 +194,7 @@ public class TeacherAddManager {
             p.setInt(12, ta.getNtid());
             p.setInt(13, ta.getEtid());
             p.setInt(14, ta.getReid());
-            p.setInt(15, ta.getPSID());
+            p.setFloat(15, ta.getSalary());
             p.setString(16, ta.getT_address());
             p.setBoolean(17, ta.gettWorking());
             p.setBoolean(18, ta.gettDailyTeach());            
@@ -225,7 +225,7 @@ public class TeacherAddManager {
     public boolean updateTeacherAdd(TeacherAdd ta){
         try {
             sql = "Update tbl_teacher set T_name_L1=?, T_Name_L2=?, T_dob=?, Genid=?, workid=?, tphone1=?, tphone2=?, temail=?, clsid=?, "
-                    + "ntid=?, etid=?, reid=?, psid=?, t_address=?, T_working=?, t_dailyteach=?, t_Startdate=?, T_moreinfo=?, t_enddate=? where TeID= (?)";
+                    + "ntid=?, etid=?, reid=?, T_Salary=?, t_address=?, T_working=?, t_dailyteach=?, t_Startdate=?, T_moreinfo=?, t_enddate=? where TeID= (?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setString(1, ta.getTname_l1());
             p.setString(2, ta.getTname_l2());
@@ -239,7 +239,7 @@ public class TeacherAddManager {
             p.setInt(10, ta.getNtid());
             p.setInt(11, ta.getEtid());
             p.setInt(12, ta.getReid());
-            p.setInt(13, ta.getPSID());
+            p.setFloat(13, ta.getSalary());
             p.setString(14, ta.getT_address());
             p.setBoolean(15, ta.gettWorking());
             p.setBoolean(16, ta.gettDailyTeach());            
@@ -287,7 +287,7 @@ public class TeacherAddManager {
             sql = "select t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +" AS gender, t.tphone1, t.tphone2, t.temail, cl.clrname_"+ LangType +" AS classRoom, "
                     + "n.nt_name_"+ LangType +" AS nationality, r.re_name_"+ LangType +" AS religionname,\n" +
                     "e.et_name_"+ LangType +" AS ethnicname, t.t_startDate, t.t_endDate, t.t_moreinfo, t.T_Working, t.T_img, t.genid, t.workid, t.clsid, t.t_address, t.t_dailyteach, "
-                    + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +" AS workname, p.PSName_"+ LangType +" AS psname\n" +
+                    + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +" AS workname, isnull(t.T_Salary, 0) as salary\n" +
                     "from tbl_Teacher t \n" +
                     "left join tbl_Gender g on g.Genid = t.genid\n" +
                     "left join tbl_Nationality n on n.NTID = t.Ntid\n" +
@@ -295,13 +295,11 @@ public class TeacherAddManager {
                     "left join tbl_religion r on r.reid = t.reid\n" +
                     "left join tbl_Class cl on cl.CLID = t.CLSID\n" +
                     "left join tbl_ClassLevel cs on cs.CLID = cl.CLID "
-                    + "left join tbl_workstatus w on w.workid = t.workid "
-                    + "left join tbl_ParkStudy p on p.psid = t.psid\n" +
-                    "where t.teid = "+ x +" "
+                    + "left join tbl_workstatus w on w.workid = t.workid where t.teid = "+ x +" "
                     + "group by t.teid, t.t_nbr, t.t_name_l1, t.t_name_l2, t.t_dob, g.gen_"+ LangType +", t.tphone1, t.tphone2, t.temail, cl.clrname_"+ LangType +", "
                     + "n.nt_name_"+ LangType +", r.re_name_"+ LangType +",\n" +
                     "e.et_name_"+ LangType +", t.t_startDate, t.t_endDate, t.t_moreinfo, t.T_Working, t.T_img, t.genid, t.workid, t.clsid, t.t_address, t.t_dailyteach, "
-                    + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +", p.PSName_"+ LangType +"";
+                    + "t.ntid, t.etid, t.reid, t.psid, w.Work_Name_"+ LangType +", isnull(t.T_Salary, 0)";
             ResultSet rs = c.createStatement().executeQuery(sql);
             if (rs.next()){                
                 tas.setT_nbr(rs.getString("t_nbr"));
@@ -331,7 +329,7 @@ public class TeacherAddManager {
                 tas.setNationalityname(rs.getString("nationality"));
                 tas.setRename(rs.getString("religionname"));
                 tas.setEthnicname(rs.getString("ethnicname"));
-                tas.setPSName(rs.getString("psname"));
+                tas.setSalary(rs.getFloat("salary"));
                 tas.setWorkingname(rs.getString("workname"));
                 
             }

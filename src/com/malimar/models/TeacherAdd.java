@@ -46,6 +46,15 @@ public class TeacherAdd {
     String rename;
     String PSName;
     String Workingname;
+    float salary;
+
+    public void setSalary(float salary) {
+        this.salary = salary;
+    }
+
+    public float getSalary() {
+        return salary;
+    }
 
     public void setGendername(String gendername) {
         this.gendername = gendername;
