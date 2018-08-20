@@ -7,7 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.SchaduleManager;
-import com.malimar.models.Schadule;
+import com.malimar.models.Schedule;
 import com.malimar.utils.Border;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -32,7 +32,7 @@ public class FrmSchadule extends javax.swing.JFrame {
     HashMap<String, Object[]>mapSem = null;
     
     SchaduleManager sm = new SchaduleManager();
-    Schadule sh = new Schadule();
+    Schedule sh = new Schedule();
     
     public FrmSchadule() {
         initComponents();
@@ -92,6 +92,8 @@ public class FrmSchadule extends javax.swing.JFrame {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         lblEthnic_L4 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        lblEthnic_L5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -221,6 +223,7 @@ public class FrmSchadule extends javax.swing.JFrame {
             }
         });
 
+        cbbSemester.setEditable(true);
         cbbSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbSemester.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cbbSemester.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -262,6 +265,12 @@ public class FrmSchadule extends javax.swing.JFrame {
         jCheckBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jDateChooser3.setDateFormatString("dd-MM-yyyy");
+        jDateChooser3.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+
+        lblEthnic_L5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEthnic_L5.setText("Create Date");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -271,10 +280,6 @@ public class FrmSchadule extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 1065, Short.MAX_VALUE)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblEthnic_L4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblEthnic_L1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -287,6 +292,14 @@ public class FrmSchadule extends javax.swing.JFrame {
                             .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblEthnic_L3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEthnic_L5, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEthnic_L4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -295,23 +308,28 @@ public class FrmSchadule extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEthnic_L1)
                     .addComponent(lblEthnic_L2)
                     .addComponent(lblEthnic_L3)
+                    .addComponent(lblEthnic_L5)
                     .addComponent(lblEthnic_L4))
                 .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(cbbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
+                .addGap(13, 13, 13)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jPanel7Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblEthnic_L1, lblEthnic_L2, lblEthnic_L3, lblEthnic_L4, lblEthnic_L5});
+
+        jPanel7Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnSave, cbbSemester, jCheckBox1, jDateChooser1, jDateChooser2, jDateChooser3});
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -382,8 +400,8 @@ public class FrmSchadule extends javax.swing.JFrame {
                  jDateChooser1.setDate(null);
                  jDateChooser2.setDate(null);
              }else{
-                sm.showStDateEndDate(sh, cbbSemester.getSelectedItem().toString());
-                jDateChooser1.setDate(sh.getStdate());
+                sm.showSemesterInfo(sh);
+                jDateChooser1.setDate(sh.getStartDate());
                 jDateChooser2.setDate(sh.getEndDate());
              }
             
@@ -447,6 +465,7 @@ public class FrmSchadule extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -461,6 +480,7 @@ public class FrmSchadule extends javax.swing.JFrame {
     private javax.swing.JLabel lblEthnic_L2;
     private javax.swing.JLabel lblEthnic_L3;
     private javax.swing.JLabel lblEthnic_L4;
+    private javax.swing.JLabel lblEthnic_L5;
     private javax.swing.JLabel lblSystemInfo;
     // End of variables declaration//GEN-END:variables
 }
