@@ -724,6 +724,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         btnSchedule.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnScheduleMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnScheduleMouseExited(evt);
             }
@@ -1146,6 +1149,11 @@ int cnt=0;
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnSemesterMouseClicked
+
+    private void btnScheduleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScheduleMouseClicked
+        FrmSchadule fs = new FrmSchadule();
+        fs.setVisible(true);
+    }//GEN-LAST:event_btnScheduleMouseClicked
 
 
     /**

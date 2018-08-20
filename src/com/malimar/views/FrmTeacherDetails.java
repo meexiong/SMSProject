@@ -342,7 +342,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
-        this.setState(FrmMain.ICONIFIED);
+        this.setState(FrmTeacherDetails.ICONIFIED);
     }//GEN-LAST:event_btnMinimizeMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked

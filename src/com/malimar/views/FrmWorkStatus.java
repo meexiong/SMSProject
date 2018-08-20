@@ -369,7 +369,7 @@ public class FrmWorkStatus extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
-        this.setState(FrmMain.ICONIFIED);
+        this.setState(FrmWorkStatus.ICONIFIED);
     }//GEN-LAST:event_btnMinimizeMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked

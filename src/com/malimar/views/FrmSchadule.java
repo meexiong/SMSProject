@@ -6,66 +6,58 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
-import com.malimar.controllers.LabelManager;
-import com.malimar.controllers.RegionManager;
-import com.malimar.models.Region;
+import com.malimar.controllers.SchaduleManager;
+import com.malimar.models.Schadule;
 import com.malimar.utils.Border;
-import com.malimar.utils.MsgBox;
-import java.awt.Font;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
  * @author Malimar
  */
-public class FrmRegion extends javax.swing.JFrame {
+public class FrmSchadule extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmRegion
+     * Creates new form FrmSchadule
      */
     Connection c = DatabaseManagerSQL.getConnection();
     String sql, frm;
     DefaultTableModel model = new DefaultTableModel();
     
-    Region re = new Region();
-    RegionManager rm = new RegionManager();
+    HashMap<String, Object[]>mapSem = null;
     
-    public FrmRegion() {
+    SchaduleManager sm = new SchaduleManager();
+    Schadule sh = new Schadule();
+    
+    public FrmSchadule() {
         initComponents();
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
-        jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
-        txtID.setEnabled(false);
+        jDateChooser1.setEnabled(false);
+        jDateChooser2.setEnabled(false);
         
-        lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
-        lblRegion_L1.setText(LabelManager.hmapLang.get("lblRegion_l1".concat(frm).toUpperCase())[LabelManager.LN]);
-        lblRegion_L2.setText(LabelManager.hmapLang.get("lblRegion_L2".concat(frm).toUpperCase())[LabelManager.LN]);
-        
-        JTableHeader th = jTable1.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            jTable1.getColumnCount();
-            for(int i=0; i < jTable1.getColumnCount(); i++){
-                TableColumn tc = tcm.getColumn(i);            
-                tc.setHeaderValue(LabelManager.hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LabelManager.LN]);                
-            }
-               jTable1.setAutoCreateRowSorter(true);
-            th.repaint();
+        Border.blueColor(btnSave);
         
     }
-    public void showClear(){
+    public void getSemester(){
         try {
-            txtID.setText("New");
-            txtRE_Name_L1.setText("");
-            txtRE_Name_L2.setText("");
-            txtRE_Name_L1.requestFocus();
+            mapSem = sm.mapSemester();
+            Map<String, Object[]>ms = new TreeMap<>(mapSem);
+            cbbSemester.removeAllItems();
+            ms.keySet().forEach((s)->{
+                cbbSemester.addItem(s);
+            });
+            cbbSemester.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbSemester);
             
         } catch (Exception e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
 
@@ -91,16 +83,15 @@ public class FrmRegion extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        lblRegion_L1 = new javax.swing.JLabel();
-        txtRE_Name_L1 = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        lblRegion_L2 = new javax.swing.JLabel();
-        txtRE_Name_L2 = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
+        lblEthnic_L1 = new javax.swing.JLabel();
         btnSave = new javax.swing.JLabel();
+        cbbSemester = new javax.swing.JComboBox<>();
+        lblEthnic_L2 = new javax.swing.JLabel();
+        lblEthnic_L3 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        lblEthnic_L4 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -147,7 +138,7 @@ public class FrmRegion extends javax.swing.JFrame {
         lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
         lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemInfo.setText("Region");
+        lblSystemInfo.setText("Schadule");
         lblSystemInfo.setOpaque(true);
         jPanel6.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
 
@@ -156,7 +147,7 @@ public class FrmRegion extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1030, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -186,7 +177,7 @@ public class FrmRegion extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "lblID", "lblRegion_L1", "lblRegion_L2"
+                "lblEthnic_L1", "lblEthnic_L1", "lblEthnic_L2"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -206,53 +197,11 @@ public class FrmRegion extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(0);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(350);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(350);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(350);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(350);
-        }
 
         jPanel8.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblID.setText("ID");
-
-        txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtID.setText("New");
-        txtID.setBorder(null);
-        txtID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtID.setOpaque(false);
-        txtID.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtIDMouseClicked(evt);
-            }
-        });
-        txtID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
-            }
-        });
-
-        lblRegion_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L1.setText("RegionName_L1");
-
-        txtRE_Name_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L1.setBorder(null);
-
-        lblRegion_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L2.setText("RegionName_L2");
-
-        txtRE_Name_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L2.setBorder(null);
-        txtRE_Name_L2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRE_Name_L2ActionPerformed(evt);
-            }
-        });
+        lblEthnic_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEthnic_L1.setText("Semester");
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -272,63 +221,95 @@ public class FrmRegion extends javax.swing.JFrame {
             }
         });
 
+        cbbSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbSemester.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbbSemester.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbbSemesterMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cbbSemesterMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbbSemesterMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                cbbSemesterMouseReleased(evt);
+            }
+        });
+        cbbSemester.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbSemesterActionPerformed(evt);
+            }
+        });
+
+        lblEthnic_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEthnic_L2.setText("Start Date");
+
+        lblEthnic_L3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEthnic_L3.setText("End Date");
+
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
+        jDateChooser1.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+
+        jDateChooser2.setDateFormatString("dd-MM-yyyy");
+        jDateChooser2.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+
+        lblEthnic_L4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEthnic_L4.setText("Open");
+
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jCheckBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 1065, Short.MAX_VALUE)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblEthnic_L4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblEthnic_L1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEthnic_L2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblEthnic_L3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                    .addComponent(jSeparator1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblRegion_L1, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                    .addComponent(txtRE_Name_L1)
-                    .addComponent(jSeparator2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblRegion_L2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtRE_Name_L2)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addComponent(lblID)
-                            .addGap(1, 1, 1)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addComponent(lblRegion_L1)
-                            .addGap(1, 1, 1)
-                            .addComponent(txtRE_Name_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, 0)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(lblRegion_L2)
-                                .addGap(1, 1, 1)
-                                .addComponent(txtRE_Name_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, 0)
-                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEthnic_L1)
+                    .addComponent(lblEthnic_L2)
+                    .addComponent(lblEthnic_L3)
+                    .addComponent(lblEthnic_L4))
+                .addGap(2, 2, 2)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cbbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, 521, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -360,7 +341,7 @@ public class FrmRegion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
-        this.setState(FrmRegion.ICONIFIED);
+        this.setState(FrmSchadule.ICONIFIED);
     }//GEN-LAST:event_btnMinimizeMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
@@ -368,81 +349,15 @@ public class FrmRegion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        try {
-            int row = jTable1.getSelectedRow();
-            txtID.setText(jTable1.getValueAt(row, 0).toString());
-            txtRE_Name_L1.setText(jTable1.getValueAt(row, 1).toString());
-            txtRE_Name_L2.setText(jTable1.getValueAt(row, 2).toString());
-        } catch (Exception e) {
-        }
+       
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void txtIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseClicked
-        try {
-            if (evt.getClickCount()==2){
-                showClear();
-                rm.showData(jTable1, model);
-            }
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_txtIDMouseClicked
-
-    private void txtIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtIDActionPerformed
-
-    private void txtRE_Name_L2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRE_Name_L2ActionPerformed
-        try {
-            if (txtRE_Name_L1.getText().equals("")||txtRE_Name_L2.getText().equals("")){
-                MsgBox.msgError();
-                return;
-            }
-            re.setRE_Name_L1(txtRE_Name_L1.getText());
-            re.setRe_Name_L2(txtRE_Name_L2.getText());
-            if (txtID.getText().equals("New")){                
-                rm.insertRegion(re);
-                rm.showData(jTable1, model);
-                MsgBox.msgInfo();
-                showClear();
-            }else{
-                re.setREID(Integer.parseInt(txtID.getText()));               
-                rm.updateRegion(re);
-                rm.showData(jTable1, model);
-                MsgBox.msgInfo();                
-                showClear();
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_txtRE_Name_L2ActionPerformed
-
     private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
-        Border.blueColor(btnSave);
+        
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        try {
-            if (txtRE_Name_L1.getText().equals("")||txtRE_Name_L2.getText().equals("")){
-                MsgBox.msgError();
-                return;
-            }
-            re.setRE_Name_L1(txtRE_Name_L1.getText());
-            re.setRe_Name_L2(txtRE_Name_L2.getText());
-            if (txtID.getText().equals("New")){                
-                rm.insertRegion(re);
-                rm.showData(jTable1, model);
-                showClear();
-            }else{
-                re.setREID(Integer.parseInt(txtID.getText()));               
-                rm.updateRegion(re);
-                rm.showData(jTable1, model); 
-                showClear();
-            }
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
@@ -451,12 +366,43 @@ public class FrmRegion extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            rm.showData(jTable1, model);            
-            lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);    
+            getSemester();
+            
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void cbbSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbSemesterMouseClicked
+      
+    }//GEN-LAST:event_cbbSemesterMouseClicked
+
+    private void cbbSemesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbSemesterActionPerformed
+         try {
+             if (cbbSemester.getSelectedItem().equals("")){
+                 jDateChooser1.setDate(null);
+                 jDateChooser2.setDate(null);
+             }else{
+                sm.showStDateEndDate(sh, cbbSemester.getSelectedItem().toString());
+                jDateChooser1.setDate(sh.getStdate());
+                jDateChooser2.setDate(sh.getEndDate());
+             }
+            
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+    }//GEN-LAST:event_cbbSemesterActionPerformed
+
+    private void cbbSemesterMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbSemesterMouseEntered
+        
+    }//GEN-LAST:event_cbbSemesterMouseEntered
+
+    private void cbbSemesterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbSemesterMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbSemesterMousePressed
+
+    private void cbbSemesterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbSemesterMouseReleased
+      
+    }//GEN-LAST:event_cbbSemesterMouseReleased
 
     /**
      * @param args the command line arguments
@@ -475,20 +421,20 @@ public class FrmRegion extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSchadule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSchadule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSchadule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmRegion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSchadule.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmRegion().setVisible(true);
+                new FrmSchadule().setVisible(true);
             }
         });
     }
@@ -497,6 +443,10 @@ public class FrmRegion extends javax.swing.JFrame {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
+    private javax.swing.JComboBox<String> cbbSemester;
+    private javax.swing.JCheckBox jCheckBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -506,16 +456,11 @@ public class FrmRegion extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblRegion_L1;
-    private javax.swing.JLabel lblRegion_L2;
+    private javax.swing.JLabel lblEthnic_L1;
+    private javax.swing.JLabel lblEthnic_L2;
+    private javax.swing.JLabel lblEthnic_L3;
+    private javax.swing.JLabel lblEthnic_L4;
     private javax.swing.JLabel lblSystemInfo;
-    private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtRE_Name_L1;
-    private javax.swing.JTextField txtRE_Name_L2;
     // End of variables declaration//GEN-END:variables
 }
