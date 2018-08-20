@@ -3,6 +3,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.CourseManager;
 import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.TableAlignmentHeader;
 import com.malimar.models.Course;
@@ -145,6 +146,11 @@ public class FrmCourse extends javax.swing.JFrame {
 
         lblCourseID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblCourseID.setText("ID");
+        lblCourseID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCourseIDMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
@@ -215,6 +221,11 @@ public class FrmCourse extends javax.swing.JFrame {
 
         lblCourseName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblCourseName_L1.setText("Course_L1");
+        lblCourseName_L1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCourseName_L1MouseClicked(evt);
+            }
+        });
 
         txtCourseName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtCourseName_L1.setBorder(null);
@@ -224,9 +235,19 @@ public class FrmCourse extends javax.swing.JFrame {
 
         lblCourseName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblCourseName_L2.setText("Course_L2");
+        lblCourseName_L2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCourseName_L2MouseClicked(evt);
+            }
+        });
 
         lblPrice.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblPrice.setText("Price");
+        lblPrice.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPriceMouseClicked(evt);
+            }
+        });
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -423,6 +444,30 @@ public class FrmCourse extends javax.swing.JFrame {
             txtPrice.setText(String.valueOf(String.format("%,.2f", a)));
         }
     }//GEN-LAST:event_txtPriceActionPerformed
+
+    private void lblCourseIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCourseIDMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblCourseID", frm);
+        }
+    }//GEN-LAST:event_lblCourseIDMouseClicked
+
+    private void lblCourseName_L1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCourseName_L1MouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblCourseName_L1", frm);
+        }
+    }//GEN-LAST:event_lblCourseName_L1MouseClicked
+
+    private void lblCourseName_L2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCourseName_L2MouseClicked
+         if(evt.getModifiers()==6){
+            WindowChangeLabel("lblCourseName_L2", frm);
+        }
+    }//GEN-LAST:event_lblCourseName_L2MouseClicked
+
+    private void lblPriceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPriceMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblPrice", frm);
+        }
+    }//GEN-LAST:event_lblPriceMouseClicked
 
     /**
      * @param args the command line arguments

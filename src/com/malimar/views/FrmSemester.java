@@ -2,9 +2,13 @@
 package com.malimar.views;
 
 import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.SemesterManager;
+import com.malimar.models.Semester;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
+import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Font;
 import java.text.SimpleDateFormat;
@@ -16,11 +20,15 @@ import javax.swing.table.TableColumnModel;
 public class FrmSemester extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     String frm;
+    SemesterManager sm = new SemesterManager();
+    Semester st = new Semester();
+
     public FrmSemester() {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         startFrame();
         ClearTable.clearFirstLoad(table, model);
+        sm.load(model);
     }
     private void startFrame(){
         frm = this.getClass().getSimpleName();
@@ -34,23 +42,26 @@ public class FrmSemester extends javax.swing.JFrame {
         lbSemesterInfo.setText(hmapLang.get("lbSemesterInfo".concat(frm).toUpperCase())[LN]);
         lblSemesterName.setText(hmapLang.get("lblSemesterName".concat(frm).toUpperCase())[LN]);
         lblStartDate.setText(hmapLang.get("lblStartDate".concat(frm).toUpperCase())[LN]);
-        lblEndDate.setText(hmapLang.get("lblStartDate".concat(frm).toUpperCase())[LN]);
-        btnSave.setText(hmapLang.get("lblEndDate".concat(frm).toUpperCase())[LN]);
+        lblEndDate.setText(hmapLang.get("lblEndDate".concat(frm).toUpperCase())[LN]);
+        btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
         JTableHeader th = table.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();
             table.getColumnCount();
             for(int i=0; i < table.getColumnCount(); i++){
                 TableColumn tc = tcm.getColumn(i);            
-                tc.setHeaderValue(hmapLang.get(table.getModel().getColumnName(i).concat(frm).toUpperCase()) [LN]);
-            }
-            table.setAutoCreateRowSorter(true);
-            th.repaint(); 
+            tc.setHeaderValue(hmapLang.get(table.getModel().getColumnName(i).concat(frm).toUpperCase())[LN]);
+        }
+        table.setAutoCreateRowSorter(true);
+        th.repaint();
     }
-    private void clearText(){
+
+    private void clearText() {
         txtSemesterID.setText("New");
         txtSemesterName.setText("");
         txtStartDate.setDate(null);
+        txtEndDate.setDate(null);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -125,6 +136,11 @@ public class FrmSemester extends javax.swing.JFrame {
 
         lblSemesterID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblSemesterID.setText("ID");
+        lblSemesterID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSemesterIDMouseClicked(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
@@ -195,12 +211,22 @@ public class FrmSemester extends javax.swing.JFrame {
 
         lblSemesterName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblSemesterName.setText("Semester Name");
+        lblSemesterName.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSemesterNameMouseClicked(evt);
+            }
+        });
 
         txtSemesterName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtSemesterName.setBorder(null);
 
         lblStartDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblStartDate.setText("Start Date");
+        lblStartDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStartDateMouseClicked(evt);
+            }
+        });
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -225,6 +251,11 @@ public class FrmSemester extends javax.swing.JFrame {
 
         lblEndDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblEndDate.setText("End Date");
+        lblEndDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEndDateMouseClicked(evt);
+            }
+        });
 
         txtEndDate.setDateFormatString("dd-MM-yyyy");
         txtEndDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -321,9 +352,29 @@ public class FrmSemester extends javax.swing.JFrame {
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         if(evt.getModifiers()==6){
-            
+            WindowChangeLabel("btnSave", frm);
         }else{
-            
+            st.setSemesterName(txtSemesterName.getText());
+            st.setStartDate(txtStartDate.getDate());
+            st.setEndDate(txtEndDate.getDate());
+            if(txtSemesterID.getText().equals("New")){
+                if(sm.insert(st)){
+                    clearText();
+                    ClearTable.clearFirstLoad(table, model);
+                    sm.load(model);
+                }else{
+                    MsgBox.msgError();
+                }
+            }else{
+                st.setSemesterID(Integer.parseInt(txtSemesterID.getText()));
+                if(sm.update(st)){
+                    clearText();
+                    ClearTable.clearFirstLoad(table, model);
+                    sm.load(model);
+                }else{
+                    MsgBox.msgError();
+                }
+            }
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 
@@ -349,6 +400,30 @@ public class FrmSemester extends javax.swing.JFrame {
             clearText();
         }
     }//GEN-LAST:event_txtSemesterIDMouseClicked
+
+    private void lblSemesterIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSemesterIDMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblSemesterID", frm);
+        }
+    }//GEN-LAST:event_lblSemesterIDMouseClicked
+
+    private void lblSemesterNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSemesterNameMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblSemesterName", frm);
+        }
+    }//GEN-LAST:event_lblSemesterNameMouseClicked
+
+    private void lblStartDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStartDateMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblStartDate", frm);
+        }
+    }//GEN-LAST:event_lblStartDateMouseClicked
+
+    private void lblEndDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEndDateMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblEndDate", frm);
+        }
+    }//GEN-LAST:event_lblEndDateMouseClicked
 
     /**
      * @param args the command line arguments

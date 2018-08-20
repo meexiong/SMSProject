@@ -528,6 +528,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         btnSemester.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSemesterMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnSemesterMouseExited(evt);
             }
@@ -1134,15 +1137,19 @@ int cnt=0;
 
     private void btnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCourseMouseClicked
         try {
-            if(evt.getModifiers()==6){
-                
-            }else{
-                FrmCourse frmCourse = new FrmCourse();
-                frmCourse.setVisible(true);
-            }
+            FrmCourse frmCourse = new FrmCourse();
+            frmCourse.setVisible(true);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnCourseMouseClicked
+
+    private void btnSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSemesterMouseClicked
+        try {
+            FrmSemester frmSemester = new FrmSemester();
+            frmSemester.setVisible(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnSemesterMouseClicked
 
 
     /**
