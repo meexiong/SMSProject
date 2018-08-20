@@ -541,6 +541,9 @@
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="text" type="java.lang.String" value="ID"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblIDMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtID">
                           <Properties>
@@ -571,6 +574,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="TeacherName_L1"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblTeachL1MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtnameL1">
                           <Properties>
@@ -591,6 +597,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="TeacherName_L2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblTeachL2MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtnameL2">
                           <Properties>
@@ -668,6 +677,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Dob"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbldobMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="dob">
                           <Properties>
@@ -681,6 +693,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Start Work"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblstartworkMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="startwork">
                           <Properties>
@@ -694,6 +709,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Gender"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblgenderMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbGender">
                           <Properties>
@@ -718,6 +736,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Work Status"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblworkstatusMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbworkstatus">
                           <Properties>
@@ -754,6 +775,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Email"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblemailMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JLabel" name="lblphone1">
                           <Properties>
@@ -762,6 +786,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Phone 1"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblphone1MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtphone1">
                           <Properties>
@@ -821,6 +848,9 @@
                                   <Color id="Hand Cursor"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbWorkingMouseClicked"/>
+                              </Events>
                             </Component>
                             <Component class="javax.swing.JCheckBox" name="cbTeachDaily">
                               <Properties>
@@ -845,6 +875,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Phone 2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblphone2MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtphone2">
                           <Properties>
@@ -865,6 +898,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Class Room"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblclassroomMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbroom">
                           <Properties>
@@ -889,6 +925,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Nationality"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblnationalityMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbNationality">
                           <Properties>
@@ -913,6 +952,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Ethnic"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblethnicMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbEthnic">
                           <Properties>
@@ -937,6 +979,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Region"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblRegionMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbregion">
                           <Properties>
@@ -961,6 +1006,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Leave Date"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblLeaveDateMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="com.toedter.calendar.JDateChooser" name="leaveDate">
                           <Properties>
@@ -974,6 +1022,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Park Teach"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblparkteachMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbpark">
                           <Properties>
@@ -998,6 +1049,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Address"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAddressMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtaddress">
                           <Properties>
@@ -1018,6 +1072,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="More Info"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMoreInfoMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtMoreInfo">
                           <Properties>
@@ -1056,6 +1113,9 @@
                             <Property name="horizontalAlignment" type="int" value="0"/>
                             <Property name="text" type="java.lang.String" value="Number"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbltnbrMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtt_nbr">
                           <Properties>

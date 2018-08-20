@@ -377,6 +377,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -397,12 +402,22 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
         lblTeachL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblTeachL1.setText("TeacherName_L1");
+        lblTeachL1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTeachL1MouseClicked(evt);
+            }
+        });
 
         txtnameL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtnameL1.setBorder(null);
 
         lblTeachL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblTeachL2.setText("TeacherName_L2");
+        lblTeachL2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblTeachL2MouseClicked(evt);
+            }
+        });
 
         txtnameL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtnameL2.setBorder(null);
@@ -445,22 +460,42 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
         lbldob.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lbldob.setText("Dob");
+        lbldob.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbldobMouseClicked(evt);
+            }
+        });
 
         dob.setDateFormatString("dd-MM-yyyy");
 
         lblstartwork.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblstartwork.setText("Start Work");
+        lblstartwork.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblstartworkMouseClicked(evt);
+            }
+        });
 
         startwork.setDateFormatString("dd-MM-yyyy");
 
         lblgender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblgender.setText("Gender");
+        lblgender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblgenderMouseClicked(evt);
+            }
+        });
 
         cbbGender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbGender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblworkstatus.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblworkstatus.setText("Work Status");
+        lblworkstatus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblworkstatusMouseClicked(evt);
+            }
+        });
 
         cbbworkstatus.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbworkstatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -470,9 +505,19 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
         lblemail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblemail.setText("Email");
+        lblemail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblemailMouseClicked(evt);
+            }
+        });
 
         lblphone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblphone1.setText("Phone 1");
+        lblphone1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblphone1MouseClicked(evt);
+            }
+        });
 
         txtphone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtphone1.setBorder(null);
@@ -483,6 +528,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         cbWorking.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbWorking.setText("Working");
         cbWorking.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbWorking.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbWorkingMouseClicked(evt);
+            }
+        });
 
         cbTeachDaily.setBackground(new java.awt.Color(255, 255, 255));
         cbTeachDaily.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -512,53 +562,98 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
         lblphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblphone2.setText("Phone 2");
+        lblphone2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblphone2MouseClicked(evt);
+            }
+        });
 
         txtphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtphone2.setBorder(null);
 
         lblclassroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblclassroom.setText("Class Room");
+        lblclassroom.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblclassroomMouseClicked(evt);
+            }
+        });
 
         cbbroom.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblnationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblnationality.setText("Nationality");
+        lblnationality.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblnationalityMouseClicked(evt);
+            }
+        });
 
         cbbNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbNationality.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblethnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblethnic.setText("Ethnic");
+        lblethnic.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblethnicMouseClicked(evt);
+            }
+        });
 
         cbbEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbEthnic.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblRegion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblRegion.setText("Region");
+        lblRegion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegionMouseClicked(evt);
+            }
+        });
 
         cbbregion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbregion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblLeaveDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblLeaveDate.setText("Leave Date");
+        lblLeaveDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLeaveDateMouseClicked(evt);
+            }
+        });
 
         leaveDate.setDateFormatString("dd-MM-yyyy");
 
         lblparkteach.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblparkteach.setText("Park Teach");
+        lblparkteach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblparkteachMouseClicked(evt);
+            }
+        });
 
         cbbpark.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbpark.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblAddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblAddress.setText("Address");
+        lblAddress.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddressMouseClicked(evt);
+            }
+        });
 
         txtaddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtaddress.setBorder(null);
 
         lblMoreInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblMoreInfo.setText("More Info");
+        lblMoreInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMoreInfoMouseClicked(evt);
+            }
+        });
 
         txtMoreInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtMoreInfo.setBorder(null);
@@ -584,6 +679,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         lbltnbr.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lbltnbr.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbltnbr.setText("Number");
+        lbltnbr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbltnbrMouseClicked(evt);
+            }
+        });
 
         txtt_nbr.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtt_nbr.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1070,6 +1170,188 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     private void txtt_nbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtt_nbrActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtt_nbrActionPerformed
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblID", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblTeachL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTeachL1MouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblTeachL1", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblTeachL1MouseClicked
+
+    private void lblTeachL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTeachL2MouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblteachL2", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblTeachL2MouseClicked
+
+    private void lbltnbrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbltnbrMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lbltnbr", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lbltnbrMouseClicked
+
+    private void lbldobMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbldobMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lbldob", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lbldobMouseClicked
+
+    private void lblstartworkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblstartworkMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblstartwork", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblstartworkMouseClicked
+
+    private void lblgenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblgenderMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblgender", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblgenderMouseClicked
+
+    private void lblworkstatusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblworkstatusMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblworkstatus", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblworkstatusMouseClicked
+
+    private void lblemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblemailMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblemail", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblemailMouseClicked
+
+    private void lblphone1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblphone1MouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblphone1", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblphone1MouseClicked
+
+    private void lblphone2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblphone2MouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblphone2", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblphone2MouseClicked
+
+    private void lblclassroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblclassroomMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblclassroom", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblclassroomMouseClicked
+
+    private void lblnationalityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblnationalityMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblnationality", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblnationalityMouseClicked
+
+    private void lblparkteachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblparkteachMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblparkteach", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblparkteachMouseClicked
+
+    private void lblethnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblethnicMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblethnic", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblethnicMouseClicked
+
+    private void lblAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddressMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblAddress", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblAddressMouseClicked
+
+    private void lblRegionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegionMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblregion", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblRegionMouseClicked
+
+    private void lblMoreInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMoreInfoMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblMoreinfo", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblMoreInfoMouseClicked
+
+    private void lblLeaveDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLeaveDateMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblLeaveDate", frm);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblLeaveDateMouseClicked
+
+    private void cbWorkingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbWorkingMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblworking", frm);
+            }else{
+                cbWorking.isSelected();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cbWorkingMouseClicked
 
     /**
      * @param args the command line arguments
