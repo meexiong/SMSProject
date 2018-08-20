@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
 
@@ -45,6 +46,7 @@ public class CourseManager {
     }
     public void load(DefaultTableModel model) {
         try {
+            DecimalFormat dcf = new DecimalFormat("#,##0.00");
             String query = "Select CourseID, CourseName_L1, CourseName_L2, CoursePrice from tbl_Course";
             ResultSet rs = c.createStatement().executeQuery(query);
             while (rs.next()) {
@@ -52,10 +54,11 @@ public class CourseManager {
                 String course_L1 = rs.getString("CourseName_L1");
                 String course_L2 = rs.getString("CourseName_L2");
                 double price = rs.getDouble("CoursePrice");
-                Object[] obj = new Object[]{id, course_L1, course_L2, price};
+                Object[] obj = new Object[]{id, course_L1, course_L2, dcf.format(price)};
                 model.addRow(obj);
             }
         } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

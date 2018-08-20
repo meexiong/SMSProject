@@ -1,37 +1,26 @@
 
 package com.malimar.views;
 
-import com.malimar.controllers.CourseManager;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.hmapLang;
-import com.malimar.controllers.TableAlignmentHeader;
-import com.malimar.models.Course;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
-import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Font;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
-public class FrmCourse extends javax.swing.JFrame {
+public class FrmSemester extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     String frm;
-    CourseManager cm = new CourseManager();
-    Course cs = new Course();
-    public FrmCourse() {
+    public FrmSemester() {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         startFrame();
         ClearTable.clearFirstLoad(table, model);
-        cm.load(model);
     }
     private void startFrame(){
         frm = this.getClass().getSimpleName();
@@ -41,12 +30,12 @@ public class FrmCourse extends javax.swing.JFrame {
         table.getTableHeader().setBackground(Color.decode("#4169E1"));
         table.getTableHeader().setForeground(Color.WHITE);
         table.getTableHeader().setOpaque(false);
-        lblCourseID.setText(hmapLang.get("lblCourseID".concat(frm).toUpperCase())[LN]);
-        lblCourseInfo.setText(hmapLang.get("lblCourseInfo".concat(frm).toUpperCase())[LN]);
-        lblCourseName_L1.setText(hmapLang.get("lblCourseName_L1".concat(frm).toUpperCase())[LN]);
-        lblCourseName_L2.setText(hmapLang.get("lblCourseName_L2".concat(frm).toUpperCase())[LN]);
-        lblPrice.setText(hmapLang.get("lblPrice".concat(frm).toUpperCase())[LN]);
-        btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
+        lblSemesterID.setText(hmapLang.get("lblSemesterID".concat(frm).toUpperCase())[LN]);
+        lbSemesterInfo.setText(hmapLang.get("lbSemesterInfo".concat(frm).toUpperCase())[LN]);
+        lblSemesterName.setText(hmapLang.get("lblSemesterName".concat(frm).toUpperCase())[LN]);
+        lblStartDate.setText(hmapLang.get("lblStartDate".concat(frm).toUpperCase())[LN]);
+        lblEndDate.setText(hmapLang.get("lblStartDate".concat(frm).toUpperCase())[LN]);
+        btnSave.setText(hmapLang.get("lblEndDate".concat(frm).toUpperCase())[LN]);
         JTableHeader th = table.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();
             table.getColumnCount();
@@ -56,18 +45,11 @@ public class FrmCourse extends javax.swing.JFrame {
             }
             table.setAutoCreateRowSorter(true);
             th.repaint(); 
-            table.getColumnModel().getColumn(1).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
-            table.getColumnModel().getColumn(2).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
-            table.getColumnModel().getColumn(3).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.RIGHT));
-            DefaultTableCellRenderer rightRenderer = new DefaultTableCellRenderer();
-            rightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
-            table.getColumnModel().getColumn(3).setCellRenderer(rightRenderer);
     }
     private void clearText(){
-        txtCourseID.setText("New");
-        txtCourseName_L1.setText("");
-        txtCourseName_L2.setText("");
-        txtPrice.setText("0");
+        txtSemesterID.setText("New");
+        txtSemesterName.setText("");
+        txtStartDate.setDate(null);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,24 +59,22 @@ public class FrmCourse extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        lblCourseID = new javax.swing.JLabel();
+        lblSemesterID = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         btnMinimize = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        lblCourseInfo = new javax.swing.JLabel();
-        txtCourseID = new javax.swing.JTextField();
-        lblCourseName_L1 = new javax.swing.JLabel();
-        txtCourseName_L1 = new javax.swing.JTextField();
-        txtCourseName_L2 = new javax.swing.JTextField();
-        lblCourseName_L2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
+        lbSemesterInfo = new javax.swing.JLabel();
+        txtSemesterID = new javax.swing.JTextField();
+        lblSemesterName = new javax.swing.JLabel();
+        txtSemesterName = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        lblPrice = new javax.swing.JLabel();
+        lblStartDate = new javax.swing.JLabel();
         btnSave = new javax.swing.JLabel();
-        txtPrice = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
+        txtStartDate = new com.toedter.calendar.JDateChooser();
+        lblEndDate = new javax.swing.JLabel();
+        txtEndDate = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -111,7 +91,7 @@ public class FrmCourse extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "lblCourseID", "lblCourseName_L1", "lblCourseName_L2", "lblPrice"
+                "lblSemesterID", "lblSemesterName", "lblStartDate", "lblEndDate"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -133,18 +113,18 @@ public class FrmCourse extends javax.swing.JFrame {
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(0).setMinWidth(0);
             table.getColumnModel().getColumn(0).setMaxWidth(0);
-            table.getColumnModel().getColumn(1).setMinWidth(250);
-            table.getColumnModel().getColumn(1).setMaxWidth(250);
-            table.getColumnModel().getColumn(2).setMinWidth(250);
-            table.getColumnModel().getColumn(2).setMaxWidth(250);
-            table.getColumnModel().getColumn(3).setMinWidth(150);
-            table.getColumnModel().getColumn(3).setMaxWidth(150);
+            table.getColumnModel().getColumn(1).setMinWidth(300);
+            table.getColumnModel().getColumn(1).setMaxWidth(300);
+            table.getColumnModel().getColumn(2).setMinWidth(100);
+            table.getColumnModel().getColumn(2).setMaxWidth(100);
+            table.getColumnModel().getColumn(3).setMinWidth(100);
+            table.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        lblCourseID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblCourseID.setText("ID");
+        lblSemesterID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblSemesterID.setText("ID");
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
@@ -169,20 +149,20 @@ public class FrmCourse extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        lblCourseInfo.setBackground(new java.awt.Color(255, 255, 255));
-        lblCourseInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblCourseInfo.setForeground(new java.awt.Color(0, 15, 255));
-        lblCourseInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblCourseInfo.setText("Course Information");
-        lblCourseInfo.setOpaque(true);
-        jPanel4.add(lblCourseInfo, java.awt.BorderLayout.CENTER);
+        lbSemesterInfo.setBackground(new java.awt.Color(255, 255, 255));
+        lbSemesterInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lbSemesterInfo.setForeground(new java.awt.Color(0, 15, 255));
+        lbSemesterInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbSemesterInfo.setText("Semester Information");
+        lbSemesterInfo.setOpaque(true);
+        jPanel4.add(lbSemesterInfo, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 616, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -200,33 +180,27 @@ public class FrmCourse extends javax.swing.JFrame {
                 .addGap(2, 2, 2))
         );
 
-        txtCourseID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtCourseID.setText("New");
-        txtCourseID.setBorder(null);
-        txtCourseID.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        txtCourseID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtCourseID.setEnabled(false);
-        txtCourseID.setOpaque(false);
-        txtCourseID.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtSemesterID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtSemesterID.setText("New");
+        txtSemesterID.setBorder(null);
+        txtSemesterID.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtSemesterID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtSemesterID.setEnabled(false);
+        txtSemesterID.setOpaque(false);
+        txtSemesterID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtCourseIDMouseClicked(evt);
+                txtSemesterIDMouseClicked(evt);
             }
         });
 
-        lblCourseName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblCourseName_L1.setText("Course_L1");
+        lblSemesterName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblSemesterName.setText("Semester Name");
 
-        txtCourseName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtCourseName_L1.setBorder(null);
+        txtSemesterName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtSemesterName.setBorder(null);
 
-        txtCourseName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtCourseName_L2.setBorder(null);
-
-        lblCourseName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblCourseName_L2.setText("Course_L2");
-
-        lblPrice.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblPrice.setText("Price");
+        lblStartDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblStartDate.setText("Start Date");
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -246,20 +220,14 @@ public class FrmCourse extends javax.swing.JFrame {
             }
         });
 
-        txtPrice.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtPrice.setText("0.00");
-        txtPrice.setBorder(null);
-        txtPrice.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtPrice.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPriceMouseClicked(evt);
-            }
-        });
-        txtPrice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPriceActionPerformed(evt);
-            }
-        });
+        txtStartDate.setDateFormatString("dd-MM-yyyy");
+        txtStartDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+
+        lblEndDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEndDate.setText("End Date");
+
+        txtEndDate.setDateFormatString("dd-MM-yyyy");
+        txtEndDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -274,35 +242,32 @@ public class FrmCourse extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblSemesterID, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtSemesterID, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblCourseName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblSemesterName, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtCourseName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblCourseName_L2, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jSeparator1)
-                                        .addComponent(txtCourseName_L2)
-                                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtSemesterName, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jSeparator4)
-                                        .addComponent(txtPrice, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
-                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(78, 78, 78)
+                                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jSeparator3, txtCourseID});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jSeparator3, txtSemesterID});
 
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -310,41 +275,31 @@ public class FrmCourse extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCourseID)
-                    .addComponent(txtCourseID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSemesterID)
+                    .addComponent(txtSemesterID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCourseName_L1)
-                    .addComponent(txtCourseName_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblSemesterName)
+                    .addComponent(txtSemesterName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStartDate))
                 .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCourseName_L2)
-                    .addComponent(txtCourseName_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(lblPrice)
-                            .addGap(45, 45, 45))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(14, 14, 14))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEndDate)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblCourseID, lblCourseName_L1, lblCourseName_L2, lblPrice, txtCourseID, txtCourseName_L1, txtCourseName_L2});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblEndDate, lblSemesterID, lblSemesterName, lblStartDate, txtEndDate, txtSemesterID, txtSemesterName, txtStartDate});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -353,7 +308,7 @@ public class FrmCourse extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
-        this.setState(FrmCourse.ICONIFIED);
+        this.setState(FrmSemester.ICONIFIED);
     }//GEN-LAST:event_btnMinimizeMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
@@ -368,25 +323,7 @@ public class FrmCourse extends javax.swing.JFrame {
         if(evt.getModifiers()==6){
             
         }else{
-            cs.setCourseName_L1(txtCourseName_L1.getText());
-            cs.setCourseName_L2(txtCourseName_L2.getText());
-            cs.setCoursePrice(Double.parseDouble(txtPrice.getText().replace(",", "")));
-            if(txtCourseID.getText().equals("New")){
-                if(cm.insert(cs)){
-                    clearText();
-                }else{
-                    MsgBox.msgError();
-                }
-            }else{
-                cs.setCourseID(Integer.parseInt(txtCourseID.getText()));
-                if(cm.update(cs)){
-                    clearText();
-                }else{
-                    MsgBox.msgError();
-                }
-            }
-            ClearTable.clearFirstLoad(table, model);
-            cm.load(model);
+            
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 
@@ -397,32 +334,21 @@ public class FrmCourse extends javax.swing.JFrame {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         try {
             int rowIndex = table.getSelectedRow();
-            txtCourseID.setText(table.getValueAt(rowIndex, 0).toString());
-            txtCourseName_L1.setText(table.getValueAt(rowIndex, 1).toString());
-            txtCourseName_L2.setText(table.getValueAt(rowIndex, 2).toString());
-            txtPrice.setText(String.valueOf(table.getValueAt(rowIndex, 3).toString()));
+            txtSemesterID.setText(table.getValueAt(rowIndex, 0).toString());
+            txtSemesterName.setText(table.getValueAt(rowIndex, 1).toString());
+            java.util.Date stdate = new SimpleDateFormat("dd-MM-yyyy").parse(table.getValueAt(rowIndex, 2).toString());
+            txtStartDate.setDate(stdate);
+            java.util.Date eDate = new SimpleDateFormat("dd-MM-yyyy").parse(table.getValueAt(rowIndex, 3).toString());
+            txtEndDate.setDate(eDate);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_tableMouseClicked
 
-    private void txtCourseIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCourseIDMouseClicked
+    private void txtSemesterIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSemesterIDMouseClicked
         if(evt.getClickCount()==2){
             clearText();
         }
-    }//GEN-LAST:event_txtCourseIDMouseClicked
-
-    private void txtPriceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPriceMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPriceMouseClicked
-
-    private void txtPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPriceActionPerformed
-        if ("".equals(txtPrice.getText())) {
-            txtPrice.setText("0.00");
-        } else {
-            double a = Double.parseDouble(txtPrice.getText().replace(",", ""));
-            txtPrice.setText(String.valueOf(String.format("%,.2f", a)));
-        }
-    }//GEN-LAST:event_txtPriceActionPerformed
+    }//GEN-LAST:event_txtSemesterIDMouseClicked
 
     /**
      * @param args the command line arguments
@@ -441,20 +367,21 @@ public class FrmCourse extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSemester.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSemester.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSemester.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCourse.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmSemester.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmCourse().setVisible(true);
+                new FrmSemester().setVisible(true);
             }
         });
     }
@@ -468,19 +395,17 @@ public class FrmCourse extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JLabel lblCourseID;
-    private javax.swing.JLabel lblCourseInfo;
-    private javax.swing.JLabel lblCourseName_L1;
-    private javax.swing.JLabel lblCourseName_L2;
-    private javax.swing.JLabel lblPrice;
+    private javax.swing.JLabel lbSemesterInfo;
+    private javax.swing.JLabel lblEndDate;
+    private javax.swing.JLabel lblSemesterID;
+    private javax.swing.JLabel lblSemesterName;
+    private javax.swing.JLabel lblStartDate;
     private javax.swing.JTable table;
-    private javax.swing.JTextField txtCourseID;
-    private javax.swing.JTextField txtCourseName_L1;
-    private javax.swing.JTextField txtCourseName_L2;
-    private javax.swing.JTextField txtPrice;
+    private com.toedter.calendar.JDateChooser txtEndDate;
+    private javax.swing.JTextField txtSemesterID;
+    private javax.swing.JTextField txtSemesterName;
+    private com.toedter.calendar.JDateChooser txtStartDate;
     // End of variables declaration//GEN-END:variables
 }
