@@ -44,13 +44,13 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleFalse(btnTeacher);
         SetText.setVisibleFalse(btnSemester);
         SetText.setVisibleFalse(btnScore);
-        SetText.setVisibleFalse(lblRegistation);
+        SetText.setVisibleFalse(lblSchedule);
         SetText.setVisibleFalse(lblStudentInfo);
         SetText.setVisibleFalse(lblPayment);
         SetText.setVisibleFalse(lblTeacher);
         SetText.setVisibleFalse(lblSemester);
         SetText.setVisibleFalse(lblReport);
-        SetText.setVisibleFalse(lblScore);
+        SetText.setVisibleFalse(lblRegistation);
         SetText.setVisibleFalse(lblReport);
         SetText.setVisibleFalse(lblSettingUser);
         SetText.setVisibleFalse(btnReport);
@@ -91,13 +91,13 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleTrue(btnTeacher);
         SetText.setVisibleTrue(btnSemester);
         SetText.setVisibleTrue(btnScore);
-        SetText.setVisibleTrue(lblRegistation);
+        SetText.setVisibleTrue(lblSchedule);
         SetText.setVisibleTrue(lblStudentInfo);
         SetText.setVisibleTrue(lblPayment);
         SetText.setVisibleTrue(lblTeacher);
         SetText.setVisibleTrue(lblSemester);
         SetText.setVisibleTrue(lblReport);
-        SetText.setVisibleTrue(lblScore);
+        SetText.setVisibleTrue(lblRegistation);
         SetText.setVisibleTrue(lblReport);
         SetText.setVisibleTrue(lblSettingUser);
         SetText.setVisibleTrue(btnReport);
@@ -157,12 +157,12 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnLogOut.setText("Logout");
     }
     private void getMainLabel(){
-        lblRegistation.setText(hmapLang.get("lblRegistation".concat(frm).toUpperCase()) [LN]);
+        lblSchedule.setText(hmapLang.get("lblSchedule".concat(frm).toUpperCase()) [LN]);
         lblStudentInfo.setText(hmapLang.get("lblStudentInfo".concat(frm).toUpperCase()) [LN]);
         lblPayment.setText(hmapLang.get("lblPayment".concat(frm).toUpperCase()) [LN]);
         lblTeacher.setText(hmapLang.get("lblTeacher".concat(frm).toUpperCase()) [LN]);
         lblSemester.setText(hmapLang.get("lblSemester".concat(frm).toUpperCase()) [LN]);
-        lblScore.setText(hmapLang.get("lblScore".concat(frm).toUpperCase()) [LN]);
+        lblRegistation.setText(hmapLang.get("lblRegistation".concat(frm).toUpperCase()) [LN]);
         lblReport.setText(hmapLang.get("lblReport".concat(frm).toUpperCase()) [LN]);
         lblSettingUser.setText(hmapLang.get("lblSettingUser".concat(frm).toUpperCase()) [LN]);
         btnMStudentType.setText(hmapLang.get("btnMStudentType".concat(frm).toUpperCase()) [LN]);
@@ -213,8 +213,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblSemester = new javax.swing.JLabel();
         btnSemester = new javax.swing.JLabel();
         btnScore = new javax.swing.JLabel();
-        lblScore = new javax.swing.JLabel();
-        btnSchedule = new javax.swing.JLabel();
         lblRegistation = new javax.swing.JLabel();
         lblStudentInfo = new javax.swing.JLabel();
         btnStudentInfo = new javax.swing.JLabel();
@@ -228,6 +226,8 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblCourse = new javax.swing.JLabel();
         btnTeacher = new javax.swing.JLabel();
         lblTeacher = new javax.swing.JLabel();
+        lblSchedule = new javax.swing.JLabel();
+        btnSchedule = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -281,7 +281,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 1073, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
@@ -312,7 +312,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
 
         lblLoginIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_100px.png"))); // NOI18N
-        jPanel3.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 250, 160, 80));
+        jPanel3.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 160, 80));
 
         lblPassword.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblPassword.setText("Password");
@@ -537,7 +537,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         btnScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Scoreboard_100px.png"))); // NOI18N
+        btnScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Cash Register_100px.png"))); // NOI18N
         btnScore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnScore.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -550,32 +550,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
 
-        lblScore.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblScore.setText("Score");
-        lblScore.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblScoreMouseClicked(evt);
-            }
-        });
-
-        btnSchedule.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSchedule.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Schedule_100px.png"))); // NOI18N
-        btnSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSchedule.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnScheduleMouseMoved(evt);
-            }
-        });
-        btnSchedule.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnScheduleMouseExited(evt);
-            }
-        });
-
         lblRegistation.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblRegistation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRegistation.setText("Create Schedule");
+        lblRegistation.setText("Registation");
         lblRegistation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegistationMouseClicked(evt);
@@ -729,6 +706,29 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
 
+        lblSchedule.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblSchedule.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblSchedule.setText("Create Schedule");
+        lblSchedule.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblScheduleMouseClicked(evt);
+            }
+        });
+
+        btnSchedule.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSchedule.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Schedule_100px.png"))); // NOI18N
+        btnSchedule.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSchedule.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnScheduleMouseMoved(evt);
+            }
+        });
+        btnSchedule.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnScheduleMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -736,58 +736,54 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblScore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnScore, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(73, 73, 73)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                    .addComponent(lblCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(73, 73, 73)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblRegistation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnScore, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSchedule, btnTeacher, lblRegistation, lblTeacher});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSchedule, btnTeacher, lblSchedule, lblTeacher});
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSemester, btnStudentInfo, lblSemester, lblStudentInfo});
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPayment, btnScore, lblPayment, lblScore});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPayment, btnScore, lblPayment, lblRegistation});
 
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(lblSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnScore, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -814,9 +810,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                             .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnScore, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(lblScore, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
         );
 
@@ -827,7 +823,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addGap(10, 10, 10))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -998,11 +994,11 @@ int cnt=0;
         }
     }//GEN-LAST:event_lblStudentInfoMouseClicked
 
-    private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
+    private void lblScheduleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblScheduleMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblRegistation", frm);
         }
-    }//GEN-LAST:event_lblRegistationMouseClicked
+    }//GEN-LAST:event_lblScheduleMouseClicked
 
     private void btnMReligionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMReligionMouseClicked
         // TODO add your handling code here:
@@ -1064,11 +1060,11 @@ int cnt=0;
         }
     }//GEN-LAST:event_lblSemesterMouseClicked
 
-    private void lblScoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblScoreMouseClicked
+    private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblScore", frm);
         }
-    }//GEN-LAST:event_lblScoreMouseClicked
+    }//GEN-LAST:event_lblRegistationMouseClicked
 
     private void lblReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportMouseClicked
         if(evt.getModifiers()==6){
@@ -1124,11 +1120,11 @@ int cnt=0;
     }//GEN-LAST:event_btnMWorkStatusMouseClicked
 
     private void btnCourseMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCourseMouseMoved
-        // TODO add your handling code here:
+        Border.blueColor(btnCourse);
     }//GEN-LAST:event_btnCourseMouseMoved
 
     private void btnCourseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCourseMouseExited
-        // TODO add your handling code here:
+        Border.WhiteColor(btnCourse);
     }//GEN-LAST:event_btnCourseMouseExited
 
     private void lblCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCourseMouseClicked
@@ -1225,7 +1221,7 @@ int cnt=0;
     private javax.swing.JLabel lblPayment;
     private javax.swing.JLabel lblRegistation;
     private javax.swing.JLabel lblReport;
-    private javax.swing.JLabel lblScore;
+    private javax.swing.JLabel lblSchedule;
     private javax.swing.JLabel lblSemester;
     private javax.swing.JLabel lblSettingUser;
     private javax.swing.JSeparator lblSparetorPass;
