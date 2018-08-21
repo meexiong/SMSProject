@@ -57,6 +57,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     String tcID;
     String ids;
     String keySalary="";
+    float sal=0;
     
     public FrmTeacherAdd(java.awt.Frame parent, boolean modal, String id) {
         super(parent, modal);
@@ -1039,7 +1040,10 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
                 ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
                 ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
-                ta.setSalary(Float.parseFloat(txtMoney.getText()));
+                
+                ta.setSalary(sal);
+                //ta.setSalary(Float.parseFloat(txtMoney.getText()));
+                
                 ta.setPath(path);
                 ta.setT_address(txtaddress.getText());
                 ta.settDailyTeach(cbTeachDaily.isSelected());
@@ -1068,10 +1072,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
                 ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
                 
-                DecimalFormat df = new DecimalFormat("###");
-                
-                
-                ta.setSalary(Float.parseFloat(txtMoney.getText()));
+                ta.setSalary(sal);
+                //ta.setSalary(Float.parseFloat(txtMoney.getText()));
                 
                 ta.setTeacher(cbTeacher.isSelected());
                 ta.setT_address(txtaddress.getText());
@@ -1127,7 +1129,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 cbbworkstatus.setSelectedItem(ta.getWorkingname());
                 
                 DecimalFormat df = new DecimalFormat("##,###");
-                txtMoney.setText(String.valueOf(df.format(ta.getSalary())));
+                txtMoney.setText(String.valueOf(df.format(ta.getSalary())));                
+                sal = ta.getSalary();
                 
                 ImageIcon format =null;
                 format = new ImageIcon(ta.getImageB());
@@ -1376,13 +1379,20 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
     private void txtMoneyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMoneyKeyReleased
         // TODO add your handling code here:
+        try {
+            DecimalFormat df = new DecimalFormat("##,###.0");            
+            sal = Float.parseFloat(df.format(txtMoney.getText()));
+            System.out.println(sal);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_txtMoneyKeyReleased
 
     private void txtMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMoneyActionPerformed
         try {
             DecimalFormat df = new DecimalFormat("##,###");
-            keySalary = txtMoney.getText();
-            float x1 = Float.parseFloat(txtMoney.getText());
+            keySalary = txtMoney.getText();             
+            float x1 = Float.parseFloat(txtMoney.getText());            
             String x = df.format(x1);
             txtMoney.setText(x);
             
