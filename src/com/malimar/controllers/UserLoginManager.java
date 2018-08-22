@@ -13,6 +13,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
+import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -190,6 +191,23 @@ public class UserLoginManager {
         }
         return false;
     }
-    
+    public void showClickcbbUserLogin(String cb, JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            //sql = "Select slangid, checked, form_name_"+ LabelManager.LangType +" AS formname, Lang_"+ LabelManager.LangType+" AS LangName from vw_SysFormLang order by SLangid";
+            sql = "Select vw.Slangid, (Select iif(GRUID>0, 'true', 'false') as gruid from tbl_GroupUserLang where SLANGID = vw.SLANGID and GRUID = g.GRUID)AS checked, form_name_"+ LabelManager.LangType +" AS formname, Lang_"+ LabelManager.LangType+" AS LangName \n" +
+                    "from vw_SysFormLang vw \n" +
+                    "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID "
+                    + "left join tbl_GroupUser g on g.GRUID = gl.GRUID "
+                    + "where g.GroupName_"+LabelManager.LangType+" = N'"+ cb +"'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("slangid"), rs.getBoolean("checked"), rs.getString("formname"), rs.getString("langname")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 }

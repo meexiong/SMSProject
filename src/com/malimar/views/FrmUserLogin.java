@@ -567,10 +567,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(lblgroupl2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtGroupL2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGroupShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnUpdateGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUpdateGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtGroupL2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnGroupShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addComponent(lblgroupl1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -601,6 +602,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
         cbbGroupUser.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbGroupUser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbbGroupUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbGroupUserActionPerformed(evt);
+            }
+        });
 
         btnShowDataGroupPermission.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnShowDataGroupPermission.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -840,7 +846,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     ulm.showDataGroupUser(jTable2, model2);
                 } else if (jTabbedPane1.getSelectedIndex() == 2) {
                     showGroupUser();
-                    ulm.showDataGroupUserPermission(jTable3, model3);
+                    //ulm.showDataGroupUserPermission(jTable3, model3);
                 }
             }
         } catch (Exception e) {
@@ -1047,6 +1053,14 @@ public class FrmUserLogin extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnUpdateGroupPermissionMouseClicked
+
+    private void cbbGroupUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGroupUserActionPerformed
+        try {
+            ulm.showClickcbbUserLogin(cbbGroupUser.getSelectedItem().toString(), jTable3, model3);
+        } catch (Exception e) {
+           // e.printStackTrace();
+        }
+    }//GEN-LAST:event_cbbGroupUserActionPerformed
 
     /**
      * @param args the command line arguments
