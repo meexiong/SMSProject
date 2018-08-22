@@ -90,10 +90,53 @@ public class UserLoginManager {
             return true;
             
         } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean updateGroupUser(UserLogin ul){
+        try {
+            sql = "Update tbl_GroupUser set GroupName_L1 = ?, GroupName_L2 = ? where GRUID = (?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setString(1, ul.getGroupName_L1().trim());
+            p.setString(2, ul.getGroupName_L2().trim());
+            p.setInt(3, ul.getGRUID());
+            p.executeUpdate();
+            p.close();
+            MsgBox.msgInfo();
+            return true;
+            
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-    
-    
+    public boolean updateUsedGroupUser(UserLogin ul){
+        try {
+            sql = "Update tbl_groupUser set Used = ? where GrUID = (?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getUsed());
+            p.setInt(2, ul.getGRUID());
+            p.executeUpdate();
+            p.close();
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public void showDataGroupUserPermission(JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select slangid, checked, form_name_"+ LabelManager.LangType +" AS formname, Lang_"+ LabelManager.LangType+" AS LangName from vw_SysFormLang order by SLangid";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("slangid"), rs.getBoolean("checked"), rs.getString("formname"), rs.getString("langname")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
