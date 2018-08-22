@@ -702,6 +702,11 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         txtMoney.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtMoney.setText("0");
         txtMoney.setBorder(null);
+        txtMoney.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtMoneyMouseClicked(evt);
+            }
+        });
         txtMoney.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMoneyActionPerformed(evt);
@@ -1044,6 +1049,12 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.setSalary(sal);
                 //ta.setSalary(Float.parseFloat(txtMoney.getText()));
                 
+                if (cbTeacher.isSelected()==true){
+                    ta.setTeacher(true);
+                }else{
+                    ta.setTeacher(false);
+                }
+                
                 ta.setPath(path);
                 ta.setT_address(txtaddress.getText());
                 ta.settDailyTeach(cbTeachDaily.isSelected());
@@ -1070,12 +1081,16 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));                
                 ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
                 ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
-                ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
-                
+                ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));                
                 ta.setSalary(sal);
-                //ta.setSalary(Float.parseFloat(txtMoney.getText()));
                 
-                ta.setTeacher(cbTeacher.isSelected());
+                //ta.setTeacher(cbTeacher.isSelected());
+                if (cbTeacher.isSelected()==true){
+                    ta.setTeacher(true);
+                }else{
+                    ta.setTeacher(false);
+                }
+                
                 ta.setT_address(txtaddress.getText());
                 ta.settDailyTeach(cbTeachDaily.isSelected());
                 ta.settWorking(cbWorking.isSelected());
@@ -1132,12 +1147,12 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
                 txtMoney.setText(String.valueOf(df.format(ta.getSalary())));                
                 sal = ta.getSalary();
                 
+                cbTeacher.setSelected(ta.getTeacher());
+                
                 ImageIcon format =null;
                 format = new ImageIcon(ta.getImageB());
                 Image ic = format.getImage().getScaledInstance(lbl_image.getWidth(), lbl_image.getHeight(), Image.SCALE_DEFAULT);
                 lbl_image.setIcon(new ImageIcon(ic));
-                
-                
                 
             }
             
@@ -1378,28 +1393,36 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     }//GEN-LAST:event_cbWorkingMouseClicked
 
     private void txtMoneyKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMoneyKeyReleased
-        // TODO add your handling code here:
-        try {
-            DecimalFormat df = new DecimalFormat("##,###.0");            
-            sal = Float.parseFloat(df.format(txtMoney.getText()));
-            System.out.println(sal);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+      
     }//GEN-LAST:event_txtMoneyKeyReleased
 
     private void txtMoneyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMoneyActionPerformed
         try {
-            DecimalFormat df = new DecimalFormat("##,###");
-            keySalary = txtMoney.getText();             
-            float x1 = Float.parseFloat(txtMoney.getText());            
-            String x = df.format(x1);
-            txtMoney.setText(x);
+//            DecimalFormat df = new DecimalFormat("##,###");
+//            keySalary = txtMoney.getText();             
+//            float x1 = Float.parseFloat(txtMoney.getText());            
+//            String x = df.format(x1);
+//            txtMoney.setText(x);
+            if (txtMoney.getText().equals("")){
+                txtMoney.setText("0");
+            }else{
+                sal = Float.parseFloat(txtMoney.getText().replace(",", ""));
+                float x = Float.parseFloat(txtMoney.getText().replace(",", ""));
+                txtMoney.setText(String.valueOf(String.format("%,.0f", x)));
+            }
+            
             
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_txtMoneyActionPerformed
+
+    private void txtMoneyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtMoneyMouseClicked
+        try {
+            txtMoney.setText("");
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_txtMoneyMouseClicked
 
     /**
      * @param args the command line arguments
