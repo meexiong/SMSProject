@@ -51,4 +51,12 @@ public class MsgBox {
         }
         return false;
    }
+   public static boolean msgDataAlready(){
+       if ("L1".equals(LangType)) {
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "ມີຂໍ້ມູນໃນລະບົບແລ້ວ." + "</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.WARNING_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Data have been system." + "</font></p></html>", "MESSAGE", JOptionPane.WARNING_MESSAGE);
+        }
+       return false;
+   }
 }

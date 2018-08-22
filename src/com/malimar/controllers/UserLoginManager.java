@@ -9,8 +9,10 @@ import com.malimar.models.UserLogin;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.RemoveTableIndex;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.HashMap;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -139,4 +141,55 @@ public class UserLoginManager {
             e.printStackTrace();
         }
     }
+    public HashMap<String, Object[]>mapGroup(){
+        try {
+            HashMap<String, Object[]>mapG= new HashMap();
+            sql = "Select gruid, groupName_"+LabelManager.LangType+" AS names from tbl_GroupUser where Used = 1";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                mapG.put(rs.getString("names"), new Object[]{rs.getString("gruid"), rs.getString("names")});
+            }
+            return mapG;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public void showCheckGroupUserLang(UserLogin ul){
+        try {
+            sql = "Select GRUID, SLangid from tbl_GroupUserLang where GRUID = "+ul.getGRUID()+" and Slangid = "+ul.getSLANGID()+"";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            if (rs.next()){
+                
+            }else{
+                insertGroupUserLang(ul);
+            }
+            
+        } catch (Exception e) {
+        }
+    }
+    public boolean insertGroupUserLang(UserLogin ul){
+        try {
+            GetMaxID gm = new GetMaxID();
+            sql = "Insert into tbl_GroupUserLang (GULID, GRUID, SLANGID, reads, write, denys, createDate) values(?,?,?,?,?,?,?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setInt(1, gm.getIntID("tbl_GroupUserLang", "GULID"));
+            p.setInt(2, ul.getGRUID());
+            p.setInt(3, ul.getSLANGID());
+            p.setBoolean(4, ul.getReads());
+            p.setBoolean(5, ul.getWrite());
+            p.setBoolean(6, ul.getDenys());
+            p.setDate(7, (Date) ul.getCreateDate());
+            p.executeUpdate();
+            p.close();            
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    
 }

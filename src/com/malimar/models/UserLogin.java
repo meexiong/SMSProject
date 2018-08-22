@@ -9,6 +9,7 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.utils.RemoveTableIndex;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.Date;
 import javax.naming.spi.DirStateFactory;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -19,12 +20,57 @@ import javax.swing.table.DefaultTableModel;
  */
 public class UserLogin {
     int Teid;
-    Boolean userlogin;
-    
+    Boolean userlogin;    
     int GRUID;
     String GroupName_L1;
     String GroupName_L2;
     Boolean Used;
+    int SLANGID;
+    Date createDate;
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setReads(Boolean reads) {
+        this.reads = reads;
+    }
+
+    public void setWrite(Boolean write) {
+        this.write = write;
+    }
+
+    public void setDenys(Boolean denys) {
+        this.denys = denys;
+    }
+
+    public Boolean getReads() {
+        return reads;
+    }
+
+    public Boolean getWrite() {
+        return write;
+    }
+
+    public Boolean getDenys() {
+        return denys;
+    }
+    Boolean reads;
+    Boolean write;
+    Boolean denys;
+
+    public int getSLANGID() {
+        return SLANGID;
+    }
+
+    public void setSLANGID(int SLANGID) {
+        this.SLANGID = SLANGID;
+    }
+    
 
     public void setGRUID(int GRUID) {
         this.GRUID = GRUID;
