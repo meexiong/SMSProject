@@ -51,6 +51,19 @@ public class UserLoginManager {
         return false;
     }
     
-    
+    public void showSearch(JTable table, DefaultTableModel model, String x){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select teid, userlogin, temail, t_nbr, t_name_l1, t_name_l2, teacher from tbl_Teacher "
+                    + "where userlogin like N'"+ x +"%' or t_nbr like N'"+ x +"%' or T_Name_L1 like N'"+ x +"%' or t_name_l2 like N'"+ x +"%'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("Teid"), rs.getBoolean("userLogin"), rs.getString("temail"), rs.getString("t_nbr"), rs.getString("t_name_l1"), rs.getString("t_name_l2"), rs.getBoolean("teacher")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 }

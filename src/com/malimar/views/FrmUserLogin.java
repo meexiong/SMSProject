@@ -56,6 +56,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
             }
                jTable1.setAutoCreateRowSorter(true);
             th.repaint();
+            
+            
+       lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
+       jTabbedPane1.setTitleAt(0, LabelManager.hmapLang.get("TabUser".concat(frm).toUpperCase())[LabelManager.LN]);
+       
         
     }
 
@@ -163,6 +168,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.BorderLayout());
 
         jTabbedPane1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -228,6 +238,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
         });
 
         txtSearch.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtSearch.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
 
         btnShowData.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         btnShowData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -269,7 +285,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -392,6 +408,26 @@ public class FrmUserLogin extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        try {
+            ulm.showSearch(jTable1, model1, txtSearch.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        try {
+            if (evt.getModifiers()==6){
+               if (jTabbedPane1.getSelectedIndex()==0){
+                   LabelManager.WindowChangeLabel("TabUser", frm);
+               }
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
 
     /**
      * @param args the command line arguments
