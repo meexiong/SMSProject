@@ -32,8 +32,7 @@ public class UserLoginManager {
             table.setModel(model);
         } catch (Exception e) {
         }
-    }
-    
+    }    
     public boolean upDateUser(UserLogin ul){
         try {
             sql = "Update tbl_teacher set userlogin = ? where teid = (?)";
@@ -49,8 +48,7 @@ public class UserLoginManager {
             e.printStackTrace();
         }
         return false;
-    }
-    
+    }    
     public void showSearch(JTable table, DefaultTableModel model, String x){
         try {
             RemoveTableIndex.removeTable(table, model);
@@ -65,5 +63,37 @@ public class UserLoginManager {
             e.printStackTrace();
         }
     }
+    public void showDataGroupUser(JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Exec ST_GroupUser";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("GRUID"), rs.getString("Groupname_l1"), rs.getString("groupname_l2"), rs.getBoolean("USed")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+        }
+    }
+    public boolean insertGroupUser(UserLogin ul){
+        try {
+            GetMaxID gm = new GetMaxID();
+            sql = "Insert into tbl_groupUser (Gruid, GroupName_l1, GroupName_l2, Used) values (?,?,?,?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setInt(1, gm.getIntID("tbl_groupUser", "GRUID"));
+            p.setString(2, ul.getGroupName_L1());
+            p.setString(3, ul.getGroupName_L2());
+            p.setBoolean(4, ul.getUsed());
+            p.executeUpdate();
+            p.close();
+            MsgBox.msgInfo();
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
     
 }

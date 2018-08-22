@@ -10,6 +10,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.UserLoginManager;
 import com.malimar.models.UserLogin;
 import com.malimar.utils.Border;
+import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -34,6 +35,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
     UserLogin ul = new UserLogin();
     
     DefaultTableModel model1 = new DefaultTableModel();
+    DefaultTableModel model2 = new DefaultTableModel();
     
     public FrmUserLogin() {
         initComponents();
@@ -41,11 +43,22 @@ public class FrmUserLogin extends javax.swing.JFrame {
         model1 = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
+        model2 = (DefaultTableModel)jTable2.getModel();
+        jTable2.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
+        
+        txtID.setEnabled(true);
+        
+        
         Border.blueColor(btnShowData);
+        Border.blueColor(btnGroupShowData);
+        Border.blueColor(btnUpdateGroup);
         
         jTabbedPane1.setBackground(Color.WHITE);
         btnShowData.setText(LabelManager.hmapLang.get("btnshowdata".concat(frm).toUpperCase())[LabelManager.LN]);
         lblsearch.setText(LabelManager.hmapLang.get("lblsearch".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblgroupl1.setText(LabelManager.hmapLang.get("lblgroupl1".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblgroupl2.setText(LabelManager.hmapLang.get("lblgroupl2".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
         
         JTableHeader th = jTable1.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();
@@ -57,11 +70,31 @@ public class FrmUserLogin extends javax.swing.JFrame {
                jTable1.setAutoCreateRowSorter(true);
             th.repaint();
             
+            JTableHeader th2 = jTable2.getTableHeader();
+            TableColumnModel tcm2 = th2.getColumnModel();
+            jTable2.getColumnCount();
+            for(int i=0; i < jTable2.getColumnCount(); i++){
+                TableColumn tc2 = tcm2.getColumn(i);            
+                tc2.setHeaderValue(LabelManager.hmapLang.get(jTable2.getModel().getColumnName(i).concat(frm).toUpperCase()) [LabelManager.LN]);                
+            }
+               jTable2.setAutoCreateRowSorter(true);
+            th2.repaint();
+            
             
        lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
        jTabbedPane1.setTitleAt(0, LabelManager.hmapLang.get("TabUser".concat(frm).toUpperCase())[LabelManager.LN]);
-       
+       jTabbedPane1.setTitleAt(1, LabelManager.hmapLang.get("TabCreateGroup".concat(frm).toUpperCase())[LabelManager.LN]);
         
+    }
+    private void showClearGroupUSER(){
+        try {
+            txtGroupL1.setText("");
+            txtGroupL2.setText("");
+            txtID.setText("New");
+            txtGroupL1.requestFocus();
+            
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -93,6 +126,20 @@ public class FrmUserLogin extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnShowData = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
+        lblgroupl1 = new javax.swing.JLabel();
+        txtGroupL1 = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        btnUpdateGroup = new javax.swing.JLabel();
+        lblgroupl2 = new javax.swing.JLabel();
+        txtGroupL2 = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel13 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        btnGroupShowData = new javax.swing.JLabel();
+        lblID = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
 
@@ -213,18 +260,21 @@ public class FrmUserLogin extends javax.swing.JFrame {
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
             jTable1.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable1.getColumnModel().getColumn(1).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(1).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(2).setMinWidth(300);
-            jTable1.getColumnModel().getColumn(2).setMaxWidth(300);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(350);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(350);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(350);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(350);
             jTable1.getColumnModel().getColumn(3).setMinWidth(150);
             jTable1.getColumnModel().getColumn(3).setMaxWidth(150);
             jTable1.getColumnModel().getColumn(4).setMinWidth(250);
             jTable1.getColumnModel().getColumn(4).setMaxWidth(250);
+            jTable1.getColumnModel().getColumn(4).setHeaderValue("T_Name_L1");
             jTable1.getColumnModel().getColumn(5).setMinWidth(250);
             jTable1.getColumnModel().getColumn(5).setMaxWidth(250);
+            jTable1.getColumnModel().getColumn(5).setHeaderValue("T_Name_L2");
             jTable1.getColumnModel().getColumn(6).setMinWidth(100);
             jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            jTable1.getColumnModel().getColumn(6).setHeaderValue("Teacher");
         }
 
         jPanel12.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -285,7 +335,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE)
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -293,15 +343,188 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
+        lblgroupl1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblgroupl1.setText("Group Name L1");
+        lblgroupl1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblgroupl1MouseClicked(evt);
+            }
+        });
+
+        txtGroupL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtGroupL1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        txtGroupL1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGroupL1KeyReleased(evt);
+            }
+        });
+
+        btnUpdateGroup.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnUpdateGroup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUpdateGroup.setText("Update");
+        btnUpdateGroup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUpdateGroup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnUpdateGroupMouseClicked(evt);
+            }
+        });
+
+        lblgroupl2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblgroupl2.setText("Group Name L2");
+        lblgroupl2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblgroupl2MouseClicked(evt);
+            }
+        });
+
+        txtGroupL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtGroupL2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        txtGroupL2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtGroupL2KeyReleased(evt);
+            }
+        });
+
+        jPanel13.setLayout(new java.awt.BorderLayout());
+
+        jTable2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "lblgroupL1", "lblgroupL1", "lblgroupL2", "lblUsed"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable2.setRowHeight(30);
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+        if (jTable2.getColumnModel().getColumnCount() > 0) {
+            jTable2.getColumnModel().getColumn(0).setMinWidth(0);
+            jTable2.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTable2.getColumnModel().getColumn(1).setMinWidth(350);
+            jTable2.getColumnModel().getColumn(1).setMaxWidth(350);
+            jTable2.getColumnModel().getColumn(2).setMinWidth(350);
+            jTable2.getColumnModel().getColumn(2).setMaxWidth(350);
+            jTable2.getColumnModel().getColumn(3).setMinWidth(150);
+            jTable2.getColumnModel().getColumn(3).setMaxWidth(150);
+        }
+
+        jPanel13.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        btnGroupShowData.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnGroupShowData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnGroupShowData.setText("Data");
+        btnGroupShowData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGroupShowData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGroupShowDataMouseClicked(evt);
+            }
+        });
+
+        lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
+
+        txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtID.setText("New");
+        txtID.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
+        txtID.setOpaque(false);
+        txtID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIDKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1062, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(104, Short.MAX_VALUE)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
+                    .addComponent(lblID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator2)
+                    .addComponent(txtGroupL1)
+                    .addComponent(lblgroupl1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jSeparator3)
+                    .addComponent(txtGroupL2)
+                    .addComponent(lblgroupl2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUpdateGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnGroupShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(lblID)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(lblgroupl2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtGroupL2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnGroupShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(lblgroupl1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtGroupL1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(7, 7, 7))
+            .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel9Layout.createSequentialGroup()
+                    .addGap(94, 94, 94)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Create Group", jPanel9);
@@ -316,7 +539,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 631, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Add User to Group", jPanel10);
@@ -331,7 +554,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
+            .addGap(0, 631, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("tab4", jPanel11);
@@ -422,12 +645,88 @@ public class FrmUserLogin extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                if (jTabbedPane1.getSelectedIndex()==0){
                    LabelManager.WindowChangeLabel("TabUser", frm);
+               }else if (jTabbedPane1.getSelectedIndex()==1){
+                   LabelManager.WindowChangeLabel("TabCreateGroup", frm);
                }
                 
+            }else{
+                if (jTabbedPane1.getSelectedIndex()==0){
+                    ulm.showDataUser(jTable1, model1);
+                }else if (jTabbedPane1.getSelectedIndex()==1){
+                    ulm.showDataGroupUser(jTable2, model2);
+                }
             }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void lblgroupl1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblgroupl1MouseClicked
+        try {
+            LabelManager.WindowChangeLabel("lblgroupl1", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblgroupl1MouseClicked
+
+    private void txtGroupL1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGroupL1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGroupL1KeyReleased
+
+    private void btnUpdateGroupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdateGroupMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnUpdate", frm);
+            }else{
+                if (txtGroupL1.getText().equals("")||txtGroupL2.getText().equals("")){
+                    MsgBox.msgWarning();
+                    return;
+                }
+                if (txtID.getText().equals("New")){
+                   ul.setGroupName_L1(txtGroupL1.getText());
+                   ul.setGroupName_L2(txtGroupL2.getText());
+                   ul.setUsed(true);
+                   ulm.insertGroupUser(ul);
+                   ulm.showDataGroupUser(jTable2, model2);         
+                   showClearGroupUSER();
+                }
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnUpdateGroupMouseClicked
+
+    private void lblgroupl2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblgroupl2MouseClicked
+        try {
+            LabelManager.WindowChangeLabel("lblgroupL2", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblgroupl2MouseClicked
+
+    private void txtGroupL2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtGroupL2KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGroupL2KeyReleased
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void btnGroupShowDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGroupShowDataMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnGroupShowData", frm);
+            }else{
+                ulm.showDataGroupUser(jTable2, model2);
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnGroupShowDataMouseClicked
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+        LabelManager.WindowChangeLabel("lblID", frm);
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void txtIDKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIDKeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIDKeyReleased
 
     /**
      * @param args the command line arguments
@@ -466,12 +765,15 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
+    private javax.swing.JLabel btnGroupShowData;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnShowData;
+    private javax.swing.JLabel btnUpdateGroup;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -481,11 +783,22 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblSystemInfo;
+    private javax.swing.JLabel lblgroupl1;
+    private javax.swing.JLabel lblgroupl2;
     private javax.swing.JLabel lblsearch;
+    private javax.swing.JTextField txtGroupL1;
+    private javax.swing.JTextField txtGroupL2;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
