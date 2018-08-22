@@ -548,6 +548,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         btnScore.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnScoreMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnScoreMouseExited(evt);
             }
@@ -1168,6 +1171,11 @@ int cnt=0;
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnSettingMouseClicked
+
+    private void btnScoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScoreMouseClicked
+        FrmRegistation frmRegister = new FrmRegistation();
+        frmRegister.setVisible(true);
+    }//GEN-LAST:event_btnScoreMouseClicked
 
 
     /**
