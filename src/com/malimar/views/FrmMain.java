@@ -2,6 +2,7 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerAccess;
+import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import static com.malimar.controllers.LabelManager.LN;
 import com.malimar.controllers.LoginManager;
@@ -23,6 +24,7 @@ import java.awt.GridBagLayout;
 public class FrmMain extends javax.swing.JFrame {
 DatabaseManagerAccess am = new DatabaseManagerAccess();
     String frm;
+    public static String userNbr="";
     public FrmMain() {
         initComponents();
         frm = this.getClass().getSimpleName();
@@ -136,6 +138,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             afterLogin();
             getMainLabel();
             am.saveSeasion(txtUserName.getText());
+            userNbr=DatabaseManagerSQL.getUserNbr(txtUserName.getText().trim());
         } else {
             MsgBox.msgWarning();
         }
@@ -1154,7 +1157,7 @@ int cnt=0;
     }//GEN-LAST:event_btnSemesterMouseClicked
 
     private void btnScheduleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScheduleMouseClicked
-        FrmSchadule fs = new FrmSchadule();
+        FrmSchedule fs = new FrmSchedule();
         fs.setVisible(true);
     }//GEN-LAST:event_btnScheduleMouseClicked
 

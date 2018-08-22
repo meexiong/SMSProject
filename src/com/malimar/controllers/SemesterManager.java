@@ -21,12 +21,13 @@ public class SemesterManager {
     public boolean insert(Semester sm) {
         try {
             GetMaxID gm = new GetMaxID();
-            String insert = "Insert into tbl_Semester(SemesterID, SemesterName, StartDate, EndDate)values(?,?,?,?)";
+            String insert = "Insert into tbl_Semester(SemesterID, SemesterName, StartDate, EndDate,SemStatus)values(?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(insert);
             p.setInt(1, gm.getIntID("tbl_Semester", "SemesterID"));
             p.setString(2, sm.getSemesterName());
             p.setString(3, df.format(sm.getStartDate()));
             p.setString(4, df.format(sm.getEndDate()));
+            p.setInt(5, 0);
             return p.executeUpdate() == 1;
         } catch (SQLException e) {
         }

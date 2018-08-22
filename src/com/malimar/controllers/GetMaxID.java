@@ -18,4 +18,15 @@ public class GetMaxID {
         }
         return 0;
     }
+    public int getIntID2(String dbTable, String colID){
+        try {
+            String query = "Select isnull(Max("+colID+"),0)+1001 as maxID from "+dbTable+"";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            if(rs.next()){
+                return rs.getInt("maxID");
+            }
+        } catch (SQLException e) {
+        }
+        return 0;
+    }
 }

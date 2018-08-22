@@ -49,4 +49,16 @@ public class DatabaseManagerSQL {
         }
         return pw;
     }
+    public static String getUserNbr(String username){
+        try {
+            Connection c = getConnection();
+            String query = "Select T_Nbr from tbl_Teacher where TEmail='"+username+"'";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            if(rs.next()){
+                return rs.getString("T_Nbr");
+            }
+        } catch (Exception e) {
+        }
+         return null;
+    }
 }

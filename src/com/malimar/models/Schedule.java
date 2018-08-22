@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Malimar
  */
 public class Schedule {
+    int scheduleID;
     int semesterID;
     String semesterName;
     Date Createdate;
@@ -19,6 +20,12 @@ public class Schedule {
     Date startDate;
     Date endDate;
     boolean schStatus;
+    int techerID;
+    int courseID;
+    int roomID;
+    public void setScheduleID(int scheduleID) {
+        this.scheduleID = scheduleID;
+    }
 
     public void setSemesterID(int semesterID) {
         this.semesterID = semesterID;
@@ -48,6 +55,22 @@ public class Schedule {
         this.schStatus = schStatus;
     }
 
+    public void setTecherID(int techerID) {
+        this.techerID = techerID;
+    }
+
+    public void setCourseID(int courseID) {
+        this.courseID = courseID;
+    }
+
+    public void setRoomID(int roomID) {
+        this.roomID = roomID;
+    }
+
+    public int getScheduleID() {
+        return scheduleID;
+    }
+
     public int getSemesterID() {
         return semesterID;
     }
@@ -74,6 +97,18 @@ public class Schedule {
 
     public boolean isSchStatus() {
         return schStatus;
+    }
+
+    public int getTecherID() {
+        return techerID;
+    }
+
+    public int getCourseID() {
+        return courseID;
+    }
+
+    public int getRoomID() {
+        return roomID;
     }
     
 }
