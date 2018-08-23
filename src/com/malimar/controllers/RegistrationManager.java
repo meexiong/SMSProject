@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import javax.swing.table.DefaultTableModel;
 
 public class RegistrationManager {
     Connection c = DatabaseManagerSQL.getConnection();
@@ -38,5 +39,29 @@ public class RegistrationManager {
             e.printStackTrace();
         }
         return null;
+    }
+    public void showSemseterDetails(DefaultTableModel model, int smid){
+        try {
+            String query = "exec pd_ScheduleRegistration "+smid+"";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt("SCDID");
+                String course = rs.getString("CourseName_"+LangType+"");
+                String teacher = rs.getString("T_Name_"+LangType+"");
+                String room = rs.getString("RoomNbr");
+                double price = rs.getDouble("Price");
+                boolean sun = rs.getBoolean("Sun");
+                boolean mon = rs.getBoolean("Mon");
+                boolean tue = rs.getBoolean("Tue");
+                boolean wed = rs.getBoolean("Wed");
+                boolean thur = rs.getBoolean("Thur");
+                boolean fri = rs.getBoolean("Fri");
+                boolean sat =  rs.getBoolean("Sat");
+                Object[] obj = new Object[]{id,false, course, teacher, room, price, sun, mon, tue, wed, thur, fri, sat};
+                model.addRow(obj);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

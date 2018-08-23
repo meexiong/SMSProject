@@ -7,6 +7,7 @@ import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.RegistrationManager;
 import com.malimar.utils.Border;
+import com.malimar.utils.ClearTable;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -192,7 +193,7 @@ public class FrmRegistation extends javax.swing.JFrame {
         table.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "lblDID", "lblSelect", "lblCourse", "lblTeacher", "lblRoom", "lblPrice", "lblSunday", "lblMonday", "lblTuesday", "lblWednesday", "lblThursday", "lblFriday", "lblSaturday"
@@ -202,7 +203,7 @@ public class FrmRegistation extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false, false
+                false, true, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -247,19 +248,24 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        lblStudent.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblStudent.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblStudent.setText("Student");
 
         cmbStudent.setEditable(true);
         cmbStudent.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cmbStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbStudentActionPerformed(evt);
+            }
+        });
 
         txtStudentID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtStudentID.setBorder(null);
 
-        lblStudentNbr.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblStudentNbr.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblStudentNbr.setText("Student#");
 
-        lblGender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblGender.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblGender.setText("Gender");
 
         txtGender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -268,10 +274,10 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtNational.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtNational.setBorder(null);
 
-        lblNationality.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblNationality.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblNationality.setText("Nationality");
 
-        lblEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEthnic.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblEthnic.setText("Ethnic");
 
         txtEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -280,10 +286,10 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtReligion.setBorder(null);
 
-        lblReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblReligion.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblReligion.setText("Religion");
 
-        lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblID.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblID.setText("ID");
 
@@ -292,11 +298,16 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtID.setText("New");
         txtID.setBorder(null);
 
-        lblSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblSemester.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSemester.setText("Semester");
 
         cmbSemester.setEditable(true);
         cmbSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cmbSemester.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSemesterActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("...");
 
@@ -445,6 +456,36 @@ public class FrmRegistation extends javax.swing.JFrame {
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
         Border.WhiteColor(btnSave);
     }//GEN-LAST:event_btnSaveMouseExited
+
+    private void cmbStudentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbStudentActionPerformed
+        try {
+            if(cmbStudent.getSelectedIndex()==-1){
+                txtStudentID.setText("");
+                txtGender.setText("");
+                txtNational.setText("");
+                txtEthnic.setText("");
+                txtReligion.setText("");
+            }else{
+                String student = cmbStudent.getSelectedItem().toString();
+                txtStudentID.setText(mapStudent.get(student)[1].toString());
+                txtGender.setText(mapStudent.get(student)[3].toString());
+                txtNational.setText(mapStudent.get(student)[4].toString());
+                txtEthnic.setText(mapStudent.get(student)[5].toString());
+                txtReligion.setText(mapStudent.get(student)[6].toString());
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cmbStudentActionPerformed
+
+    private void cmbSemesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSemesterActionPerformed
+       if(cmbSemester.getSelectedIndex()==-1){
+           ClearTable.clearFirstLoad(table, model);
+       }else{
+           ClearTable.clearFirstLoad(table, model);
+           String semester = cmbSemester.getSelectedItem().toString();
+           rm.showSemseterDetails(model, (int) mapSemester.get(semester)[0]);
+       }
+    }//GEN-LAST:event_cmbSemesterActionPerformed
 
     /**
      * @param args the command line arguments
