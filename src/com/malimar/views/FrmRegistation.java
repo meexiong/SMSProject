@@ -5,26 +5,32 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.RegistrationManager;
 import com.malimar.utils.Border;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
-/**
- *
- * @author Malimar
- */
 public class FrmRegistation extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     String frm;
     Connection c = DatabaseManagerSQL.getConnection();
+    HashMap<String, Object[]>mapSemester = null;
+    HashMap<String, Object[]>mapStudent = null;
+    RegistrationManager rm = new RegistrationManager();
     public FrmRegistation() {
         initComponents();
         showRegistation();
+        getcmbSemester();
+        getcmbStudent();
     }
     private void showRegistation(){
         frm = this.getClass().getSimpleName();
@@ -54,6 +60,32 @@ public class FrmRegistation extends javax.swing.JFrame {
         }
         table.setAutoCreateRowSorter(true);
         th.repaint();
+    }
+    private void getcmbSemester() {
+        try {
+            mapSemester = rm.mapSemester();
+            Map<String, Object[]> ms = new TreeMap<>(mapSemester);
+            cmbSemester.removeAllItems();
+            ms.keySet().forEach((s) -> {
+                cmbSemester.addItem(s);
+            });
+            cmbSemester.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cmbSemester);
+        } catch (Exception e) {
+        }
+    }
+    private void getcmbStudent() {
+        try {
+            mapStudent = rm.mapStudent();
+            Map<String, Object[]> ms = new TreeMap<>(mapStudent);
+            cmbStudent.removeAllItems();
+            ms.keySet().forEach((s) -> {
+                cmbStudent.addItem(s);
+            });
+            cmbStudent.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cmbStudent);
+        } catch (Exception e) {
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
