@@ -2,10 +2,17 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
+import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.WindowChangeLabel;
+import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.utils.Border;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -28,6 +35,25 @@ public class FrmRegistation extends javax.swing.JFrame {
         table.getTableHeader().setBackground(Color.decode("#4169E1"));
         table.getTableHeader().setForeground(Color.WHITE);
         table.getTableHeader().setOpaque(false);
+        lblSemester.setText(hmapLang.get("lblSemester".concat(frm).toUpperCase())[LN]);
+        lblStudent.setText(hmapLang.get("lblStudent".concat(frm).toUpperCase())[LN]);
+        lblStudentNbr.setText(hmapLang.get("lblStudentNbr".concat(frm).toUpperCase())[LN]);
+        lblGender.setText(hmapLang.get("lblGender".concat(frm).toUpperCase())[LN]);
+        lblNationality.setText(hmapLang.get("lblNationality".concat(frm).toUpperCase())[LN]);
+        lblEthnic.setText(hmapLang.get("lblEthnic".concat(frm).toUpperCase())[LN]);
+        lblReligion.setText(hmapLang.get("lblReligion".concat(frm).toUpperCase())[LN]);
+        btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
+        lblID.setText(hmapLang.get("lblID".concat(frm).toUpperCase())[LN]);
+        lblRegistration.setText(hmapLang.get("lblRegistration".concat(frm).toUpperCase())[LN]);
+        JTableHeader th = table.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        table.getColumnCount();
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            TableColumn tc = tcm.getColumn(i);
+            tc.setHeaderValue(hmapLang.get(table.getModel().getColumnName(i).concat(frm).toUpperCase())[LN]);
+        }
+        table.setAutoCreateRowSorter(true);
+        th.repaint();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,7 +64,7 @@ public class FrmRegistation extends javax.swing.JFrame {
         btnMinimize2 = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        lblSystemInfo = new javax.swing.JLabel();
+        lblRegistration = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -65,6 +91,7 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblSemester = new javax.swing.JLabel();
         cmbSemester = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        btnSave = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -95,20 +122,20 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         jPanel5.setLayout(new java.awt.BorderLayout());
 
-        lblSystemInfo.setBackground(new java.awt.Color(255, 255, 255));
-        lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
-        lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemInfo.setText("Registation Information");
-        lblSystemInfo.setOpaque(true);
-        jPanel5.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
+        lblRegistration.setBackground(new java.awt.Color(255, 255, 255));
+        lblRegistration.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblRegistration.setForeground(new java.awt.Color(0, 15, 255));
+        lblRegistration.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblRegistration.setText("Registation Information");
+        lblRegistration.setOpaque(true);
+        jPanel5.add(lblRegistration, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 1035, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMinimize2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -133,17 +160,17 @@ public class FrmRegistation extends javax.swing.JFrame {
         table.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "lblSelect", "lblCourse", "lblTeacher", "lblRoom", "lblPrice", "lblSunday", "lblMonday", "lblTuesday", "lblWednesday", "lblThursday", "lblFriday", "lblSaturday"
+                "lblDID", "lblSelect", "lblCourse", "lblTeacher", "lblRoom", "lblPrice", "lblSunday", "lblMonday", "lblTuesday", "lblWednesday", "lblThursday", "lblFriday", "lblSaturday"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -158,30 +185,32 @@ public class FrmRegistation extends javax.swing.JFrame {
         table.setRowHeight(25);
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setMinWidth(50);
-            table.getColumnModel().getColumn(0).setMaxWidth(50);
-            table.getColumnModel().getColumn(1).setMinWidth(200);
-            table.getColumnModel().getColumn(1).setMaxWidth(200);
-            table.getColumnModel().getColumn(2).setMinWidth(150);
-            table.getColumnModel().getColumn(2).setMaxWidth(150);
-            table.getColumnModel().getColumn(3).setMinWidth(60);
-            table.getColumnModel().getColumn(3).setMaxWidth(60);
-            table.getColumnModel().getColumn(4).setMinWidth(100);
-            table.getColumnModel().getColumn(4).setMaxWidth(100);
-            table.getColumnModel().getColumn(5).setMinWidth(70);
-            table.getColumnModel().getColumn(5).setMaxWidth(70);
+            table.getColumnModel().getColumn(0).setMinWidth(0);
+            table.getColumnModel().getColumn(0).setMaxWidth(0);
+            table.getColumnModel().getColumn(1).setMinWidth(50);
+            table.getColumnModel().getColumn(1).setMaxWidth(50);
+            table.getColumnModel().getColumn(2).setMinWidth(200);
+            table.getColumnModel().getColumn(2).setMaxWidth(200);
+            table.getColumnModel().getColumn(3).setMinWidth(150);
+            table.getColumnModel().getColumn(3).setMaxWidth(150);
+            table.getColumnModel().getColumn(4).setMinWidth(60);
+            table.getColumnModel().getColumn(4).setMaxWidth(60);
+            table.getColumnModel().getColumn(5).setMinWidth(100);
+            table.getColumnModel().getColumn(5).setMaxWidth(100);
             table.getColumnModel().getColumn(6).setMinWidth(70);
             table.getColumnModel().getColumn(6).setMaxWidth(70);
             table.getColumnModel().getColumn(7).setMinWidth(70);
             table.getColumnModel().getColumn(7).setMaxWidth(70);
-            table.getColumnModel().getColumn(8).setMinWidth(85);
-            table.getColumnModel().getColumn(8).setMaxWidth(85);
-            table.getColumnModel().getColumn(9).setMinWidth(70);
-            table.getColumnModel().getColumn(9).setMaxWidth(70);
+            table.getColumnModel().getColumn(8).setMinWidth(70);
+            table.getColumnModel().getColumn(8).setMaxWidth(70);
+            table.getColumnModel().getColumn(9).setMinWidth(85);
+            table.getColumnModel().getColumn(9).setMaxWidth(85);
             table.getColumnModel().getColumn(10).setMinWidth(70);
             table.getColumnModel().getColumn(10).setMaxWidth(70);
             table.getColumnModel().getColumn(11).setMinWidth(70);
             table.getColumnModel().getColumn(11).setMaxWidth(70);
+            table.getColumnModel().getColumn(12).setMinWidth(70);
+            table.getColumnModel().getColumn(12).setMaxWidth(70);
         }
 
         jPanel7.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -239,6 +268,24 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         jButton1.setText("...");
 
+        btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSave.setText("Save");
+        btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSave.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSaveMouseMoved(evt);
+            }
+        });
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSaveMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -248,10 +295,10 @@ public class FrmRegistation extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblStudent, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,9 +312,9 @@ public class FrmRegistation extends javax.swing.JFrame {
                             .addComponent(lblStudentNbr, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtGender, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtGender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -280,10 +327,13 @@ public class FrmRegistation extends javax.swing.JFrame {
                             .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(txtReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -305,16 +355,18 @@ public class FrmRegistation extends javax.swing.JFrame {
                     .addComponent(lblEthnic)
                     .addComponent(lblReligion))
                 .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNational, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEthnic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtReligion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtID)
+                    .addComponent(txtReligion)
+                    .addComponent(txtEthnic)
+                    .addComponent(txtNational)
+                    .addComponent(txtGender)
+                    .addComponent(txtStudentID)
+                    .addComponent(cmbStudent)
+                    .addComponent(cmbSemester)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -345,6 +397,22 @@ public class FrmRegistation extends javax.swing.JFrame {
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         dispose();
     }//GEN-LAST:event_btnExitMouseClicked
+
+    private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
+        Border.blueColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseMoved
+
+    private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("btnSave", frm);
+        } else {
+
+        }
+    }//GEN-LAST:event_btnSaveMouseClicked
+
+    private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
+        Border.WhiteColor(btnSave);
+    }//GEN-LAST:event_btnSaveMouseExited
 
     /**
      * @param args the command line arguments
@@ -383,15 +451,12 @@ public class FrmRegistation extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
-    private javax.swing.JLabel btnMinimize;
-    private javax.swing.JLabel btnMinimize1;
     private javax.swing.JLabel btnMinimize2;
+    private javax.swing.JLabel btnSave;
     private javax.swing.JComboBox<String> cmbSemester;
     private javax.swing.JComboBox<String> cmbStudent;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
@@ -406,11 +471,11 @@ public class FrmRegistation extends javax.swing.JFrame {
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNationality;
+    private javax.swing.JLabel lblRegistration;
     private javax.swing.JLabel lblReligion;
     private javax.swing.JLabel lblSemester;
     private javax.swing.JLabel lblStudent;
     private javax.swing.JLabel lblStudentNbr;
-    private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtEthnic;
     private javax.swing.JTextField txtGender;
