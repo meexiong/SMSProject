@@ -938,7 +938,9 @@
                                                       <Component id="lblForm" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="cbbForm" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="0" pref="426" max="32767" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="btnShowFormData" min="-2" pref="126" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="294" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="jPanel15" max="32767" attributes="0"/>
                                           </Group>
@@ -959,7 +961,10 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="lblForm" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="cbbForm" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="cbbForm" max="32767" attributes="0"/>
+                                                      <Component id="btnShowFormData" max="32767" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1112,6 +1117,21 @@
                                   <AuxValues>
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                                   </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="btnShowFormData">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Saysettha OT" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="horizontalAlignment" type="int" value="0"/>
+                                    <Property name="text" type="java.lang.String" value="Data"/>
+                                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                      <Color id="Hand Cursor"/>
+                                    </Property>
+                                  </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnShowFormDataMouseClicked"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>

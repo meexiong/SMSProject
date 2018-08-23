@@ -77,6 +77,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         Border.blueColor(btnUpdateGroup);
         Border.blueColor(btnShowDataGroupPermission);
         Border.blueColor(btnUpdateGroupPermission);
+        Border.blueColor(btnShowFormData);
         
 
         jTabbedPane1.setBackground(Color.WHITE);
@@ -93,7 +94,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         btnUpdateGroupPermission.setText(LabelManager.hmapLang.get("btnUpdateGroupPermission".concat(frm).toUpperCase())[LabelManager.LN]);
         lblGroupName1.setText(LabelManager.hmapLang.get("lblGroupName".concat(frm).toUpperCase())[LabelManager.LN]);
         lblForm.setText(LabelManager.hmapLang.get("lblForm".concat(frm).toUpperCase())[LabelManager.LN]);
-        
+        btnShowFormData.setText(LabelManager.hmapLang.get("btnShowFormData".concat(frm).toUpperCase())[LabelManager.LN]);
         
         JTableHeader th = jTable1.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
@@ -266,6 +267,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         lblForm = new javax.swing.JLabel();
         cbbForm = new javax.swing.JComboBox<>();
+        btnShowFormData = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -899,6 +901,16 @@ public class FrmUserLogin extends javax.swing.JFrame {
             }
         });
 
+        btnShowFormData.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnShowFormData.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnShowFormData.setText("Data");
+        btnShowFormData.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowFormData.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnShowFormDataMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
@@ -914,7 +926,9 @@ public class FrmUserLogin extends javax.swing.JFrame {
                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbbForm, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 426, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnShowFormData, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 294, Short.MAX_VALUE))
                     .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -930,7 +944,9 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addComponent(lblForm)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbbForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cbbForm)
+                            .addComponent(btnShowFormData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1304,15 +1320,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblFormMouseClicked
 
     private void cbbFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbFormActionPerformed
-       try {
-//            String x= cbbGroupUser1.getSelectedItem().toString(); 
-//            String form = cbbForm.getSelectedItem().toString();           
-//            ulm.showClickComboForm(x, form, jTable4, model4);   
-           
-              
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       
     }//GEN-LAST:event_cbbFormActionPerformed
 
     private void cbbFormMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMouseEntered
@@ -1330,6 +1338,20 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private void cbbFormKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbbFormKeyPressed
         
     }//GEN-LAST:event_cbbFormKeyPressed
+
+    private void btnShowFormDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShowFormDataMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnShowFormdata", frm);
+            }else{
+                String x= cbbGroupUser1.getSelectedItem().toString();  
+                String form = cbbForm.getSelectedItem().toString();           
+                ulm.showClickComboForm(x, form, jTable4, model4);                   
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnShowFormDataMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1372,6 +1394,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnShowData;
     private javax.swing.JLabel btnShowDataGroupPermission;
+    private javax.swing.JLabel btnShowFormData;
     private javax.swing.JLabel btnUpdateGroup;
     private javax.swing.JLabel btnUpdateGroupPermission;
     private javax.swing.JCheckBox cbAll;
