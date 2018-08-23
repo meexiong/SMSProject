@@ -5,6 +5,7 @@
  */
 package com.malimar.controllers;
 
+import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.UserLogin;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.RemoveTableIndex;
@@ -157,6 +158,21 @@ public class UserLoginManager {
         }
         return null;
     }
+    public HashMap<String, Object[]>mapForm(){
+        try {
+            HashMap<String, Object[]>mapF = new HashMap();
+            sql = "Select formid, Form_name_"+ LangType +" AS formname from tbl_SysForm\n" +
+                    "order by FormID";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                mapF.put(rs.getString("formname"), new Object[]{rs.getString("formid"), rs.getString("formname")});
+            }
+            return mapF;            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public void showCheckGroupUserLang(UserLogin ul){
         try {
             sql = "Select GRUID, SLangid from tbl_GroupUserLang where GRUID = "+ul.getGRUID()+" and Slangid = "+ul.getSLANGID()+"";
@@ -209,5 +225,40 @@ public class UserLoginManager {
             e.printStackTrace();
         }
     }
-    
+    public boolean updateGroupUsersClickTable(UserLogin ul){
+        try {
+            sql ="update tbl_groupUserLang set reads = ?, write = ?, denys = ? where Gruid = (?) and Slangid = (?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getReads());
+            p.setBoolean(2, ul.getWrite());
+            p.setBoolean(3, ul.getDenys());
+            p.setInt(4, ul.getGRUID());
+            p.setInt(5, ul.getSLANGID());
+            p.executeUpdate();
+            p.close();
+            MsgBox.msgInfo();
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public void showClickComboGroup(String x, JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select gl.GULID, vw.form_Name_"+ LangType +" As formname, vw.Lang_"+ LangType +" As LangName, gl.reads, gl.write, gl.denys\n" +
+                        "from vw_SysFormLang vw \n" +
+                        "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
+                        "left join tbl_GroupUser g on g.GRUID = gl.GRUID\n" +
+                        "where g.GroupName_"+ LangType +" = N'"+ x +"'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("GULID"), rs.getString("formname"), rs.getString("LangName"), rs.getBoolean("Reads"), rs.getBoolean("write"), rs.getBoolean("denys")});
+            }
+            table.setModel(model);
+            
+        } catch (Exception e) {
+        }
+    }
 }

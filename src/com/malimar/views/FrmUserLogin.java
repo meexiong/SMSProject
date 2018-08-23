@@ -47,8 +47,10 @@ public class FrmUserLogin extends javax.swing.JFrame {
     DefaultTableModel model1 = new DefaultTableModel();
     DefaultTableModel model2 = new DefaultTableModel();
     DefaultTableModel model3 = new DefaultTableModel();
+    DefaultTableModel model4 = new DefaultTableModel();
     
     HashMap<String, Object[]>mapGL = null;
+    HashMap<String, Object[]>mapFm = null;
 
     public FrmUserLogin() {
         initComponents();
@@ -62,6 +64,9 @@ public class FrmUserLogin extends javax.swing.JFrame {
         model3 = (DefaultTableModel) jTable3.getModel();
         jTable3.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
 
+        model4 = (DefaultTableModel) jTable4.getModel();
+        jTable4.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
+        
         txtID.setEnabled(true);
 
         Border.blueColor(btnShowData);
@@ -82,8 +87,10 @@ public class FrmUserLogin extends javax.swing.JFrame {
         cbAll.setText(LabelManager.hmapLang.get("cbAll".concat(frm).toUpperCase())[LabelManager.LN]);
         lblGroupName.setText(LabelManager.hmapLang.get("lblGroupName".concat(frm).toUpperCase())[LabelManager.LN]);
         btnUpdateGroupPermission.setText(LabelManager.hmapLang.get("btnUpdateGroupPermission".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblGroupName1.setText(LabelManager.hmapLang.get("lblGroupName".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblForm.setText(LabelManager.hmapLang.get("lblForm".concat(frm).toUpperCase())[LabelManager.LN]);
         
-
+        
         JTableHeader th = jTable1.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         jTable1.getColumnCount();
@@ -113,11 +120,22 @@ public class FrmUserLogin extends javax.swing.JFrame {
         }
         jTable3.setAutoCreateRowSorter(true);
         th3.repaint();
+        
+        JTableHeader th4 = jTable4.getTableHeader();
+        TableColumnModel tcm4 = th4.getColumnModel();
+        jTable4.getColumnCount();
+        for (int i = 0; i < jTable4.getColumnCount(); i++) {
+            TableColumn tc4 = tcm4.getColumn(i);
+            tc4.setHeaderValue(LabelManager.hmapLang.get(jTable4.getModel().getColumnName(i).concat(frm).toUpperCase())[LabelManager.LN]);
+        }
+        jTable4.setAutoCreateRowSorter(true);
+        th4.repaint();
 
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         jTabbedPane1.setTitleAt(0, LabelManager.hmapLang.get("TabUser".concat(frm).toUpperCase())[LabelManager.LN]);
         jTabbedPane1.setTitleAt(1, LabelManager.hmapLang.get("TabCreateGroup".concat(frm).toUpperCase())[LabelManager.LN]);
-        jTabbedPane1.setTitleAt(2, LabelManager.hmapLang.get("TabAddGroupToLang".concat(frm).toUpperCase())[LabelManager.LN]);
+        jTabbedPane1.setTitleAt(2, LabelManager.hmapLang.get("TabAddGroupToLang".concat(frm).toUpperCase())[LabelManager.LN]);        
+        jTabbedPane1.setTitleAt(3, LabelManager.hmapLang.get("TabGrouptoPermission".concat(frm).toUpperCase())[LabelManager.LN]);
 
     }
 
@@ -144,6 +162,35 @@ public class FrmUserLogin extends javax.swing.JFrame {
             
             
         } catch (Exception e) {
+        }
+    }
+    private void showGroupUser1(){
+        try {
+            mapGL = ulm.mapGroup();
+            Map<String, Object[]>mp = new TreeMap<>(mapGL);
+            cbbGroupUser1.removeAllItems();
+            mp.keySet().forEach((s)->{
+                cbbGroupUser1.addItem(s);
+            });
+            cbbGroupUser1.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbGroupUser1);
+            
+            
+        } catch (Exception e) {
+        }
+    }
+    private void showForm(){
+        try {
+            mapFm = ulm.mapForm();
+            Map<String, Object[]> mp = new TreeMap<>(mapFm);
+            cbbForm.removeAllItems();
+            mp.keySet().forEach((s)->{
+                cbbForm.addItem(s);
+            });
+            cbbForm.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbForm);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -200,6 +247,13 @@ public class FrmUserLogin extends javax.swing.JFrame {
         cbAll = new javax.swing.JCheckBox();
         btnUpdateGroupPermission = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
+        lblGroupName1 = new javax.swing.JLabel();
+        cbbGroupUser1 = new javax.swing.JComboBox<>();
+        jPanel15 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTable4 = new javax.swing.JTable();
+        lblForm = new javax.swing.JLabel();
+        cbbForm = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -655,12 +709,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
         if (jTable3.getColumnModel().getColumnCount() > 0) {
             jTable3.getColumnModel().getColumn(0).setMinWidth(0);
             jTable3.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable3.getColumnModel().getColumn(1).setMinWidth(150);
-            jTable3.getColumnModel().getColumn(1).setMaxWidth(150);
-            jTable3.getColumnModel().getColumn(2).setMinWidth(250);
-            jTable3.getColumnModel().getColumn(2).setMaxWidth(250);
-            jTable3.getColumnModel().getColumn(3).setMinWidth(350);
-            jTable3.getColumnModel().getColumn(3).setMaxWidth(350);
+            jTable3.getColumnModel().getColumn(1).setMinWidth(250);
+            jTable3.getColumnModel().getColumn(1).setMaxWidth(250);
+            jTable3.getColumnModel().getColumn(2).setMinWidth(150);
+            jTable3.getColumnModel().getColumn(2).setMaxWidth(150);
+            jTable3.getColumnModel().getColumn(3).setMinWidth(100);
+            jTable3.getColumnModel().getColumn(3).setMaxWidth(100);
         }
 
         jPanel14.add(jScrollPane3, java.awt.BorderLayout.CENTER);
@@ -730,22 +784,131 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Add User to Group", jPanel10);
+        jTabbedPane1.addTab("Add Group to Permission", jPanel10);
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblGroupName1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblGroupName1.setText("Group Name L1");
+        lblGroupName1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGroupName1MouseClicked(evt);
+            }
+        });
+
+        cbbGroupUser1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbGroupUser1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbbGroupUser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbGroupUser1ActionPerformed(evt);
+            }
+        });
+
+        jPanel15.setLayout(new java.awt.BorderLayout());
+
+        jTable4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "FormNames", "FormNames", "LangName", "Reads", "Write", "Denys"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable4.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        jTable4.setRowHeight(30);
+        jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable4MouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTable4);
+        if (jTable4.getColumnModel().getColumnCount() > 0) {
+            jTable4.getColumnModel().getColumn(0).setMinWidth(0);
+            jTable4.getColumnModel().getColumn(0).setMaxWidth(0);
+            jTable4.getColumnModel().getColumn(1).setMinWidth(250);
+            jTable4.getColumnModel().getColumn(1).setMaxWidth(250);
+            jTable4.getColumnModel().getColumn(2).setMinWidth(150);
+            jTable4.getColumnModel().getColumn(2).setMaxWidth(150);
+            jTable4.getColumnModel().getColumn(3).setMinWidth(100);
+            jTable4.getColumnModel().getColumn(3).setMaxWidth(100);
+            jTable4.getColumnModel().getColumn(4).setMinWidth(100);
+            jTable4.getColumnModel().getColumn(4).setMaxWidth(100);
+            jTable4.getColumnModel().getColumn(5).setMinWidth(100);
+            jTable4.getColumnModel().getColumn(5).setMaxWidth(100);
+        }
+
+        jPanel15.add(jScrollPane4, java.awt.BorderLayout.CENTER);
+
+        lblForm.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblForm.setText("Form Name");
+        lblForm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFormMouseClicked(evt);
+            }
+        });
+
+        cbbForm.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbForm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbbForm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbFormActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1062, Short.MAX_VALUE)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblGroupName1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbbGroupUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbbForm, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 426, Short.MAX_VALUE))
+                    .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 631, Short.MAX_VALUE)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(lblGroupName1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbbGroupUser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(lblForm)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbbForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab("tab4", jPanel11);
+        jTabbedPane1.addTab("Add Employee to Group", jPanel11);
 
         jPanel7.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
@@ -805,6 +968,8 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         try {
             int index = jTable1.getSelectedRow();
+            String gl = cbbGroupUser.getSelectedItem().toString();
+            
             ul.setTeid(Integer.parseInt(jTable1.getValueAt(index, 0).toString()));
             Boolean x = (Boolean) jTable1.getValueAt(index, 1);
             if (x == true) {
@@ -812,7 +977,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 ulm.upDateUser(ul);
             } else {
                 ul.setUserlogin(x);
-                ulm.upDateUser(ul);
+                ulm.upDateUser(ul);                
             }
 
         } catch (Exception e) {
@@ -835,10 +1000,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     LabelManager.WindowChangeLabel("TabUser", frm);
                 } else if (jTabbedPane1.getSelectedIndex() == 1) {
                     LabelManager.WindowChangeLabel("TabCreateGroup", frm);
-                } else if (jTabbedPane1.getSelectedIndex() == 1) {
+                } else if (jTabbedPane1.getSelectedIndex() == 2) {
                     LabelManager.WindowChangeLabel("TabAddGroupToLang", frm);
+                } else if (jTabbedPane1.getSelectedIndex() == 3){
+                    LabelManager.WindowChangeLabel("TabGrouptoPermission", frm);
                 }
-
             } else {
                 if (jTabbedPane1.getSelectedIndex() == 0) {
                     ulm.showDataUser(jTable1, model1);
@@ -846,7 +1012,10 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     ulm.showDataGroupUser(jTable2, model2);
                 } else if (jTabbedPane1.getSelectedIndex() == 2) {
                     showGroupUser();
-                    //ulm.showDataGroupUserPermission(jTable3, model3);
+                    cbAll.setSelected(false);
+                } else if (jTabbedPane1.getSelectedIndex()==3){
+                    showGroupUser1();
+                    showForm();
                 }
             }
         } catch (Exception e) {
@@ -987,7 +1156,30 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnShowDataGroupPermissionMouseClicked
 
     private void jTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable3MouseClicked
-        // TODO add your handling code here:
+        try {
+            int index = jTable3.getSelectedRow();
+            String gl=cbbGroupUser.getSelectedItem().toString();
+            Boolean x = (Boolean)jTable3.getValueAt(index, 1);
+            if (x==true){
+                ul.setReads(true);
+                ul.setWrite(true);
+                ul.setDenys(true);
+                ul.setGRUID(Integer.parseInt(mapGL.get(gl)[0].toString()));
+                ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(index, 0).toString()));
+                ulm.updateGroupUsersClickTable(ul);
+            }else{
+                ul.setReads(false);
+                ul.setWrite(false);
+                ul.setDenys(false);
+                ul.setGRUID(Integer.parseInt(mapGL.get(gl)[0].toString()));
+                ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(index, 0).toString()));
+                ulm.updateGroupUsersClickTable(ul);
+            }
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jTable3MouseClicked
 
     private void cbAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbAllMouseClicked
@@ -1062,6 +1254,30 @@ public class FrmUserLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbbGroupUserActionPerformed
 
+    private void lblGroupName1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGroupName1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblGroupName1MouseClicked
+
+    private void cbbGroupUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGroupUser1ActionPerformed
+        try {
+            String x = cbbGroupUser1.getSelectedItem().toString();            
+            ulm.showClickComboGroup(x, jTable4, model4);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cbbGroupUser1ActionPerformed
+
+    private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTable4MouseClicked
+
+    private void lblFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFormMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblFormMouseClicked
+
+    private void cbbFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbFormActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbbFormActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1106,13 +1322,16 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private javax.swing.JLabel btnUpdateGroup;
     private javax.swing.JLabel btnUpdateGroupPermission;
     private javax.swing.JCheckBox cbAll;
+    private javax.swing.JComboBox<String> cbbForm;
     private javax.swing.JComboBox<String> cbbGroupUser;
+    private javax.swing.JComboBox<String> cbbGroupUser1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1124,6 +1343,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1132,7 +1352,10 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
+    private javax.swing.JTable jTable4;
+    private javax.swing.JLabel lblForm;
     private javax.swing.JLabel lblGroupName;
+    private javax.swing.JLabel lblGroupName1;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JLabel lblgroupl1;
