@@ -12,6 +12,7 @@ import com.malimar.models.UserLogin;
 import com.malimar.utils.Border;
 import com.malimar.utils.ConvertDateSQL;
 import com.malimar.utils.MsgBox;
+import com.malimar.utils.TableHeader;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -22,6 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -74,6 +77,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         Border.blueColor(btnUpdateGroup);
         Border.blueColor(btnShowDataGroupPermission);
         Border.blueColor(btnUpdateGroupPermission);
+        
 
         jTabbedPane1.setBackground(Color.WHITE);
         btnShowData.setText(LabelManager.hmapLang.get("btnshowdata".concat(frm).toUpperCase())[LabelManager.LN]);
@@ -130,6 +134,13 @@ public class FrmUserLogin extends javax.swing.JFrame {
         }
         jTable4.setAutoCreateRowSorter(true);
         th4.repaint();
+        
+        TableHeader.tableHeader(jTable1, th);
+        TableHeader.tableHeader(jTable2, th2);
+        TableHeader.tableHeader(jTable3, th3);
+        TableHeader.tableHeader(jTable4, th4);
+        
+        
 
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         jTabbedPane1.setTitleAt(0, LabelManager.hmapLang.get("TabUser".concat(frm).toUpperCase())[LabelManager.LN]);
@@ -181,7 +192,8 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }
     private void showForm(){
         try {
-            mapFm = ulm.mapForm();
+            String x = cbbGroupUser1.getSelectedItem().toString();
+            mapFm = ulm.mapForm(x);
             Map<String, Object[]> mp = new TreeMap<>(mapFm);
             cbbForm.removeAllItems();
             mp.keySet().forEach((s)->{
@@ -709,12 +721,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
         if (jTable3.getColumnModel().getColumnCount() > 0) {
             jTable3.getColumnModel().getColumn(0).setMinWidth(0);
             jTable3.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable3.getColumnModel().getColumn(1).setMinWidth(250);
-            jTable3.getColumnModel().getColumn(1).setMaxWidth(250);
-            jTable3.getColumnModel().getColumn(2).setMinWidth(150);
-            jTable3.getColumnModel().getColumn(2).setMaxWidth(150);
-            jTable3.getColumnModel().getColumn(3).setMinWidth(100);
-            jTable3.getColumnModel().getColumn(3).setMaxWidth(100);
+            jTable3.getColumnModel().getColumn(1).setMinWidth(100);
+            jTable3.getColumnModel().getColumn(1).setMaxWidth(100);
+            jTable3.getColumnModel().getColumn(2).setMinWidth(250);
+            jTable3.getColumnModel().getColumn(2).setMaxWidth(250);
+            jTable3.getColumnModel().getColumn(3).setMinWidth(150);
+            jTable3.getColumnModel().getColumn(3).setMaxWidth(150);
         }
 
         jPanel14.add(jScrollPane3, java.awt.BorderLayout.CENTER);
@@ -865,6 +877,17 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
         cbbForm.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbForm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbbForm.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbbFormMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cbbFormMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbbFormMousePressed(evt);
+            }
+        });
         cbbForm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbbFormActionPerformed(evt);
@@ -1015,7 +1038,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     cbAll.setSelected(false);
                 } else if (jTabbedPane1.getSelectedIndex()==3){
                     showGroupUser1();
-                    showForm();
+                    //showForm();
                 }
             }
         } catch (Exception e) {
@@ -1262,6 +1285,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         try {
             String x = cbbGroupUser1.getSelectedItem().toString();            
             ulm.showClickComboGroup(x, jTable4, model4);
+            showForm();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_cbbGroupUser1ActionPerformed
@@ -1275,8 +1299,26 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblFormMouseClicked
 
     private void cbbFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbFormActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cbbFormActionPerformed
+
+    private void cbbFormMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMouseEntered
+        
+    }//GEN-LAST:event_cbbFormMouseEntered
+
+    private void cbbFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMouseClicked
+        try {
+            String form = cbbForm.getSelectedItem().toString();
+            String x= cbbGroupUser1.getSelectedItem().toString();            
+            ulm.showClickComboForm(x, form, jTable4, model4);    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_cbbFormMouseClicked
+
+    private void cbbFormMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMousePressed
+        
+    }//GEN-LAST:event_cbbFormMousePressed
 
     /**
      * @param args the command line arguments

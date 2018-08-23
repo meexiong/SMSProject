@@ -842,17 +842,17 @@
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
+                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                  <Title/>
+                                                  <Editor/>
+                                                  <Renderer/>
+                                                </Column>
                                                 <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
                                                 <Column maxWidth="150" minWidth="150" prefWidth="-1" resizable="true">
-                                                  <Title/>
-                                                  <Editor/>
-                                                  <Renderer/>
-                                                </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
@@ -1103,6 +1103,9 @@
                                     </Property>
                                   </Properties>
                                   <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbbFormMouseClicked"/>
+                                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbbFormMouseEntered"/>
+                                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cbbFormMousePressed"/>
                                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbbFormActionPerformed"/>
                                   </Events>
                                   <AuxValues>

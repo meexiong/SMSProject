@@ -158,11 +158,16 @@ public class UserLoginManager {
         }
         return null;
     }
-    public HashMap<String, Object[]>mapForm(){
+    public HashMap<String, Object[]>mapForm(String x){
         try {
             HashMap<String, Object[]>mapF = new HashMap();
-            sql = "Select formid, Form_name_"+ LangType +" AS formname from tbl_SysForm\n" +
-                    "order by FormID";
+//            sql = "Select formid, Form_name_"+ LangType +" AS formname from tbl_SysForm\n" +
+//                    "order by FormID";
+            sql = "Select f.formid, f.form_name_"+ LangType +" As formname from tbl_GroupUserLang GL\n" +
+                    "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
+                    "left join tbl_GroupUser gu on gu.GRUID = gl.GRUID\n" +
+                    "left join tbl_SysForm f on f.FormID = sl.FormID\n" +
+                    "where gu.GroupName_"+ LangType +" = N'"+ x +"' and gl.reads ='true' and gl.write ='true' and gl.denys ='true'";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
                 mapF.put(rs.getString("formname"), new Object[]{rs.getString("formid"), rs.getString("formname")});
@@ -259,6 +264,27 @@ public class UserLoginManager {
             table.setModel(model);
             
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
+    public void showClickComboForm(String groupname, String form, JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select gl.GULID, vw.form_Name_"+ LangType +" As formname, vw.Lang_"+ LangType +" As LangName, gl.reads, gl.write, gl.denys\n" +
+                        "from vw_SysFormLang vw \n" +
+                        "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
+                        "left join tbl_GroupUser g on g.GRUID = gl.GRUID\n" +
+                        "where g.GroupName_"+ LangType +" = N'"+ groupname +"' and vw.form_name_"+ LangType +" = N'"+ form +'"';
+            
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("GULID"), rs.getString("formname"), rs.getString("LangName"), rs.getBoolean("Reads"), rs.getBoolean("write"), rs.getBoolean("denys")});
+            }
+            table.setModel(model);
+            
+        } catch (Exception e) {
+            
+        }
+    }
+    
 }
