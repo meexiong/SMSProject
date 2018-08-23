@@ -893,6 +893,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 cbbFormActionPerformed(evt);
             }
         });
+        cbbForm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbbFormKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -1299,26 +1304,32 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_lblFormMouseClicked
 
     private void cbbFormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbFormActionPerformed
-        
-    }//GEN-LAST:event_cbbFormActionPerformed
-
-    private void cbbFormMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMouseEntered
-        
-    }//GEN-LAST:event_cbbFormMouseEntered
-
-    private void cbbFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMouseClicked
-        try {
-            String form = cbbForm.getSelectedItem().toString();
-            String x= cbbGroupUser1.getSelectedItem().toString();            
-            ulm.showClickComboForm(x, form, jTable4, model4);    
+       try {
+//            String x= cbbGroupUser1.getSelectedItem().toString(); 
+//            String form = cbbForm.getSelectedItem().toString();           
+//            ulm.showClickComboForm(x, form, jTable4, model4);   
+           
+              
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }//GEN-LAST:event_cbbFormActionPerformed
+
+    private void cbbFormMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMouseEntered
+         
+    }//GEN-LAST:event_cbbFormMouseEntered
+
+    private void cbbFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMouseClicked
+        
     }//GEN-LAST:event_cbbFormMouseClicked
 
     private void cbbFormMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbFormMousePressed
         
     }//GEN-LAST:event_cbbFormMousePressed
+
+    private void cbbFormKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbbFormKeyPressed
+        
+    }//GEN-LAST:event_cbbFormKeyPressed
 
     /**
      * @param args the command line arguments

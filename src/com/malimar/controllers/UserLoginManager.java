@@ -271,11 +271,10 @@ public class UserLoginManager {
         try {
             RemoveTableIndex.removeTable(table, model);
             sql = "Select gl.GULID, vw.form_Name_"+ LangType +" As formname, vw.Lang_"+ LangType +" As LangName, gl.reads, gl.write, gl.denys\n" +
-                        "from vw_SysFormLang vw \n" +
-                        "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
-                        "left join tbl_GroupUser g on g.GRUID = gl.GRUID\n" +
-                        "where g.GroupName_"+ LangType +" = N'"+ groupname +"' and vw.form_name_"+ LangType +" = N'"+ form +'"';
-            
+                "from vw_SysFormLang vw \n" +
+                "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
+                "left join tbl_GroupUser g on g.GRUID = gl.GRUID\n" +
+                "where g.GroupName_"+ LangType +" = N'"+ groupname +"' and vw.form_name_"+ LangType +" = N'"+ form +'"';            
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
                 model.addRow(new Object[]{rs.getString("GULID"), rs.getString("formname"), rs.getString("LangName"), rs.getBoolean("Reads"), rs.getBoolean("write"), rs.getBoolean("denys")});
