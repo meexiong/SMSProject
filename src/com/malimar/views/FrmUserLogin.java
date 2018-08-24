@@ -1312,7 +1312,18 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbGroupUser1ActionPerformed
 
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
-        // TODO add your handling code here:
+        try {
+            int index = jTable4.getSelectedRow();
+            ul.setGRUID(Integer.parseInt(jTable4.getValueAt(index, 0).toString()));
+            Boolean reads = (Boolean) jTable4.getValueAt(index, 3);
+            Boolean write = (Boolean) jTable4.getValueAt(index, 4);
+            Boolean deny = (Boolean) jTable4.getValueAt(index, 5);
+            
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jTable4MouseClicked
 
     private void lblFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFormMouseClicked
