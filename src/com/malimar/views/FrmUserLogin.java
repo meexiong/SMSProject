@@ -154,7 +154,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         TableHeader.tableHeader(jTable2, th2);
         TableHeader.tableHeader(jTable3, th3);
         TableHeader.tableHeader(jTable4, th4);
-        TableHeader.tableHeader(jTable4, th5);
+        TableHeader.tableHeader(jTable5, th5);
         
 
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
@@ -891,12 +891,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
         if (jTable4.getColumnModel().getColumnCount() > 0) {
             jTable4.getColumnModel().getColumn(0).setMinWidth(0);
             jTable4.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable4.getColumnModel().getColumn(1).setMinWidth(250);
-            jTable4.getColumnModel().getColumn(1).setMaxWidth(250);
-            jTable4.getColumnModel().getColumn(2).setMinWidth(250);
-            jTable4.getColumnModel().getColumn(2).setMaxWidth(250);
-            jTable4.getColumnModel().getColumn(3).setMinWidth(100);
-            jTable4.getColumnModel().getColumn(3).setMaxWidth(100);
+            jTable4.getColumnModel().getColumn(1).setMinWidth(200);
+            jTable4.getColumnModel().getColumn(1).setMaxWidth(200);
+            jTable4.getColumnModel().getColumn(2).setMinWidth(300);
+            jTable4.getColumnModel().getColumn(2).setMaxWidth(300);
+            jTable4.getColumnModel().getColumn(3).setMinWidth(300);
+            jTable4.getColumnModel().getColumn(3).setMaxWidth(300);
             jTable4.getColumnModel().getColumn(4).setMinWidth(100);
             jTable4.getColumnModel().getColumn(4).setMaxWidth(100);
             jTable4.getColumnModel().getColumn(5).setMinWidth(100);
@@ -1023,7 +1023,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, true
+                false, true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1045,12 +1045,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
         if (jTable5.getColumnModel().getColumnCount() > 0) {
             jTable5.getColumnModel().getColumn(0).setMinWidth(0);
             jTable5.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable5.getColumnModel().getColumn(1).setMinWidth(250);
-            jTable5.getColumnModel().getColumn(1).setMaxWidth(250);
-            jTable5.getColumnModel().getColumn(2).setMinWidth(250);
-            jTable5.getColumnModel().getColumn(2).setMaxWidth(250);
-            jTable5.getColumnModel().getColumn(3).setMinWidth(100);
-            jTable5.getColumnModel().getColumn(3).setMaxWidth(100);
+            jTable5.getColumnModel().getColumn(1).setMinWidth(200);
+            jTable5.getColumnModel().getColumn(1).setMaxWidth(200);
+            jTable5.getColumnModel().getColumn(2).setMinWidth(300);
+            jTable5.getColumnModel().getColumn(2).setMaxWidth(300);
+            jTable5.getColumnModel().getColumn(3).setMinWidth(300);
+            jTable5.getColumnModel().getColumn(3).setMaxWidth(300);
         }
 
         jPanel17.add(jScrollPane5, java.awt.BorderLayout.CENTER);

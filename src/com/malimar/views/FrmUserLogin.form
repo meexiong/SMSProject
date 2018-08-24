@@ -1044,17 +1044,17 @@
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="200" minWidth="200" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
@@ -1239,7 +1239,7 @@
                                                 <Column editable="false" title="userlogin" type="java.lang.Object"/>
                                                 <Column editable="true" title="userlogin" type="java.lang.Boolean"/>
                                                 <Column editable="false" title="TEmail" type="java.lang.Object"/>
-                                                <Column editable="true" title="Names" type="java.lang.Object"/>
+                                                <Column editable="false" title="Names" type="java.lang.Object"/>
                                               </Table>
                                             </Property>
                                             <Property name="autoResizeMode" type="int" value="0"/>
@@ -1250,17 +1250,17 @@
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="200" minWidth="200" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
