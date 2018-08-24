@@ -27,6 +27,15 @@ public class UserLogin {
     Boolean Used;
     int SLANGID;
     Date createDate;
+    int GULID;
+
+    public void setGULID(int GULID) {
+        this.GULID = GULID;
+    }
+
+    public int getGULID() {
+        return GULID;
+    }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;

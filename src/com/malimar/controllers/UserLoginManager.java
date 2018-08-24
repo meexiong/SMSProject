@@ -39,7 +39,14 @@ public class UserLoginManager {
     }    
     public boolean upDateUser(UserLogin ul){
         try {
-            sql = "Update tbl_teacher set userlogin = ? where teid = (?)";
+            //sql = "Update tbl_teacher set userlogin = ?, PasLogin = 'ChangeMe' where teid = (?)";
+            
+            if (ul.getUserlogin()==true){
+                sql = "Update tbl_teacher set userlogin = ?, PasLogin = 'ChangeMe' where teid = (?)";
+            }else{
+                sql = "Update tbl_teacher set userlogin = ?, PasLogin = '' where teid = (?)";
+            }
+            
             PreparedStatement p = c.prepareStatement(sql);
             p.setBoolean(1, ul.getUserlogin());
             p.setInt(2, ul.getTeid());
@@ -284,5 +291,67 @@ public class UserLoginManager {
             e.printStackTrace();
         }
     }
+    
+    public boolean checkReads(UserLogin ul){
+        try {
+            sql = "Update tbl_GroupUserLang set Reads = ? where GULID = (?)";                              
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getReads());
+            p.setInt(2, ul.getGULID());
+            p.executeUpdate();
+            p.close();
+            //MsgBox.msgInfo();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean checkWrite(UserLogin ul){
+        try {
+            sql = "Update tbl_GroupUserLang set write = ? where GULID = (?)";
+               
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getWrite());
+            p.setInt(2, ul.getGULID());
+            p.executeUpdate();
+            p.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean checkDeny(UserLogin ul){
+        try {
+            sql = "Update tbl_GroupUserLang set denys = ? where GULID = (?)";
+               
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getDenys());
+            p.setInt(2, ul.getGULID());
+            p.executeUpdate();
+            p.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    public void showTeacherUser(JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select teid, 'false' AS checked, TEmail, T_Name_"+ LangType+" AS names from tbl_teacher where Userlogin = 1";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("teid"), rs.getBoolean("checked"), rs.getString("tEmail"), rs.getString("names")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
     
 }
