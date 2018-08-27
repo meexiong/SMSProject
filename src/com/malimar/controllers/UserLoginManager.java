@@ -15,6 +15,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -290,8 +291,7 @@ public class UserLoginManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-    
+    }    
     public boolean checkReads(UserLogin ul){
         try {
             sql = "Update tbl_GroupUserLang set Reads = ? where GULID = (?)";                              
@@ -336,15 +336,14 @@ public class UserLoginManager {
             e.printStackTrace();
         }
         return false;
-    }
-    
+    }    
     public void showTeacherUser(JTable table, DefaultTableModel model){
         try {
             RemoveTableIndex.removeTable(table, model);
-            sql = "Select teid, 'false' AS checked, TEmail, T_Name_"+ LangType+" AS names from tbl_teacher where Userlogin = 1";
+            sql = "Select teid, 'false' AS checked, TEmail, T_Name_"+ LangType+" AS names, Teacher from tbl_teacher where Userlogin = 1";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
-                model.addRow(new Object[]{rs.getString("teid"), rs.getBoolean("checked"), rs.getString("tEmail"), rs.getString("names")});
+                model.addRow(new Object[]{rs.getString("teid"), rs.getBoolean("checked"), rs.getString("tEmail"), rs.getString("names"), rs.getBoolean("teacher")});
             }
             table.setModel(model);
         } catch (Exception e) {
@@ -352,6 +351,66 @@ public class UserLoginManager {
         }
     }
     
+    public boolean insertGroupAddUser(UserLogin ul, String xComboBox){
+        try {
+            sql = "Select gul.gulid, reads, write, denys from tbl_GroupUserLang gul\n" +
+                "left join tbl_GroupUser gu on gu.GRUID = gul.GRUID\n" +
+                "where gu.GroupName_"+LangType+" = N'"+ xComboBox +"'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                int gulid = rs.getInt("GULID");
+                ul.setReads(rs.getBoolean("reads"));
+                ul.setWrite(rs.getBoolean("write"));
+                ul.setDenys(rs.getBoolean("denys"));
+                GetMaxID gm = new GetMaxID();
+                sql = "Select TEID, GULID from tbl_GroupUserLangLogin where TEID = "+ ul.getTeid() +" and GULID = "+ gulid +"";
+                ResultSet rsc = c.createStatement().executeQuery(sql);
+                if (rsc.next()){
+                    //JOptionPane.showMessageDialog(null, "Data Have System.");
+                }else{
+                    
+                    
+                    sql = "Insert into tbl_GroupUserLangLogin(GULLID, TEID, GULID, CreateDate, reads, write, denys) values (?,?,?,?,?,?,?)";
+                    PreparedStatement p = c.prepareStatement(sql);
+                    p.setInt(1, gm.getIntID("tbl_GroupUserLangLogin", "GULLID"));
+                    p.setInt(2, ul.getTeid());
+                    p.setInt(3, gulid);
+                    p.setDate(4, (Date) ul.getCreateDate());       
+                    p.setBoolean(5, ul.getReads());
+                    p.setBoolean(6, ul.getWrite());
+                    p.setBoolean(7, ul.getDenys());
+                    p.executeUpdate();
+                    p.close();  
+                }
+            }            
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
     
+    public HashMap<String, Object[]>mapUserPermissions(String x){
+            try {
+                HashMap<String, Object[]>mapUP = new HashMap();
+                sql = "Select te.teid, te.T_Name_"+ LangType +" As names from tbl_GroupUserLangLogin gul\n" +
+                "left join tbl_GroupUserLang gl on gl.GULID = gul.GULID\n" +
+                "left join tbl_GroupUser gu on gu.GRUID = gl.GRUID\n" +
+                "left join tbl_Teacher te on te.TEID = gul.TeID\n" +
+                "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
+                "left join tbl_SysForm f on f.FormID = sl.FormID\n" +
+                "where gu.GroupName_"+ LangType +" = N'"+ x +"'\n" +
+                "group by te.teid, te.T_Name_"+ LangType +" order by te.t_name_"+ LangType +"";
+                ResultSet rs = c.createStatement().executeQuery(sql);
+                while (rs.next()){
+                    mapUP.put(rs.getString("names"), new Object[]{rs.getInt("teid"), rs.getString("names")});
+                }
+                return mapUP;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+    }
     
+       
 }
