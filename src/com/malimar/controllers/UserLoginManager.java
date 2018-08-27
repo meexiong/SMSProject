@@ -411,6 +411,42 @@ public class UserLoginManager {
             }
             return null;
     }
+    public void showUserPermissionAdd(JTable table, DefaultTableModel model, String teacher, String x){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select gul.GULLID, f.Form_Name_"+ LangType +" AS form, sl.Lang_"+ LangType +" As langname, gul.reads, gul.write, gul.denys from tbl_GroupUserLangLogin gul\n" +
+                    "left join tbl_GroupUserLang gl on gl.GULID = gul.GULID\n" +
+                    "left join tbl_GroupUser gu on gu.GRUID = gl.GRUID\n" +
+                    "left join tbl_Teacher te on te.TEID = gul.TeID\n" +
+                    "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
+                    "left join tbl_SysForm f on f.FormID = sl.FormID\n" +
+                    "where te.T_Name_"+ LangType +" = N'"+ teacher +"' and gu.GroupName_"+LangType+" = N'"+ x +"'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("GULLID"), rs.getString("form"), rs.getString("langname"), rs.getBoolean("reads"), rs.getBoolean("write"), rs.getBoolean("denys")});
+            }
+            table.setModel(model);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }        
+    }
     
+    public boolean check_Reads_GroupUserLangLogin(UserLogin ul){
+        try {            
+            sql = "Update tbl_GroupUserLangLogin set reads = ? where GULLID=(?)";      
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getReads());
+            p.setInt(2, ul.getGULLID());
+            p.executeUpdate();
+            p.close();
+            return true;
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
        
 }

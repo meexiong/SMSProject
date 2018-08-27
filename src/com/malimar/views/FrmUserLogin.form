@@ -20,7 +20,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-71,0,0,4,47"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-71,0,0,4,20"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -241,7 +241,7 @@
                                       <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jPanel12" alignment="0" pref="1042" max="32767" attributes="0"/>
+                                              <Component id="jPanel12" alignment="0" pref="1015" max="32767" attributes="0"/>
                                               <Group type="102" attributes="0">
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                       <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
@@ -427,7 +427,7 @@
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace pref="104" max="32767" attributes="0"/>
+                                          <EmptySpace pref="77" max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="txtID" alignment="1" pref="182" max="32767" attributes="0"/>
                                               <Component id="lblID" alignment="1" max="32767" attributes="0"/>
@@ -454,7 +454,7 @@
                                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="jPanel13" pref="1042" max="32767" attributes="0"/>
+                                              <Component id="jPanel13" pref="1015" max="32767" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -733,7 +733,7 @@
                                                   <Component id="btnShowDataGroupPermission" min="-2" pref="126" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="btnUpdateGroupPermission" min="-2" pref="131" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="331" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="304" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -940,7 +940,7 @@
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="btnShowFormData" min="-2" pref="126" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="294" max="32767" attributes="0"/>
+                                                  <EmptySpace min="0" pref="267" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="jPanel15" max="32767" attributes="0"/>
                                           </Group>
@@ -1166,7 +1166,7 @@
                                                   <Component id="btnDataEmployee" min="-2" pref="126" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jPanel17" pref="1042" max="32767" attributes="0"/>
+                                              <Component id="jPanel17" pref="1015" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
@@ -1259,22 +1259,22 @@
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="200" minWidth="200" prefWidth="-1" resizable="true">
-                                                  <Title/>
-                                                  <Editor/>
-                                                  <Renderer/>
-                                                </Column>
                                                 <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
+                                                  <Title/>
+                                                  <Editor/>
+                                                  <Renderer/>
+                                                </Column>
+                                                <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
@@ -1327,6 +1327,11 @@
                               </SubComponents>
                             </Container>
                             <Container class="javax.swing.JPanel" name="jPanel18">
+                              <Properties>
+                                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                                </Property>
+                              </Properties>
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
                                   <JTabbedPaneConstraints tabName="Employee Permission">
@@ -1351,11 +1356,13 @@
                                                       <Component id="lblUserGroup" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="cbbUser" alignment="0" min="-2" pref="305" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <EmptySpace min="0" pref="422" max="32767" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="btnShowPermission" min="-2" pref="191" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="203" max="32767" attributes="0"/>
                                               </Group>
                                               <Component id="jPanel19" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1372,11 +1379,14 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="lblUserGroup" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                  <Component id="cbbUser" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="3" attributes="0">
+                                                      <Component id="cbbUser" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="btnShowPermission" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+                                                  </Group>
                                               </Group>
                                           </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jPanel19" pref="548" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                                          <Component id="jPanel19" pref="554" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1435,12 +1445,13 @@
                                               <Font name="Saysettha OT" size="12" style="0"/>
                                             </Property>
                                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                                              <Table columnCount="5" rowCount="0">
-                                                <Column editable="false" title="userlogin" type="java.lang.Object"/>
-                                                <Column editable="true" title="userlogin" type="java.lang.Boolean"/>
-                                                <Column editable="false" title="TEmail" type="java.lang.Object"/>
-                                                <Column editable="false" title="Names" type="java.lang.Object"/>
-                                                <Column editable="false" title="Teacher" type="java.lang.Boolean"/>
+                                              <Table columnCount="6" rowCount="0">
+                                                <Column editable="false" title="FormNames" type="java.lang.Object"/>
+                                                <Column editable="false" title="FormNames" type="java.lang.Object"/>
+                                                <Column editable="false" title="langname" type="java.lang.Object"/>
+                                                <Column editable="true" title="reads" type="java.lang.Boolean"/>
+                                                <Column editable="true" title="write" type="java.lang.Boolean"/>
+                                                <Column editable="true" title="denys" type="java.lang.Boolean"/>
                                               </Table>
                                             </Property>
                                             <Property name="autoResizeMode" type="int" value="0"/>
@@ -1451,22 +1462,27 @@
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="200" minWidth="200" prefWidth="-1" resizable="true">
-                                                  <Title/>
-                                                  <Editor/>
-                                                  <Renderer/>
-                                                </Column>
                                                 <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="300" minWidth="300" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
+                                                  <Title/>
+                                                  <Editor/>
+                                                  <Renderer/>
+                                                </Column>
+                                                <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
+                                                  <Title/>
+                                                  <Editor/>
+                                                  <Renderer/>
+                                                </Column>
+                                                <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
@@ -1515,6 +1531,21 @@
                                   <AuxValues>
                                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                                   </AuxValues>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="btnShowPermission">
+                                  <Properties>
+                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                                      <Font name="Saysettha OT" size="12" style="0"/>
+                                    </Property>
+                                    <Property name="horizontalAlignment" type="int" value="0"/>
+                                    <Property name="text" type="java.lang.String" value="Show Data"/>
+                                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                                      <Color id="Hand Cursor"/>
+                                    </Property>
+                                  </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnShowPermissionMouseClicked"/>
+                                  </Events>
                                 </Component>
                               </SubComponents>
                             </Container>

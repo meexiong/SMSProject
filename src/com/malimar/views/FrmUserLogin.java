@@ -89,6 +89,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         Border.blueColor(btnShowFormData);        
         Border.blueColor(btnDataEmployee);
         Border.blueColor(btnAddGroup);
+        Border.blueColor(btnShowPermission);
 
         jTabbedPane1.setBackground(Color.WHITE);
         btnShowData.setText(LabelManager.hmapLang.get("btnshowdata".concat(frm).toUpperCase())[LabelManager.LN]);
@@ -110,7 +111,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         btnAddGroup.setText(LabelManager.hmapLang.get("btnAddGroup".concat(frm).toUpperCase())[LabelManager.LN]);
         lblGroupName3.setText(LabelManager.hmapLang.get("lblGroupName".concat(frm).toUpperCase())[LabelManager.LN]);
         lblUserGroup.setText(LabelManager.hmapLang.get("lblusergroup".concat(frm).toUpperCase())[LabelManager.LN]);
-        
+        btnShowPermission.setText(LabelManager.hmapLang.get("btnShowPermission".concat(frm).toUpperCase())[LabelManager.LN]);
         
         JTableHeader th = jTable1.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
@@ -285,7 +286,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
             cbbUser.setSelectedIndex(-1);
             AutoCompleteDecorator.decorate(cbbUser);
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
         }
     }
 
@@ -366,6 +367,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         jTable6 = new javax.swing.JTable();
         lblUserGroup = new javax.swing.JLabel();
         cbbUser = new javax.swing.JComboBox<>();
+        btnShowPermission = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -533,7 +535,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jSeparator1)
@@ -693,7 +695,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap(104, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 182, Short.MAX_VALUE)
                     .addComponent(lblID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -716,7 +718,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE)
+                    .addComponent(jPanel13, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE)
                     .addContainerGap()))
         );
         jPanel9Layout.setVerticalGroup(
@@ -877,7 +879,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                         .addComponent(btnShowDataGroupPermission, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdateGroupPermission, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 331, Short.MAX_VALUE)))
+                        .addGap(0, 304, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -1026,7 +1028,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                             .addComponent(cbbForm, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnShowFormData, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 294, Short.MAX_VALUE))
+                        .addGap(0, 267, Short.MAX_VALUE))
                     .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1107,14 +1109,14 @@ public class FrmUserLogin extends javax.swing.JFrame {
         if (jTable5.getColumnModel().getColumnCount() > 0) {
             jTable5.getColumnModel().getColumn(0).setMinWidth(0);
             jTable5.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable5.getColumnModel().getColumn(1).setMinWidth(200);
-            jTable5.getColumnModel().getColumn(1).setMaxWidth(200);
-            jTable5.getColumnModel().getColumn(2).setMinWidth(300);
-            jTable5.getColumnModel().getColumn(2).setMaxWidth(300);
-            jTable5.getColumnModel().getColumn(3).setMinWidth(300);
-            jTable5.getColumnModel().getColumn(3).setMaxWidth(300);
-            jTable5.getColumnModel().getColumn(4).setMinWidth(100);
-            jTable5.getColumnModel().getColumn(4).setMaxWidth(100);
+            jTable5.getColumnModel().getColumn(1).setMinWidth(300);
+            jTable5.getColumnModel().getColumn(1).setMaxWidth(300);
+            jTable5.getColumnModel().getColumn(2).setMinWidth(250);
+            jTable5.getColumnModel().getColumn(2).setMaxWidth(250);
+            jTable5.getColumnModel().getColumn(3).setMinWidth(120);
+            jTable5.getColumnModel().getColumn(3).setMaxWidth(120);
+            jTable5.getColumnModel().getColumn(4).setMinWidth(120);
+            jTable5.getColumnModel().getColumn(4).setMaxWidth(120);
         }
 
         jPanel17.add(jScrollPane5, java.awt.BorderLayout.CENTER);
@@ -1155,7 +1157,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDataEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0))
-                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, 1042, Short.MAX_VALUE))
+                    .addComponent(jPanel17, javax.swing.GroupLayout.DEFAULT_SIZE, 1015, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel16Layout.setVerticalGroup(
@@ -1174,6 +1176,8 @@ public class FrmUserLogin extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Add Employee to Group", jPanel16);
+
+        jPanel18.setBackground(new java.awt.Color(255, 255, 255));
 
         lblGroupName3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblGroupName3.setText("Group Name L1");
@@ -1199,14 +1203,14 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "userlogin", "userlogin", "TEmail", "Names", "Teacher"
+                "FormNames", "FormNames", "langname", "reads", "write", "denys"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false, false
+                false, false, false, true, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1228,14 +1232,16 @@ public class FrmUserLogin extends javax.swing.JFrame {
         if (jTable6.getColumnModel().getColumnCount() > 0) {
             jTable6.getColumnModel().getColumn(0).setMinWidth(0);
             jTable6.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable6.getColumnModel().getColumn(1).setMinWidth(200);
-            jTable6.getColumnModel().getColumn(1).setMaxWidth(200);
-            jTable6.getColumnModel().getColumn(2).setMinWidth(300);
-            jTable6.getColumnModel().getColumn(2).setMaxWidth(300);
-            jTable6.getColumnModel().getColumn(3).setMinWidth(300);
-            jTable6.getColumnModel().getColumn(3).setMaxWidth(300);
-            jTable6.getColumnModel().getColumn(4).setMinWidth(100);
-            jTable6.getColumnModel().getColumn(4).setMaxWidth(100);
+            jTable6.getColumnModel().getColumn(1).setMinWidth(300);
+            jTable6.getColumnModel().getColumn(1).setMaxWidth(300);
+            jTable6.getColumnModel().getColumn(2).setMinWidth(250);
+            jTable6.getColumnModel().getColumn(2).setMaxWidth(250);
+            jTable6.getColumnModel().getColumn(3).setMinWidth(120);
+            jTable6.getColumnModel().getColumn(3).setMaxWidth(120);
+            jTable6.getColumnModel().getColumn(4).setMinWidth(120);
+            jTable6.getColumnModel().getColumn(4).setMaxWidth(120);
+            jTable6.getColumnModel().getColumn(5).setMinWidth(120);
+            jTable6.getColumnModel().getColumn(5).setMaxWidth(120);
         }
 
         jPanel19.add(jScrollPane6, java.awt.BorderLayout.CENTER);
@@ -1256,6 +1262,16 @@ public class FrmUserLogin extends javax.swing.JFrame {
             }
         });
 
+        btnShowPermission.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnShowPermission.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnShowPermission.setText("Show Data");
+        btnShowPermission.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnShowPermission.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnShowPermissionMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -1271,9 +1287,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblUserGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(cbbUser, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 422, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnShowPermission, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 203, Short.MAX_VALUE))
                     .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(5, 5, 5))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1287,9 +1305,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addComponent(lblUserGroup)
                         .addGap(0, 0, 0)
-                        .addComponent(cbbUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cbbUser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnShowPermission, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(5, 5, 5)
+                .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1796,7 +1816,24 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbGroupUser3ActionPerformed
 
     private void jTable6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable6MouseClicked
-        // TODO add your handling code here:
+        try {
+            int index = jTable6.getSelectedRow();
+            ul.setGULLID(Integer.parseInt(jTable6.getValueAt(index, 0).toString()));
+            Boolean reads = (Boolean) jTable6.getValueAt(index, 3);
+            Boolean write = (Boolean) jTable6.getValueAt(index, 4);
+            Boolean denys = (Boolean) jTable6.getValueAt(index, 5);
+            
+            ul.setReads(reads);
+            ulm.check_Reads_GroupUserLangLogin(ul);    
+            
+            ul.setWrite(write);
+            
+            ul.setDenys(denys);
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jTable6MouseClicked
 
     private void lblUserGroupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblUserGroupMouseClicked
@@ -1806,6 +1843,20 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private void cbbUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbUserActionPerformed
+
+    private void btnShowPermissionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShowPermissionMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnShowPermission", frm);
+            }else{
+                String users = cbbUser.getSelectedItem().toString();
+                String group = cbbGroupUser3.getSelectedItem().toString();
+                ulm.showUserPermissionAdd(jTable6, model6, users, group);
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnShowPermissionMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1851,6 +1902,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private javax.swing.JLabel btnShowData;
     private javax.swing.JLabel btnShowDataGroupPermission;
     private javax.swing.JLabel btnShowFormData;
+    private javax.swing.JLabel btnShowPermission;
     private javax.swing.JLabel btnUpdateGroup;
     private javax.swing.JLabel btnUpdateGroupPermission;
     private javax.swing.JCheckBox cbAll;

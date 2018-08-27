@@ -28,6 +28,15 @@ public class UserLogin {
     int SLANGID;
     Date createDate;
     int GULID;
+    int GULLID;
+
+    public void setGULLID(int GULLID) {
+        this.GULLID = GULLID;
+    }
+
+    public int getGULLID() {
+        return GULLID;
+    }
 
     public void setGULID(int GULID) {
         this.GULID = GULID;
