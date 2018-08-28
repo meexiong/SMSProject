@@ -440,13 +440,38 @@ public class UserLoginManager {
             p.setInt(2, ul.getGULLID());
             p.executeUpdate();
             p.close();
-            return true;
-            
-            
+            return true;  
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-       
+   public boolean check_Write_GroupUserLangLogin(UserLogin ul){
+        try {            
+            sql = "Update tbl_GroupUserLangLogin set write = ? where GULLID=(?)";      
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getWrite());
+            p.setInt(2, ul.getGULLID());
+            p.executeUpdate();
+            p.close();
+            return true;            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+   }    
+   public boolean check_Denys_GroupUserLangLogin(UserLogin ul){
+       try {            
+            sql = "Update tbl_GroupUserLangLogin set Denys = ? where GULLID=(?)";      
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setBoolean(1, ul.getDenys());
+            p.setInt(2, ul.getGULLID());
+            p.executeUpdate();
+            p.close();
+            return true;            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+   }
 }
