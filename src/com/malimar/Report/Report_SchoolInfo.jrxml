@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_SchoolInfo" language="groovy" pageWidth="216" pageHeight="252" columnWidth="176" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2127f923-79c9-43fc-9585-a6b71ff37346">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[Select * from tbl_SchoolInfo]]>
+	</queryString>
+	<field name="SCIFO" class="java.lang.Integer"/>
+	<field name="S_name_L1" class="java.lang.String"/>
+	<field name="S_name_L2" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phone1" class="java.lang.String"/>
+	<field name="phone2" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="facebook" class="java.lang.String"/>
+	<field name="S_img" class="java.io.InputStream"/>
+	<field name="S_Address" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<image scaleImage="FillFrame" vAlign="Middle">
+				<reportElement x="-12" y="-17" width="93" height="67" uuid="12741567-2914-4486-8fc4-ad67837283e7"/>
+				<imageExpression><![CDATA[$F{S_img}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+</jasperReport>

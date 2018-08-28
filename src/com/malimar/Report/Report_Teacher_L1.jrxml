@@ -3,17 +3,37 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\Project School\\SMS\\SMSProject\\src\\com\\malimar\\Report\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[exec pd_ReportTeacher_L1]]>
+	</queryString>
+	<field name="teid" class="java.lang.Integer"/>
+	<field name="t_nbr" class="java.lang.String"/>
+	<field name="temail" class="java.lang.String"/>
+	<field name="t_name_l1" class="java.lang.String"/>
+	<field name="Gen_L1" class="java.lang.String"/>
+	<field name="dob" class="java.lang.String"/>
+	<field name="tphone1" class="java.lang.String"/>
+	<field name="tphone2" class="java.lang.String"/>
+	<field name="re_name_l1" class="java.lang.String"/>
+	<field name="et_name_l1" class="java.lang.String"/>
+	<field name="nt_name_l1" class="java.lang.String"/>
+	<field name="t_startdate" class="java.lang.String"/>
+	<field name="work_name_l1" class="java.lang.String"/>
+	<field name="salary" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="83" splitType="Stretch">
+		<band height="172" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="802" height="20" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
-				<textElement>
-					<font fontName="Lao Unicode"/>
+				<reportElement x="0" y="0" width="814" height="26" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Static text]]></text>
+				<text><![CDATA[ລາຍງານ ອາຈານທັງໝົດ]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -27,7 +47,7 @@
 		<band height="45" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="54" splitType="Stretch"/>
+		<band height="126" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
