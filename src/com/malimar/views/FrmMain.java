@@ -175,6 +175,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMClassroom.setText(hmapLang.get("btnMClassroom".concat(frm).toUpperCase()) [LN]);
         btnMWorkStatus.setText(hmapLang.get("btnMWorkStatus".concat(frm).toUpperCase()) [LN]);
         lblCourse.setText(hmapLang.get("lblCourse".concat(frm).toUpperCase()) [LN]);
+        btnMSchoolInfo.setText(hmapLang.get("btnMSchoolInfo".concat(frm).toUpperCase()) [LN]);
     }
     
     @SuppressWarnings("unchecked")
@@ -211,6 +212,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         radEnglish = new javax.swing.JRadioButton();
         txtPassword = new javax.swing.JPasswordField();
         btnMWorkStatus = new javax.swing.JLabel();
+        btnMSchoolInfo = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblSemester = new javax.swing.JLabel();
@@ -508,6 +510,18 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         jPanel3.add(btnMWorkStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 246, 130, -1));
+
+        btnMSchoolInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnMSchoolInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMSchoolInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/School_24px.png"))); // NOI18N
+        btnMSchoolInfo.setText("School info");
+        btnMSchoolInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMSchoolInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMSchoolInfoMouseClicked(evt);
+            }
+        });
+        jPanel3.add(btnMSchoolInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 280, 130, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -933,6 +947,7 @@ int cnt=0;
         MenuSlide.setMenu(btnMClassroom);
         MenuSlide.setMenu(btnMEthnic);
         MenuSlide.setMenu(btnMWorkStatus);
+        MenuSlide.setMenu(btnMSchoolInfo);
     }//GEN-LAST:event_MenuMouseClicked
 
     private void btnDatasourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatasourceActionPerformed
@@ -1184,6 +1199,9 @@ int cnt=0;
         FrmReport fr = new FrmReport();
         fr.setVisible(true);
     }//GEN-LAST:event_btnReportMouseClicked
+    private void btnMSchoolInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMSchoolInfoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnMSchoolInfoMouseClicked
 
 
     /**
@@ -1231,6 +1249,7 @@ int cnt=0;
     private javax.swing.JLabel btnMEthnic;
     private javax.swing.JLabel btnMNationality;
     private javax.swing.JLabel btnMReligion;
+    private javax.swing.JLabel btnMSchoolInfo;
     private javax.swing.JLabel btnMStudentType;
     private javax.swing.JLabel btnMWorkStatus;
     private javax.swing.JLabel btnMaximum;
