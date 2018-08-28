@@ -542,8 +542,8 @@ public class FrmUserLogin extends javax.swing.JFrame {
                             .addComponent(txtSearch)
                             .addComponent(lblsearch, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -552,11 +552,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblsearch)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnShowData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1113,8 +1114,8 @@ public class FrmUserLogin extends javax.swing.JFrame {
             jTable5.getColumnModel().getColumn(1).setMaxWidth(300);
             jTable5.getColumnModel().getColumn(2).setMinWidth(250);
             jTable5.getColumnModel().getColumn(2).setMaxWidth(250);
-            jTable5.getColumnModel().getColumn(3).setMinWidth(120);
-            jTable5.getColumnModel().getColumn(3).setMaxWidth(120);
+            jTable5.getColumnModel().getColumn(3).setMinWidth(250);
+            jTable5.getColumnModel().getColumn(3).setMaxWidth(250);
             jTable5.getColumnModel().getColumn(4).setMinWidth(120);
             jTable5.getColumnModel().getColumn(4).setMaxWidth(120);
         }

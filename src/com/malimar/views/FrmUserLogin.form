@@ -249,8 +249,8 @@
                                                       <Component id="lblsearch" alignment="0" pref="429" max="32767" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="btnShowData" min="-2" pref="126" max="-2" attributes="0"/>
-                                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                  <Component id="btnShowData" min="-2" pref="133" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -263,12 +263,14 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="lblsearch" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="btnShowData" max="32767" attributes="0"/>
-                                              <Component id="txtSearch" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="txtSearch" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="btnShowData" min="-2" pref="34" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                           <Component id="jPanel12" pref="536" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -1270,7 +1272,7 @@
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="120" minWidth="120" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
