@@ -1200,7 +1200,15 @@ int cnt=0;
         fr.setVisible(true);
     }//GEN-LAST:event_btnReportMouseClicked
     private void btnMSchoolInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMSchoolInfoMouseClicked
-        // TODO add your handling code here:
+        try {
+            if (evt.getModifiers()==6){
+                WindowChangeLabel("btnMschoolinfo", frm);
+            }else{
+                FrmSchoolInfo fs = new FrmSchoolInfo();
+                fs.setVisible(true);
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnMSchoolInfoMouseClicked
 
 

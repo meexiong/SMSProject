@@ -5,22 +5,53 @@
  */
 package com.malimar.views;
 
+import com.malimar.controllers.DatabaseManagerSQL;
+import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.SchoolInfoManager;
+import com.malimar.models.SchoolInfo;
 import com.malimar.utils.Border;
+import static com.malimar.utils.ResizeScall.ResizeScall;
+import static com.malimar.views.FrmTeacherAdd.lbl_image;
+import java.awt.Image;
 
 /**
  *
  * @author Malimar
  */
+import java.sql.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 public class FrmSchoolInfo extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmSchoolInfo
      */
+    Connection c = DatabaseManagerSQL.getConnection();
+    String sql, frm;
+    String path;
+    Image ic;
+    int scifo;
+    SchoolInfo si = new SchoolInfo();
+    SchoolInfoManager sim = new SchoolInfoManager();
+    
     public FrmSchoolInfo() {
-        initComponents();
+        initComponents();        
+        frm = this.getClass().getSimpleName();
         
+        lblSystemInfo.setText(LabelManager.hmapForm.get("FrmSchoolInfo".toUpperCase())[LabelManager.LN]);
         
         Border.blueColor(btnSave);
+        
+        lblNameL1.setText(LabelManager.hmapLang.get("lblNameL1".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblNameL2.setText(LabelManager.hmapLang.get("lblNameL2".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblWebsite.setText(LabelManager.hmapLang.get("lblwebsite".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblPhone1.setText(LabelManager.hmapLang.get("lblphone1".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblPhone2.setText(LabelManager.hmapLang.get("lblphone2".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblFax.setText(LabelManager.hmapLang.get("lblfax".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblFacebook.setText(LabelManager.hmapLang.get("lblfacebook".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblAddress.setText(LabelManager.hmapLang.get("lbladdress".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);      
         
     }
 
@@ -44,35 +75,42 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         lblSystemInfo = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        lblRegion_L1 = new javax.swing.JLabel();
+        lblNameL1 = new javax.swing.JLabel();
         txtRE_Name_L1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        lblRegion_L2 = new javax.swing.JLabel();
+        lblNameL2 = new javax.swing.JLabel();
         txtRE_Name_L2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btnSave = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        lblRegion_L3 = new javax.swing.JLabel();
-        txtRE_Name_L3 = new javax.swing.JTextField();
+        lblImage = new javax.swing.JLabel();
+        lblWebsite = new javax.swing.JLabel();
+        txtwebsite = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
-        lblRegion_L4 = new javax.swing.JLabel();
-        txtRE_Name_L4 = new javax.swing.JTextField();
+        lblPhone1 = new javax.swing.JLabel();
+        txtphone1 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        lblRegion_L5 = new javax.swing.JLabel();
-        txtRE_Name_L5 = new javax.swing.JTextField();
+        lblPhone2 = new javax.swing.JLabel();
+        txtphone2 = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        lblRegion_L6 = new javax.swing.JLabel();
-        txtRE_Name_L6 = new javax.swing.JTextField();
+        lblFax = new javax.swing.JLabel();
+        txtfax = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        lblRegion_L7 = new javax.swing.JLabel();
-        txtRE_Name_L7 = new javax.swing.JTextField();
+        lblFacebook = new javax.swing.JLabel();
+        txtfacebook = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
-        lblRegion_L8 = new javax.swing.JLabel();
-        txtRE_Name_L8 = new javax.swing.JTextField();
+        lblAddress = new javax.swing.JLabel();
+        txtaddress = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -142,14 +180,14 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
         jPanel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
 
-        lblRegion_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L1.setText("Name L1");
+        lblNameL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblNameL1.setText("Name L1");
 
         txtRE_Name_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtRE_Name_L1.setBorder(null);
 
-        lblRegion_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L2.setText("Name L2");
+        lblNameL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblNameL2.setText("Name L2");
 
         txtRE_Name_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtRE_Name_L2.setBorder(null);
@@ -180,56 +218,61 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
         jPanel9.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 0, 153), 1, true));
         jPanel9.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel9.add(jLabel1, java.awt.BorderLayout.CENTER);
+        lblImage.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblImage.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblImage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblImage.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblImageMouseClicked(evt);
+            }
+        });
+        jPanel9.add(lblImage, java.awt.BorderLayout.CENTER);
 
-        lblRegion_L3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L3.setText("Web-Site");
+        lblWebsite.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblWebsite.setText("Web-Site");
 
-        txtRE_Name_L3.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L3.setBorder(null);
+        txtwebsite.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtwebsite.setBorder(null);
 
-        lblRegion_L4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L4.setText("Phone 1");
+        lblPhone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPhone1.setText("Phone 1");
 
-        txtRE_Name_L4.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L4.setBorder(null);
+        txtphone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtphone1.setBorder(null);
 
-        lblRegion_L5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L5.setText("Phone 2");
+        lblPhone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPhone2.setText("Phone 2");
 
-        txtRE_Name_L5.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L5.setBorder(null);
-        txtRE_Name_L5.addActionListener(new java.awt.event.ActionListener() {
+        txtphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtphone2.setBorder(null);
+        txtphone2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRE_Name_L5ActionPerformed(evt);
+                txtphone2ActionPerformed(evt);
             }
         });
 
-        lblRegion_L6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L6.setText("Fax");
+        lblFax.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblFax.setText("Fax");
 
-        txtRE_Name_L6.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L6.setBorder(null);
+        txtfax.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtfax.setBorder(null);
 
-        lblRegion_L7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L7.setText("Facebook");
+        lblFacebook.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblFacebook.setText("Facebook");
 
-        txtRE_Name_L7.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L7.setBorder(null);
-        txtRE_Name_L7.addActionListener(new java.awt.event.ActionListener() {
+        txtfacebook.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtfacebook.setBorder(null);
+        txtfacebook.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRE_Name_L7ActionPerformed(evt);
+                txtfacebookActionPerformed(evt);
             }
         });
 
-        lblRegion_L8.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblRegion_L8.setText("Address");
+        lblAddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblAddress.setText("Address");
 
-        txtRE_Name_L8.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtRE_Name_L8.setBorder(null);
+        txtaddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtaddress.setBorder(null);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -237,125 +280,114 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblRegion_L8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(txtRE_Name_L3)
-                                        .addComponent(lblRegion_L3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(jPanel8Layout.createSequentialGroup()
-                                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblRegion_L1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtRE_Name_L1)
-                                                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(2, 2, 2)
-                                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblRegion_L2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtRE_Name_L2)
-                                                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGroup(jPanel8Layout.createSequentialGroup()
-                                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblRegion_L4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtRE_Name_L4)
-                                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGap(2, 2, 2)
-                                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(lblRegion_L5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(txtRE_Name_L5)
-                                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 1, Short.MAX_VALUE)))
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtaddress, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(txtwebsite)
+                                    .addComponent(lblWebsite, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
                                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblRegion_L6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtRE_Name_L6)
-                                            .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(lblNameL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtRE_Name_L1)
+                                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(2, 2, 2)
                                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(lblRegion_L7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(txtRE_Name_L7)
-                                            .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel8Layout.createSequentialGroup()
-                        .addGap(170, 170, 170)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtRE_Name_L8, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
-                            .addComponent(jSeparator9))))
-                .addGap(2, 2, 2))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                                            .addComponent(lblNameL2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtRE_Name_L2)
+                                            .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jSeparator4))
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblPhone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtphone1)
+                                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(2, 2, 2)
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblPhone2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtphone2)
+                                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel8Layout.createSequentialGroup()
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblFax, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtfax)
+                                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(2, 2, 2)
+                                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(lblFacebook, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtfacebook)
+                                        .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(2, 2, 2))))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(lblRegion_L1)
+                                .addComponent(lblNameL1)
                                 .addGap(1, 1, 1)
                                 .addComponent(txtRE_Name_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(lblRegion_L2)
+                                .addComponent(lblNameL2)
                                 .addGap(1, 1, 1)
                                 .addComponent(txtRE_Name_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(2, 2, 2)
-                        .addComponent(lblRegion_L3)
+                        .addComponent(lblWebsite)
                         .addGap(1, 1, 1)
-                        .addComponent(txtRE_Name_L3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtwebsite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(lblRegion_L4)
-                                        .addGap(1, 1, 1)
-                                        .addComponent(txtRE_Name_L4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, 0)
-                                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(lblRegion_L5)
-                                        .addGap(1, 1, 1)
-                                        .addComponent(txtRE_Name_L5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, 0)
-                                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(lblPhone1)
+                                .addGap(1, 1, 1)
+                                .addComponent(txtphone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addComponent(lblPhone2)
+                                .addGap(1, 1, 1)
+                                .addComponent(txtphone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(lblRegion_L6)
+                                .addComponent(lblFax)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtRE_Name_L6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtfax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(lblRegion_L7)
+                                .addComponent(lblFacebook)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtRE_Name_L7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtfacebook, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
-                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblAddress)
+                        .addGap(1, 1, 1)
+                        .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblRegion_L8)
-                .addGap(1, 1, 1)
-                .addComponent(txtRE_Name_L8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -369,8 +401,9 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         jPanel4.add(jPanel5, java.awt.BorderLayout.CENTER);
@@ -384,10 +417,11 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
-        this.setState(FrmRegion.ICONIFIED);
+        this.setState(FrmSchoolInfo.ICONIFIED);
     }//GEN-LAST:event_btnMinimizeMouseClicked
 
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
@@ -403,20 +437,79 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnSave", frm);
+            }else{
+                si.setS_name_l1(txtRE_Name_L1.getText().trim());
+                si.setS_name_l2(txtRE_Name_L2.getText().trim());
+                si.setWebsite(txtwebsite.getText().trim());
+                si.setPhone1(txtphone1.getText().trim());
+                si.setPhone2(txtphone2.getText().trim());
+                si.setFax(txtfax.getText().trim());
+                si.setFacebook(txtfacebook.getText().trim());
+                si.setS_address(txtaddress.getText().trim());
+                sim.updateSchoolInf(si);
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
 
     }//GEN-LAST:event_btnSaveMouseExited
 
-    private void txtRE_Name_L5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRE_Name_L5ActionPerformed
+    private void txtphone2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtphone2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRE_Name_L5ActionPerformed
+    }//GEN-LAST:event_txtphone2ActionPerformed
 
-    private void txtRE_Name_L7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRE_Name_L7ActionPerformed
+    private void txtfacebookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfacebookActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtRE_Name_L7ActionPerformed
+    }//GEN-LAST:event_txtfacebookActionPerformed
+
+    private void lblImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseClicked
+        try {
+            if (evt.getClickCount()==2){
+                JFileChooser choose = new JFileChooser();
+                choose.showOpenDialog(null);
+                path = choose.getSelectedFile().getAbsolutePath();            
+                Image img = new ImageIcon(path).getImage();
+                ic = ResizeScall(img, lblImage.getWidth(), lblImage.getHeight());
+                lblImage.setIcon(new ImageIcon(ic));  
+                si.setPath(path);
+                si.setScifo(scifo);
+                sim.updateImage(si);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_lblImageMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            sim.showDataOpen(si);
+            txtRE_Name_L1.setText(si.getS_name_l1());
+            txtRE_Name_L2.setText(si.getS_name_l2());
+            txtwebsite.setText(si.getWebsite());
+            txtphone1.setText(si.getPhone1());
+            txtphone2.setText(si.getPhone2());
+            txtfax.setText(si.getFax());
+            txtfacebook.setText(si.getFacebook());
+            txtaddress.setText(si.getS_address());
+            scifo = si.getScifo();
+            
+            ImageIcon format =null;
+            format = new ImageIcon(si.getS_img());
+            Image ic = format.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_DEFAULT);
+            lblImage.setIcon(new ImageIcon(ic));
+            
+            
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -457,7 +550,6 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -475,22 +567,23 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JLabel lblRegion_L1;
-    private javax.swing.JLabel lblRegion_L2;
-    private javax.swing.JLabel lblRegion_L3;
-    private javax.swing.JLabel lblRegion_L4;
-    private javax.swing.JLabel lblRegion_L5;
-    private javax.swing.JLabel lblRegion_L6;
-    private javax.swing.JLabel lblRegion_L7;
-    private javax.swing.JLabel lblRegion_L8;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblFacebook;
+    private javax.swing.JLabel lblFax;
+    private javax.swing.JLabel lblImage;
+    private javax.swing.JLabel lblNameL1;
+    private javax.swing.JLabel lblNameL2;
+    private javax.swing.JLabel lblPhone1;
+    private javax.swing.JLabel lblPhone2;
     private javax.swing.JLabel lblSystemInfo;
+    private javax.swing.JLabel lblWebsite;
     private javax.swing.JTextField txtRE_Name_L1;
     private javax.swing.JTextField txtRE_Name_L2;
-    private javax.swing.JTextField txtRE_Name_L3;
-    private javax.swing.JTextField txtRE_Name_L4;
-    private javax.swing.JTextField txtRE_Name_L5;
-    private javax.swing.JTextField txtRE_Name_L6;
-    private javax.swing.JTextField txtRE_Name_L7;
-    private javax.swing.JTextField txtRE_Name_L8;
+    private javax.swing.JTextField txtaddress;
+    private javax.swing.JTextField txtfacebook;
+    private javax.swing.JTextField txtfax;
+    private javax.swing.JTextField txtphone1;
+    private javax.swing.JTextField txtphone2;
+    private javax.swing.JTextField txtwebsite;
     // End of variables declaration//GEN-END:variables
 }

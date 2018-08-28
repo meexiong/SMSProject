@@ -3,11 +3,16 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="undecorated" type="boolean" value="true"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -18,7 +23,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,125,0,0,2,117"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-116,0,0,2,110"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -89,8 +94,9 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jPanel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                  <Component id="jPanel8" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -214,78 +220,65 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="jPanel9" min="-2" pref="172" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtaddress" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="lblAddress" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jPanel9" min="-2" pref="172" max="-2" attributes="0"/>
-                                              <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="lblRegion_L8" alignment="0" max="32767" attributes="0"/>
-                                                  <Group type="102" attributes="0">
-                                                      <Group type="103" groupAlignment="0" attributes="0">
-                                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                              <Component id="txtRE_Name_L3" max="32767" attributes="0"/>
-                                                              <Component id="lblRegion_L3" alignment="0" max="32767" attributes="0"/>
-                                                              <Group type="102" attributes="0">
-                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                      <Component id="lblRegion_L1" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="txtRE_Name_L1" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="jSeparator2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                      <Component id="lblRegion_L2" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="txtRE_Name_L2" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="jSeparator3" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                              </Group>
-                                                              <Group type="102" attributes="0">
-                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                      <Component id="lblRegion_L4" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="txtRE_Name_L4" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="jSeparator5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                      <Component id="lblRegion_L5" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="txtRE_Name_L5" alignment="0" max="32767" attributes="0"/>
-                                                                      <Component id="jSeparator6" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                                                  </Group>
-                                                                  <EmptySpace max="-2" attributes="0"/>
-                                                                  <Component id="jSeparator4" pref="1" max="32767" attributes="0"/>
-                                                              </Group>
-                                                          </Group>
-                                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Component id="btnSave" min="-2" pref="103" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                          <Component id="txtwebsite" max="32767" attributes="0"/>
+                                                          <Component id="lblWebsite" alignment="1" max="32767" attributes="0"/>
+                                                          <Group type="102" alignment="0" attributes="0">
                                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                  <Component id="lblRegion_L6" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="txtRE_Name_L6" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="jSeparator7" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                                  <Component id="lblNameL1" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="txtRE_Name_L1" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="jSeparator2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                                               </Group>
                                                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                                  <Component id="lblRegion_L7" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="txtRE_Name_L7" alignment="0" max="32767" attributes="0"/>
-                                                                  <Component id="jSeparator8" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                                  <Component id="lblNameL2" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="txtRE_Name_L2" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="jSeparator3" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                                               </Group>
                                                           </Group>
+                                                          <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
                                                       </Group>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                              <Component id="lblPhone1" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txtphone1" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="jSeparator5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                              <Component id="lblPhone2" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txtphone2" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="jSeparator6" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
+                                                      <Component id="jSeparator9" alignment="0" min="-2" pref="428" max="-2" attributes="0"/>
+                                                      <Group type="102" alignment="0" attributes="0">
+                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                              <Component id="lblFax" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txtfax" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="jSeparator7" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                              <Component id="lblFacebook" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="txtfacebook" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="jSeparator8" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                          </Group>
+                                                      </Group>
                                                   </Group>
                                               </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="170" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="txtRE_Name_L8" alignment="0" pref="436" max="32767" attributes="0"/>
-                                                  <Component id="jSeparator9" alignment="0" max="32767" attributes="0"/>
-                                              </Group>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btnSave" min="-2" pref="103" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
@@ -293,18 +286,18 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblRegion_L1" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblNameL1" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                                       <Component id="txtRE_Name_L1" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                       <Component id="jSeparator2" min="-2" pref="10" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblRegion_L2" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblNameL2" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                                       <Component id="txtRE_Name_L2" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -312,66 +305,62 @@
                                                   </Group>
                                               </Group>
                                               <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                              <Component id="lblRegion_L3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lblWebsite" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                              <Component id="txtRE_Name_L3" min="-2" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <EmptySpace max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="1" attributes="0">
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="lblRegion_L4" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="txtRE_Name_L4" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                              <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
-                                                          </Group>
-                                                          <Group type="102" alignment="1" attributes="0">
-                                                              <Component id="lblRegion_L5" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                              <Component id="txtRE_Name_L5" min="-2" max="-2" attributes="0"/>
-                                                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                                              <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
-                                                          </Group>
-                                                      </Group>
+                                              <Component id="txtwebsite" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jSeparator4" min="-2" pref="10" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="1" attributes="0">
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="lblPhone1" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                      <Component id="txtphone1" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                      <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="1" attributes="0">
+                                                      <Component id="lblPhone2" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                      <Component id="txtphone2" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                                      <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Group type="103" groupAlignment="1" attributes="0">
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblRegion_L6" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblFax" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                      <Component id="txtRE_Name_L6" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtfax" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                       <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
                                                   </Group>
                                                   <Group type="102" alignment="1" attributes="0">
-                                                      <Component id="lblRegion_L7" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="lblFacebook" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                      <Component id="txtRE_Name_L7" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txtfacebook" min="-2" max="-2" attributes="0"/>
                                                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                                       <Component id="jSeparator8" min="-2" pref="10" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                              <Component id="txtaddress" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                                              <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btnSave" min="-2" pref="29" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="jPanel9" min="-2" pref="220" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="lblRegion_L8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                      <Component id="txtRE_Name_L8" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnSave" min="-2" pref="29" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                             </DimensionLayout>
                           </Layout>
                           <SubComponents>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L1">
+                            <Component class="javax.swing.JLabel" name="lblNameL1">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -391,7 +380,7 @@
                             </Component>
                             <Component class="javax.swing.JSeparator" name="jSeparator2">
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L2">
+                            <Component class="javax.swing.JLabel" name="lblNameL2">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -444,7 +433,7 @@
 
                               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                               <SubComponents>
-                                <Component class="javax.swing.JLabel" name="jLabel1">
+                                <Component class="javax.swing.JLabel" name="lblImage">
                                   <Properties>
                                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                       <Font name="Saysettha OT" size="12" style="0"/>
@@ -454,6 +443,9 @@
                                       <Color id="Hand Cursor"/>
                                     </Property>
                                   </Properties>
+                                  <Events>
+                                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblImageMouseClicked"/>
+                                  </Events>
                                   <Constraints>
                                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
                                       <BorderConstraints direction="Center"/>
@@ -462,7 +454,7 @@
                                 </Component>
                               </SubComponents>
                             </Container>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L3">
+                            <Component class="javax.swing.JLabel" name="lblWebsite">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -470,7 +462,7 @@
                                 <Property name="text" type="java.lang.String" value="Web-Site"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="txtRE_Name_L3">
+                            <Component class="javax.swing.JTextField" name="txtwebsite">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -482,7 +474,7 @@
                             </Component>
                             <Component class="javax.swing.JSeparator" name="jSeparator4">
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L4">
+                            <Component class="javax.swing.JLabel" name="lblPhone1">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -490,7 +482,7 @@
                                 <Property name="text" type="java.lang.String" value="Phone 1"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="txtRE_Name_L4">
+                            <Component class="javax.swing.JTextField" name="txtphone1">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -502,7 +494,7 @@
                             </Component>
                             <Component class="javax.swing.JSeparator" name="jSeparator5">
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L5">
+                            <Component class="javax.swing.JLabel" name="lblPhone2">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -510,7 +502,7 @@
                                 <Property name="text" type="java.lang.String" value="Phone 2"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="txtRE_Name_L5">
+                            <Component class="javax.swing.JTextField" name="txtphone2">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -520,12 +512,12 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRE_Name_L5ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtphone2ActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JSeparator" name="jSeparator6">
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L6">
+                            <Component class="javax.swing.JLabel" name="lblFax">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -533,7 +525,7 @@
                                 <Property name="text" type="java.lang.String" value="Fax"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="txtRE_Name_L6">
+                            <Component class="javax.swing.JTextField" name="txtfax">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -545,7 +537,7 @@
                             </Component>
                             <Component class="javax.swing.JSeparator" name="jSeparator7">
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L7">
+                            <Component class="javax.swing.JLabel" name="lblFacebook">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -553,7 +545,7 @@
                                 <Property name="text" type="java.lang.String" value="Facebook"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="txtRE_Name_L7">
+                            <Component class="javax.swing.JTextField" name="txtfacebook">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -563,12 +555,12 @@
                                 </Property>
                               </Properties>
                               <Events>
-                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRE_Name_L7ActionPerformed"/>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtfacebookActionPerformed"/>
                               </Events>
                             </Component>
                             <Component class="javax.swing.JSeparator" name="jSeparator8">
                             </Component>
-                            <Component class="javax.swing.JLabel" name="lblRegion_L8">
+                            <Component class="javax.swing.JLabel" name="lblAddress">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>
@@ -576,7 +568,7 @@
                                 <Property name="text" type="java.lang.String" value="Address"/>
                               </Properties>
                             </Component>
-                            <Component class="javax.swing.JTextField" name="txtRE_Name_L8">
+                            <Component class="javax.swing.JTextField" name="txtaddress">
                               <Properties>
                                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                                   <Font name="Saysettha OT" size="12" style="0"/>

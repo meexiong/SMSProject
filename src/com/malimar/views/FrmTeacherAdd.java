@@ -1169,7 +1169,8 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
             path = choose.getSelectedFile().getAbsolutePath();            
             Image img = new ImageIcon(path).getImage();
             ic = ResizeScall(img, lbl_image.getWidth(), lbl_image.getHeight());
-            lbl_image.setIcon(new ImageIcon(ic));             
+            lbl_image.setIcon(new ImageIcon(ic));  
+            
             if (txtID.getText().equals("New")){
                 
             }else{                
