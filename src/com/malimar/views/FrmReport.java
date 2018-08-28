@@ -27,6 +27,9 @@ public class FrmReport extends javax.swing.JFrame {
         
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         
+        btnReportTeacher.setText(LabelManager.hmapLang.get("btnReportTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
+        
+        
     }
 
     /**
@@ -46,7 +49,7 @@ public class FrmReport extends javax.swing.JFrame {
         lblSystemInfo = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jocHyperlink1 = new com.xzq.osc.JocHyperlink();
+        btnReportTeacher = new com.xzq.osc.JocHyperlink();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -124,10 +127,15 @@ public class FrmReport extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
-        jocHyperlink1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/R_Teacher.png"))); // NOI18N
-        jocHyperlink1.setText("Report Teacher");
-        jocHyperlink1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jocHyperlink1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportTeacher.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/R_Teacher.png"))); // NOI18N
+        btnReportTeacher.setText("Report Teacher");
+        btnReportTeacher.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnReportTeacher.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportTeacher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportTeacherMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -135,14 +143,14 @@ public class FrmReport extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jocHyperlink1, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                .addComponent(btnReportTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jocHyperlink1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnReportTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -183,6 +191,21 @@ public class FrmReport extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnExitMouseClicked
 
+    private void btnReportTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportTeacherMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnReportTeacher", frm);
+            }else{
+                if (LabelManager.LangType == "L1"){
+                    
+                }else{
+                    
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnReportTeacherMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -221,12 +244,12 @@ public class FrmReport extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
+    private com.xzq.osc.JocHyperlink btnReportTeacher;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private com.xzq.osc.JocHyperlink jocHyperlink1;
     private javax.swing.JLabel lblSystemInfo;
     // End of variables declaration//GEN-END:variables
 }
