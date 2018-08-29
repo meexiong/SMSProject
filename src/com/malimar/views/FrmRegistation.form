@@ -19,7 +19,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-64,0,0,4,67"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-66,0,0,4,67"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -102,44 +102,36 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel2" min="-2" pref="713" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="107" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jSeparator11" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="txtID5" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="lblDiscount" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
-                                              <Component id="jSeparator12" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="txtID6" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="lblVAT" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jSeparator9" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="txtID3" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="lblVATAmount" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="lblDiscountAmount" alignment="1" pref="164" max="32767" attributes="0"/>
-                                              <Component id="jSeparator8" alignment="1" max="32767" attributes="0"/>
-                                              <Component id="txtID2" alignment="1" max="32767" attributes="0"/>
-                                          </Group>
+                              <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jSeparator11" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="txtDiscountPC" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="lblDiscount" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
+                                          <Component id="jSeparator12" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="txtVAT" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="lblVAT" alignment="1" min="-2" pref="75" max="-2" attributes="0"/>
                                       </Group>
-                                      <Component id="txtID4" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jSeparator10" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="lblGrandTotal" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="jSeparator7" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="txtID1" alignment="1" max="32767" attributes="0"/>
-                                      <Component id="lblSubTotal" alignment="1" max="32767" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jSeparator9" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="txtVATAmount" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="lblVATAmount" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="lblDiscountAmount" alignment="1" pref="164" max="32767" attributes="0"/>
+                                          <Component id="jSeparator8" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="txtDiscountAM" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
+                                  <Component id="txtGrandTotal" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jSeparator10" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblGrandTotal" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="jSeparator7" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txtSubTotal" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="lblSubTotal" alignment="1" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnSave" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btnSave1" min="-2" pref="115" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                              <Component id="btnSave" alignment="1" min="-2" pref="138" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -185,35 +177,32 @@
                           <Component id="jSeparator5" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="jPanel7" min="-2" pref="251" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jPanel2" min="-2" pref="335" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="btnSave" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btnSave1" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnSave" min="-2" pref="28" max="-2" attributes="0"/>
+                          <EmptySpace pref="78" max="32767" attributes="0"/>
                           <Component id="lblSubTotal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="txtID1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtSubTotal" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                                   <Component id="lblDiscountAmount" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Component id="txtID2" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDiscountAM" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="jSeparator8" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="lblDiscount" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Component id="txtID5" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDiscountPC" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="jSeparator11" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
@@ -223,14 +212,14 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblVATAmount" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Component id="txtID3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtVATAmount" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="lblVAT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                  <Component id="txtID6" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtVAT" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                                   <Component id="jSeparator12" min="-2" pref="10" max="-2" attributes="0"/>
                               </Group>
@@ -238,7 +227,7 @@
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                           <Component id="lblGrandTotal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          <Component id="txtID4" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtGrandTotal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                           <Component id="jSeparator10" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
@@ -376,7 +365,7 @@
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="13" rowCount="0">
-                        <Column editable="true" title="" type="java.lang.Boolean"/>
+                        <Column editable="true" title="lblSelect" type="java.lang.Boolean"/>
                         <Column editable="false" title="lblDID" type="java.lang.Integer"/>
                         <Column editable="false" title="lblCourse" type="java.lang.Object"/>
                         <Column editable="false" title="lblTeacher" type="java.lang.Object"/>
@@ -472,6 +461,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableCourseMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -664,7 +656,7 @@
               <Font name="Saysettha OT" size="12" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Save"/>
+            <Property name="text" type="java.lang.String" value="Save&amp;Print"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -765,7 +757,7 @@
             <Property name="text" type="java.lang.String" value="SubTotal"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtID1">
+        <Component class="javax.swing.JTextField" name="txtSubTotal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
@@ -779,7 +771,7 @@
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator7">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtID2">
+        <Component class="javax.swing.JTextField" name="txtDiscountAM">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
@@ -811,7 +803,7 @@
             <Property name="text" type="java.lang.String" value="VAT Amount"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtID3">
+        <Component class="javax.swing.JTextField" name="txtVATAmount">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
@@ -834,7 +826,7 @@
             <Property name="text" type="java.lang.String" value="GrandTotal"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtID4">
+        <Component class="javax.swing.JTextField" name="txtGrandTotal">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
@@ -857,7 +849,7 @@
             <Property name="text" type="java.lang.String" value="Discount"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtID5">
+        <Component class="javax.swing.JTextField" name="txtDiscountPC">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
@@ -868,6 +860,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDiscountPCActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator11">
         </Component>
@@ -880,7 +875,7 @@
             <Property name="text" type="java.lang.String" value="VAT"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtID6">
+        <Component class="javax.swing.JTextField" name="txtVAT">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
@@ -891,25 +886,11 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVATActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator12">
-        </Component>
-        <Component class="javax.swing.JLabel" name="btnSave1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Saysettha OT" size="12" style="1"/>
-            </Property>
-            <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Print"/>
-            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnSave1MouseMoved"/>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSave1MouseClicked"/>
-            <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSave1MouseExited"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -2,18 +2,24 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
+import com.malimar.controllers.GetMaxID;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.RegistrationManager;
+import com.malimar.controllers.TableAlignmentHeader;
+import com.malimar.models.Registration;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
+import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
@@ -28,6 +34,7 @@ public class FrmRegistation extends javax.swing.JFrame {
     HashMap<String, Object[]>mapSemester = null;
     HashMap<String, Object[]>mapStudent = null;
     RegistrationManager rm = new RegistrationManager();
+    Registration rgt = new Registration();;
     public FrmRegistation() {
         initComponents();
         showRegistation();
@@ -69,7 +76,7 @@ public class FrmRegistation extends javax.swing.JFrame {
         JTableHeader th = tableCourse.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         tableCourse.getColumnCount();
-        for (int i = 2; i < tableCourse.getColumnCount(); i++) {
+        for (int i = 0; i < tableCourse.getColumnCount(); i++) {
             TableColumn tc = tcm.getColumn(i);
             tc.setHeaderValue(hmapLang.get(tableCourse.getModel().getColumnName(i).concat(frm).toUpperCase())[LN]);
         }
@@ -85,8 +92,24 @@ public class FrmRegistation extends javax.swing.JFrame {
         }
         tableRegistration.setAutoCreateRowSorter(true);
         th2.repaint();
-        rm.createCheck(tableCourse, model);
+//        rm.createCheck(tableCourse, model);
         rm.createCheck(tableRegistration, modelRegistration);
+        tableCourse.getColumnModel().getColumn(2).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
+        tableCourse.getColumnModel().getColumn(3).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
+        tableCourse.getColumnModel().getColumn(4).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
+        tableCourse.getColumnModel().getColumn(5).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.RIGHT));
+        tableCourse.getColumnModel().getColumn(6).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
+        tableCourse.getColumnModel().getColumn(7).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
+        tableCourse.getColumnModel().getColumn(8).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
+        tableCourse.getColumnModel().getColumn(10).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
+        tableCourse.getColumnModel().getColumn(11).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
+        tableCourse.getColumnModel().getColumn(12).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));   
+        DefaultTableCellRenderer CenterRenderer = new DefaultTableCellRenderer();
+        CenterRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        tableCourse.getColumnModel().getColumn(4).setCellRenderer(CenterRenderer);
+        DefaultTableCellRenderer RightRenderer = new DefaultTableCellRenderer();
+        RightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
+        tableCourse.getColumnModel().getColumn(5).setCellRenderer(RightRenderer);
     }
     private void getcmbSemester() {
         try {
@@ -114,6 +137,22 @@ public class FrmRegistation extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+    private void calcuator() {
+        try {
+            int col = tableCourse.getSelectedColumn();
+            if (col == 0) {
+                rgt.setDisPC(Float.parseFloat(txtDiscountPC.getText().replace(",", "")));
+                rgt.setVat(Float.parseFloat(txtVAT.getText().replace(",", "")));
+                rm.calculator(tableCourse,rgt);
+                txtSubTotal.setText(String.format("%,.2f", rgt.getSubTotal()));
+                txtDiscountAM.setText(String.format("%,.2f", rgt.getDisAmount()));
+                txtVATAmount.setText(String.format("%,.2f", rgt.getVatAmount()));
+                txtGrandTotal.setText(String.format("%,.2f", rgt.getGrandTotal()));
+            }
+        } catch (Exception e) {
+        }
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,24 +194,23 @@ public class FrmRegistation extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tableRegistration = new javax.swing.JTable();
         lblSubTotal = new javax.swing.JLabel();
-        txtID1 = new javax.swing.JTextField();
+        txtSubTotal = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        txtID2 = new javax.swing.JTextField();
+        txtDiscountAM = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         lblDiscountAmount = new javax.swing.JLabel();
         lblVATAmount = new javax.swing.JLabel();
-        txtID3 = new javax.swing.JTextField();
+        txtVATAmount = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         lblGrandTotal = new javax.swing.JLabel();
-        txtID4 = new javax.swing.JTextField();
+        txtGrandTotal = new javax.swing.JTextField();
         jSeparator10 = new javax.swing.JSeparator();
         lblDiscount = new javax.swing.JLabel();
-        txtID5 = new javax.swing.JTextField();
+        txtDiscountPC = new javax.swing.JTextField();
         jSeparator11 = new javax.swing.JSeparator();
         lblVAT = new javax.swing.JLabel();
-        txtID6 = new javax.swing.JTextField();
+        txtVAT = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
-        btnSave1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -243,7 +281,7 @@ public class FrmRegistation extends javax.swing.JFrame {
 
             },
             new String [] {
-                "", "lblDID", "lblCourse", "lblTeacher", "lblRoom", "lblPrice", "lblSunday", "lblMonday", "lblTuesday", "lblWednesday", "lblThursday", "lblFriday", "lblSaturday"
+                "lblSelect", "lblDID", "lblCourse", "lblTeacher", "lblRoom", "lblPrice", "lblSunday", "lblMonday", "lblTuesday", "lblWednesday", "lblThursday", "lblFriday", "lblSaturday"
             }
         ) {
             Class[] types = new Class [] {
@@ -265,6 +303,11 @@ public class FrmRegistation extends javax.swing.JFrame {
         tableCourse.setRowHeight(25);
         tableCourse.setSelectionBackground(new java.awt.Color(204, 204, 204));
         tableCourse.setSelectionForeground(java.awt.Color.red);
+        tableCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableCourseMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableCourse);
         if (tableCourse.getColumnModel().getColumnCount() > 0) {
             tableCourse.getColumnModel().getColumn(0).setMinWidth(50);
@@ -367,7 +410,7 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSave.setText("Save");
+        btnSave.setText("Save&Print");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -434,15 +477,15 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSubTotal.setText("SubTotal");
 
-        txtID1.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        txtID1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtID1.setText("0.00");
-        txtID1.setBorder(null);
+        txtSubTotal.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        txtSubTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtSubTotal.setText("0.00");
+        txtSubTotal.setBorder(null);
 
-        txtID2.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        txtID2.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtID2.setText("0.00");
-        txtID2.setBorder(null);
+        txtDiscountAM.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        txtDiscountAM.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtDiscountAM.setText("0.00");
+        txtDiscountAM.setBorder(null);
 
         lblDiscountAmount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblDiscountAmount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -452,53 +495,45 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblVATAmount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblVATAmount.setText("VAT Amount");
 
-        txtID3.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        txtID3.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtID3.setText("0.00");
-        txtID3.setBorder(null);
+        txtVATAmount.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        txtVATAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtVATAmount.setText("0.00");
+        txtVATAmount.setBorder(null);
 
         lblGrandTotal.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblGrandTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGrandTotal.setText("GrandTotal");
 
-        txtID4.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        txtID4.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtID4.setText("0.00");
-        txtID4.setBorder(null);
+        txtGrandTotal.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        txtGrandTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtGrandTotal.setText("0.00");
+        txtGrandTotal.setBorder(null);
 
         lblDiscount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblDiscount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDiscount.setText("Discount");
 
-        txtID5.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        txtID5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtID5.setText("0.00");
-        txtID5.setBorder(null);
+        txtDiscountPC.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        txtDiscountPC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtDiscountPC.setText("0.00");
+        txtDiscountPC.setBorder(null);
+        txtDiscountPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDiscountPCActionPerformed(evt);
+            }
+        });
 
         lblVAT.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblVAT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVAT.setText("VAT");
 
-        txtID6.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        txtID6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtID6.setText("0.00");
-        txtID6.setBorder(null);
-
-        btnSave1.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        btnSave1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSave1.setText("Print");
-        btnSave1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSave1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnSave1MouseMoved(evt);
-            }
-        });
-        btnSave1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSave1MouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSave1MouseExited(evt);
+        txtVAT.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        txtVAT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtVAT.setText("0.00");
+        txtVAT.setBorder(null);
+        txtVAT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVATActionPerformed(evt);
             }
         });
 
@@ -553,38 +588,32 @@ public class FrmRegistation extends javax.swing.JFrame {
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtID5, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblDiscount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jSeparator12, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtID6, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblVAT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtID3, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblVATAmount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(lblDiscountAmount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
-                                            .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(txtID2, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addComponent(txtID4, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jSeparator10, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblGrandTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtID1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblSubTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtDiscountPC, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblDiscount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jSeparator12, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtVAT, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblVAT, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtVATAmount, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(lblVATAmount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblDiscountAmount, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                                        .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(txtDiscountAM, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                .addComponent(txtGrandTotal, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jSeparator10, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblGrandTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(txtSubTotal, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(lblSubTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -621,33 +650,31 @@ public class FrmRegistation extends javax.swing.JFrame {
                         .addComponent(jSeparator4)
                         .addComponent(jSeparator1)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                         .addComponent(lblSubTotal)
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(5, 5, 5)
                                 .addComponent(lblDiscountAmount)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDiscountAM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblDiscount)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtID5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtDiscountPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(5, 5, 5)
@@ -655,19 +682,19 @@ public class FrmRegistation extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblVATAmount)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtID3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtVATAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblVAT)
                                 .addGap(1, 1, 1)
-                                .addComponent(txtID6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtVAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(5, 5, 5)
                         .addComponent(lblGrandTotal)
                         .addGap(1, 1, 1)
-                        .addComponent(txtID4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
@@ -699,7 +726,57 @@ public class FrmRegistation extends javax.swing.JFrame {
         if (evt.getModifiers() == 6) {
             WindowChangeLabel("btnSave", frm);
         } else {
-
+            String student = cmbStudent.getSelectedItem().toString();
+            rgt.setStudentID((int) mapStudent.get(student)[0]);
+            rgt.setSubTotal(Double.parseDouble(txtSubTotal.getText().replace(",", "")));
+            rgt.setDisPC(Float.parseFloat(txtDiscountPC.getText().replace(",", "")));
+            rgt.setDisAmount(Double.parseDouble(txtDiscountAM.getText().replace(",", "")));
+            rgt.setVat(Float.parseFloat(txtVAT.getText().replace(",", "")));
+            rgt.setVatAmount(Double.parseDouble(txtVATAmount.getText().replace(",", "")));
+            rgt.setGrandTotal(Double.parseDouble(txtGrandTotal.getText().replace(",", "")));
+            GetMaxID gm = new GetMaxID();
+            if (txtID.getText().equals("New")) {
+                txtID.setText(String.valueOf(gm.getIntID2("tbl_Registration", "RegisterID")));
+                rgt.setRegistrationID(Integer.parseInt(txtID.getText()));
+                if (rm.insert(rgt)) {
+                    int count = tableCourse.getRowCount()-1;
+                    for (int i = 0; i <= count; i++) {
+                        Boolean check = (Boolean) tableCourse.getValueAt(i, 0);
+                        if (check) {
+                            int scheduleID = Integer.parseInt(tableCourse.getValueAt(i, 1).toString());
+                            rgt.setScheduleDetailID(scheduleID);
+                            double price = Double.parseDouble(tableCourse.getValueAt(i, 5).toString().replace(",", ""));
+                            rgt.setPrice(price);
+                            rgt.setRegtDetailID(gm.getIntID("tbl_RegistrationDetails", "RegisterDID"));
+                            rm.insertDetail(rgt);
+                        }
+                    }
+                    MsgBox.msgInfo();
+                } else {
+                    MsgBox.msgError();
+                }
+            } else {
+                rgt.setRegistrationID(Integer.parseInt(txtID.getText()));
+                if (rm.update(rgt)) {
+                    rm.deleteDetail(rgt);
+                    int count = tableCourse.getRowCount()-1;
+                    for (int i = 0; i <= count; i++) {
+                        Boolean check = (Boolean) tableCourse.getValueAt(i, 0);
+                        if (check) {
+                            int scheduleID = Integer.parseInt(tableCourse.getValueAt(i, 1).toString());
+                            rgt.setScheduleDetailID(scheduleID);
+                            double price = Double.parseDouble(tableCourse.getValueAt(i, 5).toString().replace(",", ""));
+                            rgt.setPrice(price);
+                            rgt.setRegtDetailID(gm.getIntID("tbl_RegistrationDetails", "RegisterDID"));
+                            rm.insertDetail(rgt);
+                        }
+                    }
+                    MsgBox.msgInfo();
+                } else {
+                    MsgBox.msgError();
+                }
+            }
+            
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 
@@ -743,17 +820,20 @@ public class FrmRegistation extends javax.swing.JFrame {
         getcmbStudent();
     }//GEN-LAST:event_btnNewStudentActionPerformed
 
-    private void btnSave1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSave1MouseMoved
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSave1MouseMoved
+    private void tableCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCourseMouseClicked
+        try {
+            calcuator();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tableCourseMouseClicked
 
-    private void btnSave1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSave1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSave1MouseClicked
+    private void txtDiscountPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiscountPCActionPerformed
+       calcuator();
+    }//GEN-LAST:event_txtDiscountPCActionPerformed
 
-    private void btnSave1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSave1MouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSave1MouseExited
+    private void txtVATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVATActionPerformed
+        calcuator();
+    }//GEN-LAST:event_txtVATActionPerformed
 
     /**
      * @param args the command line arguments
@@ -795,7 +875,6 @@ public class FrmRegistation extends javax.swing.JFrame {
     private javax.swing.JLabel btnMinimize2;
     private javax.swing.JButton btnNewStudent;
     private javax.swing.JLabel btnSave;
-    private javax.swing.JLabel btnSave1;
     private javax.swing.JComboBox<String> cmbSemester;
     private javax.swing.JComboBox<String> cmbStudent;
     private javax.swing.JPanel jPanel1;
@@ -834,17 +913,17 @@ public class FrmRegistation extends javax.swing.JFrame {
     private javax.swing.JLabel lblVATAmount;
     private javax.swing.JTable tableCourse;
     private javax.swing.JTable tableRegistration;
+    private javax.swing.JTextField txtDiscountAM;
+    private javax.swing.JTextField txtDiscountPC;
     private javax.swing.JTextField txtEthnic;
     private javax.swing.JTextField txtGender;
+    private javax.swing.JTextField txtGrandTotal;
     private javax.swing.JTextField txtID;
-    private javax.swing.JTextField txtID1;
-    private javax.swing.JTextField txtID2;
-    private javax.swing.JTextField txtID3;
-    private javax.swing.JTextField txtID4;
-    private javax.swing.JTextField txtID5;
-    private javax.swing.JTextField txtID6;
     private javax.swing.JTextField txtNational;
     private javax.swing.JTextField txtReligion;
     private javax.swing.JTextField txtStudentID;
+    private javax.swing.JTextField txtSubTotal;
+    private javax.swing.JTextField txtVAT;
+    private javax.swing.JTextField txtVATAmount;
     // End of variables declaration//GEN-END:variables
 }

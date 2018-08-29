@@ -20,7 +20,7 @@ public class GetMaxID {
     }
     public int getIntID2(String dbTable, String colID){
         try {
-            String query = "Select isnull(Max("+colID+"),0)+1001 as maxID from "+dbTable+"";
+            String query = "Select isnull(Max("+colID+"),1000)+1 as maxID from "+dbTable+"";
             ResultSet rs = c.createStatement().executeQuery(query);
             if(rs.next()){
                 return rs.getInt("maxID");
