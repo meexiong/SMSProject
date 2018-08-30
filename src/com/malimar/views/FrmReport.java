@@ -12,6 +12,8 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import java.sql.*;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
 
 public class FrmReport extends javax.swing.JFrame {
 
@@ -197,6 +199,7 @@ public class FrmReport extends javax.swing.JFrame {
                 LabelManager.WindowChangeLabel("btnReportTeacher", frm);
             }else{
                 if (LabelManager.LangType == "L1"){
+                    JasperPrint p = JasperFillManager.fillReport("", null, c);
                     
                 }else{
                     
