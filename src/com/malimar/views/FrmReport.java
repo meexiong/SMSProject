@@ -11,9 +11,13 @@ package com.malimar.views;
  */
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.*;
+import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.swing.JRViewer;
 
 public class FrmReport extends javax.swing.JFrame {
 
@@ -198,14 +202,23 @@ public class FrmReport extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnReportTeacher", frm);
             }else{
-                if (LabelManager.LangType == "L1"){
-                    JasperPrint p = JasperFillManager.fillReport("", null, c);
+                if (LabelManager.LangType == "L1"){                    
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Teacher_L1.jasper", null, c);
+                    FrmOpenReport f = new FrmOpenReport();
+                    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+                    int w = (int)d.getWidth();
+                    int h = (int)d.getHeight();                    
+                    f.setBounds(0,0,w,h);
+                    f.setTitle("Report Teacher");                    
+                    f.setContentPane(new JRViewer(p));                    
+                    f.setVisible(true);       
                     
                 }else{
                     
                 }
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnReportTeacherMouseClicked
 
