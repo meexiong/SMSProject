@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Teacher_L1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
 	<property name="ireport.zoom" value="1.9487171000000025"/>
-	<property name="ireport.x" value="449"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="67"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["E:\\Project School\\SMS\\SMSProject\\src\\com\\malimar\\Report\\"]]></defaultValueExpression>
@@ -48,7 +48,7 @@
 		<band height="555"/>
 	</background>
 	<pageHeader>
-		<band height="52" splitType="Stretch">
+		<band height="61" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="814" height="26" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -405,14 +405,14 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA['Facebook: '+$F{facebook}]]></textFieldExpression>
+				<textFieldExpression><![CDATA['ເຟດບຸກ: '+$F{facebook}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="50" width="695" height="10" uuid="5cefc992-dc53-4b96-bde7-d0564761b6df"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA['Web-Site: '+$F{website}]]></textFieldExpression>
+				<textFieldExpression><![CDATA['ເວບໄຊສ: '+$F{website}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="-11" y="19" width="813" height="1" uuid="d53773b9-f745-4920-8565-aae0026c2dfa"/>

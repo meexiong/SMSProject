@@ -12,6 +12,7 @@ import static com.malimar.controllers.LabelManager.LN;
 import com.malimar.models.ClassL;
 import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
+import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -57,6 +58,12 @@ public class FrmClass extends javax.swing.JFrame {
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
         lblClassLevel.setText(LabelManager.hmapLang.get("lblClassLevel".concat(frm).toUpperCase())[LabelManager.LN]);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable1.getTableHeader().setForeground(Color.WHITE);
+        jTable1.getTableHeader().setOpaque(false);
         
         JTableHeader th = jTable1.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();

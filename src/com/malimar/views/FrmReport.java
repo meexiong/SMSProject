@@ -12,6 +12,7 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Toolkit;
 import java.sql.*;
 import javax.swing.JFrame;
@@ -202,19 +203,22 @@ public class FrmReport extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnReportTeacher", frm);
             }else{
+                FrmOpenReport f = new FrmOpenReport();
+                Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+                int w = (int)d.getWidth();
+                int h = (int)d.getHeight();       
                 if (LabelManager.LangType == "L1"){                    
-                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Teacher_L1.jasper", null, c);
-                    FrmOpenReport f = new FrmOpenReport();
-                    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
-                    int w = (int)d.getWidth();
-                    int h = (int)d.getHeight();                    
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Teacher_L1.jasper", null, c);                                 
                     f.setBounds(0,0,w,h);
-                    f.setTitle("Report Teacher");                    
+                    f.setTitle("ລາຍງານ ອາຈານທັງໝົດ");   
                     f.setContentPane(new JRViewer(p));                    
-                    f.setVisible(true);       
-                    
+                    f.setVisible(true);
                 }else{
-                    
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Teacher_L2.jasper", null, c);                                 
+                    f.setBounds(0,0,w,h);
+                    f.setTitle("Report Teacher Details");   
+                    f.setContentPane(new JRViewer(p));                    
+                    f.setVisible(true);
                 }
             }
         } catch (Exception e) {

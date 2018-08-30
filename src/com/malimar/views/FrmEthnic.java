@@ -11,6 +11,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.models.Ethnic;
 import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.sql.Connection;
@@ -41,6 +42,12 @@ public class FrmEthnic extends javax.swing.JFrame {
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
         txtID.setEnabled(false);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable1.getTableHeader().setForeground(Color.WHITE);
+        jTable1.getTableHeader().setOpaque(false);
         
         JTableHeader th = jTable1.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();

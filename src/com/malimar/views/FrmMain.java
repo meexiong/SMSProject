@@ -1031,7 +1031,16 @@ int cnt=0;
     }//GEN-LAST:event_lblScheduleMouseClicked
 
     private void btnMReligionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMReligionMouseClicked
-        // TODO add your handling code here:
+        try {
+            if (evt.getModifiers()==6){
+                WindowChangeLabel("btnMreligion", frm);
+            }else{
+                FrmRegion fr = new FrmRegion();
+                fr.setVisible(true);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btnMReligionMouseClicked
 
     private void btnMEthnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMEthnicMouseClicked

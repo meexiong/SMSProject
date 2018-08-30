@@ -113,6 +113,42 @@ public class FrmUserLogin extends javax.swing.JFrame {
         lblUserGroup.setText(LabelManager.hmapLang.get("lblusergroup".concat(frm).toUpperCase())[LabelManager.LN]);
         btnShowPermission.setText(LabelManager.hmapLang.get("btnShowPermission".concat(frm).toUpperCase())[LabelManager.LN]);
         
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable1.getTableHeader().setForeground(Color.WHITE);
+        jTable1.getTableHeader().setOpaque(false);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable2.setShowGrid(true);
+        jTable2.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable2.getTableHeader().setForeground(Color.WHITE);
+        jTable2.getTableHeader().setOpaque(false);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable3.setShowGrid(true);
+        jTable3.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable3.getTableHeader().setForeground(Color.WHITE);
+        jTable3.getTableHeader().setOpaque(false);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable4.setShowGrid(true);
+        jTable4.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable4.getTableHeader().setForeground(Color.WHITE);
+        jTable4.getTableHeader().setOpaque(false);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable5.setShowGrid(true);
+        jTable5.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable5.getTableHeader().setForeground(Color.WHITE);
+        jTable5.getTableHeader().setOpaque(false);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable6.setShowGrid(true);
+        jTable6.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable6.getTableHeader().setForeground(Color.WHITE);
+        jTable6.getTableHeader().setOpaque(false);
+        
         JTableHeader th = jTable1.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         jTable1.getColumnCount();

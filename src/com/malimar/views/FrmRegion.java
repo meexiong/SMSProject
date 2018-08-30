@@ -11,6 +11,7 @@ import com.malimar.controllers.RegionManager;
 import com.malimar.models.Region;
 import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
+import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
@@ -45,6 +46,12 @@ public class FrmRegion extends javax.swing.JFrame {
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
         lblRegion_L1.setText(LabelManager.hmapLang.get("lblRegion_l1".concat(frm).toUpperCase())[LabelManager.LN]);
         lblRegion_L2.setText(LabelManager.hmapLang.get("lblRegion_L2".concat(frm).toUpperCase())[LabelManager.LN]);
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable1.getTableHeader().setForeground(Color.WHITE);
+        jTable1.getTableHeader().setOpaque(false);
         
         JTableHeader th = jTable1.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();

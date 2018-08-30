@@ -56,6 +56,11 @@ public class FrmStudentType extends javax.swing.JFrame {
             }
                jTable1.setAutoCreateRowSorter(true);
             th.repaint();
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable1.getTableHeader().setForeground(Color.WHITE);
+        jTable1.getTableHeader().setOpaque(false);
         
         txtID.setEnabled(false);
         lblName_L1.setText(LabelManager.hmapLang.get("lblName_L1".concat(frm).toUpperCase())[LabelManager.LN]);

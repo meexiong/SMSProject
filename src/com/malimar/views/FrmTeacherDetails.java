@@ -10,6 +10,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.TeacherAddManager;
 import com.malimar.models.TeacherAdd;
 import com.malimar.utils.Border;
+import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
@@ -55,6 +56,12 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         }
            jTable1.setAutoCreateRowSorter(true);
         th.repaint();
+        
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable1.getTableHeader().setForeground(Color.WHITE);
+        jTable1.getTableHeader().setOpaque(false);
             
     }
 
