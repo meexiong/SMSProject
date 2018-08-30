@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Teacher_L2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
-	<property name="ireport.zoom" value="1.4641000000000022"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Employee_L1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
+	<property name="ireport.zoom" value="1.2100000000000013"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["E:\\Project School\\SMS\\SMSProject\\src\\com\\malimar\\Report\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[exec pd_ReportTeacher_L2]]>
+		<![CDATA[exec pd_ReportEmployee_L1]]>
 	</queryString>
 	<field name="teid" class="java.lang.Integer"/>
 	<field name="t_nbr" class="java.lang.String"/>
 	<field name="temail" class="java.lang.String"/>
-	<field name="t_name_l2" class="java.lang.String"/>
-	<field name="Gen_L2" class="java.lang.String"/>
+	<field name="t_name_l1" class="java.lang.String"/>
+	<field name="Gen_L1" class="java.lang.String"/>
 	<field name="dob" class="java.lang.String"/>
 	<field name="tphone1" class="java.lang.String"/>
 	<field name="tphone2" class="java.lang.String"/>
-	<field name="re_name_l2" class="java.lang.String"/>
-	<field name="et_name_l2" class="java.lang.String"/>
-	<field name="nt_name_l2" class="java.lang.String"/>
-	<field name="t_startdate" class="java.lang.String"/>
-	<field name="work_name_l2" class="java.lang.String"/>
+	<field name="re_name_l1" class="java.lang.String"/>
+	<field name="et_name_l1" class="java.lang.String"/>
+	<field name="nt_name_l1" class="java.lang.String"/>
+	<field name="t_startDate" class="java.lang.String"/>
+	<field name="work_name_l1" class="java.lang.String"/>
 	<field name="salary" class="java.lang.Double"/>
 	<field name="s_name_l1" class="java.lang.String"/>
 	<field name="nameL2" class="java.lang.String"/>
@@ -48,27 +48,27 @@
 		<band height="555"/>
 	</background>
 	<pageHeader>
-		<band height="62" splitType="Stretch">
+		<band height="61" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="814" height="26" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Report Teacher Details]]></text>
+				<text><![CDATA[ລາຍງານ ພະນັກງານ]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
 				<reportElement x="0" y="-17" width="88" height="69" uuid="c7530ef2-c0a8-4e51-a855-2807bbc42b79"/>
 				<imageExpression><![CDATA[$F{s_img}]]></imageExpression>
 			</image>
 			<textField evaluationTime="Page">
-				<reportElement x="0" y="32" width="702" height="20" uuid="ebf30025-f2ce-477b-be3b-f38fd888e046"/>
+				<reportElement x="0" y="32" width="683" height="20" uuid="ebf30025-f2ce-477b-be3b-f38fd888e046"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Summary Teacher: ("+$V{teid_1}+")  Total: "]]></textFieldExpression>
+				<textFieldExpression><![CDATA["ພະນັກງານ ທັງໝົດ: ("+$V{teid_1}+")  ລວມເງີນເດືອນທັງໝົດ: "]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Page" pattern="##,###.00">
-				<reportElement x="445" y="32" width="369" height="20" uuid="464b0fa9-8a05-4c66-ba73-43d11586db22"/>
+				<reportElement x="469" y="32" width="345" height="20" uuid="464b0fa9-8a05-4c66-ba73-43d11586db22"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="12" isBold="true"/>
 				</textElement>
@@ -79,7 +79,7 @@
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement x="-11" y="0" width="76" height="20" uuid="7f925b3c-9905-43c9-b9a9-48fadf7938f6"/>
+				<reportElement x="-11" y="0" width="87" height="20" uuid="7f925b3c-9905-43c9-b9a9-48fadf7938f6"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -89,10 +89,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[No-ID]]></text>
+				<text><![CDATA[ເລກ-ລະຫັດ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="65" y="0" width="133" height="20" uuid="8d225157-71e0-4b82-b800-8d6fea688153"/>
+				<reportElement x="76" y="0" width="133" height="20" uuid="8d225157-71e0-4b82-b800-8d6fea688153"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -102,10 +102,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[E-mail]]></text>
+				<text><![CDATA[ອີເມວ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="198" y="0" width="129" height="20" uuid="89467a8d-837f-40c5-a6dd-3f34e089e5dd"/>
+				<reportElement x="209" y="0" width="118" height="20" uuid="89467a8d-837f-40c5-a6dd-3f34e089e5dd"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -115,7 +115,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Name and Surename]]></text>
+				<text><![CDATA[ຊື່ ແລະ ນາມສະກຸນ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="327" y="0" width="41" height="20" uuid="c022da81-e390-43d1-96c1-543cea9ed827"/>
@@ -128,7 +128,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Gender]]></text>
+				<text><![CDATA[ເພດ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="368" y="0" width="57" height="20" uuid="cffbcf2a-e26f-42b3-a49e-6ba6da805bae"/>
@@ -141,7 +141,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DOB]]></text>
+				<text><![CDATA[ວ.ດ.ປ ເກີດ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="425" y="0" width="71" height="20" uuid="22f13d85-8922-49a8-bb3d-4331db6d60ba"/>
@@ -154,7 +154,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Phone 1]]></text>
+				<text><![CDATA[ເບີໂທ 1]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="567" y="0" width="66" height="20" uuid="e3a93bd9-b3ae-4d46-88a0-102fd00c5fd8"/>
@@ -167,7 +167,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Nationality]]></text>
+				<text><![CDATA[ສັນຊາດ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="633" y="0" width="51" height="20" uuid="c974615e-2bfc-4785-b5fa-12507006c396"/>
@@ -180,7 +180,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Start Work]]></text>
+				<text><![CDATA[ເຂົ້າວຽກ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="684" y="0" width="61" height="20" uuid="51473842-0209-4e37-a0b3-3f765b039c50"/>
@@ -193,7 +193,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Work Status]]></text>
+				<text><![CDATA[ສະຖານະວຽກ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="745" y="0" width="69" height="20" uuid="929143dc-7fcb-4ff6-9f77-04621f452cd3"/>
@@ -206,7 +206,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Salary]]></text>
+				<text><![CDATA[ເງີນເດືອນ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="496" y="0" width="71" height="20" uuid="003a340f-e67b-4140-9049-77ed125c4628"/>
@@ -219,14 +219,14 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Phone 2]]></text>
+				<text><![CDATA[ເບີໂທ 2]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="-11" y="0" width="76" height="20" uuid="9decaa96-d2d8-493e-b0bc-ca07494f02a9"/>
+				<reportElement x="-11" y="0" width="87" height="20" uuid="9decaa96-d2d8-493e-b0bc-ca07494f02a9"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -239,7 +239,7 @@
 				<textFieldExpression><![CDATA[" "+ $F{t_nbr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="65" y="0" width="133" height="20" uuid="2362fab3-1e1b-48a9-83a2-c2a932b5fd83"/>
+				<reportElement x="76" y="0" width="133" height="20" uuid="2362fab3-1e1b-48a9-83a2-c2a932b5fd83"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -252,7 +252,7 @@
 				<textFieldExpression><![CDATA[" "+ $F{temail}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="198" y="0" width="129" height="20" uuid="7520696f-6ed3-4146-be76-a183291d501b"/>
+				<reportElement x="209" y="0" width="118" height="20" uuid="7520696f-6ed3-4146-be76-a183291d501b"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -262,7 +262,7 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{t_name_l2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+ $F{t_name_l1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="327" y="0" width="41" height="20" uuid="e1d40e70-5694-47f9-8a8e-bf8a49c8b12c"/>
@@ -275,7 +275,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Gen_L2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Gen_L1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="368" y="0" width="57" height="20" uuid="8201de7b-d949-436e-85bb-0f50816f186d"/>
@@ -314,7 +314,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{nt_name_l2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+ $F{nt_name_l1}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="633" y="0" width="51" height="20" uuid="b18b55b7-861c-458f-b8c2-19cceb119d0f"/>
@@ -327,7 +327,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{t_startdate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{t_startDate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="684" y="0" width="61" height="20" uuid="0bbe8362-10fb-485b-8fc8-cb2ce7ef2bf2"/>
@@ -340,7 +340,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{work_name_l2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{work_name_l1}]]></textFieldExpression>
 			</textField>
 			<textField pattern="##,###.00">
 				<reportElement x="745" y="0" width="69" height="20" uuid="7b61adf0-138e-4f37-beea-7b165505d296"/>
@@ -377,7 +377,7 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_address}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{s_name_l1}+', '+$F{s_address}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="683" y="0" width="80" height="20" uuid="254e0ece-0371-4fce-a883-0462d29b0ed6"/>
@@ -398,21 +398,21 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA['Tel : '+$F{phone1}+'   '+$F{tphone2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA['ຕິດຕໍ່ : '+$F{phone1}+'   '+$F{tphone2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="40" width="695" height="10" uuid="a1b30f77-120c-4445-933d-b0c8f10f2f38"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA['Facebook: '+$F{facebook}]]></textFieldExpression>
+				<textFieldExpression><![CDATA['ເຟດບຸກ: '+$F{facebook}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="50" width="695" height="10" uuid="5cefc992-dc53-4b96-bde7-d0564761b6df"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA['Web-Site: '+$F{website}]]></textFieldExpression>
+				<textFieldExpression><![CDATA['ເວບໄຊສ: '+$F{website}]]></textFieldExpression>
 			</textField>
 			<line>
 				<reportElement x="-11" y="19" width="813" height="1" uuid="d53773b9-f745-4920-8565-aae0026c2dfa"/>

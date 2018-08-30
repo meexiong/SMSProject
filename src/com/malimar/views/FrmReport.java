@@ -35,7 +35,7 @@ public class FrmReport extends javax.swing.JFrame {
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         
         btnReportTeacher.setText(LabelManager.hmapLang.get("btnReportTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
-        
+        btnReportEmployee.setText(LabelManager.hmapLang.get("btnReportEmployee".concat(frm).toUpperCase())[LabelManager.LN]);
         
     }
 
@@ -57,6 +57,7 @@ public class FrmReport extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         btnReportTeacher = new com.xzq.osc.JocHyperlink();
+        btnReportEmployee = new com.xzq.osc.JocHyperlink();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -144,13 +145,25 @@ public class FrmReport extends javax.swing.JFrame {
             }
         });
 
+        btnReportEmployee.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/ReportEmployee.png"))); // NOI18N
+        btnReportEmployee.setText("Report Employee");
+        btnReportEmployee.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnReportEmployee.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportEmployee.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportEmployeeMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnReportTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnReportTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                    .addComponent(btnReportEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -158,6 +171,8 @@ public class FrmReport extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnReportTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReportEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -226,6 +241,35 @@ public class FrmReport extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnReportTeacherMouseClicked
 
+    private void btnReportEmployeeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportEmployeeMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnReportEmployee", frm);
+            }else{
+                FrmOpenReport f = new FrmOpenReport();
+                Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+                int w = (int)d.getWidth();
+                int h = (int)d.getHeight();       
+                if (LabelManager.LangType == "L1"){                    
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Employee_L1.jasper", null, c);                                 
+                    f.setBounds(0,0,w,h);
+                    f.setTitle("ລາຍງານ ພະນັກງານ");   
+                    f.setContentPane(new JRViewer(p));                    
+                    f.setVisible(true);
+                }else{
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Employee_L2.jasper", null, c);                                 
+                    f.setBounds(0,0,w,h);
+                    f.setTitle("Report Employee Details");   
+                    f.setContentPane(new JRViewer(p));                    
+                    f.setVisible(true);
+                }
+                
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnReportEmployeeMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -264,6 +308,7 @@ public class FrmReport extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
+    private com.xzq.osc.JocHyperlink btnReportEmployee;
     private com.xzq.osc.JocHyperlink btnReportTeacher;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

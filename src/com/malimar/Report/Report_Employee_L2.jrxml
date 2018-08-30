@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Teacher_L2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Employee_L2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
 	<property name="ireport.zoom" value="1.4641000000000022"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA["E:\\Project School\\SMS\\SMSProject\\src\\com\\malimar\\Report\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[exec pd_ReportTeacher_L2]]>
+		<![CDATA[exec pd_ReportEmployee_L2]]>
 	</queryString>
 	<field name="teid" class="java.lang.Integer"/>
 	<field name="t_nbr" class="java.lang.String"/>
@@ -20,7 +20,7 @@
 	<field name="re_name_l2" class="java.lang.String"/>
 	<field name="et_name_l2" class="java.lang.String"/>
 	<field name="nt_name_l2" class="java.lang.String"/>
-	<field name="t_startdate" class="java.lang.String"/>
+	<field name="t_startDate" class="java.lang.String"/>
 	<field name="work_name_l2" class="java.lang.String"/>
 	<field name="salary" class="java.lang.Double"/>
 	<field name="s_name_l1" class="java.lang.String"/>
@@ -327,7 +327,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{t_startdate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{t_startDate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="684" y="0" width="61" height="20" uuid="0bbe8362-10fb-485b-8fc8-cb2ce7ef2bf2"/>

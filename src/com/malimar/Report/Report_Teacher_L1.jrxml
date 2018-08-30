@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Teacher_L1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
-	<property name="ireport.zoom" value="1.9487171000000025"/>
+	<property name="ireport.zoom" value="1.2100000000000013"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="67"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["E:\\Project School\\SMS\\SMSProject\\src\\com\\malimar\\Report\\"]]></defaultValueExpression>
 	</parameter>
@@ -61,14 +61,14 @@
 				<imageExpression><![CDATA[$F{s_img}]]></imageExpression>
 			</image>
 			<textField evaluationTime="Page">
-				<reportElement x="0" y="32" width="814" height="20" uuid="ebf30025-f2ce-477b-be3b-f38fd888e046"/>
+				<reportElement x="0" y="32" width="683" height="20" uuid="ebf30025-f2ce-477b-be3b-f38fd888e046"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["ອາຈານທັງໝົດ: ("+$V{teid_1}+")  ລວມເງີນເດືອນທັງໝົດ: "]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Page" pattern="##,###.00">
-				<reportElement x="522" y="32" width="292" height="20" uuid="464b0fa9-8a05-4c66-ba73-43d11586db22"/>
+				<reportElement x="460" y="32" width="354" height="20" uuid="464b0fa9-8a05-4c66-ba73-43d11586db22"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="12" isBold="true"/>
 				</textElement>
