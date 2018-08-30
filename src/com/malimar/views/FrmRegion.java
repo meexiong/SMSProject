@@ -42,10 +42,13 @@ public class FrmRegion extends javax.swing.JFrame {
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
         txtID.setEnabled(false);
+        Border.blueColor(btnSave);
         
+        lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
         lblRegion_L1.setText(LabelManager.hmapLang.get("lblRegion_l1".concat(frm).toUpperCase())[LabelManager.LN]);
         lblRegion_L2.setText(LabelManager.hmapLang.get("lblRegion_L2".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
         
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jTable1.setShowGrid(true);
@@ -425,7 +428,7 @@ public class FrmRegion extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRE_Name_L2ActionPerformed
 
     private void btnSaveMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseMoved
-        Border.blueColor(btnSave);
+        
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
@@ -459,7 +462,7 @@ public class FrmRegion extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             rm.showData(jTable1, model);            
-            lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);    
+                
         } catch (Exception e) {
             e.printStackTrace();
         }

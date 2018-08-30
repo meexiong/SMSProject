@@ -1044,7 +1044,15 @@ int cnt=0;
     }//GEN-LAST:event_btnMReligionMouseClicked
 
     private void btnMEthnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMEthnicMouseClicked
-        // TODO add your handling code here:
+        try {
+            if (evt.getModifiers()==6){
+                WindowChangeLabel("btnMEthnic", frm);
+            }else{
+                FrmEthnic fe = new FrmEthnic();
+                fe.setVisible(true);
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnMEthnicMouseClicked
 
     private void btnMClassroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMClassroomMouseClicked
