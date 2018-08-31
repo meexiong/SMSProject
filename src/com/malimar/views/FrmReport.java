@@ -288,7 +288,23 @@ public class FrmReport extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnReportStudentAll", frm);
             }else{
-                
+                FrmOpenReport f = new FrmOpenReport();
+                Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+                int w = (int)d.getWidth();
+                int h = (int)d.getHeight();       
+                if (LabelManager.LangType == "L1"){                    
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Student_L1.jasper", null, c);                                 
+                    f.setBounds(0,0,w,h);
+                    f.setTitle("ລາຍງານ ພະນັກງານ");   
+                    f.setContentPane(new JRViewer(p));                    
+                    f.setVisible(true);
+                }else{
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Student_L2.jasper", null, c);                                 
+                    f.setBounds(0,0,w,h);
+                    f.setTitle("Report Employee Details");   
+                    f.setContentPane(new JRViewer(p));                    
+                    f.setVisible(true);
+                }            
                 
             }
         } catch (Exception e) {
