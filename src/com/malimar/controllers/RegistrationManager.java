@@ -165,4 +165,21 @@ public class RegistrationManager {
         }
         return false;
     }
+    public void loadRegistrationInfo(DefaultTableModel model, int semester){
+        try {
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            String query ="Exec pd_RegistrationInfo "+semester+"";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt("RegisterID");
+                String stdNbr = rs.getString("StdNbr");
+                String stdName = rs.getString("StdName_"+LangType+"");
+                String course = rs.getString("CourseName_"+LangType+"");
+                double price = rs.getDouble("GrandTotal");
+                Object[] obj = new Object[]{false, id, stdNbr, stdName, course, df.format(price)};
+                model.addRow(obj);
+            }
+        } catch (Exception e) {
+        }
+    }
 }

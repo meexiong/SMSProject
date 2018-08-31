@@ -603,6 +603,11 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator6">
@@ -694,8 +699,9 @@
                       <Font name="Saysettha OT" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="0">
-                        <Column editable="true" title="" type="java.lang.Boolean"/>
+                      <Table columnCount="6" rowCount="0">
+                        <Column editable="true" title="lblSelect" type="java.lang.Boolean"/>
+                        <Column editable="false" title="lblID" type="java.lang.Object"/>
                         <Column editable="false" title="lblStudentNbr" type="java.lang.Object"/>
                         <Column editable="false" title="lblStudent" type="java.lang.Object"/>
                         <Column editable="false" title="lblCourse" type="java.lang.Object"/>
@@ -706,6 +712,11 @@
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
                         <Column maxWidth="50" minWidth="50" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="0" minWidth="0" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -767,6 +778,11 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator7">
@@ -781,6 +797,11 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator8">
@@ -813,6 +834,11 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator9">
@@ -836,6 +862,11 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>
+            <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="enabled" type="boolean" value="false"/>
+            <Property name="opaque" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator10">
@@ -862,6 +893,8 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDiscountPCActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDiscountPCKeyReleased"/>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDiscountPCKeyTyped"/>
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator11">
@@ -881,7 +914,7 @@
               <Font name="Saysettha OT" size="12" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="0.00"/>
+            <Property name="text" type="java.lang.String" value="10.00"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
             </Property>

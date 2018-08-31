@@ -86,14 +86,14 @@ public class FrmRegistation extends javax.swing.JFrame {
         JTableHeader th2 = tableRegistration.getTableHeader();
         TableColumnModel tcm2 = th2.getColumnModel();
         tableRegistration.getColumnCount();
-        for (int i = 1; i < tableRegistration.getColumnCount(); i++) {
+        for (int i = 0; i < tableRegistration.getColumnCount(); i++) {
             TableColumn tc2 = tcm2.getColumn(i);
             tc2.setHeaderValue(hmapLang.get(tableRegistration.getModel().getColumnName(i).concat(frm).toUpperCase())[LN]);
         }
         tableRegistration.setAutoCreateRowSorter(true);
         th2.repaint();
 //        rm.createCheck(tableCourse, model);
-        rm.createCheck(tableRegistration, modelRegistration);
+//        rm.createCheck(tableRegistration, modelRegistration);
         tableCourse.getColumnModel().getColumn(2).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
         tableCourse.getColumnModel().getColumn(3).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
         tableCourse.getColumnModel().getColumn(4).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
@@ -110,6 +110,12 @@ public class FrmRegistation extends javax.swing.JFrame {
         DefaultTableCellRenderer RightRenderer = new DefaultTableCellRenderer();
         RightRenderer.setHorizontalAlignment(SwingConstants.RIGHT);
         tableCourse.getColumnModel().getColumn(5).setCellRenderer(RightRenderer);
+        tableRegistration.getColumnModel().getColumn(0).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
+        tableRegistration.getColumnModel().getColumn(2).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
+        tableRegistration.getColumnModel().getColumn(3).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
+        tableRegistration.getColumnModel().getColumn(4).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
+        tableRegistration.getColumnModel().getColumn(5).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.RIGHT));
+        tableRegistration.getColumnModel().getColumn(5).setCellRenderer(RightRenderer);
     }
     private void getcmbSemester() {
         try {
@@ -389,6 +395,9 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtID.setText("New");
         txtID.setBorder(null);
+        txtID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtID.setEnabled(false);
+        txtID.setOpaque(false);
 
         lblSemester.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSemester.setText("Semester");
@@ -435,14 +444,14 @@ public class FrmRegistation extends javax.swing.JFrame {
 
             },
             new String [] {
-                "", "lblStudentNbr", "lblStudent", "lblCourse", "lblPrice"
+                "lblSelect", "lblID", "lblStudentNbr", "lblStudent", "lblCourse", "lblPrice"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false
+                true, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -461,14 +470,16 @@ public class FrmRegistation extends javax.swing.JFrame {
         if (tableRegistration.getColumnModel().getColumnCount() > 0) {
             tableRegistration.getColumnModel().getColumn(0).setMinWidth(50);
             tableRegistration.getColumnModel().getColumn(0).setMaxWidth(50);
-            tableRegistration.getColumnModel().getColumn(1).setMinWidth(100);
-            tableRegistration.getColumnModel().getColumn(1).setMaxWidth(100);
-            tableRegistration.getColumnModel().getColumn(2).setMinWidth(250);
-            tableRegistration.getColumnModel().getColumn(2).setMaxWidth(250);
-            tableRegistration.getColumnModel().getColumn(3).setMinWidth(200);
-            tableRegistration.getColumnModel().getColumn(3).setMaxWidth(200);
-            tableRegistration.getColumnModel().getColumn(4).setMinWidth(110);
-            tableRegistration.getColumnModel().getColumn(4).setMaxWidth(100);
+            tableRegistration.getColumnModel().getColumn(1).setMinWidth(0);
+            tableRegistration.getColumnModel().getColumn(1).setMaxWidth(0);
+            tableRegistration.getColumnModel().getColumn(2).setMinWidth(100);
+            tableRegistration.getColumnModel().getColumn(2).setMaxWidth(100);
+            tableRegistration.getColumnModel().getColumn(3).setMinWidth(250);
+            tableRegistration.getColumnModel().getColumn(3).setMaxWidth(250);
+            tableRegistration.getColumnModel().getColumn(4).setMinWidth(200);
+            tableRegistration.getColumnModel().getColumn(4).setMaxWidth(200);
+            tableRegistration.getColumnModel().getColumn(5).setMinWidth(110);
+            tableRegistration.getColumnModel().getColumn(5).setMaxWidth(100);
         }
 
         jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -481,11 +492,17 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtSubTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtSubTotal.setText("0.00");
         txtSubTotal.setBorder(null);
+        txtSubTotal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtSubTotal.setEnabled(false);
+        txtSubTotal.setOpaque(false);
 
         txtDiscountAM.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtDiscountAM.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtDiscountAM.setText("0.00");
         txtDiscountAM.setBorder(null);
+        txtDiscountAM.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtDiscountAM.setEnabled(false);
+        txtDiscountAM.setOpaque(false);
 
         lblDiscountAmount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblDiscountAmount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -499,6 +516,9 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtVATAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtVATAmount.setText("0.00");
         txtVATAmount.setBorder(null);
+        txtVATAmount.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtVATAmount.setEnabled(false);
+        txtVATAmount.setOpaque(false);
 
         lblGrandTotal.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblGrandTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -508,6 +528,9 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtGrandTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtGrandTotal.setText("0.00");
         txtGrandTotal.setBorder(null);
+        txtGrandTotal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtGrandTotal.setEnabled(false);
+        txtGrandTotal.setOpaque(false);
 
         lblDiscount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblDiscount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -522,6 +545,14 @@ public class FrmRegistation extends javax.swing.JFrame {
                 txtDiscountPCActionPerformed(evt);
             }
         });
+        txtDiscountPC.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtDiscountPCKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDiscountPCKeyTyped(evt);
+            }
+        });
 
         lblVAT.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblVAT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -529,7 +560,7 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         txtVAT.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtVAT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtVAT.setText("0.00");
+        txtVAT.setText("10.00");
         txtVAT.setBorder(null);
         txtVAT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -807,10 +838,13 @@ public class FrmRegistation extends javax.swing.JFrame {
     private void cmbSemesterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSemesterActionPerformed
        if(cmbSemester.getSelectedIndex()==-1){
            ClearTable.clearFirstLoad(tableCourse, model);
+           ClearTable.clearFirstLoad(tableRegistration, modelRegistration);
        }else{
            ClearTable.clearFirstLoad(tableCourse, model);
+           ClearTable.clearFirstLoad(tableRegistration, modelRegistration);
            String semester = cmbSemester.getSelectedItem().toString();
            rm.showSemseterDetails(model, (int) mapSemester.get(semester)[0]);
+           rm.loadRegistrationInfo(modelRegistration, (int) mapSemester.get(semester)[0]);
        }
     }//GEN-LAST:event_cmbSemesterActionPerformed
 
@@ -834,6 +868,14 @@ public class FrmRegistation extends javax.swing.JFrame {
     private void txtVATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVATActionPerformed
         calcuator();
     }//GEN-LAST:event_txtVATActionPerformed
+
+    private void txtDiscountPCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiscountPCKeyReleased
+     
+    }//GEN-LAST:event_txtDiscountPCKeyReleased
+
+    private void txtDiscountPCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiscountPCKeyTyped
+        
+    }//GEN-LAST:event_txtDiscountPCKeyTyped
 
     /**
      * @param args the command line arguments
