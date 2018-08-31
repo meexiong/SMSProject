@@ -1280,7 +1280,11 @@ int cnt=0;
     }//GEN-LAST:event_btnQuardianMouseMoved
 
     private void btnQuardianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuardianMouseClicked
-        // TODO add your handling code here:
+        try {
+            FrmGuardianDetails fgd = new FrmGuardianDetails();
+            fgd.setVisible(true);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnQuardianMouseClicked
 
     private void btnQuardianMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuardianMouseExited
