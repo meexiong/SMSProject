@@ -36,6 +36,7 @@ public class FrmReport extends javax.swing.JFrame {
         
         btnReportTeacher.setText(LabelManager.hmapLang.get("btnReportTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportEmployee.setText(LabelManager.hmapLang.get("btnReportEmployee".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnReportStudentAll.setText(LabelManager.hmapLang.get("btnReportStudentAll".concat(frm).toUpperCase())[LabelManager.LN]);
         
     }
 
@@ -58,6 +59,7 @@ public class FrmReport extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         btnReportTeacher = new com.xzq.osc.JocHyperlink();
         btnReportEmployee = new com.xzq.osc.JocHyperlink();
+        btnReportStudentAll = new com.xzq.osc.JocHyperlink();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -155,6 +157,16 @@ public class FrmReport extends javax.swing.JFrame {
             }
         });
 
+        btnReportStudentAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/RP_Students.png"))); // NOI18N
+        btnReportStudentAll.setText("Report Student All");
+        btnReportStudentAll.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnReportStudentAll.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportStudentAll.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportStudentAllMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -163,7 +175,8 @@ public class FrmReport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnReportTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                    .addComponent(btnReportEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
+                    .addComponent(btnReportEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                    .addComponent(btnReportStudentAll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -173,6 +186,8 @@ public class FrmReport extends javax.swing.JFrame {
                 .addComponent(btnReportTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReportStudentAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -262,13 +277,23 @@ public class FrmReport extends javax.swing.JFrame {
                     f.setTitle("Report Employee Details");   
                     f.setContentPane(new JRViewer(p));                    
                     f.setVisible(true);
-                }
+                }                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnReportEmployeeMouseClicked
+
+    private void btnReportStudentAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportStudentAllMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnReportStudentAll", frm);
+            }else{
                 
                 
             }
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_btnReportEmployeeMouseClicked
+    }//GEN-LAST:event_btnReportStudentAllMouseClicked
 
     /**
      * @param args the command line arguments
@@ -309,6 +334,7 @@ public class FrmReport extends javax.swing.JFrame {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private com.xzq.osc.JocHyperlink btnReportEmployee;
+    private com.xzq.osc.JocHyperlink btnReportStudentAll;
     private com.xzq.osc.JocHyperlink btnReportTeacher;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

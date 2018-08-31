@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Teacher_L2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
-	<property name="ireport.zoom" value="1.4641000000000022"/>
-	<property name="ireport.x" value="0"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Student_L1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
+	<property name="ireport.zoom" value="1.6105100000000032"/>
+	<property name="ireport.x" value="158"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["E:\\Project School\\SMS\\SMSProject\\src\\com\\malimar\\Report\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[exec pd_ReportTeacher_L2]]>
+		<![CDATA[exec pd_Student_L2]]>
 	</queryString>
-	<field name="teid" class="java.lang.Integer"/>
-	<field name="t_nbr" class="java.lang.String"/>
-	<field name="temail" class="java.lang.String"/>
-	<field name="t_name_l2" class="java.lang.String"/>
-	<field name="Gen_L2" class="java.lang.String"/>
+	<field name="stdid" class="java.lang.Integer"/>
+	<field name="PSName_L2" class="java.lang.String"/>
+	<field name="stdnbr" class="java.lang.String"/>
+	<field name="stdemail" class="java.lang.String"/>
+	<field name="stdname_L2" class="java.lang.String"/>
+	<field name="gen_L2" class="java.lang.String"/>
 	<field name="dob" class="java.lang.String"/>
-	<field name="tphone1" class="java.lang.String"/>
-	<field name="tphone2" class="java.lang.String"/>
-	<field name="re_name_l2" class="java.lang.String"/>
-	<field name="et_name_l2" class="java.lang.String"/>
-	<field name="nt_name_l2" class="java.lang.String"/>
-	<field name="t_startdate" class="java.lang.String"/>
-	<field name="work_name_l2" class="java.lang.String"/>
-	<field name="salary" class="java.lang.Double"/>
+	<field name="stdimg" class="java.lang.Object"/>
+	<field name="re_name_L2" class="java.lang.String"/>
+	<field name="et_name_L2" class="java.lang.String"/>
+	<field name="nt_name_L2" class="java.lang.String"/>
+	<field name="stName_L2" class="java.lang.String"/>
+	<field name="stdPhone1" class="java.lang.String"/>
+	<field name="stdphone2" class="java.lang.String"/>
+	<field name="startDate" class="java.lang.String"/>
 	<field name="s_name_l1" class="java.lang.String"/>
 	<field name="nameL2" class="java.lang.String"/>
 	<field name="website" class="java.lang.String"/>
@@ -32,54 +33,38 @@
 	<field name="facebook" class="java.lang.String"/>
 	<field name="s_address" class="java.lang.String"/>
 	<field name="s_img" class="java.io.InputStream"/>
-	<variable name="teid_1" class="java.lang.Integer" resetType="Page" calculation="Count">
-		<variableExpression><![CDATA[$F{teid}]]></variableExpression>
-	</variable>
-	<variable name="salary_1" class="java.lang.Integer" resetType="Page" calculation="Count">
-		<variableExpression><![CDATA[$F{salary}]]></variableExpression>
-	</variable>
-	<variable name="salary_3" class="java.lang.Double" calculation="Sum">
-		<variableExpression><![CDATA[$F{salary}]]></variableExpression>
-	</variable>
-	<variable name="teid_2" class="java.lang.Integer" resetType="Page" calculation="Count">
-		<variableExpression><![CDATA[$F{teid}]]></variableExpression>
+	<variable name="stdid_1" class="java.lang.Integer" resetType="Page" calculation="Count">
+		<variableExpression><![CDATA[$F{stdid}]]></variableExpression>
 	</variable>
 	<background>
 		<band height="555"/>
 	</background>
 	<pageHeader>
-		<band height="62" splitType="Stretch">
+		<band height="61" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="814" height="26" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
+				<reportElement x="0" y="-12" width="814" height="43" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="18" isBold="true"/>
+					<font fontName="Saysettha MX" size="18" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Report Teacher Details]]></text>
+				<text><![CDATA[Report Student Details]]></text>
 			</staticText>
 			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
 				<reportElement x="0" y="-17" width="88" height="69" uuid="c7530ef2-c0a8-4e51-a855-2807bbc42b79"/>
 				<imageExpression><![CDATA[$F{s_img}]]></imageExpression>
 			</image>
 			<textField evaluationTime="Page">
-				<reportElement x="0" y="32" width="702" height="20" uuid="ebf30025-f2ce-477b-be3b-f38fd888e046"/>
+				<reportElement x="0" y="32" width="802" height="20" uuid="ebf30025-f2ce-477b-be3b-f38fd888e046"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="12" isBold="true"/>
+					<font fontName="Saysettha MX" size="12" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Summary Teacher: ("+$V{teid_1}+")  Total: "]]></textFieldExpression>
-			</textField>
-			<textField evaluationTime="Page" pattern="##,###.00">
-				<reportElement x="445" y="32" width="369" height="20" uuid="464b0fa9-8a05-4c66-ba73-43d11586db22"/>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="12" isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{salary_3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Student Total: ("+$V{stdid_1}+")"]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="27" splitType="Stretch">
+		<band height="34" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="-11" y="0" width="76" height="27" backcolor="#CCCCCC" uuid="7f925b3c-9905-43c9-b9a9-48fadf7938f6"/>
+				<reportElement mode="Opaque" x="-11" y="0" width="80" height="34" backcolor="#CCCCCC" uuid="24e91964-ce24-41a3-9cf9-8661da326aa6"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -87,12 +72,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[No-ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="65" y="0" width="133" height="27" backcolor="#CCCCCC" uuid="8d225157-71e0-4b82-b800-8d6fea688153"/>
+				<reportElement mode="Opaque" x="69" y="0" width="124" height="34" backcolor="#CCCCCC" uuid="7a91e23f-1133-44b9-b96a-0f225e685f5c"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -100,12 +85,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[E-mail]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="198" y="0" width="129" height="27" backcolor="#CCCCCC" uuid="89467a8d-837f-40c5-a6dd-3f34e089e5dd"/>
+				<reportElement mode="Opaque" x="193" y="0" width="104" height="34" backcolor="#CCCCCC" uuid="597aaae0-a65c-4771-9838-cc0d3b1ff685"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -113,12 +98,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Name and Surename]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="327" y="0" width="41" height="27" backcolor="#CCCCCC" uuid="c022da81-e390-43d1-96c1-543cea9ed827"/>
+				<reportElement mode="Opaque" x="297" y="0" width="58" height="34" backcolor="#CCCCCC" uuid="3b902e91-3f35-406d-b0f2-707494a3ef90"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -126,12 +111,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Gender]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="368" y="0" width="57" height="27" backcolor="#CCCCCC" uuid="cffbcf2a-e26f-42b3-a49e-6ba6da805bae"/>
+				<reportElement mode="Opaque" x="355" y="0" width="69" height="34" backcolor="#CCCCCC" uuid="4c4d097f-515d-43b4-a2ac-fe089de4d9b7"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -139,12 +124,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[DOB]]></text>
+				<text><![CDATA[Date of Birth]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="425" y="0" width="71" height="27" backcolor="#CCCCCC" uuid="22f13d85-8922-49a8-bb3d-4331db6d60ba"/>
+				<reportElement mode="Opaque" x="424" y="0" width="71" height="34" backcolor="#CCCCCC" uuid="5c5fe602-54b0-4200-b6b6-447d5de8a320"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -152,25 +137,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Phone 1]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="567" y="0" width="66" height="27" backcolor="#CCCCCC" uuid="e3a93bd9-b3ae-4d46-88a0-102fd00c5fd8"/>
-				<box>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Nationality]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="633" y="0" width="51" height="27" backcolor="#CCCCCC" uuid="c974615e-2bfc-4785-b5fa-12507006c396"/>
+				<reportElement mode="Opaque" x="495" y="0" width="85" height="34" backcolor="#CCCCCC" uuid="03803b45-327b-4064-9911-194fad81d91a"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -178,12 +150,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Start Work]]></text>
+				<text><![CDATA[Phone 1]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="684" y="0" width="61" height="27" backcolor="#CCCCCC" uuid="51473842-0209-4e37-a0b3-3f765b039c50"/>
+				<reportElement mode="Opaque" x="580" y="0" width="83" height="34" backcolor="#CCCCCC" uuid="e1fde0ff-5296-4413-85c9-b70786795a73"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -191,42 +163,42 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Work Status]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="745" y="0" width="69" height="27" backcolor="#CCCCCC" uuid="929143dc-7fcb-4ff6-9f77-04621f452cd3"/>
-				<box>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Salary]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="496" y="0" width="71" height="27" backcolor="#CCCCCC" uuid="003a340f-e67b-4140-9049-77ed125c4628"/>
-				<box>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Phone 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="663" y="0" width="69" height="34" backcolor="#CCCCCC" uuid="ce6a0a30-cdcb-4847-9175-3757641eaaad"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Study]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="732" y="0" width="82" height="34" backcolor="#CCCCCC" uuid="79a3f1b2-5e85-4db3-9e2b-2875d521302e"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Category Study]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20" splitType="Stretch">
+		<band height="22" splitType="Stretch">
 			<textField>
-				<reportElement x="-11" y="0" width="76" height="20" uuid="9decaa96-d2d8-493e-b0bc-ca07494f02a9"/>
+				<reportElement x="-11" y="0" width="80" height="22" uuid="475dfde9-2523-46e8-88a9-cb1cb6b0b29b"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -234,12 +206,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{t_nbr}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$F{stdnbr}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="65" y="0" width="133" height="20" uuid="2362fab3-1e1b-48a9-83a2-c2a932b5fd83"/>
+				<reportElement x="69" y="0" width="124" height="22" uuid="4c204abd-0e15-4030-b53c-50678d69dfef"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -247,12 +219,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{temail}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$F{stdemail}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="198" y="0" width="129" height="20" uuid="7520696f-6ed3-4146-be76-a183291d501b"/>
+				<reportElement x="193" y="0" width="104" height="22" uuid="8ab1e671-1e3a-4c1d-9954-aa483d526060"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -260,12 +232,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{t_name_l2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$F{stdname_L2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="327" y="0" width="41" height="20" uuid="e1d40e70-5694-47f9-8a8e-bf8a49c8b12c"/>
+				<reportElement x="297" y="0" width="58" height="22" uuid="7a4b5e8f-e6b1-4687-b893-74b22c1a270f"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -273,12 +245,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Gen_L2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{gen_L2}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="368" y="0" width="57" height="20" uuid="8201de7b-d949-436e-85bb-0f50816f186d"/>
+				<reportElement x="355" y="0" width="69" height="22" uuid="452d2d7e-96d9-4f0e-8914-e4eee6c7aaa0"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -286,12 +258,25 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="425" y="0" width="71" height="20" uuid="650fc7e5-8ce3-4600-9d15-dd420b2fe03a"/>
+				<reportElement x="424" y="0" width="71" height="22" uuid="040c56dd-d999-41c7-96cf-f2db16556b60"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nt_name_L2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="495" y="0" width="85" height="22" uuid="9b5d8d1c-02a4-463a-b6a2-93756f637027"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -299,64 +284,12 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{tphone1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$F{stdPhone1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="567" y="0" width="66" height="20" uuid="26d05b30-a765-4496-a1d8-a32f30cf8b60"/>
-				<box>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{nt_name_l2}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="633" y="0" width="51" height="20" uuid="b18b55b7-861c-458f-b8c2-19cceb119d0f"/>
-				<box>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{t_startdate}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="684" y="0" width="61" height="20" uuid="0bbe8362-10fb-485b-8fc8-cb2ce7ef2bf2"/>
-				<box>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{work_name_l2}]]></textFieldExpression>
-			</textField>
-			<textField pattern="##,###.00">
-				<reportElement x="745" y="0" width="69" height="20" uuid="7b61adf0-138e-4f37-beea-7b165505d296"/>
-				<box>
-					<topPen lineWidth="0.75"/>
-					<leftPen lineWidth="0.75"/>
-					<bottomPen lineWidth="0.75"/>
-					<rightPen lineWidth="0.75"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="496" y="0" width="71" height="20" uuid="e9d8cf7d-8b71-4fad-b754-2b087698f628"/>
+				<reportElement x="580" y="0" width="83" height="22" uuid="28e362ef-8b2a-4a77-b158-74b5ce7e9cdd"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -364,53 +297,79 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[" "+ $F{tphone2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" "+$F{stdphone2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="663" y="0" width="69" height="22" uuid="775c3ef4-467c-4bb8-b73e-41a98d1cdfc2"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{startDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="732" y="0" width="82" height="22" uuid="a8d663d8-9892-4c39-ba23-955507d1a735"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$F{stName_L2}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="60" splitType="Stretch">
+		<band height="64" splitType="Stretch">
 			<textField>
 				<reportElement x="-11" y="20" width="694" height="10" uuid="1c6718c7-e085-4726-b79d-4e09043e5175"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_address}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="683" y="0" width="80" height="20" uuid="254e0ece-0371-4fce-a883-0462d29b0ed6"/>
 				<textElement textAlignment="Right">
-					<font fontName="Lao Unicode" size="8"/>
+					<font fontName="Saysettha MX" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="763" y="0" width="40" height="20" uuid="36a083c1-7b6c-47da-bd1d-78da227d9e1c"/>
 				<textElement>
-					<font fontName="Lao Unicode" size="8"/>
+					<font fontName="Saysettha MX" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="30" width="694" height="10" uuid="1dbdca7b-a5bb-453f-8ce7-a109f6422290"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA['Tel : '+$F{phone1}+'   '+$F{phone2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="40" width="695" height="10" uuid="a1b30f77-120c-4445-933d-b0c8f10f2f38"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA['Facebook: '+$F{facebook}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="50" width="695" height="10" uuid="5cefc992-dc53-4b96-bde7-d0564761b6df"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA['Web-Site: '+$F{website}]]></textFieldExpression>
 			</textField>
