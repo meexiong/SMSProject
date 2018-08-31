@@ -41,7 +41,7 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
-        
+        lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         
         Border.blueColor(btnRefresh);
         Border.blueColor(btnNew);
@@ -61,6 +61,7 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
         jTable1.setAutoCreateRowSorter(true);
         th.repaint();
         
+        //This is setup Table header and Color
         TableHeader.tableHeader(jTable1, th);
         TableHeader.tableHeaderColor(jTable1, jScrollPane1, th);
         
@@ -139,7 +140,7 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
         lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
         lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemInfo.setText("Teacher Details");
+        lblSystemInfo.setText("Guardian Details");
         lblSystemInfo.setOpaque(true);
         jPanel6.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
 

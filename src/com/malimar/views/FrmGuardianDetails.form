@@ -178,7 +178,7 @@
                                   <Color blue="ff" green="f" red="0" type="rgb"/>
                                 </Property>
                                 <Property name="horizontalAlignment" type="int" value="0"/>
-                                <Property name="text" type="java.lang.String" value="Teacher Details"/>
+                                <Property name="text" type="java.lang.String" value="Guardian Details"/>
                                 <Property name="opaque" type="boolean" value="true"/>
                               </Properties>
                               <Constraints>
