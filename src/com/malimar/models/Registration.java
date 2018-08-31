@@ -1,6 +1,8 @@
 
 package com.malimar.models;
 
+import java.util.Date;
+
 public class Registration {
     double subTotal;
     double grandTotal;
@@ -13,8 +15,23 @@ public class Registration {
     int regtDetailID;
     int scheduleDetailID;
     double price;
+    String currency_L1;
+    String currency_L2;
+    Date rgtDate;
     public Registration(){
         
+    }
+
+    public void setRgtDate(Date rgtDate) {
+        this.rgtDate = rgtDate;
+    }
+
+    public void setCurrency_L1(String currency_L1) {
+        this.currency_L1 = currency_L1;
+    }
+
+    public void setCurrency_L2(String currency_L2) {
+        this.currency_L2 = currency_L2;
     }
 
     public void setPrice(double price) {
@@ -103,6 +120,18 @@ public class Registration {
 
     public double getPrice() {
         return price;
+    }
+
+    public String getCurrency_L1() {
+        return currency_L1;
+    }
+
+    public String getCurrency_L2() {
+        return currency_L2;
+    }
+
+    public Date getRgtDate() {
+        return rgtDate;
     }
     
 }

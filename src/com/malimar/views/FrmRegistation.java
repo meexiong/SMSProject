@@ -15,6 +15,8 @@ import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
+import java.text.DecimalFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -33,6 +35,7 @@ public class FrmRegistation extends javax.swing.JFrame {
     Connection c = DatabaseManagerSQL.getConnection();
     HashMap<String, Object[]>mapSemester = null;
     HashMap<String, Object[]>mapStudent = null;
+    HashMap<String, Object[]>mapCurrency = null;
     RegistrationManager rm = new RegistrationManager();
     Registration rgt = new Registration();;
     public FrmRegistation() {
@@ -40,9 +43,12 @@ public class FrmRegistation extends javax.swing.JFrame {
         showRegistation();
         getcmbSemester();
         getcmbStudent();
+        getcmbCurrency();
     }
     private void showRegistation(){
         frm = this.getClass().getSimpleName();
+        Date now = new Date();
+        txtRegisterDate.setDate(now);
         tableCourse.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD,12));
         tableRegistration.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD,12));
         model = (DefaultTableModel) tableCourse.getModel();
@@ -62,8 +68,8 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblStudentNbr.setText(hmapLang.get("lblStudentNbr".concat(frm).toUpperCase())[LN]);
         lblGender.setText(hmapLang.get("lblGender".concat(frm).toUpperCase())[LN]);
         lblNationality.setText(hmapLang.get("lblNationality".concat(frm).toUpperCase())[LN]);
-        lblEthnic.setText(hmapLang.get("lblEthnic".concat(frm).toUpperCase())[LN]);
-        lblReligion.setText(hmapLang.get("lblReligion".concat(frm).toUpperCase())[LN]);
+        lblCurrency.setText(hmapLang.get("lblEthnic".concat(frm).toUpperCase())[LN]);
+        lblCreateDate.setText(hmapLang.get("lblReligion".concat(frm).toUpperCase())[LN]);
         btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
         lblID.setText(hmapLang.get("lblID".concat(frm).toUpperCase())[LN]);
         lblRegistration.setText(hmapLang.get("lblRegistration".concat(frm).toUpperCase())[LN]);
@@ -73,6 +79,8 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblVAT.setText(hmapLang.get("lblVAT".concat(frm).toUpperCase())[LN]);
         lblVATAmount.setText(hmapLang.get("lblVATAmount".concat(frm).toUpperCase())[LN]);
         lblGrandTotal.setText(hmapLang.get("lblGrandTotal".concat(frm).toUpperCase())[LN]);
+        lblCurrency.setText(hmapLang.get("lblCurrency".concat(frm).toUpperCase())[LN]);
+        lblCreateDate.setText(hmapLang.get("lblCreateDate".concat(frm).toUpperCase())[LN]);
         JTableHeader th = tableCourse.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         tableCourse.getColumnCount();
@@ -115,7 +123,9 @@ public class FrmRegistation extends javax.swing.JFrame {
         tableRegistration.getColumnModel().getColumn(3).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
         tableRegistration.getColumnModel().getColumn(4).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.LEFT));
         tableRegistration.getColumnModel().getColumn(5).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.RIGHT));
+        tableRegistration.getColumnModel().getColumn(6).setHeaderRenderer(new TableAlignmentHeader(SwingConstants.CENTER));
         tableRegistration.getColumnModel().getColumn(5).setCellRenderer(RightRenderer);
+        tableRegistration.getColumnModel().getColumn(6).setCellRenderer(CenterRenderer);
     }
     private void getcmbSemester() {
         try {
@@ -143,19 +153,66 @@ public class FrmRegistation extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    private void calcuator() {
+    private void getcmbCurrency() {
+        try {
+            mapCurrency = rm.mapCurrency();
+            Map<String, Object[]> ms = new TreeMap<>(mapCurrency);
+            cmbCurrency.removeAllItems();
+            ms.keySet().forEach((s) -> {
+                cmbCurrency.addItem(s);
+            });
+//            cmbCurrency.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cmbCurrency);
+        } catch (Exception e) {
+        }
+    }
+    private void getcalcuate() {
         try {
             int col = tableCourse.getSelectedColumn();
             if (col == 0) {
                 rgt.setDisPC(Float.parseFloat(txtDiscountPC.getText().replace(",", "")));
                 rgt.setVat(Float.parseFloat(txtVAT.getText().replace(",", "")));
-                rm.calculator(tableCourse,rgt);
+                rm.calculate(tableCourse,rgt);
                 txtSubTotal.setText(String.format("%,.2f", rgt.getSubTotal()));
                 txtDiscountAM.setText(String.format("%,.2f", rgt.getDisAmount()));
                 txtVATAmount.setText(String.format("%,.2f", rgt.getVatAmount()));
                 txtGrandTotal.setText(String.format("%,.2f", rgt.getGrandTotal()));
+                txtGrandTotalOrg.setText(String.format("%,.2f", rgt.getGrandTotal()));
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
+        }
+    }
+    private void changeRate() {
+        try {
+            String cur = cmbCurrency.getSelectedItem().toString();
+            String curType = mapCurrency.get(cur)[3].toString();
+            float rateLAK = (float) mapCurrency.get(cur)[4];
+//            float rateTHB = (float) mapCurrency.get(cur)[5];
+//            float rateUSD = (float) mapCurrency.get(cur)[6];
+            double TotalOrg = Double.parseDouble(txtGrandTotalOrg.getText().replace(",", ""));
+            double total;
+            if (null != curType) {
+                switch (curType.trim()) {
+                    case "LAK":
+                        total = TotalOrg * rateLAK;
+                        break;
+                    case "THB":
+                        total = TotalOrg / rateLAK;
+                        break;
+                    case "USD":
+                        total = TotalOrg / rateLAK;
+                        break;
+                    default:
+                        total = 0;
+                        break;
+                }
+                txtGrandTotal.setText(String.format("%,.2f", total));
+                float vat = Float.parseFloat(txtVAT.getText().replace(",", ""));
+                txtVATAmount.setText(String.format("%,.2f", (total*vat)/100));
+                double vm = Double.parseDouble(txtVATAmount.getText().replace(",", ""));
+//                txtSubTotal.setText(String);
+            }
+        } catch (NumberFormatException e) {
         }
     }
 
@@ -180,15 +237,11 @@ public class FrmRegistation extends javax.swing.JFrame {
         txtGender = new javax.swing.JTextField();
         txtNational = new javax.swing.JTextField();
         lblNationality = new javax.swing.JLabel();
-        lblEthnic = new javax.swing.JLabel();
-        txtEthnic = new javax.swing.JTextField();
-        txtReligion = new javax.swing.JTextField();
-        lblReligion = new javax.swing.JLabel();
+        lblCurrency = new javax.swing.JLabel();
+        lblCreateDate = new javax.swing.JLabel();
         lblID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
-        jSeparator4 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
@@ -217,6 +270,9 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblVAT = new javax.swing.JLabel();
         txtVAT = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
+        cmbCurrency = new javax.swing.JComboBox<>();
+        txtRegisterDate = new com.toedter.calendar.JDateChooser();
+        txtGrandTotalOrg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -375,17 +431,11 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblNationality.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblNationality.setText("Nationality");
 
-        lblEthnic.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblEthnic.setText("Ethnic");
+        lblCurrency.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblCurrency.setText("Currency");
 
-        txtEthnic.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtEthnic.setBorder(null);
-
-        txtReligion.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtReligion.setBorder(null);
-
-        lblReligion.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblReligion.setText("Religion");
+        lblCreateDate.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblCreateDate.setText("Create Date");
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -444,14 +494,14 @@ public class FrmRegistation extends javax.swing.JFrame {
 
             },
             new String [] {
-                "lblSelect", "lblID", "lblStudentNbr", "lblStudent", "lblCourse", "lblPrice"
+                "lblSelect", "lblID", "lblStudentNbr", "lblStudent", "lblCourse", "lblPrice", "lblCurrency"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, false
+                true, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -474,12 +524,14 @@ public class FrmRegistation extends javax.swing.JFrame {
             tableRegistration.getColumnModel().getColumn(1).setMaxWidth(0);
             tableRegistration.getColumnModel().getColumn(2).setMinWidth(100);
             tableRegistration.getColumnModel().getColumn(2).setMaxWidth(100);
-            tableRegistration.getColumnModel().getColumn(3).setMinWidth(250);
-            tableRegistration.getColumnModel().getColumn(3).setMaxWidth(250);
+            tableRegistration.getColumnModel().getColumn(3).setMinWidth(180);
+            tableRegistration.getColumnModel().getColumn(3).setMaxWidth(180);
             tableRegistration.getColumnModel().getColumn(4).setMinWidth(200);
             tableRegistration.getColumnModel().getColumn(4).setMaxWidth(200);
             tableRegistration.getColumnModel().getColumn(5).setMinWidth(110);
             tableRegistration.getColumnModel().getColumn(5).setMaxWidth(100);
+            tableRegistration.getColumnModel().getColumn(6).setMinWidth(70);
+            tableRegistration.getColumnModel().getColumn(6).setMaxWidth(70);
         }
 
         jPanel2.add(jScrollPane2, java.awt.BorderLayout.CENTER);
@@ -568,6 +620,19 @@ public class FrmRegistation extends javax.swing.JFrame {
             }
         });
 
+        cmbCurrency.setEditable(true);
+        cmbCurrency.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cmbCurrency.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbCurrencyActionPerformed(evt);
+            }
+        });
+
+        txtRegisterDate.setDateFormatString("dd-MM-yyyy");
+        txtRegisterDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+
+        txtGrandTotalOrg.setText("TotalOriginal");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -578,6 +643,10 @@ public class FrmRegistation extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblCurrency, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lblSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -602,24 +671,18 @@ public class FrmRegistation extends javax.swing.JFrame {
                             .addComponent(lblNationality, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNational, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtEthnic, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblEthnic, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(2, 2, 2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblReligion, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                            .addComponent(lblCreateDate, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtRegisterDate, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtID, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblID, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -644,7 +707,8 @@ public class FrmRegistation extends javax.swing.JFrame {
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtSubTotal, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblSubTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtGrandTotalOrg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -653,42 +717,41 @@ public class FrmRegistation extends javax.swing.JFrame {
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblID)
-                    .addComponent(lblStudent)
+                    .addComponent(lblCurrency)
                     .addComponent(lblSemester)
+                    .addComponent(lblStudent)
                     .addComponent(lblStudentNbr)
                     .addComponent(lblGender)
                     .addComponent(lblNationality)
-                    .addComponent(lblEthnic)
-                    .addComponent(lblReligion))
+                    .addComponent(lblCreateDate)
+                    .addComponent(lblID))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtID)
-                    .addComponent(txtReligion)
-                    .addComponent(txtEthnic)
-                    .addComponent(txtNational)
-                    .addComponent(txtGender)
-                    .addComponent(txtStudentID)
-                    .addComponent(cmbStudent)
+                    .addComponent(cmbCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbSemester)
-                    .addComponent(btnNewStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cmbStudent)
+                    .addComponent(btnNewStudent, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtStudentID)
+                    .addComponent(txtGender)
+                    .addComponent(txtNational)
+                    .addComponent(txtRegisterDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtID))
                 .addGap(0, 0, 0)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jSeparator2)
                         .addComponent(jSeparator3)
-                        .addComponent(jSeparator4)
-                        .addComponent(jSeparator1)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtGrandTotalOrg)
+                        .addGap(28, 28, 28)
                         .addComponent(lblSubTotal)
                         .addGap(1, 1, 1)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -728,12 +791,12 @@ public class FrmRegistation extends javax.swing.JFrame {
                         .addComponent(txtGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(10, 10, 10))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnNewStudent, cmbSemester, cmbStudent, txtEthnic, txtGender, txtID, txtNational, txtReligion, txtStudentID});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnNewStudent, cmbCurrency, cmbSemester, cmbStudent, txtGender, txtID, txtNational, txtRegisterDate, txtStudentID});
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblEthnic, lblGender, lblNationality, lblReligion, lblStudent, lblStudentNbr});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblCreateDate, lblCurrency, lblGender, lblNationality, lblStudent, lblStudentNbr});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -758,6 +821,7 @@ public class FrmRegistation extends javax.swing.JFrame {
             WindowChangeLabel("btnSave", frm);
         } else {
             String student = cmbStudent.getSelectedItem().toString();
+            String currency = cmbCurrency.getSelectedItem().toString();
             rgt.setStudentID((int) mapStudent.get(student)[0]);
             rgt.setSubTotal(Double.parseDouble(txtSubTotal.getText().replace(",", "")));
             rgt.setDisPC(Float.parseFloat(txtDiscountPC.getText().replace(",", "")));
@@ -765,6 +829,9 @@ public class FrmRegistation extends javax.swing.JFrame {
             rgt.setVat(Float.parseFloat(txtVAT.getText().replace(",", "")));
             rgt.setVatAmount(Double.parseDouble(txtVATAmount.getText().replace(",", "")));
             rgt.setGrandTotal(Double.parseDouble(txtGrandTotal.getText().replace(",", "")));
+            rgt.setCurrency_L1(mapCurrency.get(currency)[2].toString());
+            rgt.setCurrency_L2(mapCurrency.get(currency)[3].toString());
+            rgt.setRgtDate(txtRegisterDate.getDate());
             GetMaxID gm = new GetMaxID();
             if (txtID.getText().equals("New")) {
                 txtID.setText(String.valueOf(gm.getIntID2("tbl_Registration", "RegisterID")));
@@ -821,15 +888,11 @@ public class FrmRegistation extends javax.swing.JFrame {
                 txtStudentID.setText("");
                 txtGender.setText("");
                 txtNational.setText("");
-                txtEthnic.setText("");
-                txtReligion.setText("");
             }else{
                 String student = cmbStudent.getSelectedItem().toString();
                 txtStudentID.setText(mapStudent.get(student)[1].toString());
                 txtGender.setText(mapStudent.get(student)[3].toString());
                 txtNational.setText(mapStudent.get(student)[4].toString());
-                txtEthnic.setText(mapStudent.get(student)[5].toString());
-                txtReligion.setText(mapStudent.get(student)[6].toString());
             }
         } catch (Exception e) {
         }
@@ -856,17 +919,17 @@ public class FrmRegistation extends javax.swing.JFrame {
 
     private void tableCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableCourseMouseClicked
         try {
-            calcuator();
+            getcalcuate();
         } catch (Exception e) {
         }
     }//GEN-LAST:event_tableCourseMouseClicked
 
     private void txtDiscountPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiscountPCActionPerformed
-       calcuator();
+       getcalcuate();
     }//GEN-LAST:event_txtDiscountPCActionPerformed
 
     private void txtVATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVATActionPerformed
-        calcuator();
+        getcalcuate();
     }//GEN-LAST:event_txtVATActionPerformed
 
     private void txtDiscountPCKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiscountPCKeyReleased
@@ -876,6 +939,15 @@ public class FrmRegistation extends javax.swing.JFrame {
     private void txtDiscountPCKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDiscountPCKeyTyped
         
     }//GEN-LAST:event_txtDiscountPCKeyTyped
+
+    private void cmbCurrencyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCurrencyActionPerformed
+        try {
+            if (cmbCurrency.getSelectedIndex() != -1) {
+                changeRate();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_cmbCurrencyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -917,6 +989,7 @@ public class FrmRegistation extends javax.swing.JFrame {
     private javax.swing.JLabel btnMinimize2;
     private javax.swing.JButton btnNewStudent;
     private javax.swing.JLabel btnSave;
+    private javax.swing.JComboBox<String> cmbCurrency;
     private javax.swing.JComboBox<String> cmbSemester;
     private javax.swing.JComboBox<String> cmbStudent;
     private javax.swing.JPanel jPanel1;
@@ -932,21 +1005,19 @@ public class FrmRegistation extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lblCreateDate;
+    private javax.swing.JLabel lblCurrency;
     private javax.swing.JLabel lblDiscount;
     private javax.swing.JLabel lblDiscountAmount;
-    private javax.swing.JLabel lblEthnic;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblGrandTotal;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblNationality;
     private javax.swing.JLabel lblRegistration;
-    private javax.swing.JLabel lblReligion;
     private javax.swing.JLabel lblSemester;
     private javax.swing.JLabel lblStudent;
     private javax.swing.JLabel lblStudentNbr;
@@ -957,12 +1028,12 @@ public class FrmRegistation extends javax.swing.JFrame {
     private javax.swing.JTable tableRegistration;
     private javax.swing.JTextField txtDiscountAM;
     private javax.swing.JTextField txtDiscountPC;
-    private javax.swing.JTextField txtEthnic;
     private javax.swing.JTextField txtGender;
     private javax.swing.JTextField txtGrandTotal;
+    private javax.swing.JLabel txtGrandTotalOrg;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNational;
-    private javax.swing.JTextField txtReligion;
+    private com.toedter.calendar.JDateChooser txtRegisterDate;
     private javax.swing.JTextField txtStudentID;
     private javax.swing.JTextField txtSubTotal;
     private javax.swing.JTextField txtVAT;

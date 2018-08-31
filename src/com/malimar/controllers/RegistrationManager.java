@@ -49,9 +49,21 @@ public class RegistrationManager {
         }
         return null;
     }
-
-    
-    
+    public HashMap<String, Object[]>mapCurrency(){
+        try {
+            HashMap<String, Object[]>smap = new HashMap();
+            String sql = "Select * from tbl_RecType";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                smap.put(rs.getString("RecType_"+LangType+""), new Object[]{rs.getInt("RecTypeID"),rs.getString("RecType_"+LangType+""),rs.getString("RecType_L1"),rs.getString("RecType_L2"), rs.getFloat("RecTypeLAK"), rs.getFloat("RecTypeTHB"), rs.getFloat("RecTypeUSD")});
+            }
+            rs.close();
+            return smap;            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     public void showSemseterDetails(DefaultTableModel model, int smid){
         try {
             DecimalFormat df= new DecimalFormat("#,##0.00");
@@ -89,7 +101,7 @@ public class RegistrationManager {
         } catch (Exception e) {
         }
     }
-    public void calculator(JTable table, Registration rgt) {
+    public void calculate(JTable table, Registration rgt) {
         int rowCount = table.getRowCount() - 1;
         double price = 0;
         for (int i = 0; i <= rowCount; i++) {
@@ -98,16 +110,20 @@ public class RegistrationManager {
                 price += Double.parseDouble(table.getValueAt(i, 5).toString().replace(",", ""));
             }
         }
-        rgt.setSubTotal(price);
-        rgt.setDisAmount((price * rgt.getDisPC()) / 100);
-        rgt.setVatAmount((price * rgt.getVat()) / 100);
-        rgt.setGrandTotal( price - rgt.getDisAmount() + rgt.getVatAmount());
+        double dm = (price * rgt.getDisPC()) / 100;
+        rgt.setDisAmount(dm);
+        double gt =price-dm;
+        rgt.setGrandTotal(gt);
+        float vat = rgt.getVat();
+        double st = (gt * 100) / (100 + vat);
+        rgt.setSubTotal(st);    
+        rgt.setVatAmount(gt-st);
     }
     public boolean insert(Registration rgt){
         try {
             Date now = new Date();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            String insert = "Insert into tbl_Registration(RegisterID, CreateDate, CreateBy, StdID, SubTotal, DisPC, DisAmount, VAT, VATAmount, GrandTotal)values(?,?,?,?,?,?,?,?,?,?)";
+            String insert = "Insert into tbl_Registration(RegisterID, CreateDate, CreateBy, StdID, SubTotal, DisPC, DisAmount, VAT, VATAmount, GrandTotal, Currency_L1, Currency_L2, RegisterDate)values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(insert);
             p.setInt(1, rgt.getRegistrationID());
             p.setString(2, df.format(now));
@@ -119,6 +135,9 @@ public class RegistrationManager {
             p.setFloat(8, rgt.getVat());
             p.setDouble(9, rgt.getVatAmount());
             p.setDouble(10, rgt.getGrandTotal());
+            p.setString(11, rgt.getCurrency_L1());
+            p.setString(12, rgt.getCurrency_L2());
+            p.setString(13, df.format(rgt.getRgtDate()));
             return p.executeUpdate()==1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -127,7 +146,8 @@ public class RegistrationManager {
     }
     public boolean update(Registration rgt){
         try {
-            String update = "Update tbl_registration set StdID=?, SubTotal=?, DisPC=?, DisAmount=?, VAT=?, VATAmount=?, GrandTotal=? where RegisterID=?";
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String update = "Update tbl_registration set StdID=?, SubTotal=?, DisPC=?, DisAmount=?, VAT=?, VATAmount=?, GrandTotal=?, Currency_L1=?, Currency_L2=?, RegisterDate=?  where RegisterID=?";
             PreparedStatement p = c.prepareStatement(update);
             p.setInt(1, rgt.getStudentID());
             p.setDouble(2, rgt.getSubTotal());
@@ -136,7 +156,10 @@ public class RegistrationManager {
             p.setFloat(5, rgt.getVat());
             p.setDouble(6, rgt.getVatAmount());
             p.setDouble(7, rgt.getGrandTotal());
-            p.setInt(8, rgt.getRegistrationID());
+            p.setString(8, rgt.getCurrency_L1());
+            p.setString(9, rgt.getCurrency_L2());
+            p.setString(10, df.format(rgt.getRgtDate()));
+            p.setInt(11, rgt.getRegistrationID());
             return p.executeUpdate()==1;
         } catch (SQLException e) {
         }
@@ -175,8 +198,9 @@ public class RegistrationManager {
                 String stdNbr = rs.getString("StdNbr");
                 String stdName = rs.getString("StdName_"+LangType+"");
                 String course = rs.getString("CourseName_"+LangType+"");
-                double price = rs.getDouble("GrandTotal");
-                Object[] obj = new Object[]{false, id, stdNbr, stdName, course, df.format(price)};
+                double price = rs.getDouble("price");
+                String cur = rs.getString("Currency_"+LangType+"");
+                Object[] obj = new Object[]{false, id, stdNbr, stdName, course, df.format(price),cur};
                 model.addRow(obj);
             }
         } catch (Exception e) {

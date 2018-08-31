@@ -19,7 +19,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-66,0,0,4,67"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-75,0,0,4,67"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -53,6 +53,11 @@
                       <Component id="jPanel7" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="lblCurrency" max="32767" attributes="0"/>
+                              <Component id="cmbCurrency" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="lblSemester" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                               <Component id="cmbSemester" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                           </Group>
@@ -81,19 +86,12 @@
                               <Component id="jSeparator3" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                               <Component id="txtNational" alignment="0" min="-2" pref="120" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtEthnic" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="lblEthnic" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="jSeparator4" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtReligion" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="lblReligion" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
-                              <Component id="jSeparator5" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="lblCreateDate" min="-2" pref="90" max="-2" attributes="0"/>
+                              <Component id="txtRegisterDate" min="-2" pref="111" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="90" max="32767" attributes="0"/>
+                          <EmptySpace pref="65" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="txtID" alignment="1" max="32767" attributes="0"/>
                               <Component id="lblID" alignment="1" max="32767" attributes="0"/>
@@ -102,7 +100,7 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel2" min="-2" pref="713" max="-2" attributes="0"/>
-                          <EmptySpace pref="107" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
@@ -132,6 +130,7 @@
                                   <Component id="lblSubTotal" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <Component id="btnSave" alignment="1" min="-2" pref="138" max="-2" attributes="0"/>
+                              <Component id="txtGrandTotalOrg" alignment="1" min="-2" pref="116" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -145,26 +144,26 @@
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblID" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblStudent" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCurrency" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblSemester" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblStudent" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblStudentNbr" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblGender" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="lblNationality" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblEthnic" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblReligion" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblCreateDate" linkSize="3" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblID" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtID" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtReligion" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtEthnic" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtNational" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtGender" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtStudentID" linkSize="1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cmbStudent" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cmbCurrency" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="cmbSemester" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="cmbStudent" linkSize="1" alignment="0" max="32767" attributes="0"/>
                       <Component id="btnNewStudent" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtStudentID" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtGender" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtNational" linkSize="1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtRegisterDate" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtID" linkSize="1" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -172,19 +171,18 @@
                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                           <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                           <Component id="jSeparator3" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSeparator4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jSeparator5" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
+                          <Component id="jSeparator1" alignment="0" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Component id="jPanel7" min="-2" pref="251" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="jPanel2" min="-2" pref="335" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
                           <Component id="btnSave" min="-2" pref="28" max="-2" attributes="0"/>
-                          <EmptySpace pref="78" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="txtGrandTotalOrg" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="lblSubTotal" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -232,7 +230,7 @@
                           <Component id="jSeparator10" min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -548,40 +546,20 @@
             <Property name="text" type="java.lang.String" value="Nationality"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblEthnic">
+        <Component class="javax.swing.JLabel" name="lblCurrency">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Ethnic"/>
+            <Property name="text" type="java.lang.String" value="Currency"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtEthnic">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Saysettha OT" size="12" style="0"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtReligion">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Saysettha OT" size="12" style="0"/>
-            </Property>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="null"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblReligion">
+        <Component class="javax.swing.JLabel" name="lblCreateDate">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Religion"/>
+            <Property name="text" type="java.lang.String" value="Create Date"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblID">
@@ -611,10 +589,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator6">
-        </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator5">
-        </Component>
-        <Component class="javax.swing.JSeparator" name="jSeparator4">
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
         </Component>
@@ -699,13 +673,14 @@
                       <Font name="Saysettha OT" size="12" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="0">
+                      <Table columnCount="7" rowCount="0">
                         <Column editable="true" title="lblSelect" type="java.lang.Boolean"/>
                         <Column editable="false" title="lblID" type="java.lang.Object"/>
                         <Column editable="false" title="lblStudentNbr" type="java.lang.Object"/>
                         <Column editable="false" title="lblStudent" type="java.lang.Object"/>
                         <Column editable="false" title="lblCourse" type="java.lang.Object"/>
                         <Column editable="false" title="lblPrice" type="java.lang.Object"/>
+                        <Column editable="false" title="lblCurrency" type="java.lang.Object"/>
                       </Table>
                     </Property>
                     <Property name="autoResizeMode" type="int" value="0"/>
@@ -726,7 +701,7 @@
                           <Editor/>
                           <Renderer/>
                         </Column>
-                        <Column maxWidth="250" minWidth="250" prefWidth="-1" resizable="true">
+                        <Column maxWidth="180" minWidth="180" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -737,6 +712,11 @@
                           <Renderer/>
                         </Column>
                         <Column maxWidth="100" minWidth="110" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="70" minWidth="70" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
                           <Renderer/>
@@ -924,6 +904,36 @@
           </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator12">
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbCurrency">
+          <Properties>
+            <Property name="editable" type="boolean" value="true"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Saysettha OT" size="12" style="0"/>
+            </Property>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbCurrencyActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="com.toedter.calendar.JDateChooser" name="txtRegisterDate">
+          <Properties>
+            <Property name="dateFormatString" type="java.lang.String" value="dd-MM-yyyy"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Saysettha OT" size="12" style="0"/>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="txtGrandTotalOrg">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="TotalOriginal"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
