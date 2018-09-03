@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Employee_L2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_Teacher_L2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="930cbecd-57bc-4dbb-9743-a1096f87dca2">
 	<property name="ireport.zoom" value="1.4641000000000022"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA["E:\\Project School\\SMS\\SMSProject\\src\\com\\malimar\\Report\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[exec pd_ReportEmployee_L2]]>
+		<![CDATA[exec pd_ReportTeacher_L2]]>
 	</queryString>
 	<field name="teid" class="java.lang.Integer"/>
 	<field name="t_nbr" class="java.lang.String"/>
@@ -20,7 +20,7 @@
 	<field name="re_name_l2" class="java.lang.String"/>
 	<field name="et_name_l2" class="java.lang.String"/>
 	<field name="nt_name_l2" class="java.lang.String"/>
-	<field name="t_startDate" class="java.lang.String"/>
+	<field name="t_startdate" class="java.lang.String"/>
 	<field name="work_name_l2" class="java.lang.String"/>
 	<field name="salary" class="java.lang.Double"/>
 	<field name="s_name_l1" class="java.lang.String"/>
@@ -31,7 +31,6 @@
 	<field name="fax" class="java.lang.String"/>
 	<field name="facebook" class="java.lang.String"/>
 	<field name="s_address" class="java.lang.String"/>
-	<field name="s_addressL2" class="java.lang.String"/>
 	<field name="s_img" class="java.io.InputStream"/>
 	<variable name="teid_1" class="java.lang.Integer" resetType="Page" calculation="Count">
 		<variableExpression><![CDATA[$F{teid}]]></variableExpression>
@@ -78,9 +77,9 @@
 		</band>
 	</pageHeader>
 	<columnHeader>
-		<band height="28" splitType="Stretch">
+		<band height="27" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="-11" y="0" width="76" height="28" backcolor="#CCCCCC" uuid="7f925b3c-9905-43c9-b9a9-48fadf7938f6"/>
+				<reportElement mode="Opaque" x="-11" y="0" width="76" height="27" backcolor="#CCCCCC" uuid="7f925b3c-9905-43c9-b9a9-48fadf7938f6"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -93,7 +92,7 @@
 				<text><![CDATA[No-ID]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="65" y="0" width="133" height="28" backcolor="#CCCCCC" uuid="8d225157-71e0-4b82-b800-8d6fea688153"/>
+				<reportElement mode="Opaque" x="65" y="0" width="133" height="27" backcolor="#CCCCCC" uuid="8d225157-71e0-4b82-b800-8d6fea688153"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -106,7 +105,7 @@
 				<text><![CDATA[E-mail]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="198" y="0" width="129" height="28" backcolor="#CCCCCC" uuid="89467a8d-837f-40c5-a6dd-3f34e089e5dd"/>
+				<reportElement mode="Opaque" x="198" y="0" width="129" height="27" backcolor="#CCCCCC" uuid="89467a8d-837f-40c5-a6dd-3f34e089e5dd"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -119,7 +118,7 @@
 				<text><![CDATA[Name and Surename]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="327" y="0" width="41" height="28" backcolor="#CCCCCC" uuid="c022da81-e390-43d1-96c1-543cea9ed827"/>
+				<reportElement mode="Opaque" x="327" y="0" width="41" height="27" backcolor="#CCCCCC" uuid="c022da81-e390-43d1-96c1-543cea9ed827"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -132,7 +131,7 @@
 				<text><![CDATA[Gender]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="368" y="0" width="57" height="28" backcolor="#CCCCCC" uuid="cffbcf2a-e26f-42b3-a49e-6ba6da805bae"/>
+				<reportElement mode="Opaque" x="368" y="0" width="57" height="27" backcolor="#CCCCCC" uuid="cffbcf2a-e26f-42b3-a49e-6ba6da805bae"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -145,7 +144,7 @@
 				<text><![CDATA[DOB]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="425" y="0" width="71" height="28" backcolor="#CCCCCC" uuid="22f13d85-8922-49a8-bb3d-4331db6d60ba"/>
+				<reportElement mode="Opaque" x="425" y="0" width="71" height="27" backcolor="#CCCCCC" uuid="22f13d85-8922-49a8-bb3d-4331db6d60ba"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -158,7 +157,7 @@
 				<text><![CDATA[Phone 1]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="567" y="0" width="66" height="28" backcolor="#CCCCCC" uuid="e3a93bd9-b3ae-4d46-88a0-102fd00c5fd8"/>
+				<reportElement mode="Opaque" x="567" y="0" width="66" height="27" backcolor="#CCCCCC" uuid="e3a93bd9-b3ae-4d46-88a0-102fd00c5fd8"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -171,7 +170,7 @@
 				<text><![CDATA[Nationality]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="633" y="0" width="51" height="28" backcolor="#CCCCCC" uuid="c974615e-2bfc-4785-b5fa-12507006c396"/>
+				<reportElement mode="Opaque" x="633" y="0" width="51" height="27" backcolor="#CCCCCC" uuid="c974615e-2bfc-4785-b5fa-12507006c396"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -184,7 +183,7 @@
 				<text><![CDATA[Start Work]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="684" y="0" width="61" height="28" backcolor="#CCCCCC" uuid="51473842-0209-4e37-a0b3-3f765b039c50"/>
+				<reportElement mode="Opaque" x="684" y="0" width="61" height="27" backcolor="#CCCCCC" uuid="51473842-0209-4e37-a0b3-3f765b039c50"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -197,7 +196,7 @@
 				<text><![CDATA[Work Status]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="745" y="0" width="69" height="28" backcolor="#CCCCCC" uuid="929143dc-7fcb-4ff6-9f77-04621f452cd3"/>
+				<reportElement mode="Opaque" x="745" y="0" width="69" height="27" backcolor="#CCCCCC" uuid="929143dc-7fcb-4ff6-9f77-04621f452cd3"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -210,7 +209,7 @@
 				<text><![CDATA[Salary]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="496" y="0" width="71" height="28" backcolor="#CCCCCC" uuid="003a340f-e67b-4140-9049-77ed125c4628"/>
+				<reportElement mode="Opaque" x="496" y="0" width="71" height="27" backcolor="#CCCCCC" uuid="003a340f-e67b-4140-9049-77ed125c4628"/>
 				<box>
 					<topPen lineWidth="0.75"/>
 					<leftPen lineWidth="0.75"/>
@@ -328,7 +327,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{t_startDate}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{t_startdate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="684" y="0" width="61" height="20" uuid="0bbe8362-10fb-485b-8fc8-cb2ce7ef2bf2"/>
@@ -378,7 +377,7 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_addressL2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_address}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="683" y="0" width="80" height="20" uuid="254e0ece-0371-4fce-a883-0462d29b0ed6"/>

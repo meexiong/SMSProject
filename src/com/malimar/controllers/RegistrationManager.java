@@ -4,6 +4,9 @@ package com.malimar.controllers;
 import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.Registration;
 import static com.malimar.views.FrmMain.userNbr;
+import com.malimar.views.FrmOpenReport;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,9 +15,15 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JRViewer;
 
 public class RegistrationManager {
     
@@ -123,7 +132,7 @@ public class RegistrationManager {
         try {
             Date now = new Date();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-            String insert = "Insert into tbl_Registration(RegisterID, CreateDate, CreateBy, StdID, SubTotal, DisPC, DisAmount, VAT, VATAmount, GrandTotal, Currency_L1, Currency_L2, RegisterDate)values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String insert = "Insert into tbl_Registration(RegisterID, CreateDate, CreateBy, StdID, SubTotal, DisPC, DisAmount, VAT, VATAmount, GrandTotal, Currency_L1, Currency_L2, RegisterDate, VoidStatus)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(insert);
             p.setInt(1, rgt.getRegistrationID());
             p.setString(2, df.format(now));
@@ -138,6 +147,7 @@ public class RegistrationManager {
             p.setString(11, rgt.getCurrency_L1());
             p.setString(12, rgt.getCurrency_L2());
             p.setString(13, df.format(rgt.getRgtDate()));
+            p.setBoolean(14, false);
             return p.executeUpdate()==1;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -203,7 +213,50 @@ public class RegistrationManager {
                 Object[] obj = new Object[]{false, id, stdNbr, stdName, course, df.format(price),cur};
                 model.addRow(obj);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
+    }
+    public void printReport(Registration rgt) {
+        try {
+            Map param = new HashMap();
+            param.put("registerID", rgt.getRegistrationID());
+            JasperPrint pri;
+            if ("L1".equals(LangType)) {
+                pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintRegistration_L1.jasper", param, c);
+            } else {
+                pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintRegistration_L2.jasper", param, c);
+            }
+            FrmOpenReport f = new FrmOpenReport();
+            f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            f.setTitle("Registration Invoice");
+            f.getContentPane().add(new JRViewer(pri));
+            f.setVisible(true);
+        } catch (JRException e) {
+        }
+    }
+    public void voidRegistration(Registration rgt){
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            Date now = new Date();
+            String update = "Update tbl_Registration set VoidStatus=?, VoidDate=?, VoidBy=? where RegisterID=?";
+            PreparedStatement p = c.prepareStatement(update);
+            p.setBoolean(1, true);
+            p.setString(2, df.format(now));
+            p.setString(3, userNbr);
+            p.setInt(4, rgt.getRegistrationID());
+            p.executeUpdate();
+        } catch (SQLException e) {
+        }
+    }
+    public float getVatDefault(){
+        try {
+            String query = "Select RecTypeLAK from tbl_RecType where RecType='VAT' and RecTypeDefault=1";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            if(rs.next()){
+                return rs.getFloat("RecTypeLAK");
+            }
+        } catch (SQLException e) {
+        }
+        return 0;
     }
 }

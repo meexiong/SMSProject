@@ -44,8 +44,10 @@ public class FrmRegistation extends javax.swing.JFrame {
         getcmbSemester();
         getcmbStudent();
         getcmbCurrency();
+        txtVAT.setText(String.format("%,.2f", rm.getVatDefault()));
     }
     private void showRegistation(){
+        txtGrandTotalOrg.hide();
         frm = this.getClass().getSimpleName();
         Date now = new Date();
         txtRegisterDate.setDate(now);
@@ -81,6 +83,7 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblGrandTotal.setText(hmapLang.get("lblGrandTotal".concat(frm).toUpperCase())[LN]);
         lblCurrency.setText(hmapLang.get("lblCurrency".concat(frm).toUpperCase())[LN]);
         lblCreateDate.setText(hmapLang.get("lblCreateDate".concat(frm).toUpperCase())[LN]);
+        btnVoid.setText(hmapLang.get("btnVoid".concat(frm).toUpperCase())[LN]);
         JTableHeader th = tableCourse.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         tableCourse.getColumnCount();
@@ -178,6 +181,7 @@ public class FrmRegistation extends javax.swing.JFrame {
                 txtVATAmount.setText(String.format("%,.2f", rgt.getVatAmount()));
                 txtGrandTotal.setText(String.format("%,.2f", rgt.getGrandTotal()));
                 txtGrandTotalOrg.setText(String.format("%,.2f", rgt.getGrandTotal()));
+//                changeRate();
             }
         } catch (NumberFormatException e) {
         }
@@ -206,13 +210,33 @@ public class FrmRegistation extends javax.swing.JFrame {
                         total = 0;
                         break;
                 }
-                txtGrandTotal.setText(String.format("%,.2f", total));
+                float dis = Float.parseFloat(txtDiscountPC.getText());
+                txtDiscountAM.setText(String.format("%,.2f", (total*dis)/100));
+                double dam = Double.parseDouble(txtDiscountAM.getText().replace(",", ""));
+                txtGrandTotal.setText(String.format("%,.2f", total-dam));
+                double gt = Double.parseDouble(txtGrandTotal.getText().replace(",", ""));
                 float vat = Float.parseFloat(txtVAT.getText().replace(",", ""));
-                txtVATAmount.setText(String.format("%,.2f", (total*vat)/100));
+                txtVATAmount.setText(String.format("%,.2f", (gt*vat)/100));
                 double vm = Double.parseDouble(txtVATAmount.getText().replace(",", ""));
-//                txtSubTotal.setText(String);
+                txtSubTotal.setText(String.format("%,.2f", gt-vm));
+               
             }
         } catch (NumberFormatException e) {
+        }
+    }
+    private void clearText(){
+        try {
+            txtID.setText("New");
+            cmbStudent.setSelectedIndex(-1);
+            txtStudentID.setText("");
+            txtGender.setText("");
+            txtNational.setText("");
+            txtSubTotal.setText("0.00");
+            txtDiscountPC.setText("0.00");
+            txtDiscountAM.setText("0.00");
+            txtVATAmount.setText("0.00");
+            txtGrandTotal.setText("0.00");
+        } catch (Exception e) {
         }
     }
 
@@ -220,6 +244,8 @@ public class FrmRegistation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        MenuRightClick = new javax.swing.JPopupMenu();
+        btnVoid = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         btnMinimize2 = new javax.swing.JLabel();
@@ -273,6 +299,16 @@ public class FrmRegistation extends javax.swing.JFrame {
         cmbCurrency = new javax.swing.JComboBox<>();
         txtRegisterDate = new com.toedter.calendar.JDateChooser();
         txtGrandTotalOrg = new javax.swing.JLabel();
+
+        btnVoid.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnVoid.setText("Void");
+        btnVoid.setToolTipText("");
+        btnVoid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoidActionPerformed(evt);
+            }
+        });
+        MenuRightClick.add(btnVoid);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -513,9 +549,15 @@ public class FrmRegistation extends javax.swing.JFrame {
             }
         });
         tableRegistration.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tableRegistration.setComponentPopupMenu(MenuRightClick);
         tableRegistration.setRowHeight(25);
         tableRegistration.setSelectionBackground(new java.awt.Color(204, 204, 204));
         tableRegistration.setSelectionForeground(java.awt.Color.red);
+        tableRegistration.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableRegistrationMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tableRegistration);
         if (tableRegistration.getColumnModel().getColumnCount() > 0) {
             tableRegistration.getColumnModel().getColumn(0).setMinWidth(50);
@@ -707,8 +749,8 @@ public class FrmRegistation extends javax.swing.JFrame {
                                 .addComponent(jSeparator7, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(txtSubTotal, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lblSubTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGrandTotalOrg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtGrandTotalOrg, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSave, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -745,7 +787,7 @@ public class FrmRegistation extends javax.swing.JFrame {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -849,7 +891,7 @@ public class FrmRegistation extends javax.swing.JFrame {
                             rm.insertDetail(rgt);
                         }
                     }
-                    MsgBox.msgInfo();
+                    rm.printReport(rgt);
                 } else {
                     MsgBox.msgError();
                 }
@@ -869,13 +911,13 @@ public class FrmRegistation extends javax.swing.JFrame {
                             rm.insertDetail(rgt);
                         }
                     }
-                    MsgBox.msgInfo();
+                    rm.printReport(rgt);
                 } else {
                     MsgBox.msgError();
                 }
             }
-            
         }
+        clearText();
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
@@ -949,6 +991,29 @@ public class FrmRegistation extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbCurrencyActionPerformed
 
+    private void tableRegistrationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableRegistrationMouseClicked
+        try {
+            int row = tableRegistration.getSelectedRow();
+            txtID.setText(tableRegistration.getValueAt(row, 1).toString());
+            if(evt.getClickCount()==2){
+                rgt.setRegistrationID(Integer.parseInt(txtID.getText()));
+                rm.printReport(rgt);
+                clearText();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tableRegistrationMouseClicked
+
+    private void btnVoidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoidActionPerformed
+        if (!"New".equals(txtID.getText())) {
+            rgt.setRegistrationID(Integer.parseInt(txtID.getText()));
+            rm.voidRegistration(rgt);
+            int row = tableRegistration.getSelectedRow();
+            modelRegistration.removeRow(row);
+            clearText();
+        }
+    }//GEN-LAST:event_btnVoidActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -985,10 +1050,12 @@ public class FrmRegistation extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPopupMenu MenuRightClick;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize2;
     private javax.swing.JButton btnNewStudent;
     private javax.swing.JLabel btnSave;
+    private javax.swing.JMenuItem btnVoid;
     private javax.swing.JComboBox<String> cmbCurrency;
     private javax.swing.JComboBox<String> cmbSemester;
     private javax.swing.JComboBox<String> cmbStudent;
