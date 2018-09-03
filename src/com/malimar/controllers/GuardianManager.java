@@ -5,9 +5,13 @@
  */
 package com.malimar.controllers;
 
+import com.malimar.models.Guardian;
 import com.malimar.utils.RemoveTableIndex;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -34,6 +38,34 @@ public class GuardianManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public HashMap<String, Object[]>mapGender(){
+        try {
+            HashMap<String, Object[]>mapG = new HashMap();
+            sql= "Select Genid, Gen_L1, Gen_L2 from tbl_Gender order by Genid";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while(rs.next()){
+                mapG.put(rs.getString("Gen_"+ LabelManager.LangType +""), new Object[]{rs.getString("Gen_L1"), rs.getString("Gen_L2")});
+            }
+            rs.close();
+            return mapG;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public boolean insertGuardian(Guardian gd){
+        try {
+            
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
     
     

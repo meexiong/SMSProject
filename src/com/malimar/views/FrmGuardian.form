@@ -10,6 +10,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -20,7 +23,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-38,0,0,1,-60"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-46,0,0,1,-60"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -75,10 +78,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jPanel7" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -214,25 +214,25 @@
                                       <Component id="jSeparator7" max="32767" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="lblphone1" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="Phone1" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtphone1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               <Component id="jSeparator5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="lblphone2" alignment="0" pref="217" max="32767" attributes="0"/>
+                                              <Component id="Phone2" alignment="0" pref="217" max="32767" attributes="0"/>
                                               <Component id="txtphone2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               <Component id="jSeparator6" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="lblTeachL1" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblGuardianL1" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtnameL1" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="lblTeachL2" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="lblGuardianL2" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtnameL2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -244,11 +244,11 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="cbbGender" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblgender" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                              <Component id="Gender" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="lblemail" alignment="0" pref="217" max="32767" attributes="0"/>
+                                              <Component id="Email" alignment="0" pref="217" max="32767" attributes="0"/>
                                               <Component id="txtemail" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
                                               <Component id="jSeparator4" max="32767" attributes="0"/>
                                           </Group>
@@ -263,9 +263,9 @@
                                           </Group>
                                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                               <Component id="txtMoreInfo" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblMoreInfo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="MoreInfo" alignment="0" max="32767" attributes="0"/>
                                               <Component id="txtaddress" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="lblAddress" alignment="0" min="-2" pref="428" max="-2" attributes="0"/>
+                                              <Component id="Address" alignment="0" min="-2" pref="428" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Component id="jSeparator8" alignment="0" max="32767" attributes="0"/>
@@ -276,12 +276,10 @@
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                       <Component id="jSeparator1" pref="212" max="32767" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="txtID" alignment="0" pref="212" max="32767" attributes="0"/>
-                                          <Component id="lblID" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="txtID" alignment="0" pref="212" max="32767" attributes="0"/>
+                                      <Component id="lblID" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -296,8 +294,8 @@
                                   <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="lblTeachL2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblTeachL1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblGuardianL2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="lblGuardianL1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -312,12 +310,12 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblgender" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Gender" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="cbbGender" min="-2" pref="28" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblemail" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Email" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                           <Component id="txtemail" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
@@ -327,28 +325,28 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblphone1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Phone1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                           <Component id="txtphone1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jSeparator5" min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="lblphone2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="Phone2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                           <Component id="txtphone2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jSeparator6" min="-2" pref="10" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblAddress" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="Address" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   <Component id="txtaddress" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator7" min="-2" pref="10" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="lblMoreInfo" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="MoreInfo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                                   <Component id="txtMoreInfo" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -398,7 +396,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator1">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblTeachL1">
+                        <Component class="javax.swing.JLabel" name="lblGuardianL1">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -406,7 +404,7 @@
                             <Property name="text" type="java.lang.String" value="TeacherName_L1"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblTeachL1MouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblGuardianL1MouseClicked"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtnameL1">
@@ -421,7 +419,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator2">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblTeachL2">
+                        <Component class="javax.swing.JLabel" name="lblGuardianL2">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -429,7 +427,7 @@
                             <Property name="text" type="java.lang.String" value="TeacherName_L2"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblTeachL2MouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblGuardianL2MouseClicked"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtnameL2">
@@ -464,7 +462,7 @@
                             <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSaveMouseExited"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblgender">
+                        <Component class="javax.swing.JLabel" name="Gender">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -472,7 +470,7 @@
                             <Property name="text" type="java.lang.String" value="Gender"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblgenderMouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="GenderMouseClicked"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="cbbGender">
@@ -503,7 +501,7 @@
                             </Property>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblemail">
+                        <Component class="javax.swing.JLabel" name="Email">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -511,10 +509,10 @@
                             <Property name="text" type="java.lang.String" value="Email"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblemailMouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="EmailMouseClicked"/>
                           </Events>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblphone1">
+                        <Component class="javax.swing.JLabel" name="Phone1">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -522,7 +520,7 @@
                             <Property name="text" type="java.lang.String" value="Phone 1"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblphone1MouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Phone1MouseClicked"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtphone1">
@@ -537,7 +535,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator5">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblphone2">
+                        <Component class="javax.swing.JLabel" name="Phone2">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -545,7 +543,7 @@
                             <Property name="text" type="java.lang.String" value="Phone 2"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblphone2MouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="Phone2MouseClicked"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtphone2">
@@ -560,7 +558,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator6">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblAddress">
+                        <Component class="javax.swing.JLabel" name="Address">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -568,7 +566,7 @@
                             <Property name="text" type="java.lang.String" value="Address"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAddressMouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="AddressMouseClicked"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtaddress">
@@ -583,7 +581,7 @@
                         </Component>
                         <Component class="javax.swing.JSeparator" name="jSeparator7">
                         </Component>
-                        <Component class="javax.swing.JLabel" name="lblMoreInfo">
+                        <Component class="javax.swing.JLabel" name="MoreInfo">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Saysettha OT" size="12" style="0"/>
@@ -591,7 +589,7 @@
                             <Property name="text" type="java.lang.String" value="More Info"/>
                           </Properties>
                           <Events>
-                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMoreInfoMouseClicked"/>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MoreInfoMouseClicked"/>
                           </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtMoreInfo">

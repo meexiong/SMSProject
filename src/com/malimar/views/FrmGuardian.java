@@ -6,8 +6,16 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
+import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
+import com.malimar.models.Guardian;
+import com.malimar.utils.Border;
 import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
+import javax.swing.JLabel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
  *
@@ -21,15 +29,46 @@ public class FrmGuardian extends javax.swing.JFrame {
     Connection c = DatabaseManagerSQL.getConnection();
     String frm, sql;
     
+    HashMap<String, Object[]>mapGender = null;
+    
+    Guardian gd = new Guardian();
+    GuardianManager gdm = new GuardianManager();
     
     public FrmGuardian() {
         initComponents();
         frm = this.getClass().getSimpleName();
         
+        txtID.setEnabled(false);
+        
+        Border.blueColor(btnSave);
+        Border.blueColor(btnNew);
+        
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
+        btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnNew.setText(LabelManager.hmapLang.get("btnNew".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblGuardianL1.setText(LabelManager.hmapLang.get("lblguardianL1".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblGuardianL2.setText(LabelManager.hmapLang.get("lblGuardianL2".concat(frm).toUpperCase())[LabelManager.LN]);
+        Gender.setText(LabelManager.hmapLang.get("Gender".concat(frm).toUpperCase())[LabelManager.LN]);
+        Email.setText(LabelManager.hmapLang.get("email".concat(frm).toUpperCase())[LabelManager.LN]);
+        Phone1.setText(LabelManager.hmapLang.get("Phone1".concat(frm).toUpperCase())[LabelManager.LN]);
+        Phone2.setText(LabelManager.hmapLang.get("Phone2".concat(frm).toUpperCase())[LabelManager.LN]);
+        Address.setText(LabelManager.hmapLang.get("Address".concat(frm).toUpperCase())[LabelManager.LN]);
+        MoreInfo.setText(LabelManager.hmapLang.get("MoreInfo".concat(frm).toUpperCase())[LabelManager.LN]);
         
         
-        
+    }
+    private void showGender(){
+        try {
+            mapGender = gdm.mapGender();
+            Map<String, Object[]>smap = new TreeMap<>(mapGender);
+            cbbGender.removeAllItems();
+            smap.keySet().forEach((s->{
+                cbbGender.addItem(s);
+            }));
+            cbbGender.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbGender);
+        } catch (Exception e) {
+        }
     }
 
     /**
@@ -54,28 +93,28 @@ public class FrmGuardian extends javax.swing.JFrame {
         lblID = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        lblTeachL1 = new javax.swing.JLabel();
+        lblGuardianL1 = new javax.swing.JLabel();
         txtnameL1 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        lblTeachL2 = new javax.swing.JLabel();
+        lblGuardianL2 = new javax.swing.JLabel();
         txtnameL2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         btnSave = new javax.swing.JLabel();
-        lblgender = new javax.swing.JLabel();
+        Gender = new javax.swing.JLabel();
         cbbGender = new javax.swing.JComboBox<>();
         jSeparator4 = new javax.swing.JSeparator();
         txtemail = new javax.swing.JTextField();
-        lblemail = new javax.swing.JLabel();
-        lblphone1 = new javax.swing.JLabel();
+        Email = new javax.swing.JLabel();
+        Phone1 = new javax.swing.JLabel();
         txtphone1 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        lblphone2 = new javax.swing.JLabel();
+        Phone2 = new javax.swing.JLabel();
         txtphone2 = new javax.swing.JTextField();
         jSeparator6 = new javax.swing.JSeparator();
-        lblAddress = new javax.swing.JLabel();
+        Address = new javax.swing.JLabel();
         txtaddress = new javax.swing.JTextField();
         jSeparator7 = new javax.swing.JSeparator();
-        lblMoreInfo = new javax.swing.JLabel();
+        MoreInfo = new javax.swing.JLabel();
         txtMoreInfo = new javax.swing.JTextField();
         jSeparator8 = new javax.swing.JSeparator();
         btnNew = new javax.swing.JLabel();
@@ -83,6 +122,11 @@ public class FrmGuardian extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -176,22 +220,22 @@ public class FrmGuardian extends javax.swing.JFrame {
             }
         });
 
-        lblTeachL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblTeachL1.setText("TeacherName_L1");
-        lblTeachL1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblGuardianL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblGuardianL1.setText("TeacherName_L1");
+        lblGuardianL1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTeachL1MouseClicked(evt);
+                lblGuardianL1MouseClicked(evt);
             }
         });
 
         txtnameL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtnameL1.setBorder(null);
 
-        lblTeachL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblTeachL2.setText("TeacherName_L2");
-        lblTeachL2.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblGuardianL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblGuardianL2.setText("TeacherName_L2");
+        lblGuardianL2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblTeachL2MouseClicked(evt);
+                lblGuardianL2MouseClicked(evt);
             }
         });
 
@@ -221,11 +265,11 @@ public class FrmGuardian extends javax.swing.JFrame {
             }
         });
 
-        lblgender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblgender.setText("Gender");
-        lblgender.addMouseListener(new java.awt.event.MouseAdapter() {
+        Gender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        Gender.setText("Gender");
+        Gender.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblgenderMouseClicked(evt);
+                GenderMouseClicked(evt);
             }
         });
 
@@ -235,52 +279,52 @@ public class FrmGuardian extends javax.swing.JFrame {
         txtemail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtemail.setBorder(null);
 
-        lblemail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblemail.setText("Email");
-        lblemail.addMouseListener(new java.awt.event.MouseAdapter() {
+        Email.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        Email.setText("Email");
+        Email.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblemailMouseClicked(evt);
+                EmailMouseClicked(evt);
             }
         });
 
-        lblphone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblphone1.setText("Phone 1");
-        lblphone1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Phone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        Phone1.setText("Phone 1");
+        Phone1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblphone1MouseClicked(evt);
+                Phone1MouseClicked(evt);
             }
         });
 
         txtphone1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtphone1.setBorder(null);
 
-        lblphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblphone2.setText("Phone 2");
-        lblphone2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Phone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        Phone2.setText("Phone 2");
+        Phone2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblphone2MouseClicked(evt);
+                Phone2MouseClicked(evt);
             }
         });
 
         txtphone2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtphone2.setBorder(null);
 
-        lblAddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblAddress.setText("Address");
-        lblAddress.addMouseListener(new java.awt.event.MouseAdapter() {
+        Address.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        Address.setText("Address");
+        Address.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblAddressMouseClicked(evt);
+                AddressMouseClicked(evt);
             }
         });
 
         txtaddress.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtaddress.setBorder(null);
 
-        lblMoreInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblMoreInfo.setText("More Info");
-        lblMoreInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+        MoreInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        MoreInfo.setText("More Info");
+        MoreInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMoreInfoMouseClicked(evt);
+                MoreInfoMouseClicked(evt);
             }
         });
 
@@ -315,21 +359,21 @@ public class FrmGuardian extends javax.swing.JFrame {
                     .addComponent(jSeparator7)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblphone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Phone1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtphone1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblphone2, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(Phone2, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(txtphone2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator6)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTeachL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblGuardianL1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtnameL1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblTeachL2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblGuardianL2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtnameL2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -338,10 +382,10 @@ public class FrmGuardian extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(cbbGender, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblgender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Gender, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblemail, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                            .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
                             .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator4)))
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -352,19 +396,18 @@ public class FrmGuardian extends javax.swing.JFrame {
                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtMoreInfo, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblMoreInfo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MoreInfo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtaddress, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Address, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jSeparator8))
                 .addGap(2, 2, 2))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                        .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,8 +420,8 @@ public class FrmGuardian extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTeachL2)
-                    .addComponent(lblTeachL1))
+                    .addComponent(lblGuardianL2)
+                    .addComponent(lblGuardianL1))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtnameL2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -390,11 +433,11 @@ public class FrmGuardian extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(lblgender)
+                        .addComponent(Gender)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbbGender, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(lblemail)
+                        .addComponent(Email)
                         .addGap(1, 1, 1)
                         .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -402,25 +445,25 @@ public class FrmGuardian extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(lblphone1)
+                        .addComponent(Phone1)
                         .addGap(1, 1, 1)
                         .addComponent(txtphone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(lblphone2)
+                        .addComponent(Phone2)
                         .addGap(1, 1, 1)
                         .addComponent(txtphone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAddress)
+                .addGap(2, 2, 2)
+                .addComponent(Address)
                 .addGap(1, 1, 1)
                 .addComponent(txtaddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblMoreInfo)
+                .addGap(2, 2, 2)
+                .addComponent(MoreInfo)
                 .addGap(1, 1, 1)
                 .addComponent(txtMoreInfo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -437,9 +480,7 @@ public class FrmGuardian extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0))
+            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -470,7 +511,10 @@ public class FrmGuardian extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitMouseClicked
 
     private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
-        
+        try {
+            LabelManager.WindowChangeLabel("lblID", frm);
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_lblIDMouseClicked
 
     private void txtIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseClicked
@@ -481,13 +525,19 @@ public class FrmGuardian extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    private void lblTeachL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTeachL1MouseClicked
-        
-    }//GEN-LAST:event_lblTeachL1MouseClicked
+    private void lblGuardianL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardianL1MouseClicked
+        try {
+            LabelManager.WindowChangeLabel("lblGuardian1", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblGuardianL1MouseClicked
 
-    private void lblTeachL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblTeachL2MouseClicked
-       
-    }//GEN-LAST:event_lblTeachL2MouseClicked
+    private void lblGuardianL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardianL2MouseClicked
+       try {
+            LabelManager.WindowChangeLabel("lblGuardian2", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblGuardianL2MouseClicked
 
     private void txtnameL2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameL2ActionPerformed
 
@@ -498,36 +548,69 @@ public class FrmGuardian extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
- 
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnSave", frm);
+            }else{
+                if (txtID.getText().equals("New")){
+                    //this is insert
+                    
+                    
+                    
+                }else{
+                    
+                }
+                
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
 
     }//GEN-LAST:event_btnSaveMouseExited
 
-    private void lblgenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblgenderMouseClicked
-        
-    }//GEN-LAST:event_lblgenderMouseClicked
+    private void GenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenderMouseClicked
+        try {
+            LabelManager.WindowChangeLabel("Gender", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_GenderMouseClicked
 
-    private void lblemailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblemailMouseClicked
-       
-    }//GEN-LAST:event_lblemailMouseClicked
+    private void EmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmailMouseClicked
+       try {
+            LabelManager.WindowChangeLabel("Email", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_EmailMouseClicked
 
-    private void lblphone1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblphone1MouseClicked
-       
-    }//GEN-LAST:event_lblphone1MouseClicked
+    private void Phone1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Phone1MouseClicked
+       try {
+            LabelManager.WindowChangeLabel("Phone1", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_Phone1MouseClicked
 
-    private void lblphone2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblphone2MouseClicked
-        
-    }//GEN-LAST:event_lblphone2MouseClicked
+    private void Phone2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Phone2MouseClicked
+        try {
+            LabelManager.WindowChangeLabel("Phone2", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_Phone2MouseClicked
 
-    private void lblAddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddressMouseClicked
-        
-    }//GEN-LAST:event_lblAddressMouseClicked
+    private void AddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddressMouseClicked
+        try {
+            LabelManager.WindowChangeLabel("Address", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_AddressMouseClicked
 
-    private void lblMoreInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMoreInfoMouseClicked
-        
-    }//GEN-LAST:event_lblMoreInfoMouseClicked
+    private void MoreInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoreInfoMouseClicked
+        try {
+            LabelManager.WindowChangeLabel("MoreInfo", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_MoreInfoMouseClicked
 
     private void btnNewMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseMoved
         // TODO add your handling code here:
@@ -540,6 +623,13 @@ public class FrmGuardian extends javax.swing.JFrame {
     private void btnNewMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNewMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNewMouseExited
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            showGender();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -577,6 +667,12 @@ public class FrmGuardian extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Address;
+    private javax.swing.JLabel Email;
+    private javax.swing.JLabel Gender;
+    private javax.swing.JLabel MoreInfo;
+    private javax.swing.JLabel Phone1;
+    private javax.swing.JLabel Phone2;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnNew;
@@ -597,16 +693,10 @@ public class FrmGuardian extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblGuardianL1;
+    private javax.swing.JLabel lblGuardianL2;
     private javax.swing.JLabel lblID;
-    private javax.swing.JLabel lblMoreInfo;
     private javax.swing.JLabel lblSystemInfo;
-    private javax.swing.JLabel lblTeachL1;
-    private javax.swing.JLabel lblTeachL2;
-    private javax.swing.JLabel lblemail;
-    private javax.swing.JLabel lblgender;
-    private javax.swing.JLabel lblphone1;
-    private javax.swing.JLabel lblphone2;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMoreInfo;
     private javax.swing.JTextField txtaddress;
