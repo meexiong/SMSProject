@@ -19,6 +19,25 @@ public class Guardian {
     String Phone2;
     String Address;
     String Moreinfo;
+    String Gud_Work;
+    String genderName;
+
+    public void setGenderName(String genderName) {
+        this.genderName = genderName;
+    }
+
+    public String getGenderName() {
+        return genderName;
+    }
+    
+
+    public String getGud_Work() {
+        return Gud_Work;
+    }
+
+    public void setGud_Work(String Gud_Work) {
+        this.Gud_Work = Gud_Work;
+    }
 
     public void setId(int id) {
         this.id = id;

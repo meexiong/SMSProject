@@ -346,9 +346,16 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         try {
-          
-
+            if (evt.getClickCount()==2){
+                int index =jTable1.getSelectedRow();
+                String x = jTable1.getValueAt(index, 0).toString();
+                
+                FrmGuardian fd = new FrmGuardian(x);
+                fd.setVisible(true);
+                
+            }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -377,7 +384,8 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnNew", frm);
             }else{
-                FrmGuardian fg = new FrmGuardian();
+                gd.setId(0);
+                FrmGuardian fg = new FrmGuardian("New");
                 fg.setVisible(true);
             }
         } catch (Exception e) {

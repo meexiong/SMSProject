@@ -69,6 +69,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         
         txtID.setText(id);
         ids = id;
+        
         txtID.setVisible(false);
         lblID.setVisible(false);
         txtt_nbr.setEnabled(false);
