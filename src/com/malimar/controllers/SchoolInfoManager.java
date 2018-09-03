@@ -23,7 +23,7 @@ public class SchoolInfoManager {
     
     public boolean updateSchoolInf(SchoolInfo si){
         try {
-            sql = "Update tbl_SchoolInfo set s_name_l1 = ?, s_name_l2 = ?, website = ?, phone1 = ?, phone2 = ?, fax = ?, facebook = ?, s_address = ? where scifo = (?)";
+            sql = "Update tbl_SchoolInfo set s_name_l1 = ?, s_name_l2 = ?, website = ?, phone1 = ?, phone2 = ?, fax = ?, facebook = ?, s_address_L1 = ?, s_address_L2 = ? where scifo = (?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setString(1, si.getS_name_l1());
             p.setString(2, si.getS_name_l2());
@@ -33,7 +33,8 @@ public class SchoolInfoManager {
             p.setString(6, si.getFax());
             p.setString(7, si.getFacebook());
             p.setString(8, si.getS_address());
-            p.setInt(9, si.getScifo());
+            p.setString(9, si.getS_address_L2());
+            p.setInt(10, si.getScifo());
             p.executeUpdate();
             p.close();
             MsgBox.msgInfo();
@@ -80,7 +81,8 @@ public class SchoolInfoManager {
               si.setPhone2(rs.getString("phone2"));
               si.setFax(rs.getString("fax"));
               si.setFacebook(rs.getString("facebook"));
-              si.setS_address(rs.getString("s_address"));
+              si.setS_address(rs.getString("s_address_L1"));
+              si.setS_address_L2(rs.getString("S_Address_L2"));
               si.setS_img(rs.getBytes("s_img"));              
             }
             rs.close();

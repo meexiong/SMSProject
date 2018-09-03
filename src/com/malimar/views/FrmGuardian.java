@@ -522,7 +522,7 @@ public class FrmGuardian extends javax.swing.JFrame {
                 .addComponent(txtWork, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -582,14 +582,19 @@ public class FrmGuardian extends javax.swing.JFrame {
 
     private void lblGuardianL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardianL1MouseClicked
         try {
-            LabelManager.WindowChangeLabel("lblGuardian1", frm);
+            if (evt.getModifiers()==6){
+              LabelManager.WindowChangeLabel("lblGuardianl1", frm);  
+            }            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_lblGuardianL1MouseClicked
 
     private void lblGuardianL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardianL2MouseClicked
        try {
-            LabelManager.WindowChangeLabel("lblGuardian2", frm);
+           if (evt.getModifiers()==6){
+               LabelManager.WindowChangeLabel("lblGuardianl2", frm);
+           }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_lblGuardianL2MouseClicked
@@ -649,42 +654,60 @@ public class FrmGuardian extends javax.swing.JFrame {
 
     private void GenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GenderMouseClicked
         try {
-            LabelManager.WindowChangeLabel("Gender", frm);
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("Gender", frm);
+            }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_GenderMouseClicked
 
     private void EmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_EmailMouseClicked
        try {
-            LabelManager.WindowChangeLabel("Email", frm);
+           if (evt.getModifiers()==6){
+             LabelManager.WindowChangeLabel("Email", frm);  
+           }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_EmailMouseClicked
 
     private void Phone1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Phone1MouseClicked
        try {
-            LabelManager.WindowChangeLabel("Phone1", frm);
+           if (evt.getModifiers()==6){
+             LabelManager.WindowChangeLabel("Phone1", frm);  
+           }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_Phone1MouseClicked
 
     private void Phone2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Phone2MouseClicked
         try {
-            LabelManager.WindowChangeLabel("Phone2", frm);
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("Phone2", frm);
+            }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_Phone2MouseClicked
 
     private void AddressMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AddressMouseClicked
         try {
-            LabelManager.WindowChangeLabel("Address", frm);
+            if (evt.getModifiers()==6){
+              LabelManager.WindowChangeLabel("Address", frm);  
+            }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_AddressMouseClicked
 
     private void MoreInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MoreInfoMouseClicked
         try {
-            LabelManager.WindowChangeLabel("MoreInfo", frm);
+            if (evt.getModifiers()==6){
+              LabelManager.WindowChangeLabel("MoreInfo", frm);  
+            }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_MoreInfoMouseClicked

@@ -264,20 +264,18 @@
                                                       <Component id="jSeparator4" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="btnNew" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
-                                                          <Component id="btnSave" min="-2" pref="103" max="-2" attributes="0"/>
-                                                      </Group>
+                                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                  <Component id="btnNew" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                                                      <Component id="btnSave" min="-2" pref="103" max="-2" attributes="0"/>
                                                   </Group>
-                                                  <Component id="txtMoreInfo" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="MoreInfo" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="txtaddress" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="Address" pref="428" max="32767" attributes="0"/>
-                                                  <Component id="txtWork" alignment="0" max="32767" attributes="0"/>
                                               </Group>
+                                              <Component id="txtMoreInfo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="MoreInfo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtaddress" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="Address" alignment="1" max="32767" attributes="0"/>
+                                              <Component id="txtWork" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jSeparator8" alignment="0" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -368,7 +366,7 @@
                                   <Component id="txtWork" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jSeparator9" min="-2" pref="10" max="-2" attributes="0"/>
-                                  <EmptySpace pref="39" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="btnSave" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                                       <Component id="btnNew" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>

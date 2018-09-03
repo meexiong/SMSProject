@@ -234,6 +234,9 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtSearchKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
         });
 
         btnNew.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
@@ -423,6 +426,13 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
+        try {
+            gdm.showSearchGuardian(jTable1, model, txtSearch.getText());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_txtSearchKeyReleased
 
     /**
      * @param args the command line arguments

@@ -31,6 +31,7 @@
 	<field name="fax" class="java.lang.String"/>
 	<field name="facebook" class="java.lang.String"/>
 	<field name="s_address" class="java.lang.String"/>
+	<field name="s_addressL2" class="java.lang.String"/>
 	<field name="s_img" class="java.io.InputStream"/>
 	<variable name="teid_1" class="java.lang.Integer" resetType="Page" calculation="Count">
 		<variableExpression><![CDATA[$F{teid}]]></variableExpression>
@@ -377,7 +378,7 @@
 				<textElement verticalAlignment="Middle">
 					<font fontName="Lao Unicode" size="6"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_address}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_addressL2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="683" y="0" width="80" height="20" uuid="254e0ece-0371-4fce-a883-0462d29b0ed6"/>

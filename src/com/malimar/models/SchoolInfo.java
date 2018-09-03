@@ -19,9 +19,18 @@ public class SchoolInfo {
     String fax;
     String facebook;
     String s_address;
+    String s_address_L2;
     String path;
     byte[] S_img;
 
+    public void setS_address_L2(String s_address_L2) {
+        this.s_address_L2 = s_address_L2;
+    }
+
+    public String getS_address_L2() {
+        return s_address_L2;
+    }
+    
     public void setS_img(byte[] S_img) {
         this.S_img = S_img;
     }
