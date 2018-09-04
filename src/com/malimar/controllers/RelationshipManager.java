@@ -72,9 +72,9 @@ public class RelationshipManager {
         return false;
     }
     
-    public HashMap<String, Object>mapStudent(){
+    public HashMap<String, Object[]>mapStudent(){
         try {
-            HashMap<String, Object>mapSt = new HashMap();
+            HashMap<String, Object[]>mapSt = new HashMap();
             sql = "Select st.stdid, st.StdNbr+' '+st.StdName_"+ LabelManager.LangType +"+' ('+ g.Gen_"+ LabelManager.LangType +"+')' AS names, st.StdName_L1, st.StdName_L2 from tbl_Student st\n" +
                 "left join tbl_Gender g on g.Genid = st.Genid\n" +
                 "where st.StdEndDate is null and st.StdStudying = 'true'";
@@ -89,6 +89,22 @@ public class RelationshipManager {
         }
         return null;
     }
+    public HashMap<String, Object[]>mapRelation(){
+        try {
+            HashMap<String, Object[]>mapR = new HashMap();
+            sql = "Select rltid, relation_"+LabelManager.LangType+" As relations, relation_l1, relation_l2 from tbl_Relationship order by rltid";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                mapR.put(rs.getString("relations"), new Object[]{rs.getString("rltid"), rs.getString("relation_l1"), rs.getString("relation_l2")});
+            }
+            rs.close();
+            return mapR;
+            
+        } catch (Exception e) {
+        }
+        return null;
+    }    
+    
     public void showGuardian(JTable table, DefaultTableModel model){
         try {
             RemoveTableIndex.removeTable(table, model);

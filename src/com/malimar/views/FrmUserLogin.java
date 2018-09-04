@@ -1671,8 +1671,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 int index = jTable3.getRowCount(); 
                 for (int x1 = 0; x1<index; x1++){
                     Boolean x = (Boolean) jTable3.getValueAt(x1, 1);
-                    if (x == true){
-                        
+                    if (x == true){                        
                         ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(x1, 0).toString()));
                         ul.setGRUID(Integer.parseInt(mapGL.get(gr)[0].toString()));
                         ul.setCreateDate(ConvertDateSQL.convertUtilDateToSqlDate(dt1));

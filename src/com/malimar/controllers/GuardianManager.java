@@ -150,4 +150,34 @@ public class GuardianManager {
         }
     }
     
+    //this is insert into tbl_GuardianParents
+    public boolean insertGuardianParents(Guardian g){
+        try {
+            GetMaxID gm = new GetMaxID();
+            sql = "insert into tbl_GuardianParents(GPDID, GUDID, StdID, RLTID) values (?,?,?,?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setInt(1, gm.getIntID("Tbl_GuardianParents", "GPDID"));
+            p.setInt(2, g.getGUDID());
+            p.setInt(3, g.getStdID());
+            p.setInt(4, g.getRLTID());
+            
+            sql = "Select GUDID, stdid, RLTID from tbl_GuardianParents where GUDID ="+ g.getGUDID()+" and StdID = "+ g.getStdID() +"";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            if (rs.next()){
+                
+            }else{
+                p.executeUpdate();
+                p.close();
+            }
+            MsgBox.msgInfo();
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    
+    
+    
 }

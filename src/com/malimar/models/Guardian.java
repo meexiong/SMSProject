@@ -21,6 +21,11 @@ public class Guardian {
     String Moreinfo;
     String Gud_Work;
     String genderName;
+    
+    int GPDID;
+    int GUDID;
+    int stdID;
+    int RLTID;
 
     public void setGenderName(String genderName) {
         this.genderName = genderName;
@@ -109,6 +114,38 @@ public class Guardian {
 
     public String getMoreinfo() {
         return Moreinfo;
+    }
+
+    public void setGPDID(int GPDID) {
+        this.GPDID = GPDID;
+    }
+
+    public void setGUDID(int GUDID) {
+        this.GUDID = GUDID;
+    }
+
+    public void setStdID(int stdID) {
+        this.stdID = stdID;
+    }
+
+    public void setRLTID(int RLTID) {
+        this.RLTID = RLTID;
+    }
+
+    public int getGPDID() {
+        return GPDID;
+    }
+
+    public int getGUDID() {
+        return GUDID;
+    }
+
+    public int getStdID() {
+        return stdID;
+    }
+
+    public int getRLTID() {
+        return RLTID;
     }
     
     

@@ -13,6 +13,8 @@ public class Relationship {
     int id;
     String Relationship_L1;
     String Relationship_L2;
+    
+    
 
     public void setId(int id) {
         this.id = id;

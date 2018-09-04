@@ -6,8 +6,10 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
+import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.RelationshipManager;
+import com.malimar.models.Guardian;
 import com.malimar.models.Relationship;
 import com.malimar.utils.Border;
 import com.malimar.utils.TableHeader;
@@ -36,10 +38,14 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
     String sql, frm;
     
-    HashMap<String, Object> mapSt = null;
+    HashMap<String, Object[]> mapSt = null;
+    HashMap<String, Object[]> mapR = null;
     
     Relationship rsp = new Relationship();
     RelationshipManager rspm = new RelationshipManager();
+
+    Guardian gd = new Guardian();
+    GuardianManager gdm = new GuardianManager();
     
     public FrmRelationship_Add() {
         initComponents();
@@ -55,6 +61,7 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
         btnShowData.setText(LabelManager.hmapLang.get("btnShowData".concat(frm).toUpperCase())[LabelManager.LN]);
         lblSearch.setText(LabelManager.hmapLang.get("lblSearch".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblRelationship.setText(LabelManager.hmapLang.get("lblRelationship".concat(frm).toUpperCase())[LabelManager.LN]);
         
         JTableHeader th = jTable1.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
@@ -89,6 +96,20 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    private void showRelation(){
+        try {
+            mapR = rspm.mapRelation();
+            Map<String, Object>smap = new TreeMap<>(mapR);
+            cbbRelationship.removeAllItems();
+            smap.keySet().forEach((s->{
+                cbbRelationship.addItem(s);
+            }));
+            cbbRelationship.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbRelationship);            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,6 +140,8 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
         lblSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        lblRelationship = new javax.swing.JLabel();
+        cbbRelationship = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -174,7 +197,7 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 781, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -319,6 +342,17 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
             }
         });
 
+        lblRelationship.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblRelationship.setText("Relationship");
+        lblRelationship.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRelationshipMouseClicked(evt);
+            }
+        });
+
+        cbbRelationship.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbRelationship.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -326,23 +360,25 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cbbStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel7Layout.createSequentialGroup()
-                                        .addComponent(txtSearch)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(lblSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator1))))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cbbStudent, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblStudent, javax.swing.GroupLayout.DEFAULT_SIZE, 316, Short.MAX_VALUE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cbbRelationship, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblRelationship, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE))
+                            .addGap(2, 2, 2)
+                            .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(5, 5, 5)))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(lblSearch, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 814, Short.MAX_VALUE)))
                 .addGap(5, 5, 5))
         );
         jPanel7Layout.setVerticalGroup(
@@ -351,18 +387,21 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStudent)
-                    .addComponent(lblSearch))
+                    .addComponent(lblRelationship))
                 .addGap(2, 2, 2)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtSearch)
-                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cbbStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbbStudent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbbRelationship, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblSearch)
+                .addGap(2, 2, 2)
+                .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -414,10 +453,23 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
             if(evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnSave", frm);
             }else{
+                String stid = cbbStudent.getSelectedItem().toString();
+                String rid = cbbRelationship.getSelectedItem().toString();
                 
-                
+                int index = jTable1.getRowCount();                
+                for (int x=0; x<index; x++){
+                    Boolean x1 = (Boolean) jTable1.getValueAt(x, 1);
+                    if (x1==true){
+                        int gudid = Integer.parseInt(jTable1.getValueAt(x, 0).toString());                    
+                        gd.setGUDID(gudid);
+                        gd.setStdID(Integer.parseInt(mapSt.get(stid)[0].toString()));
+                        gd.setRLTID(Integer.parseInt(mapR.get(rid)[0].toString()));   
+                        gdm.insertGuardianParents(gd);
+                    }
+                }                
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 
@@ -448,6 +500,7 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             showStudent();
+            showRelation();
             rspm.showGuardian(jTable1, model);
         } catch (Exception e) {
         }
@@ -455,14 +508,20 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
 
     private void lblStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudentMouseClicked
         try {
-            LabelManager.WindowChangeLabel("lblStudent", frm);
+            if (evt.getModifiers()==6){
+               LabelManager.WindowChangeLabel("lblStudent", frm);
+            }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_lblStudentMouseClicked
 
     private void lblSearchMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseClicked
         try {
-            LabelManager.WindowChangeLabel("lblSearch", frm);
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("lblSearch", frm);
+            }
+            
         } catch (Exception e) {
         }
     }//GEN-LAST:event_lblSearchMouseClicked
@@ -473,6 +532,16 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void lblRelationshipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRelationshipMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+               LabelManager.WindowChangeLabel("lblRelationship", frm);
+            }
+            
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblRelationshipMouseClicked
 
     /**
      * @param args the command line arguments
@@ -514,6 +583,7 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnSave;
     private javax.swing.JLabel btnShowData;
+    private javax.swing.JComboBox<String> cbbRelationship;
     private javax.swing.JComboBox<String> cbbStudent;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -526,6 +596,7 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblRelationship;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblStudent;
     private javax.swing.JLabel lblSystemInfo;
