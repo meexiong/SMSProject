@@ -103,8 +103,26 @@ public class RelationshipManager {
             }
             table.setModel(model);
         } catch (Exception e) {
+            //e.printStackTrace();
+        }
+    }
+    public void showSearch(JTable table, DefaultTableModel model, String x){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select gu.Gudid, 'false' as checked, gu.gud_email, gu.Gud_name_"+ LabelManager.LangType+" AS gudname, g.gen_"+ LabelManager.LangType+" AS gender, "
+                    + "gu.gud_phone1, gu.gud_phone2, gu.GUD_Work, gu.GUD_Address_L1, gu.GUD_Address_L2\n" +
+                "from tbl_Guardian gu\n" +
+                "left join tbl_Gender g on g.Genid = gu.Genid "
+                    + "where gu.gud_email like N'"+ x +"%' or gu.Gud_name_"+ LabelManager.LangType+" like N'"+ x +"%' or g.gen_"+ LabelManager.LangType+" like N'"+ x +"%' or gu.gud_phone1 like N'"+ x +"%' "
+                    + "or gu.gud_phone2 like N'"+ x +"%' or gu.gud_work like N'"+ x +"%' or gu.gud_address_L1 like N'"+ x +"%' or gu.gud_address_L2 like N'"+ x +"%'";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("gudid"), rs.getBoolean("checked"), rs.getString("gud_email"), rs.getString("gudname"), rs.getString("gender"), rs.getString("gud_phone1"), 
+                rs.getString("gud_phone2"), rs.getString("gud_work"), rs.getString("GUD_Address_L1"), rs.getString("GUD_Address_L2")});
+            }
+            table.setModel(model);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
 }
