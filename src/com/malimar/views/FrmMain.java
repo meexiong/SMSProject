@@ -182,6 +182,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblCourse.setText(hmapLang.get("lblCourse".concat(frm).toUpperCase()) [LN]);
         btnMSchoolInfo.setText(hmapLang.get("btnMSchoolInfo".concat(frm).toUpperCase()) [LN]);
         lblQuardian.setText(hmapLang.get("lblQuardian".concat(frm).toUpperCase()) [LN]);
+        btnMenuRelationship.setText(hmapLang.get("btnMenuRelationship".concat(frm).toUpperCase()) [LN]);
     }
     
     @SuppressWarnings("unchecked")
@@ -219,6 +220,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         txtPassword = new javax.swing.JPasswordField();
         btnMWorkStatus = new javax.swing.JLabel();
         btnMSchoolInfo = new javax.swing.JLabel();
+        btnMenuRelationship = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblSemester = new javax.swing.JLabel();
@@ -530,6 +532,18 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         jPanel3.add(btnMSchoolInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 280, 130, -1));
+
+        btnMenuRelationship.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnMenuRelationship.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMenuRelationship.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Family_24px.png"))); // NOI18N
+        btnMenuRelationship.setText("Relationship");
+        btnMenuRelationship.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenuRelationship.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMenuRelationshipMouseClicked(evt);
+            }
+        });
+        jPanel3.add(btnMenuRelationship, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 314, 200, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -995,6 +1009,8 @@ int cnt=0;
         MenuSlide.setMenu(btnMEthnic);
         MenuSlide.setMenu(btnMWorkStatus);
         MenuSlide.setMenu(btnMSchoolInfo);
+        MenuSlide.setMenu(btnMenuRelationship);
+        
     }//GEN-LAST:event_MenuMouseClicked
 
     private void btnDatasourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatasourceActionPerformed
@@ -1295,6 +1311,17 @@ int cnt=0;
         // TODO add your handling code here:
     }//GEN-LAST:event_lblQuardianMouseClicked
 
+    private void btnMenuRelationshipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuRelationshipMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                WindowChangeLabel("btnMenuRelationship", frm);
+            }else{
+
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnMenuRelationshipMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -1345,6 +1372,7 @@ int cnt=0;
     private javax.swing.JLabel btnMStudentType;
     private javax.swing.JLabel btnMWorkStatus;
     private javax.swing.JLabel btnMaximum;
+    private javax.swing.JLabel btnMenuRelationship;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnPayment;
     private javax.swing.JLabel btnQuardian;

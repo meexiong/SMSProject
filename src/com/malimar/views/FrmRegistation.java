@@ -1005,10 +1005,11 @@ public class FrmRegistation extends javax.swing.JFrame {
     }//GEN-LAST:event_tableRegistrationMouseClicked
 
     private void btnVoidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoidActionPerformed
-        if (!"New".equals(txtID.getText())) {
+        int row = tableRegistration.getSelectedRow();
+        Boolean check = (Boolean)tableRegistration.getValueAt(row, 0);
+        if (!"New".equals(txtID.getText()) && check==true) {
             rgt.setRegistrationID(Integer.parseInt(txtID.getText()));
             rm.voidRegistration(rgt);
-            int row = tableRegistration.getSelectedRow();
             modelRegistration.removeRow(row);
             clearText();
         }
