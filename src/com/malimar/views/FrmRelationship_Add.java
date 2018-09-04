@@ -243,8 +243,8 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(5).setMaxWidth(100);
             jTable1.getColumnModel().getColumn(6).setMinWidth(100);
             jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            jTable1.getColumnModel().getColumn(7).setMinWidth(180);
-            jTable1.getColumnModel().getColumn(7).setMaxWidth(180);
+            jTable1.getColumnModel().getColumn(7).setMinWidth(250);
+            jTable1.getColumnModel().getColumn(7).setMaxWidth(250);
             jTable1.getColumnModel().getColumn(8).setMinWidth(350);
             jTable1.getColumnModel().getColumn(8).setMaxWidth(350);
             jTable1.getColumnModel().getColumn(9).setMinWidth(350);
@@ -400,7 +400,7 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
     private void btnShowDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnShowDataMouseClicked
         try {
             if (evt.getModifiers()==6){
-                LabelManager.WindowChangeLabel("btnShow", frm);
+                LabelManager.WindowChangeLabel("btnShowData", frm);
             }else{
                 
                 
