@@ -1316,9 +1316,11 @@ int cnt=0;
             if (evt.getModifiers()==6){
                 WindowChangeLabel("btnMenuRelationship", frm);
             }else{
-
+                FrmRelationship fr = new FrmRelationship();
+                fr.setVisible(true);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnMenuRelationshipMouseClicked
 
