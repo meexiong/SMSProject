@@ -238,13 +238,13 @@ public class FrmReport extends javax.swing.JFrame {
                 int w = (int)d.getWidth();
                 int h = (int)d.getHeight();       
                 if (LabelManager.LangType == "L1"){                    
-                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Teacher_L1.jasper", null, c);                                 
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/reports/Report_Teacher_L1.jasper", null, c);                                 
                     f.setBounds(0,0,w,h);
                     f.setTitle("ລາຍງານ ອາຈານທັງໝົດ");   
                     f.setContentPane(new JRViewer(p));                    
                     f.setVisible(true);
                 }else{
-                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Teacher_L2.jasper", null, c);                                 
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/reports/Report_Teacher_L2.jasper", null, c);                                 
                     f.setBounds(0,0,w,h);
                     f.setTitle("Report Teacher Details");   
                     f.setContentPane(new JRViewer(p));                    
@@ -266,13 +266,13 @@ public class FrmReport extends javax.swing.JFrame {
                 int w = (int)d.getWidth();
                 int h = (int)d.getHeight();       
                 if (LabelManager.LangType == "L1"){                    
-                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Employee_L1.jasper", null, c);                                 
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/reports/Report_Employee_L1.jasper", null, c);                                 
                     f.setBounds(0,0,w,h);
                     f.setTitle("ລາຍງານ ພະນັກງານ");   
                     f.setContentPane(new JRViewer(p));                    
                     f.setVisible(true);
                 }else{
-                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Employee_L2.jasper", null, c);                                 
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/reports/Report_Employee_L2.jasper", null, c);                                 
                     f.setBounds(0,0,w,h);
                     f.setTitle("Report Employee Details");   
                     f.setContentPane(new JRViewer(p));                    
@@ -293,13 +293,13 @@ public class FrmReport extends javax.swing.JFrame {
                 int w = (int)d.getWidth();
                 int h = (int)d.getHeight();       
                 if (LabelManager.LangType == "L1"){                    
-                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Student_L1.jasper", null, c);                                 
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/reports/Report_Student_L1.jasper", null, c);                                 
                     f.setBounds(0,0,w,h);
                     f.setTitle("ລາຍງານ ພະນັກງານ");   
                     f.setContentPane(new JRViewer(p));                    
                     f.setVisible(true);
                 }else{
-                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/Report/Report_Student_L2.jasper", null, c);                                 
+                    JasperPrint p = JasperFillManager.fillReport("src/com/malimar/reports/Report_Student_L2.jasper", null, c);                                 
                     f.setBounds(0,0,w,h);
                     f.setTitle("Report Employee Details");   
                     f.setContentPane(new JRViewer(p));                    
