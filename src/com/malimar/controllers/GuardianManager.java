@@ -29,7 +29,7 @@ public class GuardianManager {
         try {
             RemoveTableIndex.removeTable(table, model);
             sql = "Select gudid, gud_name_"+ LabelManager.LangType+" AS names, gen_"+ LabelManager.LangType +" AS gender, gud_phone1, gud_phone2, gud_email, gud_Work, "
-                    + "gud_address from vw_GuardianDetails "
+                    + "GUD_Address_"+ LabelManager.LangType+" AS gud_address from vw_GuardianDetails "
                     + "order by gudid, gud_name_"+ LabelManager.LangType+"";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
@@ -45,8 +45,8 @@ public class GuardianManager {
         try {
             RemoveTableIndex.removeTable(table, model);
             sql = "Select gudid, gud_name_"+ LabelManager.LangType+" AS names, gen_"+ LabelManager.LangType +" AS gender, gud_phone1, gud_phone2, gud_email, gud_Work, "
-                    + "gud_address from vw_GuardianDetails where gud_name_"+ LabelManager.LangType+" like N'"+ x +"%' or gen_"+ LabelManager.LangType+" like N'"+ x +"%' or gud_phone1 like N'"+ x +"%' "
-                    + "or gud_phone2 like N'"+ x +"%' or gud_email like N'"+ x +"%' or gud_work like N'"+ x +"%' or gud_address like N'"+ x +"%' "
+                    + "Gud_Address_"+ LabelManager.LangType+" AS gud_address from vw_GuardianDetails where gud_name_"+ LabelManager.LangType+" like N'"+ x +"%' or gen_"+ LabelManager.LangType+" like N'"+ x +"%' or gud_phone1 like N'"+ x +"%' "
+                    + "or gud_phone2 like N'"+ x +"%' or gud_email like N'"+ x +"%' or gud_work like N'"+ x +"%' or Gud_Address_"+ LabelManager.LangType+" like N'"+ x +"%' "
                     + "order by gudid, gud_name_"+ LabelManager.LangType+"";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
@@ -80,7 +80,7 @@ public class GuardianManager {
     public boolean insertGuardian(Guardian gd){
         try {
             GetMaxID gds = new GetMaxID();            
-            sql = "Insert into tbl_Guardian (GUDID, GUD_name_l1, gud_name_l2, genid, gud_phone1, gud_phone2, gud_email, gud_work, gud_address, gud_info) "
+            sql = "Insert into tbl_Guardian (GUDID, GUD_name_l1, gud_name_l2, genid, gud_phone1, gud_phone2, gud_email, gud_work, gud_address_L1, gud_address_L2) "
                     + "values (?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setInt(1, gds.getIntID("tbl_Guardian", "GUDID"));
@@ -104,7 +104,7 @@ public class GuardianManager {
     }
     public boolean updateGuardian(Guardian gd){
         try {
-            sql = "Update tbl_Guardian set GUD_name_l1=?, gud_name_l2=?, genid=?, gud_phone1=?, gud_phone2=?, gud_email=?, gud_work=?, gud_address=?, gud_info=? where GUDID = (?)";
+            sql = "Update tbl_Guardian set GUD_name_l1=?, gud_name_l2=?, genid=?, gud_phone1=?, gud_phone2=?, gud_email=?, gud_work=?, gud_address_L1=?, gud_address_L2=? where GUDID = (?)";
             PreparedStatement p = c.prepareStatement(sql);            
             p.setString(1, gd.getGuardianL1());
             p.setString(2, gd.getGuardianL2());
@@ -126,7 +126,7 @@ public class GuardianManager {
     }
     public void showClickTable(Guardian gd, int ic){
         try {
-            sql = "Select g.gudid, g.genid, g.gud_name_l1, g.gud_name_l2, ge.gen_"+ LabelManager.LangType+" As genders, g.gud_phone1, g.gud_phone2, g.gud_email, g.gud_work, g.gud_address, g.gud_info \n" +
+            sql = "Select g.gudid, g.genid, g.gud_name_l1, g.gud_name_l2, ge.gen_"+ LabelManager.LangType+" As genders, g.gud_phone1, g.gud_phone2, g.gud_email, g.gud_work, g.gud_address_L1, g.gud_address_L2 \n" +
                     "from tbl_Guardian g \n" +
                     "left join tbl_Gender ge on ge.Genid = g.Genid\n" +
                     "where g.GUDID = "+ ic +"";
@@ -140,8 +140,8 @@ public class GuardianManager {
                 gd.setPhone2(rs.getString("gud_phone2"));
                 gd.setEmail(rs.getString("gud_email"));
                 gd.setGud_Work(rs.getString("gud_work"));
-                gd.setAddress(rs.getString("gud_address"));
-                gd.setMoreinfo(rs.getString("gud_info"));          
+                gd.setAddress(rs.getString("gud_address_l1"));
+                gd.setMoreinfo(rs.getString("gud_address_L2"));          
                 gd.setGenderName(rs.getString("genders"));
             }
             rs.close();
