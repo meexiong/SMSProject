@@ -37,7 +37,8 @@ public class Student {
     int stdPark;
     String stdParkName;
     String path;
-    byte[] picture;
+    byte[] picture;    
+       
     public Student(){
         
     }

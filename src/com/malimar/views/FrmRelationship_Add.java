@@ -12,6 +12,7 @@ import com.malimar.controllers.RelationshipManager;
 import com.malimar.models.Guardian;
 import com.malimar.models.Relationship;
 import com.malimar.utils.Border;
+import com.malimar.utils.MsgBox;
 import com.malimar.utils.TableHeader;
 import java.awt.Color;
 import java.awt.Font;
@@ -485,11 +486,17 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
         try {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnShowData", frm);
-            }else{
+            }else{                
+                String ind = cbbStudent.getSelectedItem().toString();
+                gd.setStdID(Integer.parseInt(mapSt.get(ind)[0].toString()));
                 
-                
+                FrmGuardianParents fg = new FrmGuardianParents(String.valueOf(gd.getStdID()));
+                fg.setVisible(true);                
             }
         } catch (Exception e) {
+            //e.printStackTrace();
+            MsgBox.msgError();
+            
         }
     }//GEN-LAST:event_btnShowDataMouseClicked
 

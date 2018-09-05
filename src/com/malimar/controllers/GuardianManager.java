@@ -6,6 +6,7 @@
 package com.malimar.controllers;
 
 import com.malimar.models.Guardian;
+import com.malimar.models.Student;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.RemoveTableIndex;
 import java.sql.Connection;
@@ -177,7 +178,49 @@ public class GuardianManager {
         }
         return false;
     }
-    
-    
+    public void showStudentSearch(Student st, int x){
+        try {
+            sql = "Select st.stdID, st.stdNbr, st.stdemail, st.stdName_l1, st.stdname_L2, st.stdDOB, g.gen_"+ LabelManager.LangType +" AS gender\n" +
+                "from tbl_Student st \n" +
+                "left join tbl_Gender g on g.Genid = st.Genid "
+                    + "where st.stdID = "+ x +"";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            if (rs.next()){
+                st.setStdID(rs.getInt("StdID"));
+                st.setStdName_L1(rs.getString("stdname_L1"));
+                st.setStdNbr(rs.getString("stdNbr"));
+                st.setStdEmail(rs.getString("stdemail"));
+                st.setStdName_L2(rs.getString("stdName_L2"));
+                st.setStdDOB(rs.getDate("STDDOB"));
+                st.setGenderName(rs.getString("gender"));
+                
+            }
+            rs.close();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void showDataGuardianParents(Student st, JTable table, DefaultTableModel model, int x){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select gps.gpdid, gp.gud_email, gp.gud_name_"+ LabelManager.LangType +" AS gudname,  g.gen_"+ LabelManager.LangType +" AS gender, "
+                    + "gp.gud_phone1, gp.gud_phone2, r.relation_"+ LabelManager.LangType +" AS relations, gp.gud_work, gp.gud_address_"+ LabelManager.LangType +" AS gudAddress \n" +
+                    "from tbl_GuardianParents gps\n" +
+                    "left join tbl_Guardian gp on gp.GUDID = gps.GUDID\n" +
+                    "left join tbl_Gender g on g.Genid = gp.Genid\n" +
+                    "left join tbl_Relationship r on r.RLTID = gps.RLTID\n" +
+                    "where gps.stdID = "+ x +"";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("gpdid"), rs.getString("gud_email"), rs.getString("gudname"), rs.getString("gender"), rs.getString("gud_phone1"), rs.getString("gud_phone2"), rs.getString("relations"), 
+                rs.getString("gud_work"), rs.getString("gudAddress")});
+            }
+            table.setModel(model);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     
 }
