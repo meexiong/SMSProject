@@ -636,6 +636,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         btnPayment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPaymentMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPaymentMouseExited(evt);
             }
@@ -1323,6 +1326,11 @@ int cnt=0;
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnMenuRelationshipMouseClicked
+
+    private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
+        FrmReceiptList frmpay = new FrmReceiptList();
+        frmpay.setVisible(true);
+    }//GEN-LAST:event_btnPaymentMouseClicked
 
 
     /**

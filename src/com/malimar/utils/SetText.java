@@ -5,7 +5,10 @@
  */
 package com.malimar.utils;
 
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
@@ -36,5 +39,11 @@ public class SetText {
     }
     public static void setVisibleTrue(JLabel lbl){
         lbl.setVisible(true);
+    }
+    public static void cmbTextColor(JComboBox cmb){
+        ((JTextField)cmb.getEditor().getEditorComponent()).setDisabledTextColor(Color.BLACK);
+    }
+    public static void dateTextColor(JDateChooser date){
+        ((JTextFieldDateEditor)date.getDateEditor()).setDisabledTextColor(Color.BLACK);
     }
 }

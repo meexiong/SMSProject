@@ -566,10 +566,10 @@ public class FrmRegistation extends javax.swing.JFrame {
             tableRegistration.getColumnModel().getColumn(1).setMaxWidth(0);
             tableRegistration.getColumnModel().getColumn(2).setMinWidth(100);
             tableRegistration.getColumnModel().getColumn(2).setMaxWidth(100);
-            tableRegistration.getColumnModel().getColumn(3).setMinWidth(180);
-            tableRegistration.getColumnModel().getColumn(3).setMaxWidth(180);
-            tableRegistration.getColumnModel().getColumn(4).setMinWidth(200);
-            tableRegistration.getColumnModel().getColumn(4).setMaxWidth(200);
+            tableRegistration.getColumnModel().getColumn(3).setMinWidth(150);
+            tableRegistration.getColumnModel().getColumn(3).setMaxWidth(150);
+            tableRegistration.getColumnModel().getColumn(4).setMinWidth(230);
+            tableRegistration.getColumnModel().getColumn(4).setMaxWidth(230);
             tableRegistration.getColumnModel().getColumn(5).setMinWidth(110);
             tableRegistration.getColumnModel().getColumn(5).setMaxWidth(100);
             tableRegistration.getColumnModel().getColumn(6).setMinWidth(70);
@@ -1005,14 +1005,16 @@ public class FrmRegistation extends javax.swing.JFrame {
     }//GEN-LAST:event_tableRegistrationMouseClicked
 
     private void btnVoidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoidActionPerformed
-        int row = tableRegistration.getSelectedRow();
-        Boolean check = (Boolean)tableRegistration.getValueAt(row, 0);
-        if (!"New".equals(txtID.getText()) && check==true) {
-            rgt.setRegistrationID(Integer.parseInt(txtID.getText()));
-            rm.voidRegistration(rgt);
-            modelRegistration.removeRow(row);
-            clearText();
+        int[] row = tableRegistration.getSelectedRows();
+        for (int i = row.length - 1; i >= 0; i--) {
+            Boolean check = (Boolean) tableRegistration.getValueAt(row[i], 0);
+            if (check) {
+                rgt.setRegistrationID(Integer.parseInt(tableRegistration.getValueAt(i, 1).toString()));
+                rm.voidRegistration(rgt);
+                modelRegistration.removeRow(row[i]);
+            }
         }
+        clearText();
     }//GEN-LAST:event_btnVoidActionPerformed
 
     /**
