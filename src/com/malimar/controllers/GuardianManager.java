@@ -12,6 +12,7 @@ import com.malimar.utils.RemoveTableIndex;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -222,5 +223,18 @@ public class GuardianManager {
             e.printStackTrace();
         }
     }
-    
+    public boolean deleteGuardianParents(Guardian gu, int x){
+        try {
+            Statement st = null;
+            st = c.createStatement();
+            sql = "Delete tbl_GuardianParents where GPDID = "+ x +"";
+            st.executeUpdate(sql);
+            st.close();
+            MsgBox.msgInfo();
+            return true;            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

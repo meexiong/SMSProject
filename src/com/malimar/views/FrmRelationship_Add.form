@@ -305,7 +305,7 @@
                                         <Column editable="false" title="phone1" type="java.lang.Object"/>
                                         <Column editable="false" title="phone2" type="java.lang.Object"/>
                                         <Column editable="false" title="Works" type="java.lang.Object"/>
-                                        <Column editable="true" title="Address (Lao)" type="java.lang.Object"/>
+                                        <Column editable="false" title="Address (Lao)" type="java.lang.Object"/>
                                         <Column editable="false" title="Address (English)" type="java.lang.Object"/>
                                       </Table>
                                     </Property>

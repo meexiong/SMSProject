@@ -8,11 +8,13 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
+import com.malimar.models.Guardian;
 import com.malimar.models.Student;
 import com.malimar.utils.Border;
 import com.malimar.utils.TableHeader;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +39,7 @@ public class FrmGuardianParents extends javax.swing.JFrame {
     int x;
     
     Student st = new Student();
+    Guardian g = new Guardian();
     GuardianManager gdm = new GuardianManager();
     
     public FrmGuardianParents(String xi) {
@@ -225,6 +228,11 @@ public class FrmGuardianParents extends javax.swing.JFrame {
                 jTable1MouseClicked(evt);
             }
         });
+        jTable1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTable1KeyPressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
         if (jTable1.getColumnModel().getColumnCount() > 0) {
             jTable1.getColumnModel().getColumn(0).setMinWidth(0);
@@ -282,7 +290,7 @@ public class FrmGuardianParents extends javax.swing.JFrame {
 
         btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSave.setText("Save");
+        btnSave.setText("Data");
         btnSave.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSave.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -495,7 +503,7 @@ public class FrmGuardianParents extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnSave", frm);
             }else{
-                
+                gdm.showDataGuardianParents(st, jTable1, model, st.getStdID());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -586,6 +594,22 @@ public class FrmGuardianParents extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
+        try {
+            int index = jTable1.getSelectedRow();
+            g.setGPDID(Integer.parseInt(jTable1.getValueAt(index, 0).toString()));
+            if (evt.getKeyCode()==KeyEvent.VK_DELETE){
+                gdm.deleteGuardianParents(g, g.getGPDID());
+                gdm.showDataGuardianParents(st, jTable1, model, st.getStdID());
+                
+            }
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jTable1KeyPressed
 
     /**
      * @param args the command line arguments
