@@ -470,7 +470,8 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
                 }                
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            MsgBox.msgWarning();
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 

@@ -10,6 +10,7 @@ import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.models.Guardian;
 import com.malimar.utils.Border;
+import com.malimar.utils.MsgBox;
 import java.awt.Frame;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -643,7 +644,8 @@ public class FrmGuardian extends javax.swing.JFrame {
                 
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            MsgBox.msgWarning();
         }
     }//GEN-LAST:event_btnSaveMouseClicked
 
