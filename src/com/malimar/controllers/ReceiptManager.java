@@ -3,6 +3,9 @@ package com.malimar.controllers;
 
 import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.Receipt;
+import com.malimar.views.FrmOpenReport;
+import java.awt.event.MouseEvent;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,8 +14,16 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JRViewer;
 
 public class ReceiptManager {
     Connection c = DatabaseManagerSQL.getConnection();
@@ -34,7 +45,6 @@ public class ReceiptManager {
                 model.addRow(obj);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
         }
     }
     public HashMap<String, Object[]>mapRecType(){
@@ -48,7 +58,6 @@ public class ReceiptManager {
             rs.close();
             return smap;            
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -63,7 +72,6 @@ public class ReceiptManager {
             rs.close();
             return smap;            
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -78,7 +86,6 @@ public class ReceiptManager {
             rs.close();
             return cmap;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -89,7 +96,7 @@ public class ReceiptManager {
             if(rs.next()){
                 return rs.getFloat("RecTypeLAK");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return 0;
     }
@@ -100,7 +107,7 @@ public class ReceiptManager {
             if(rs.next()){
                 return rs.getFloat("RecTypeTHB");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
         return 0;
     }
@@ -164,7 +171,6 @@ public class ReceiptManager {
             p.setFloat(14, rct.getRateUSD());
             return p.executeUpdate()==1;
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -181,7 +187,18 @@ public class ReceiptManager {
                 double amountTHB = rs.getDouble("AmountTHB");
                 double amountUSD = rs.getDouble("AmountUSD");
                 double amountTotal = rs.getDouble("AmountTotal");
-                Object[]  obj = new Object[]{id, date, payment, df.format(amountLAK), df.format(amountTHB), df.format(amountUSD), df.format(amountTotal),null,null};
+                Blob attach1 = rs.getBlob("AttachFile1");
+                Blob attach2 = rs.getBlob("AttachFile2");
+                Object[] obj;
+                if(attach1==null && attach2==null){
+                    obj = new Object[]{id, date, payment, df.format(amountLAK), df.format(amountTHB), df.format(amountUSD), df.format(amountTotal),null,null};
+                }else if(attach1 !=null && attach2==null){
+                    obj = new Object[]{id, date, payment, df.format(amountLAK), df.format(amountTHB), df.format(amountUSD), df.format(amountTotal),"File 1",null};
+                }else if(attach1 ==null && attach2 !=null){
+                    obj = new Object[]{id, date, payment, df.format(amountLAK), df.format(amountTHB), df.format(amountUSD), df.format(amountTotal),null,"File 2"};
+                }else{
+                    obj = new Object[]{id, date, payment, df.format(amountLAK), df.format(amountTHB), df.format(amountUSD), df.format(amountTotal),"File 1","File 2"};
+                }
                 model.addRow(obj);
             }
         } catch (SQLException e) {
@@ -205,5 +222,90 @@ public class ReceiptManager {
         } catch (Exception e) {
         }
         return 0;
+    }
+    public void attached(JTable table, DefaultTableModel model, MouseEvent evt, JPopupMenu ppm, JDialog fm){
+        try {
+            model = (DefaultTableModel) table.getModel();
+            Connection c = DatabaseManagerSQL.getConnection();
+            int row = table.getSelectedRow();
+            int col = table.getSelectedColumn();
+            int rcpid = Integer.parseInt(table.getValueAt(row, 0).toString());
+            String sql;
+            if (col == 0) {
+                table.setComponentPopupMenu(ppm);
+            } else {
+                table.setComponentPopupMenu(null);
+            }
+            if (evt.getClickCount() == 2) {
+                switch (col) {
+                    case 7:
+                        if (evt.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                            sql = "Update tbl_Receipt set AttachFile1=? where ReceiptID=?";
+                            AttachFile.saveAttachFile(sql, rcpid);
+                            model.setValueAt("File 1", row, 7);
+                        } else {
+                            sql = "Select AttachFile1 from tbl_Receipt where ReceiptID=" + rcpid + "";
+                            AttachFile.openFile(sql, "AttachFile1");
+                        }
+                        break;
+                    case 8:
+                        if (evt.getModifiers() == MouseEvent.BUTTON3_MASK) {
+                            sql = "Update tbl_Receipt set AttachFile2=? where ReceiptID=?";
+                            AttachFile.saveAttachFile(sql, rcpid);
+                            model.setValueAt("File 2", row, 8);
+                        } else {
+                            sql = "Select AttachFile2 from tbl_Receipt where ReceiptID=" + rcpid + "";
+                            AttachFile.openFile(sql, "AttachFile2");
+                        }
+                        break;
+                    default:
+                        Map param = new HashMap();
+                        param.put("receiptID", rcpid);
+                        JasperPrint pri;
+                        if ("L1".equals(LangType)) {
+                            pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceipt_L1.jasper", param, c);
+                        } else {
+                            pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceipt_L2.jasper", param, c);
+                        }
+                        FrmOpenReport f = new FrmOpenReport();
+                        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                        f.setTitle("Print Receipt");
+                        f.getContentPane().add(new JRViewer(pri));
+                        fm.dispose();
+                        f.setVisible(true);
+                        break;
+                }
+            }
+        } catch (NumberFormatException | JRException e) {
+        }
+    }
+    public boolean delete(Receipt rct){
+        try {
+            String delete = "Delete tbl_Receipt where ReceiptID=?";
+            PreparedStatement p = c.prepareStatement(delete);
+            p.setInt(1, rct.getReceiptID());
+            return p.executeUpdate()==1;
+        } catch (SQLException e) {
+        }
+        return false;
+    }
+    public void printInstallment(Receipt rct, JDialog fm){
+        try {
+            Map param = new HashMap();
+                        param.put("registerID", rct.getRegisterID());
+                        JasperPrint pri;
+                        if ("L1".equals(LangType)) {
+                            pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceiptInstallment_L1.jasper", param, c);
+                        } else {
+                            pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceiptInstallment_L2.jasper", param, c);
+                        }
+                        FrmOpenReport f = new FrmOpenReport();
+                        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                        f.setTitle("Print Installment");
+                        f.getContentPane().add(new JRViewer(pri));
+                        fm.dispose();
+                        f.setVisible(true);
+        } catch (JRException e) {
+        }
     }
 }

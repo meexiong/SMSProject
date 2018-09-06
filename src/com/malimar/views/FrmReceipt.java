@@ -78,6 +78,8 @@ public class FrmReceipt extends javax.swing.JDialog {
             lblFeeTotal.setText(hmapLang.get("lblFeeTotal".concat(frm).toUpperCase())[LN]);
             lblPaidTotal.setText(hmapLang.get("lblPaidTotal".concat(frm).toUpperCase())[LN]);
             lblBalanceTotal.setText(hmapLang.get("lblBalanceTotal".concat(frm).toUpperCase())[LN]);
+            btnDelete.setText(hmapLang.get("btnDelete".concat(frm).toUpperCase())[LN]);
+            btnPrintInstallment.setText(hmapLang.get("btnPrintInstallment".concat(frm).toUpperCase())[LN]);
             JTableHeader th = table.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();
             table.getColumnCount();
@@ -143,6 +145,8 @@ public class FrmReceipt extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        btnDelete = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         btnExit = new javax.swing.JLabel();
@@ -193,6 +197,16 @@ public class FrmReceipt extends javax.swing.JDialog {
         lblRateUSD = new javax.swing.JLabel();
         txtRateUSD = new javax.swing.JTextField();
         jSeparator12 = new javax.swing.JSeparator();
+        btnPrintInstallment = new javax.swing.JLabel();
+
+        btnDelete.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnDelete.setText("Void");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
+        jPopupMenu1.add(btnDelete);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -281,9 +295,15 @@ public class FrmReceipt extends javax.swing.JDialog {
             }
         });
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        table.setComponentPopupMenu(jPopupMenu1);
         table.setRowHeight(25);
         table.setSelectionBackground(new java.awt.Color(204, 204, 204));
         table.setSelectionForeground(java.awt.Color.red);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(0).setMinWidth(70);
@@ -557,6 +577,24 @@ public class FrmReceipt extends javax.swing.JDialog {
                 .addContainerGap())
         );
 
+        btnPrintInstallment.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnPrintInstallment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnPrintInstallment.setText("Print Installment");
+        btnPrintInstallment.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPrintInstallment.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnPrintInstallmentMouseMoved(evt);
+            }
+        });
+        btnPrintInstallment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPrintInstallmentMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPrintInstallmentMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -575,7 +613,8 @@ public class FrmReceipt extends javax.swing.JDialog {
                         .addComponent(lblCreateDate)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtCreateDate, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnPrintInstallment, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -616,14 +655,17 @@ public class FrmReceipt extends javax.swing.JDialog {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblRegisterID)
-                        .addComponent(txtRegisterID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblCreateDate))
-                    .addComponent(txtCreateDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblRegisterID)
+                                .addComponent(txtRegisterID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblCreateDate))
+                            .addComponent(txtCreateDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnPrintInstallment, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
@@ -734,6 +776,44 @@ public class FrmReceipt extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_txtAmountUSDActionPerformed
 
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        try {
+            rcm.attached(table, model, evt, jPopupMenu1, this);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        try {
+            int row = table.getSelectedRow();
+            if (row != -1) {
+                int id = Integer.parseInt(table.getValueAt(row, 0).toString());
+                rct.setReceiptID(id);
+                if (rcm.delete(rct)) {
+                    model.removeRow(row);
+                }
+            }
+        } catch (NumberFormatException e) {
+        }
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnPrintInstallmentMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintInstallmentMouseMoved
+        Border.blueColor(btnPrintInstallment);
+    }//GEN-LAST:event_btnPrintInstallmentMouseMoved
+
+    private void btnPrintInstallmentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintInstallmentMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("btnPrintInstallment", frm);
+        } else {
+            rct.setRegisterID(Integer.parseInt(txtRegisterID.getText()));
+            rcm.printInstallment(rct, this);
+        }
+    }//GEN-LAST:event_btnPrintInstallmentMouseClicked
+
+    private void btnPrintInstallmentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintInstallmentMouseExited
+        Border.WhiteColor(btnPrintInstallment);
+    }//GEN-LAST:event_btnPrintInstallmentMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -777,8 +857,10 @@ public class FrmReceipt extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem btnDelete;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnPay;
+    private javax.swing.JLabel btnPrintInstallment;
     private javax.swing.JComboBox<String> cmbPaymentType;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -786,6 +868,7 @@ public class FrmReceipt extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;

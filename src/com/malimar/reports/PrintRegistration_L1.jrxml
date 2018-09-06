@@ -49,6 +49,8 @@
 	<field name="SemesterName" class="java.lang.String"/>
 	<field name="StartDate" class="java.sql.Date"/>
 	<field name="EndDate" class="java.sql.Date"/>
+	<field name="Currency_L1" class="java.lang.String"/>
+	<field name="Currency_L2" class="java.lang.String"/>
 	<field name="SchoolLogo" class="java.io.InputStream"/>
 	<field name="SchoolName_L1" class="java.lang.String"/>
 	<field name="SchoolName_L2" class="java.lang.String"/>
@@ -446,34 +448,34 @@
 				</textElement>
 				<text><![CDATA[%   =]]></text>
 			</staticText>
-			<staticText>
-				<reportElement x="437" y="5" width="25" height="15" uuid="aa482295-dc7e-4791-975d-9b0c6f1ce1b8"/>
+			<textField>
+				<reportElement x="430" y="5" width="30" height="15" uuid="4a4f2668-6672-4c46-8ac5-f19141bfa681"/>
 				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<text><![CDATA[ກີບ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="437" y="21" width="25" height="15" uuid="fda5d1b7-5605-4e24-b08d-593bcb44a384"/>
+				<textFieldExpression><![CDATA[$F{Currency_L1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="21" width="30" height="15" uuid="6b870180-789f-46c8-a45a-502ad5e8b96f"/>
 				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<text><![CDATA[ກີບ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="438" y="37" width="25" height="15" uuid="f8801153-b975-4940-a971-f87caf02c405"/>
+				<textFieldExpression><![CDATA[$F{Currency_L1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="37" width="30" height="15" uuid="471190f2-bd81-48dd-a41a-7af127a01bc0"/>
 				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<text><![CDATA[ກີບ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="437" y="53" width="25" height="15" uuid="d17786c0-2721-4d00-83be-9d053fe827d5"/>
+				<textFieldExpression><![CDATA[$F{Currency_L1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="430" y="53" width="30" height="15" uuid="a12cfad6-980e-4fd0-aa78-f65cbb82a8a1"/>
 				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="9" isBold="true"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
-				<text><![CDATA[ກີບ]]></text>
-			</staticText>
+				<textFieldExpression><![CDATA[$F{Currency_L1}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>
