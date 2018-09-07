@@ -29,6 +29,10 @@ public class FrmChangeLabel extends javax.swing.JFrame {
     public FrmChangeLabel() {
         initComponents();
         frm = this.getClass().getSimpleName();
+        
+        txtFieldName.setVisible(false);
+        lblFieldName.setVisible(false);
+        
         if("L1".equals(LangType)){
             lblLao.setText("ລາວ");
             lblEN.setText("ອັງກິດ");
