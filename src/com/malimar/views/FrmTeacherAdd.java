@@ -1163,8 +1163,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void lbl_imageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_imageMouseClicked
-         try {
-             
+         try {             
             JFileChooser choose = new JFileChooser();
             choose.showOpenDialog(null);
             path = choose.getSelectedFile().getAbsolutePath();            
