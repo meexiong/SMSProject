@@ -281,6 +281,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Registter#"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblRegisterIDMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtRegisterID">
           <Properties>
@@ -304,6 +307,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Create Date"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblCreateDateMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator1">
         </Component>
@@ -442,6 +448,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Received Date"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblReceiptDateMouseClicked"/>
+          </Events>
         </Component>
         <Component class="com.toedter.calendar.JDateChooser" name="txtReceivedDate">
           <Properties>
@@ -458,6 +467,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Payment Type"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPaymentTypeMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cmbPaymentType">
           <Properties>
@@ -481,6 +493,9 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="Amount LAK"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAmountLAKMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAmountLAK">
           <Properties>
@@ -522,6 +537,9 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="Amount THB"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAmountTHBMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator3">
         </Component>
@@ -533,6 +551,9 @@
             <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="Amount USD"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblAmountUSDMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtAmountUSD">
           <Properties>
@@ -576,6 +597,9 @@
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Note"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblNoteMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtNote">
           <Properties>
@@ -677,6 +701,9 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Fee Total"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblFeeTotalMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtPaidTotal">
               <Properties>
@@ -703,6 +730,9 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Paid Total"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblPaidTotalMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator8">
             </Component>
@@ -714,6 +744,9 @@
                 <Property name="horizontalAlignment" type="int" value="4"/>
                 <Property name="text" type="java.lang.String" value="Balance Total"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblBalanceTotalMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtBalanceTotal">
               <Properties>
@@ -804,6 +837,9 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Rate LAK"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblRateLAKMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator10">
             </Component>
@@ -832,6 +868,9 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Rate THB"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblRateTHBMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtRateTHB">
               <Properties>
@@ -860,6 +899,9 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Rate USD"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblRateUSDMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtRateUSD">
               <Properties>

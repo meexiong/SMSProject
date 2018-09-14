@@ -440,6 +440,11 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         lblStudent.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblStudent.setText("Student");
+        lblStudent.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStudentMouseClicked(evt);
+            }
+        });
 
         cmbStudent.setEditable(true);
         cmbStudent.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -454,9 +459,19 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         lblStudentNbr.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblStudentNbr.setText("Student#");
+        lblStudentNbr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStudentNbrMouseClicked(evt);
+            }
+        });
 
         lblGender.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblGender.setText("Gender");
+        lblGender.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGenderMouseClicked(evt);
+            }
+        });
 
         txtGender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtGender.setBorder(null);
@@ -466,16 +481,36 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         lblNationality.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblNationality.setText("Nationality");
+        lblNationality.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblNationalityMouseClicked(evt);
+            }
+        });
 
         lblCurrency.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblCurrency.setText("Currency");
+        lblCurrency.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCurrencyMouseClicked(evt);
+            }
+        });
 
         lblCreateDate.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblCreateDate.setText("Create Date");
+        lblCreateDate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCreateDateMouseClicked(evt);
+            }
+        });
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblID.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -487,6 +522,11 @@ public class FrmRegistation extends javax.swing.JFrame {
 
         lblSemester.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSemester.setText("Semester");
+        lblSemester.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSemesterMouseClicked(evt);
+            }
+        });
 
         cmbSemester.setEditable(true);
         cmbSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -581,6 +621,11 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblSubTotal.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblSubTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSubTotal.setText("SubTotal");
+        lblSubTotal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSubTotalMouseClicked(evt);
+            }
+        });
 
         txtSubTotal.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtSubTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -601,10 +646,20 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblDiscountAmount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblDiscountAmount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblDiscountAmount.setText("Discount Amount");
+        lblDiscountAmount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDiscountAmountMouseClicked(evt);
+            }
+        });
 
         lblVATAmount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblVATAmount.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblVATAmount.setText("VAT Amount");
+        lblVATAmount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVATAmountMouseClicked(evt);
+            }
+        });
 
         txtVATAmount.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtVATAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -617,6 +672,11 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblGrandTotal.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblGrandTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblGrandTotal.setText("GrandTotal");
+        lblGrandTotal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblGrandTotalMouseClicked(evt);
+            }
+        });
 
         txtGrandTotal.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtGrandTotal.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -629,6 +689,11 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblDiscount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblDiscount.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDiscount.setText("Discount");
+        lblDiscount.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDiscountMouseClicked(evt);
+            }
+        });
 
         txtDiscountPC.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtDiscountPC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -651,6 +716,11 @@ public class FrmRegistation extends javax.swing.JFrame {
         lblVAT.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblVAT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVAT.setText("VAT");
+        lblVAT.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblVATMouseClicked(evt);
+            }
+        });
 
         txtVAT.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         txtVAT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -1016,6 +1086,90 @@ public class FrmRegistation extends javax.swing.JFrame {
         }
         clearText();
     }//GEN-LAST:event_btnVoidActionPerformed
+
+    private void lblCurrencyMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCurrencyMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblCurrency", frm);
+        }
+    }//GEN-LAST:event_lblCurrencyMouseClicked
+
+    private void lblSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSemesterMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblSemester", frm);
+        }
+    }//GEN-LAST:event_lblSemesterMouseClicked
+
+    private void lblStudentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudentMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblStudent", frm);
+        }
+    }//GEN-LAST:event_lblStudentMouseClicked
+
+    private void lblStudentNbrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStudentNbrMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblStudentNbr", frm);
+        }
+    }//GEN-LAST:event_lblStudentNbrMouseClicked
+
+    private void lblGenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenderMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblGender", frm);
+        }
+    }//GEN-LAST:event_lblGenderMouseClicked
+
+    private void lblNationalityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNationalityMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblNationality", frm);
+        }
+    }//GEN-LAST:event_lblNationalityMouseClicked
+
+    private void lblCreateDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCreateDateMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblCreateDate", frm);
+        }
+    }//GEN-LAST:event_lblCreateDateMouseClicked
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblIDMouse", frm);
+        }
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblSubTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSubTotalMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblSubTotal", frm);
+        }
+    }//GEN-LAST:event_lblSubTotalMouseClicked
+
+    private void lblDiscountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDiscountMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblDiscount", frm);
+        }
+    }//GEN-LAST:event_lblDiscountMouseClicked
+
+    private void lblDiscountAmountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDiscountAmountMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblDiscountAmount", frm);
+        }
+    }//GEN-LAST:event_lblDiscountAmountMouseClicked
+
+    private void lblVATMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVATMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblVAT", frm);
+        }
+    }//GEN-LAST:event_lblVATMouseClicked
+
+    private void lblVATAmountMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblVATAmountMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblVATAmount", frm);
+        }
+    }//GEN-LAST:event_lblVATAmountMouseClicked
+
+    private void lblGrandTotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGrandTotalMouseClicked
+       if(evt.getModifiers()==6){
+            WindowChangeLabel("lblGrandTotal", frm);
+        }
+    }//GEN-LAST:event_lblGrandTotalMouseClicked
 
     /**
      * @param args the command line arguments

@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.malimar.controllers;
 
 import com.malimar.utils.MsgBox;
@@ -12,12 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import javax.swing.JFrame;
+import javax.swing.JDialog;
 
-/**
- *
- * @author Malimar
- */
 public class LabelManager {
     public static int LN;
     public static String LangType;
@@ -43,9 +35,9 @@ public class LabelManager {
 
     public static void WindowChangeLabel(String s, String frm) {
         try {
-                FrmChangeLabel ch = new FrmChangeLabel();
                 fieldName = s;
                 frameName = frm;
+                FrmChangeLabel ch = new FrmChangeLabel(null, true);
                 ch.setVisible(true);
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,7 +45,7 @@ public class LabelManager {
 //        return null;
     }
     
-    public void saveLabel(String l1, String l2, String field, String frame, JFrame f) {
+    public void saveLabel(String l1, String l2, String field, String frame, JDialog f) {
         try {
             Connection c = DatabaseManagerSQL.getConnection();
             String sql = "update tbl_SysLang set Lang_L1 = ?, Lang_L2 = ? where Sys_Name = (?) and FormID = (?)";

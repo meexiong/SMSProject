@@ -3,6 +3,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.ReceiptManager;
 import com.malimar.controllers.TableAlignmentHeader;
@@ -193,6 +194,11 @@ public class FrmReceiptList extends javax.swing.JFrame {
         lblReceiptNo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblReceiptNo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblReceiptNo.setText("Receipt#");
+        lblReceiptNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblReceiptNoMouseClicked(evt);
+            }
+        });
 
         jTextField1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTextField1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
@@ -201,6 +207,11 @@ public class FrmReceiptList extends javax.swing.JFrame {
         lblSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblSemester.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSemester.setText("Semester");
+        lblSemester.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblSemesterMouseClicked(evt);
+            }
+        });
 
         cmbSemester.setEditable(true);
         cmbSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -213,6 +224,11 @@ public class FrmReceiptList extends javax.swing.JFrame {
         lblCourse.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblCourse.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         lblCourse.setText("Course");
+        lblCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblCourseMouseClicked(evt);
+            }
+        });
 
         cmbCourse.setEditable(true);
         cmbCourse.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
@@ -361,6 +377,24 @@ public class FrmReceiptList extends javax.swing.JFrame {
             rcm.load(model, rct);
         }
     }//GEN-LAST:event_cmbCourseActionPerformed
+
+    private void lblSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSemesterMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblSemester", frm);
+        }
+    }//GEN-LAST:event_lblSemesterMouseClicked
+
+    private void lblCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCourseMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblCourse", frm);
+        }
+    }//GEN-LAST:event_lblCourseMouseClicked
+
+    private void lblReceiptNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReceiptNoMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblReceiptNo", frm);
+        }
+    }//GEN-LAST:event_lblReceiptNoMouseClicked
 
     /**
      * @param args the command line arguments
