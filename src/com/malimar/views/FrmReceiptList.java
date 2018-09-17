@@ -52,7 +52,7 @@ public class FrmReceiptList extends javax.swing.JFrame {
             lblReceiptList.setText(hmapLang.get("lblReceiptList".concat(frm).toUpperCase())[LN]);
             lblSemester.setText(hmapLang.get("lblSemester".concat(frm).toUpperCase())[LN]);
             lblCourse.setText(hmapLang.get("lblCourse".concat(frm).toUpperCase())[LN]);
-            lblReceiptNo.setText(hmapLang.get("lblReceiptNo".concat(frm).toUpperCase())[LN]);
+            lblRegistrationID.setText(hmapLang.get("lblRegistrationID".concat(frm).toUpperCase())[LN]);
             JTableHeader th = table.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();
             table.getColumnCount();
@@ -121,8 +121,8 @@ public class FrmReceiptList extends javax.swing.JFrame {
         btnExit1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         lblReceiptList = new javax.swing.JLabel();
-        lblReceiptNo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblRegistrationID = new javax.swing.JLabel();
+        txtRegisterID = new javax.swing.JTextField();
         lblSemester = new javax.swing.JLabel();
         cmbSemester = new javax.swing.JComboBox<>();
         lblCourse = new javax.swing.JLabel();
@@ -191,18 +191,22 @@ public class FrmReceiptList extends javax.swing.JFrame {
                 .addGap(2, 2, 2))
         );
 
-        lblReceiptNo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblReceiptNo.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblReceiptNo.setText("Receipt#");
-        lblReceiptNo.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblRegistrationID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblRegistrationID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblRegistrationID.setText("Registration#");
+        lblRegistrationID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblReceiptNoMouseClicked(evt);
+                lblRegistrationIDMouseClicked(evt);
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jTextField1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        jTextField1.setEnabled(false);
+        txtRegisterID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtRegisterID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtRegisterID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtRegisterIDActionPerformed(evt);
+            }
+        });
 
         lblSemester.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblSemester.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -308,9 +312,9 @@ public class FrmReceiptList extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblReceiptNo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblRegistrationID, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtRegisterID, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94)))
                 .addContainerGap())
         );
@@ -322,8 +326,8 @@ public class FrmReceiptList extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(cmbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblReceiptNo)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblRegistrationID)
+                        .addComponent(txtRegisterID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblCourse))
@@ -333,7 +337,7 @@ public class FrmReceiptList extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbCourse, cmbSemester, jTextField1, lblCourse, lblReceiptNo, lblSemester});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbCourse, cmbSemester, lblCourse, lblRegistrationID, lblSemester, txtRegisterID});
 
         getContentPane().add(jPanel6, java.awt.BorderLayout.CENTER);
 
@@ -390,11 +394,20 @@ public class FrmReceiptList extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblCourseMouseClicked
 
-    private void lblReceiptNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReceiptNoMouseClicked
+    private void lblRegistrationIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrationIDMouseClicked
         if(evt.getModifiers()==6){
             WindowChangeLabel("lblReceiptNo", frm);
         }
-    }//GEN-LAST:event_lblReceiptNoMouseClicked
+    }//GEN-LAST:event_lblRegistrationIDMouseClicked
+
+    private void txtRegisterIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRegisterIDActionPerformed
+        try {
+            rct.setRegisterID(Integer.parseInt(txtRegisterID.getText()));
+            ClearTable.clearFirstLoad(table, model);
+            rcm.loadByRegistrationID(model, rct);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_txtRegisterIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -444,11 +457,11 @@ public class FrmReceiptList extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblCourse;
     private javax.swing.JLabel lblReceiptList;
-    private javax.swing.JLabel lblReceiptNo;
+    private javax.swing.JLabel lblRegistrationID;
     private javax.swing.JLabel lblSemester;
     private javax.swing.JTable table;
+    private javax.swing.JTextField txtRegisterID;
     // End of variables declaration//GEN-END:variables
 }

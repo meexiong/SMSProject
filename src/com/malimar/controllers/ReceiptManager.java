@@ -47,6 +47,26 @@ public class ReceiptManager {
         } catch (SQLException e) {
         }
     }
+    public void loadByRegistrationID(DefaultTableModel model, Receipt rct){
+        try {
+            DecimalFormat df = new DecimalFormat("#,##0.00");
+            String query = "Exec pd_PaymentListByRgtID "+rct.getRegisterID()+"";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt("RegisterID");
+                String stdID = rs.getString("StdNbr");
+                String stdName = rs.getString("StdName_"+LangType+"");
+                String sex = rs.getString("Gen_"+LangType+"");
+                double total = rs.getDouble("GrandTotal");
+                double balance = rs.getDouble("Balance");
+                double paid = rs.getDouble("Paid");
+                String cur = rs.getString("Currency_"+LangType+"");
+                Object[] obj = new Object[]{id, stdID, stdName, sex, df.format(total), df.format(balance), df.format(paid), cur};
+                model.addRow(obj);
+            }
+        } catch (SQLException e) {
+        }
+    }
     public HashMap<String, Object[]>mapRecType(){
         try {
             HashMap<String, Object[]>smap = new HashMap();

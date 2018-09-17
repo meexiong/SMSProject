@@ -61,7 +61,7 @@ public class RegistrationManager {
     public HashMap<String, Object[]>mapCurrency(){
         try {
             HashMap<String, Object[]>smap = new HashMap();
-            String sql = "Select * from tbl_RecType";
+            String sql = "Select * from tbl_RecType where RecType='CUR'";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
                 smap.put(rs.getString("RecType_"+LangType+""), new Object[]{rs.getInt("RecTypeID"),rs.getString("RecType_"+LangType+""),rs.getString("RecType_L1"),rs.getString("RecType_L2"), rs.getFloat("RecTypeLAK"), rs.getFloat("RecTypeTHB"), rs.getFloat("RecTypeUSD")});

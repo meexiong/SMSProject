@@ -86,6 +86,15 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         txtPassword.setText("");
         radEnglish.setEnabled(true);
         radLao.setEnabled(true);
+        
+        btnMStudentType.setVisible(false);
+        btnMNationality.setVisible(false);
+        btnMReligion.setVisible(false);
+        btnMEthnic.setVisible(false);
+        btnMClassroom.setVisible(false);
+        btnMWorkStatus.setVisible(false);
+        btnMSchoolInfo.setVisible(false);
+        btnMenuRelationship.setVisible(false);
     }
 
     private void afterLogin() {
@@ -125,6 +134,15 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         txtPassword.setOpaque(false);
         radEnglish.setEnabled(false);
         radLao.setEnabled(false);
+        
+        btnMStudentType.setVisible(true);
+        btnMNationality.setVisible(true);
+        btnMReligion.setVisible(true);
+        btnMEthnic.setVisible(true);
+        btnMClassroom.setVisible(true);
+        btnMWorkStatus.setVisible(true);
+        btnMSchoolInfo.setVisible(true);
+        btnMenuRelationship.setVisible(true);
     }
     private void login(){
         if(radLao.isSelected()){

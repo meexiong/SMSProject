@@ -60,9 +60,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="cmbCourse" min="-2" pref="300" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="lblReceiptNo" min="-2" pref="121" max="-2" attributes="0"/>
+                          <Component id="lblRegistrationID" min="-2" pref="121" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jTextField1" min="-2" pref="123" max="-2" attributes="0"/>
+                          <Component id="txtRegisterID" min="-2" pref="123" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -78,8 +78,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="cmbCourse" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="lblReceiptNo" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jTextField1" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRegistrationID" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtRegisterID" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="cmbSemester" linkSize="1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -194,19 +194,19 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JLabel" name="lblReceiptNo">
+        <Component class="javax.swing.JLabel" name="lblRegistrationID">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="0"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Receipt#"/>
+            <Property name="text" type="java.lang.String" value="Registration#"/>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblReceiptNoMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblRegistrationIDMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="txtRegisterID">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="12" style="0"/>
@@ -214,8 +214,10 @@
             <Property name="disabledTextColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtRegisterIDActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblSemester">
           <Properties>
