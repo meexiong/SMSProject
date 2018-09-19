@@ -13,10 +13,8 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.utils.PathReport;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Toolkit;
 import java.sql.*;
-import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
@@ -39,6 +37,7 @@ public class FrmReport extends javax.swing.JFrame {
         btnReportEmployee.setText(LabelManager.hmapLang.get("btnReportEmployee".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportStudentAll.setText(LabelManager.hmapLang.get("btnReportStudentAll".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportStudentRegistration.setText(LabelManager.hmapLang.get("btnReportStudentRegistration".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnReportStudentPayment.setText(LabelManager.hmapLang.get("btnReportStudentPayment".concat(frm).toUpperCase())[LabelManager.LN]);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -56,6 +55,7 @@ public class FrmReport extends javax.swing.JFrame {
         btnReportEmployee = new com.xzq.osc.JocHyperlink();
         btnReportStudentAll = new com.xzq.osc.JocHyperlink();
         btnReportStudentRegistration = new com.xzq.osc.JocHyperlink();
+        btnReportStudentPayment = new com.xzq.osc.JocHyperlink();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -173,6 +173,21 @@ public class FrmReport extends javax.swing.JFrame {
             }
         });
 
+        btnReportStudentPayment.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Payment History_24px.png"))); // NOI18N
+        btnReportStudentPayment.setText("Student Payment Report");
+        btnReportStudentPayment.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnReportStudentPayment.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportStudentPayment.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportStudentPaymentMouseClicked(evt);
+            }
+        });
+        btnReportStudentPayment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportStudentPaymentActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -183,7 +198,8 @@ public class FrmReport extends javax.swing.JFrame {
                     .addComponent(btnReportTeacher, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                     .addComponent(btnReportEmployee, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                     .addComponent(btnReportStudentAll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                    .addComponent(btnReportStudentRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
+                    .addComponent(btnReportStudentRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                    .addComponent(btnReportStudentPayment, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -197,6 +213,8 @@ public class FrmReport extends javax.swing.JFrame {
                 .addComponent(btnReportStudentAll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportStudentRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReportStudentPayment, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -334,6 +352,23 @@ public class FrmReport extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnReportStudentRegistrationMouseClicked
 
+    private void btnReportStudentPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportStudentPaymentMouseClicked
+       try {
+            if (evt.getModifiers() == 6) {
+                LabelManager.WindowChangeLabel("btnReportStudentPayment", frm);
+            } else {
+                FrmReportStdPayment frmrptPayment = new FrmReportStdPayment();
+                frmrptPayment.setVisible(true);
+            }
+
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnReportStudentPaymentMouseClicked
+
+    private void btnReportStudentPaymentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportStudentPaymentActionPerformed
+
+    }//GEN-LAST:event_btnReportStudentPaymentActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -374,6 +409,7 @@ public class FrmReport extends javax.swing.JFrame {
     private javax.swing.JLabel btnMinimize;
     private com.xzq.osc.JocHyperlink btnReportEmployee;
     private com.xzq.osc.JocHyperlink btnReportStudentAll;
+    private com.xzq.osc.JocHyperlink btnReportStudentPayment;
     private com.xzq.osc.JocHyperlink btnReportStudentRegistration;
     private com.xzq.osc.JocHyperlink btnReportTeacher;
     private javax.swing.JPanel jPanel1;

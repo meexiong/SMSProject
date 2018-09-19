@@ -91,7 +91,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMNationality.setVisible(false);
         btnMReligion.setVisible(false);
         btnMEthnic.setVisible(false);
-        btnMClassroom.setVisible(false);
+        btnMRoom.setVisible(false);
         btnMWorkStatus.setVisible(false);
         btnMSchoolInfo.setVisible(false);
         btnMenuRelationship.setVisible(false);
@@ -139,7 +139,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMNationality.setVisible(true);
         btnMReligion.setVisible(true);
         btnMEthnic.setVisible(true);
-        btnMClassroom.setVisible(true);
+        btnMRoom.setVisible(true);
         btnMWorkStatus.setVisible(true);
         btnMSchoolInfo.setVisible(true);
         btnMenuRelationship.setVisible(true);
@@ -195,7 +195,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMNationality.setText(hmapLang.get("btnMNationality".concat(frm).toUpperCase()) [LN]);
         btnMReligion.setText(hmapLang.get("btnMReligion".concat(frm).toUpperCase()) [LN]);
         btnMEthnic.setText(hmapLang.get("btnMEthnic".concat(frm).toUpperCase()) [LN]);
-        btnMClassroom.setText(hmapLang.get("btnMClassroom".concat(frm).toUpperCase()) [LN]);
+        btnMRoom.setText(hmapLang.get("btnMRoom".concat(frm).toUpperCase()) [LN]);
         btnMWorkStatus.setText(hmapLang.get("btnMWorkStatus".concat(frm).toUpperCase()) [LN]);
         lblCourse.setText(hmapLang.get("lblCourse".concat(frm).toUpperCase()) [LN]);
         btnMSchoolInfo.setText(hmapLang.get("btnMSchoolInfo".concat(frm).toUpperCase()) [LN]);
@@ -230,7 +230,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         Menu = new javax.swing.JLabel();
         btnMReligion = new javax.swing.JLabel();
         btnMEthnic = new javax.swing.JLabel();
-        btnMClassroom = new javax.swing.JLabel();
+        btnMRoom = new javax.swing.JLabel();
         btnDatasource = new com.xzq.osc.JocHyperlink();
         btnSignUP = new javax.swing.JLabel();
         radLao = new javax.swing.JRadioButton();
@@ -450,17 +450,17 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
         jPanel3.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 178, 130, -1));
 
-        btnMClassroom.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        btnMClassroom.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnMClassroom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_24px.png"))); // NOI18N
-        btnMClassroom.setText("Classroom");
-        btnMClassroom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMClassroom.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnMRoom.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnMRoom.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMRoom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Classroom_24px.png"))); // NOI18N
+        btnMRoom.setText("Classroom");
+        btnMRoom.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMRoom.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMClassroomMouseClicked(evt);
+                btnMRoomMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMClassroom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 212, 130, -1));
+        jPanel3.add(btnMRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 212, 130, -1));
 
         btnDatasource.setForeground(new java.awt.Color(0, 0, 0));
         btnDatasource.setText("Datasource Setting");
@@ -1026,7 +1026,7 @@ int cnt=0;
         MenuSlide.setMenu(btnMStudentType);
         MenuSlide.setMenu(btnMNationality);
         MenuSlide.setMenu(btnMReligion);
-        MenuSlide.setMenu(btnMClassroom);
+        MenuSlide.setMenu(btnMRoom);
         MenuSlide.setMenu(btnMEthnic);
         MenuSlide.setMenu(btnMWorkStatus);
         MenuSlide.setMenu(btnMSchoolInfo);
@@ -1139,17 +1139,18 @@ int cnt=0;
         }
     }//GEN-LAST:event_btnMEthnicMouseClicked
 
-    private void btnMClassroomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMClassroomMouseClicked
+    private void btnMRoomMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMRoomMouseClicked
         try {
             if (evt.getModifiers() == 6) {
-                WindowChangeLabel("btnMClassroom", frm);
+                WindowChangeLabel("btnMRoom", frm);
             } else {
-                FrmClass fc = new FrmClass();
+                FrmRoom fc = new FrmRoom();
                 fc.setVisible(true);
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
-    }//GEN-LAST:event_btnMClassroomMouseClicked
+    }//GEN-LAST:event_btnMRoomMouseClicked
 
     private void btnMStudentTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMStudentTypeMouseClicked
         try {
@@ -1392,10 +1393,10 @@ int cnt=0;
     private com.xzq.osc.JocHyperlink btnDatasource;
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnLogOut;
-    private javax.swing.JLabel btnMClassroom;
     private javax.swing.JLabel btnMEthnic;
     private javax.swing.JLabel btnMNationality;
     private javax.swing.JLabel btnMReligion;
+    private javax.swing.JLabel btnMRoom;
     private javax.swing.JLabel btnMSchoolInfo;
     private javax.swing.JLabel btnMStudentType;
     private javax.swing.JLabel btnMWorkStatus;

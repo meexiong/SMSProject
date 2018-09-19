@@ -41,6 +41,7 @@ public class FrmReceiptList extends javax.swing.JFrame {
     private void showReceipt() {
         try {
             frm = this.getClass().getSimpleName();
+            
             table.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
             model = (DefaultTableModel) table.getModel();
             jScrollPane1.getViewport().setBackground(Color.WHITE);
