@@ -11,6 +11,8 @@
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <Events>
+    <EventHandler event="mouseDragged" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="formMouseDragged"/>
+    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="formMousePressed"/>
     <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
   </Events>
   <AuxValues>
@@ -218,70 +220,73 @@
                           <Layout>
                             <DimensionLayout dim="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btnSave" min="-2" pref="103" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jPanel9" min="-2" pref="172" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtaddressL2" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblAddressL2" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtaddress" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="lblAddress" alignment="0" max="32767" attributes="0"/>
-                                          <Group type="102" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnSave" min="-2" pref="103" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="jPanel9" min="-2" pref="172" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="jSeparator10" alignment="0" min="-2" pref="428" max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="txtwebsite" max="32767" attributes="0"/>
-                                                      <Component id="lblWebsite" alignment="1" max="32767" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="lblNameL1" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="txtRE_Name_L1" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jSeparator2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                  <Component id="txtaddressL2" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="lblAddressL2" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="txtaddress" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="lblAddress" alignment="0" max="32767" attributes="0"/>
+                                                  <Group type="102" attributes="0">
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="jSeparator10" alignment="0" min="-2" pref="428" max="-2" attributes="0"/>
+                                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                              <Component id="txtwebsite" max="32767" attributes="0"/>
+                                                              <Component id="lblWebsite" alignment="1" max="32767" attributes="0"/>
+                                                              <Group type="102" alignment="0" attributes="0">
+                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                      <Component id="lblNameL1" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txtRE_Name_L1" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="jSeparator2" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                      <Component id="lblNameL2" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="txtRE_Name_L2" alignment="0" max="32767" attributes="0"/>
+                                                                      <Component id="jSeparator3" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                                  </Group>
+                                                              </Group>
+                                                              <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
                                                           </Group>
-                                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                              <Component id="lblNameL2" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="txtRE_Name_L2" alignment="0" max="32767" attributes="0"/>
-                                                              <Component id="jSeparator3" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Component id="lblPhone1" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="txtphone1" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="jSeparator5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Component id="lblPhone2" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="txtphone2" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="jSeparator6" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                              </Group>
                                                           </Group>
-                                                      </Group>
-                                                      <Component id="jSeparator4" alignment="1" max="32767" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="lblPhone1" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="txtphone1" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="jSeparator5" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                          <Component id="jSeparator9" alignment="0" min="-2" pref="428" max="-2" attributes="0"/>
+                                                          <Group type="102" alignment="0" attributes="0">
+                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Component id="lblFax" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="txtfax" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="jSeparator7" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                              </Group>
+                                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                                  <Component id="lblFacebook" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="txtfacebook" alignment="0" max="32767" attributes="0"/>
+                                                                  <Component id="jSeparator8" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
+                                                              </Group>
+                                                          </Group>
                                                       </Group>
                                                       <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="lblPhone2" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="txtphone2" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="jSeparator6" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                                      </Group>
-                                                  </Group>
-                                                  <Component id="jSeparator9" alignment="0" min="-2" pref="428" max="-2" attributes="0"/>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="lblFax" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="txtfax" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="jSeparator7" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                          <Component id="lblFacebook" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="txtfacebook" alignment="0" max="32767" attributes="0"/>
-                                                          <Component id="jSeparator8" alignment="0" min="-2" pref="213" max="-2" attributes="0"/>
-                                                      </Group>
                                                   </Group>
                                               </Group>
-                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>

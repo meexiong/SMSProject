@@ -11,6 +11,7 @@ import com.malimar.controllers.UserLoginManager;
 import com.malimar.models.UserLogin;
 import com.malimar.utils.Border;
 import com.malimar.utils.ConvertDateSQL;
+import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.TableHeader;
 import java.awt.Color;
@@ -408,6 +409,16 @@ public class FrmUserLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -578,8 +589,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                             .addComponent(txtSearch)
                             .addComponent(lblsearch, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)))
+                        .addComponent(btnShowData, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -1894,6 +1904,14 @@ public class FrmUserLogin extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnShowPermissionMouseClicked
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments

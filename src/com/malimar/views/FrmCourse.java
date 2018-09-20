@@ -9,6 +9,7 @@ import com.malimar.controllers.TableAlignmentHeader;
 import com.malimar.models.Course;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
+import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Font;
@@ -100,6 +101,16 @@ public class FrmCourse extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
@@ -468,6 +479,14 @@ public class FrmCourse extends javax.swing.JFrame {
             WindowChangeLabel("lblPrice", frm);
         }
     }//GEN-LAST:event_lblPriceMouseClicked
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments

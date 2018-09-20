@@ -6,6 +6,7 @@ import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.NationalityManager;
 import com.malimar.models.Nationality;
 import com.malimar.utils.Border;
+import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.SetText;
 import java.awt.Color;
@@ -90,6 +91,16 @@ public class FrmNationality extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
@@ -194,7 +205,6 @@ public class FrmNationality extends javax.swing.JFrame {
         lblNationalityID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblNationalityID.setText("ID");
 
-        txtID.setBackground(new java.awt.Color(255, 255, 255));
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setText("New");
         txtID.setBorder(null);
@@ -381,6 +391,14 @@ public class FrmNationality extends javax.swing.JFrame {
            clearText();
        }
     }//GEN-LAST:event_txtIDMouseClicked
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_formMouseDragged
 
     /**
      * @param args the command line arguments
