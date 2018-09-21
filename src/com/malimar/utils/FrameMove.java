@@ -16,7 +16,7 @@ public class FrameMove {
 
     static int xx = 0;
     static int yy = 0;
-
+    
     public static void mouseDragded(java.awt.event.MouseEvent evt, JFrame fm) {
         int x = evt.getXOnScreen();
         int y = evt.getYOnScreen();

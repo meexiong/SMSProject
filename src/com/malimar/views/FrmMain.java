@@ -216,7 +216,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMaximum = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lblSystemInfo = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        pnLogin = new javax.swing.JPanel();
         lblUserName = new javax.swing.JLabel();
         lblLoginIcon = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
@@ -346,21 +346,21 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 .addGap(2, 2, 2))
         );
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnLogin.setBackground(new java.awt.Color(255, 255, 255));
+        pnLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
+        pnLogin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblUserName.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblUserName.setText("User Name");
-        jPanel3.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 382, 255, -1));
+        pnLogin.add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 382, 255, -1));
 
         lblLoginIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLoginIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_100px.png"))); // NOI18N
-        jPanel3.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 160, 80));
+        pnLogin.add(lblLoginIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 160, 80));
 
         lblPassword.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblPassword.setText("Password");
-        jPanel3.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 452, 255, -1));
+        pnLogin.add(lblPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 452, 255, -1));
 
         txtUserName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtUserName.setBorder(null);
@@ -371,15 +371,15 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 txtUserNameActionPerformed(evt);
             }
         });
-        jPanel3.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 407, 227, -1));
-        jPanel3.add(txtsparetorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 430, 255, -1));
-        jPanel3.add(lblSparetorPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 500, 255, -1));
+        pnLogin.add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 407, 227, -1));
+        pnLogin.add(txtsparetorName, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 430, 255, -1));
+        pnLogin.add(lblSparetorPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 500, 255, -1));
 
         lblIconUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/User_24px.png"))); // NOI18N
-        jPanel3.add(lblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 405, -1, -1));
+        pnLogin.add(lblIconUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 405, -1, -1));
 
         lblIconPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Key_24px.png"))); // NOI18N
-        jPanel3.add(lblIconPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 475, -1, -1));
+        pnLogin.add(lblIconPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 475, -1, -1));
 
         btnLogOut.setBackground(new java.awt.Color(255, 255, 255));
         btnLogOut.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
@@ -400,7 +400,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnLogOutMouseExited(evt);
             }
         });
-        jPanel3.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 640, 180, -1));
+        pnLogin.add(btnLogOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 640, 180, -1));
 
         btnMStudentType.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMStudentType.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -413,7 +413,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMStudentTypeMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMStudentType, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 76, 130, -1));
+        pnLogin.add(btnMStudentType, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 76, 130, -1));
 
         btnMNationality.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMNationality.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -425,7 +425,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMNationalityMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 110, 130, -1));
+        pnLogin.add(btnMNationality, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 110, 130, -1));
 
         Menu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Menu_30px.png"))); // NOI18N
@@ -435,7 +435,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 MenuMouseClicked(evt);
             }
         });
-        jPanel3.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 38, -1));
+        pnLogin.add(Menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 38, -1));
 
         btnMReligion.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMReligion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -447,7 +447,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMReligionMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 144, 130, -1));
+        pnLogin.add(btnMReligion, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 144, 130, -1));
 
         btnMEthnic.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMEthnic.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -459,7 +459,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMEthnicMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 178, 130, -1));
+        pnLogin.add(btnMEthnic, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 178, 130, -1));
 
         btnMRoom.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMRoom.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -471,7 +471,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMRoomMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 212, 130, -1));
+        pnLogin.add(btnMRoom, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 212, 130, -1));
 
         btnDatasource.setForeground(new java.awt.Color(0, 0, 0));
         btnDatasource.setText("Datasource Setting");
@@ -482,7 +482,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnDatasourceActionPerformed(evt);
             }
         });
-        jPanel3.add(btnDatasource, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 250, -1));
+        pnLogin.add(btnDatasource, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 580, 250, -1));
 
         btnSignUP.setBackground(new java.awt.Color(255, 255, 255));
         btnSignUP.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
@@ -503,7 +503,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnSignUPMouseExited(evt);
             }
         });
-        jPanel3.add(btnSignUP, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 540, 180, -1));
+        pnLogin.add(btnSignUP, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 540, 180, -1));
 
         radLao.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radLao);
@@ -515,7 +515,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 radLaoActionPerformed(evt);
             }
         });
-        jPanel3.add(radLao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 70, -1));
+        pnLogin.add(radLao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 70, -1));
 
         radEnglish.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(radEnglish);
@@ -527,7 +527,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 radEnglishActionPerformed(evt);
             }
         });
-        jPanel3.add(radEnglish, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
+        pnLogin.add(radEnglish, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, -1));
 
         txtPassword.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtPassword.setBorder(null);
@@ -536,7 +536,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 txtPasswordActionPerformed(evt);
             }
         });
-        jPanel3.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 479, 227, 20));
+        pnLogin.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 479, 227, 20));
 
         btnMWorkStatus.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMWorkStatus.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -548,7 +548,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMWorkStatusMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMWorkStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 246, 130, -1));
+        pnLogin.add(btnMWorkStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 246, 130, -1));
 
         btnMSchoolInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMSchoolInfo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -560,7 +560,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMSchoolInfoMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMSchoolInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 280, 130, -1));
+        pnLogin.add(btnMSchoolInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 280, 130, -1));
 
         btnMenuRelationship.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         btnMenuRelationship.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -572,7 +572,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMenuRelationshipMouseClicked(evt);
             }
         });
-        jPanel3.add(btnMenuRelationship, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 314, 200, -1));
+        pnLogin.add(btnMenuRelationship, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 314, 200, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -961,7 +961,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -970,7 +970,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
+                    .addComponent(pnLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 677, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -1436,7 +1436,6 @@ int cnt=0;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
@@ -1457,6 +1456,7 @@ int cnt=0;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JLabel lblTeacher;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JPanel pnLogin;
     private javax.swing.JRadioButton radEnglish;
     private javax.swing.JRadioButton radLao;
     private javax.swing.JPasswordField txtPassword;
