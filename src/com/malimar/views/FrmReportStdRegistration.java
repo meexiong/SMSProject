@@ -7,6 +7,7 @@ import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.LangType;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -42,7 +43,6 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
             rs.close();
             return smap;            
         } catch (SQLException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -71,7 +71,7 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
         lblReportTitle = new javax.swing.JLabel();
         cmbSemester = new javax.swing.JComboBox<>();
         lblSemester = new javax.swing.JLabel();
-        btnReport = new javax.swing.JButton();
+        btnReport = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -159,16 +159,21 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
             }
         });
 
-        btnReport.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnReport.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnReport.setText("Report");
+        btnReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReport.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnReportMouseMoved(evt);
+            }
+        });
         btnReport.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnReportMouseClicked(evt);
             }
-        });
-        btnReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnReportActionPerformed(evt);
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnReportMouseExited(evt);
             }
         });
 
@@ -181,11 +186,13 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblSemester, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(89, 89, 89)
+                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -197,8 +204,8 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmbSemester, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnReport)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -215,7 +222,31 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnExitMouseClicked
 
-    private void btnReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportActionPerformed
+    private void lblSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSemesterMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblSemester", frm);
+        }
+    }//GEN-LAST:event_lblSemesterMouseClicked
+
+    private void lblReportTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportTitleMouseClicked
+        if(evt.getModifiers()==6){
+            WindowChangeLabel("lblReportTitle", frm);
+        }
+    }//GEN-LAST:event_lblReportTitleMouseClicked
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void btnReportMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseMoved
+        Border.blueColor(btnReport);
+    }//GEN-LAST:event_btnReportMouseMoved
+
+    private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
         try {
             if (evt.getModifiers() == 6) {
                 LabelManager.WindowChangeLabel("btnReport", frm);
@@ -234,37 +265,15 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
                 f.setTitle("Student Registration Report");
                 f.getContentPane().add(new net.sf.jasperreports.view.JRViewer(pri));
                 f.setVisible(true);
+                this.dispose();
             }
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//GEN-LAST:event_btnReportActionPerformed
-
-    private void lblSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSemesterMouseClicked
-        if(evt.getModifiers()==6){
-            WindowChangeLabel("lblSemester", frm);
-        }
-    }//GEN-LAST:event_lblSemesterMouseClicked
-
-    private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
-        if(evt.getModifiers()==6){
-            WindowChangeLabel("btnReport", frm);
         }
     }//GEN-LAST:event_btnReportMouseClicked
 
-    private void lblReportTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportTitleMouseClicked
-        if(evt.getModifiers()==6){
-            WindowChangeLabel("lblReportTitle", frm);
-        }
-    }//GEN-LAST:event_lblReportTitleMouseClicked
-
-    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
-        FrameMove.mousePressed(evt);
-    }//GEN-LAST:event_formMousePressed
-
-    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
-        FrameMove.mouseDragded(evt, this);
-    }//GEN-LAST:event_formMouseDragged
+    private void btnReportMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseExited
+        Border.WhiteColor(btnReport);
+    }//GEN-LAST:event_btnReportMouseExited
     
     /**
      * @param args the command line arguments
@@ -304,7 +313,7 @@ public class FrmReportStdRegistration extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
-    private javax.swing.JButton btnReport;
+    private javax.swing.JLabel btnReport;
     private javax.swing.JComboBox<String> cmbSemester;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

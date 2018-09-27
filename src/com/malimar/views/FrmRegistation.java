@@ -13,10 +13,10 @@ import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
-import java.text.DecimalFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -46,6 +46,7 @@ public class FrmRegistation extends javax.swing.JFrame {
         getcmbStudent();
         getcmbCurrency();
         txtVAT.setText(String.format("%,.2f", rm.getVatDefault()));
+        ((JTextFieldDateEditor)txtRegisterDate.getDateEditor()).setDisabledTextColor(Color.BLACK);
     }
     private void showRegistation(){
         txtGrandTotalOrg.hide();
@@ -1081,7 +1082,7 @@ public class FrmRegistation extends javax.swing.JFrame {
                 rm.printReport(rgt);
                 clearText();
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
         }
     }//GEN-LAST:event_tableRegistrationMouseClicked
 
