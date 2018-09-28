@@ -33,13 +33,14 @@ public class FrmReport extends javax.swing.JFrame {
         frm = this.getClass().getSimpleName();
         
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
-        
         btnReportTeacher.setText(LabelManager.hmapLang.get("btnReportTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportEmployee.setText(LabelManager.hmapLang.get("btnReportEmployee".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportStudentAll.setText(LabelManager.hmapLang.get("btnReportStudentAll".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportStudentRegistration.setText(LabelManager.hmapLang.get("btnReportStudentRegistration".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportStudentPayment.setText(LabelManager.hmapLang.get("btnReportStudentPayment".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportAmountReveivedByDate.setText(LabelManager.hmapLang.get("btnReportAmountReveivedByDate".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnReportAmountReveivedByDate.setText(LabelManager.hmapLang.get("btnReportAmountReveivedByDate".concat(frm).toUpperCase())[LabelManager.LN]);
+ 
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -309,22 +309,23 @@ public class ReceiptManager {
         }
         return false;
     }
-    public void printInstallment(Receipt rct, JDialog fm){
+
+    public void printInstallment(Receipt rct, JDialog fm) {
         try {
             Map param = new HashMap();
-                        param.put("registerID", rct.getRegisterID());
-                        JasperPrint pri;
-                        if ("L1".equals(LangType)) {
-                            pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceiptInstallment_L1.jasper", param, c);
-                        } else {
-                            pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceiptInstallment_L2.jasper", param, c);
-                        }
-                        FrmOpenReport f = new FrmOpenReport();
-                        f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                        f.setTitle("Print Installment");
-                        f.getContentPane().add(new JRViewer(pri));
-                        fm.dispose();
-                        f.setVisible(true);
+            param.put("registerID", rct.getRegisterID());
+            JasperPrint pri;
+            if ("L1".equals(LangType)) {
+                pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceiptInstallment_L1.jasper", param, c);
+            } else {
+                pri = JasperFillManager.fillReport("src/com/malimar/reports/PrintReceiptInstallment_L2.jasper", param, c);
+            }
+            FrmOpenReport f = new FrmOpenReport();
+            f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            f.setTitle("Print Installment");
+            f.getContentPane().add(new JRViewer(pri));
+            fm.dispose();
+            f.setVisible(true);
         } catch (JRException e) {
         }
     }

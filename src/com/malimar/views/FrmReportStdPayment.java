@@ -270,15 +270,16 @@ public class FrmReportStdPayment extends javax.swing.JFrame {
                 } else {
                     pri = JasperFillManager.fillReport("src/com/malimar/reports/ReportPayment_L2.jasper", param, c);
                 }
-                FrmOpenReport f = new FrmOpenReport();
-                f.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                f.setTitle("Student Payments Report");
-                f.getContentPane().add(new net.sf.jasperreports.view.JRViewer(pri));
-                f.setVisible(true);
-                this.dispose();
+                if (!pri.getPages().isEmpty()) {
+                    FrmOpenReport f = new FrmOpenReport();
+                    f.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                    f.setTitle("Student Payments Report");
+                    f.getContentPane().add(new net.sf.jasperreports.view.JRViewer(pri));
+                    f.setVisible(true);
+                    this.dispose();
+                }
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }//GEN-LAST:event_btnReportMouseClicked
 
