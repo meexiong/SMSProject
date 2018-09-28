@@ -174,6 +174,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnDatasource.setText("ຕັ້ງຄ່າຖານຂໍ້ມູນ");
         btnSignUP.setText("ເຂົ້າໃຊ້ລະບົບ");
         btnLogOut.setText("ອອກຈາກໃຊ້ລະບົບ");
+        lblSystemInfo.setText("ລະບົບຈັດການໂຮງຮຽນ");
     }
     private void langEN(){
 //        lblUserName.setText("User Name");
@@ -182,6 +183,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnDatasource.setText("Datasource Setting");
         btnSignUP.setText("Sign Up");
         btnLogOut.setText("Logout");
+        lblSystemInfo.setText("School Management System");
     }
     private void getMainLabel(){
         lblSchedule.setText(hmapLang.get("lblSchedule".concat(frm).toUpperCase()) [LN]);
