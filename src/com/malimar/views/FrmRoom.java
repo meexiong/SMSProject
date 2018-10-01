@@ -6,6 +6,7 @@ import com.malimar.controllers.GetMaxID;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.RoomManager;
 import com.malimar.models.Room;
 import com.malimar.utils.Border;
@@ -29,6 +30,8 @@ public class FrmRoom extends javax.swing.JFrame {
     Room rm = new Room();
     public FrmRoom() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         table.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel) table.getModel();

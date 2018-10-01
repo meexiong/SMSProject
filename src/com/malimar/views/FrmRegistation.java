@@ -6,6 +6,7 @@ import com.malimar.controllers.GetMaxID;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.RegistrationManager;
 import com.malimar.controllers.TableAlignmentHeader;
 import com.malimar.models.Registration;
@@ -41,6 +42,8 @@ public class FrmRegistation extends javax.swing.JFrame {
     Registration rgt = new Registration();;
     public FrmRegistation() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         showRegistation();
         getcmbSemester();
         getcmbStudent();

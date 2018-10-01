@@ -8,6 +8,7 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.RelationshipManager;
 import com.malimar.models.Guardian;
 import com.malimar.models.Relationship;
@@ -51,6 +52,8 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
     
     public FrmRelationship_Add() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));

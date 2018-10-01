@@ -7,6 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.StudentParkManager;
 import com.malimar.models.StudentPark;
 import com.malimar.utils.Border;
@@ -37,7 +38,8 @@ public class FrmStudentPark extends javax.swing.JFrame {
 
     public FrmStudentPark() {
         initComponents();
-
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel) jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));

@@ -7,6 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.RegionManager;
 import com.malimar.models.Region;
 import com.malimar.utils.Border;
@@ -38,6 +39,8 @@ public class FrmRegion extends javax.swing.JFrame {
     
     public FrmRegion() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));

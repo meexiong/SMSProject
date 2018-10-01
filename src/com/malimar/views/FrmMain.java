@@ -10,6 +10,7 @@ import com.malimar.utils.Border;
 import static com.malimar.controllers.LabelManager.LangType;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.SetText;
 import com.malimar.utils.MenuSlide;
@@ -28,6 +29,8 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
     public static String userNbr="";
     public FrmMain() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm = this.getClass().getSimpleName();
         //this.setExtendedState(FrmMain.MAXIMIZED_BOTH);
 //        jPanel5.setAlignmentX(Component.CENTER_ALIGNMENT);

@@ -3,6 +3,7 @@ package com.malimar.views;
 
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.NationalityManager;
 import com.malimar.models.Nationality;
 import com.malimar.utils.Border;
@@ -30,6 +31,8 @@ public class FrmNationality extends javax.swing.JFrame {
     String frm;
     public FrmNationality() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         jTable1.getTableHeader().setFont(new Font("Saysettha OT",Font.BOLD,12));
         frm=this.getClass().getSimpleName();
         model = (DefaultTableModel) jTable1.getModel();

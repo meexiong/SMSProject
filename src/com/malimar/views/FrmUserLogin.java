@@ -7,6 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.UserLoginManager;
 import com.malimar.models.UserLogin;
 import com.malimar.utils.Border;
@@ -64,7 +65,8 @@ public class FrmUserLogin extends javax.swing.JFrame {
         frm = this.getClass().getSimpleName();
         model1 = (DefaultTableModel) jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
-
+        Logo lg = new Logo();
+        lg.getLogo(this);
         model2 = (DefaultTableModel) jTable2.getModel();
         jTable2.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
 

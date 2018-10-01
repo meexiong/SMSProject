@@ -10,6 +10,7 @@ import com.malimar.controllers.GetMaxID;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.NextCellActioin;
 import com.malimar.controllers.SchaduleManager;
 import com.malimar.controllers.TableAlignmentHeader;
@@ -56,6 +57,8 @@ public class FrmSchedule extends javax.swing.JFrame {
     Schedule sh = new Schedule();
     public FrmSchedule() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm = this.getClass().getSimpleName();
         showSchedule();
         getcmbSemester();

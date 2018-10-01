@@ -8,6 +8,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.StudentTypeManager;
 import com.malimar.models.StudentType;
 import com.malimar.utils.Border;
@@ -41,7 +42,8 @@ public class FrmStudentType extends javax.swing.JFrame {
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new java.awt.Font("Saysettha OT", java.awt.Font.BOLD, 12));
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jTable1.setShowGrid(true);
         jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));

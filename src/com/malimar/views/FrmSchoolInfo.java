@@ -7,6 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.SchoolInfoManager;
 import com.malimar.models.SchoolInfo;
 import com.malimar.utils.Border;
@@ -39,7 +40,8 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
     public FrmSchoolInfo() {
         initComponents();        
         frm = this.getClass().getSimpleName();
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         lblSystemInfo.setText(LabelManager.hmapForm.get("FrmSchoolInfo".toUpperCase())[LabelManager.LN]);
         
         Border.blueColor(btnSave);

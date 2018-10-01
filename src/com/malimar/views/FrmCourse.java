@@ -5,6 +5,7 @@ import com.malimar.controllers.CourseManager;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.TableAlignmentHeader;
 import com.malimar.models.Course;
 import com.malimar.utils.Border;
@@ -30,6 +31,8 @@ public class FrmCourse extends javax.swing.JFrame {
     Course cs = new Course();
     public FrmCourse() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         model = (DefaultTableModel) table.getModel();
         startFrame();
         ClearTable.clearFirstLoad(table, model);

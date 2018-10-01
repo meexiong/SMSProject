@@ -5,6 +5,7 @@
  */
 package com.malimar.views;
 
+import com.malimar.controllers.Logo;
 import com.malimar.utils.FrameMove;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
@@ -20,14 +21,8 @@ public class FrmOpenReport extends javax.swing.JFrame {
      */
     public FrmOpenReport() {
         initComponents();
-        setImageIcon();
-    }
-    private void setImageIcon(){
-        try {
-            setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/com/malimar/icons/FrmOpenReport.png")));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Logo lg = new Logo();
+        lg.getLogo(this);
     }
 
     /**

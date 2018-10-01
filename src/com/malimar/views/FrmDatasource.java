@@ -2,6 +2,7 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerAccess;
+import com.malimar.controllers.Logo;
 import com.malimar.models.AccessDatasource;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
@@ -12,6 +13,8 @@ public class FrmDatasource extends javax.swing.JFrame {
     DatabaseManagerAccess am = new DatabaseManagerAccess();
     public FrmDatasource() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
     }
 
     @SuppressWarnings("unchecked")

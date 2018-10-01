@@ -7,6 +7,7 @@ import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.LangType;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import java.sql.Connection;
@@ -26,6 +27,8 @@ public class FrmReportStdPayment extends javax.swing.JFrame {
     String frm;
     public FrmReportStdPayment() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm =  this.getClass().getSimpleName();
         getcmbSemester();
         lblReportTitle.setText(hmapLang.get("lblReportTitle".concat(frm).toUpperCase())[LN]);

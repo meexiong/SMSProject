@@ -8,6 +8,7 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.models.Guardian;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
@@ -41,7 +42,8 @@ public class FrmGuardian extends javax.swing.JFrame {
     public FrmGuardian(String id) {    
         initComponents();
         frm = this.getClass().getSimpleName();
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         id1 = id;
         txtID.setText(id);
         

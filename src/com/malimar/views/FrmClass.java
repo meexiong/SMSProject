@@ -9,6 +9,7 @@ import com.malimar.controllers.ClassManager;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import static com.malimar.controllers.LabelManager.LN;
+import com.malimar.controllers.Logo;
 import com.malimar.models.ClassL;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
@@ -50,7 +51,8 @@ public class FrmClass extends javax.swing.JFrame {
         frm = this.getClass().getSimpleName();        
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         txtID.setEnabled(false);
         
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);

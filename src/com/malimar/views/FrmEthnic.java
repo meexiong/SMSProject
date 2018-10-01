@@ -8,6 +8,7 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.EthnicManager;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.models.Ethnic;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
@@ -41,7 +42,8 @@ public class FrmEthnic extends javax.swing.JFrame {
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         txtID.setEnabled(false);
         
         jScrollPane1.getViewport().setBackground(Color.WHITE);

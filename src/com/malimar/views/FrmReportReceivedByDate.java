@@ -9,6 +9,7 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import static com.malimar.controllers.LabelManager.LangType;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
+import com.malimar.controllers.Logo;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import java.sql.Connection;
@@ -28,6 +29,8 @@ public class FrmReportReceivedByDate extends javax.swing.JFrame {
     Connection c = DatabaseManagerSQL.getConnection();
     public FrmReportReceivedByDate() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm = this.getClass().getSimpleName();
         lblReportTitle.setText(LabelManager.hmapLang.get("lblReportTitle".concat(frm).toUpperCase())[LabelManager.LN]);
         lblStartDate.setText(LabelManager.hmapLang.get("lblStartDate".concat(frm).toUpperCase())[LabelManager.LN]);

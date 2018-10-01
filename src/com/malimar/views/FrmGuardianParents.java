@@ -8,6 +8,7 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.models.Guardian;
 import com.malimar.models.Student;
 import com.malimar.utils.Border;
@@ -46,7 +47,8 @@ public class FrmGuardianParents extends javax.swing.JFrame {
     public FrmGuardianParents(String xi) {
         initComponents();
         x = Integer.parseInt(xi);
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));

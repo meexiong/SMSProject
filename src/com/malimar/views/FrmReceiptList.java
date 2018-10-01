@@ -5,6 +5,7 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.ReceiptManager;
 import com.malimar.controllers.TableAlignmentHeader;
 import com.malimar.models.Receipt;
@@ -34,6 +35,8 @@ public class FrmReceiptList extends javax.swing.JFrame {
     HashMap<String, Object[]>mapCourse = null;
     public FrmReceiptList() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         showReceipt();
         getcmbSemester();
         getcmbCourse();

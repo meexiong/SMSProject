@@ -11,6 +11,7 @@ package com.malimar.views;
  */
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.PathReport;
 import java.awt.Dimension;
@@ -31,7 +32,8 @@ public class FrmReport extends javax.swing.JFrame {
     public FrmReport() {
         initComponents();
         frm = this.getClass().getSimpleName();
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         btnReportTeacher.setText(LabelManager.hmapLang.get("btnReportTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportEmployee.setText(LabelManager.hmapLang.get("btnReportEmployee".concat(frm).toUpperCase())[LabelManager.LN]);

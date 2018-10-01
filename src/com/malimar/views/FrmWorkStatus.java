@@ -7,6 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.WorkStatusManager;
 import com.malimar.models.WorkStatus;
 import com.malimar.utils.Border;
@@ -41,7 +42,8 @@ public class FrmWorkStatus extends javax.swing.JFrame {
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel)jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));        
-        
+        Logo lg = new Logo();
+        lg.getLogo(this);
         txtID.setEnabled(true);
                 
         

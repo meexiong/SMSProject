@@ -4,6 +4,7 @@ package com.malimar.views;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.Logo;
 import com.malimar.controllers.SemesterManager;
 import com.malimar.models.Semester;
 import com.malimar.utils.Border;
@@ -26,6 +27,8 @@ public class FrmSemester extends javax.swing.JFrame {
 
     public FrmSemester() {
         initComponents();
+        Logo lg = new Logo();
+        lg.getLogo(this);
         model = (DefaultTableModel) table.getModel();
         startFrame();
         ClearTable.clearFirstLoad(table, model);
