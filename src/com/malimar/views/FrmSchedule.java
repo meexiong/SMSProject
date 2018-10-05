@@ -18,6 +18,7 @@ import com.malimar.models.Schedule;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
 import com.malimar.utils.FrameMove;
+import com.malimar.utils.MsgBox;
 import static com.malimar.views.FrmMain.userNbr;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
@@ -715,11 +716,16 @@ public class FrmSchedule extends javax.swing.JFrame {
                 sh.setScheduleID(Integer.parseInt(txtID.getText()));
                 sh.setCreatedate(txtCreateDate.getDate());
                 sh.setCreatebyUser(userNbr);
-                sm.insert(sh);
+                if(sm.insert(sh)){
+                    MsgBox.msgInfo();
+                }
             } else {
+                sh.setScheduleID(Integer.parseInt(txtID.getText()));
                 sh.setSchStatus(chStatus.isSelected());
-                sm.update(sh);
-                sm.updateSemesterStatus(sh);
+                if(sm.update(sh)){
+                    sm.updateSemesterStatus(sh);
+                    MsgBox.msgInfo();
+                }
             }
         }
     }//GEN-LAST:event_btnSaveMouseClicked

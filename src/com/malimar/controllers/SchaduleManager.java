@@ -117,8 +117,11 @@ public class SchaduleManager {
             String insert = "Update tbl_Schedule set SemesterID=? where ScheduleID=?";
             PreparedStatement p = c.prepareStatement(insert);
             p.setInt(1, sd.getSemesterID());
+            int id = sd.getScheduleID();
+            p.setInt(2, sd.getScheduleID());
             return p.executeUpdate()==1;
         } catch (SQLException e) {
+            e.printStackTrace();
         }
         return false;
     }

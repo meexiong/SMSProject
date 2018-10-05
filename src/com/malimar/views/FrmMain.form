@@ -705,18 +705,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btnReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnSetting" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="lblSettingUser" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblCourse" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                                       <Component id="btnCourse" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
@@ -741,20 +730,36 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btnSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="lblTeacher" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btnTeacher" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="lblReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="btnReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btnPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="lblRegistation" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="btnScore" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="btnSetting" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="lblSettingUser" min="-2" pref="179" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblTeacher" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnTeacher" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblProduct" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnProduct" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblSale" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnSale" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblRegistation" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnScore" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="27" max="32767" attributes="0"/>
                       </Group>
@@ -806,13 +811,27 @@
                           </Group>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnSetting" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="btnReport" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblSettingUser" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="lblReport" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnSetting" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="btnReport" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblSettingUser" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                                      <Component id="lblReport" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnProduct" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="lblProduct" min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="btnSale" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                  <Component id="lblSale" min="-2" pref="20" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1098,6 +1117,62 @@
                   </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblQuardianMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="btnProduct">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/malimar/icons/Product_100px.png"/>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnProductMouseMoved"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProductMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnProductMouseExited"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblProduct">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Saysettha OT" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Item"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblProductMouseClicked"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="btnSale">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/malimar/icons/Buying_100px.png"/>
+                    </Property>
+                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+                      <Color id="Hand Cursor"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnSaleMouseMoved"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSaleMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSaleMouseExited"/>
+                  </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblSale">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Saysettha OT" size="12" style="1"/>
+                    </Property>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" value="Sale"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblSaleMouseClicked"/>
                   </Events>
                 </Component>
               </SubComponents>
