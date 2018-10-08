@@ -298,17 +298,20 @@ public class FrmUserLogin extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    private void showForm(){
+    private void showForm() {
         try {
-            String x = cbbGroupUser1.getSelectedItem().toString();
-            mapFm = ulm.mapForm(x);
-            Map<String, Object[]> mp = new TreeMap<>(mapFm);
-            cbbForm.removeAllItems();
-            mp.keySet().forEach((s)->{
-                cbbForm.addItem(s);
-            });
-            cbbForm.setSelectedIndex(-1);
-            AutoCompleteDecorator.decorate(cbbForm);
+            if (cbbGroupUser1.getSelectedItem().toString().isEmpty()) {
+                String x = cbbGroupUser1.getSelectedItem().toString();
+                mapFm = ulm.mapForm(x);
+                Map<String, Object[]> mp = new TreeMap<>(mapFm);
+                cbbForm.removeAllItems();
+                mp.keySet().forEach((s) -> {
+                    cbbForm.addItem(s);
+                });
+                cbbForm.setSelectedIndex(-1);
+                AutoCompleteDecorator.decorate(cbbForm);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1723,21 +1726,19 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
         try {
-            String x= cbbGroupUser1.getSelectedItem().toString();  
-            String form = cbbForm.getSelectedItem().toString();           
-                  
-            int index = jTable4.getSelectedRow();
-            ul.setGULID(Integer.parseInt(jTable4.getValueAt(index, 0).toString()));
-            
-            ul.setReads((Boolean) jTable4.getValueAt(index, 3));
-            ul.setWrite((Boolean) jTable4.getValueAt(index, 4));
-            ul.setDenys((Boolean) jTable4.getValueAt(index, 5));
-            
-            ulm.checkReads(ul);
-            ulm.checkWrite(ul);
-            ulm.checkDeny(ul);
-            ulm.showClickComboForm(x, form, jTable4, model4);
-            
+            String x = cbbGroupUser1.getSelectedItem().toString();
+            if (!cbbGroupUser1.getSelectedItem().toString().isEmpty()) {
+                String form = cbbForm.getSelectedItem().toString();
+                int index = jTable4.getSelectedRow();
+                ul.setGULID(Integer.parseInt(jTable4.getValueAt(index, 0).toString()));
+                ul.setReads((Boolean) jTable4.getValueAt(index, 3));
+                ul.setWrite((Boolean) jTable4.getValueAt(index, 4));
+                ul.setDenys((Boolean) jTable4.getValueAt(index, 5));
+                ulm.checkReads(ul);
+                ulm.checkWrite(ul);
+                ulm.checkDeny(ul);
+                ulm.showClickComboForm(x, form, jTable4, model4);
+            }
             
         } catch (Exception e) {
             e.printStackTrace();

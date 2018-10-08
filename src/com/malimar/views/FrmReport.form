@@ -214,6 +214,7 @@
                           <Component id="btnReportStudentRegistration" alignment="0" pref="318" max="32767" attributes="0"/>
                           <Component id="btnReportStudentPayment" alignment="0" pref="318" max="32767" attributes="0"/>
                           <Component id="btnReportAmountReveivedByDate" alignment="0" pref="318" max="32767" attributes="0"/>
+                          <Component id="btnReportSaleByDate" alignment="1" pref="318" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -234,6 +235,8 @@
                       <Component id="btnReportStudentPayment" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnReportAmountReveivedByDate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="btnReportSaleByDate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -330,6 +333,22 @@
               <Events>
                 <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnReportAmountReveivedByDateMouseClicked"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportAmountReveivedByDateActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="com.xzq.osc.JocHyperlink" name="btnReportSaleByDate">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/malimar/icons/Payment History_24px.png"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Sale Report By Date"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Saysettha OT" size="12" style="0"/>
+                </Property>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+              </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnReportSaleByDateMouseClicked"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReportSaleByDateActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
