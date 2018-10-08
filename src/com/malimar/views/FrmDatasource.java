@@ -74,7 +74,11 @@ public class FrmDatasource extends javax.swing.JFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/P_24px.png"))); // NOI18N
 
         txtServerName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtServerName.setForeground(new java.awt.Color(255, 255, 255));
         txtServerName.setBorder(null);
+        txtServerName.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        txtServerName.setEnabled(false);
+        txtServerName.setOpaque(false);
 
         txtDatabaseName.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtDatabaseName.setBorder(null);

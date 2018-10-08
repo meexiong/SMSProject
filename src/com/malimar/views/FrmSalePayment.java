@@ -2,6 +2,9 @@
 package com.malimar.views;
 
 import com.malimar.controllers.LabelManager;
+import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.utils.FrameMove;
 
 public class FrmSalePayment extends javax.swing.JDialog {
     String frm;
@@ -14,7 +17,11 @@ public class FrmSalePayment extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         frm = this.getClass().getSimpleName();
+        lblPayment.setText(hmapLang.get("lblPayment".concat(frm).toUpperCase()) [LN]);
+        lblChange.setText(hmapLang.get("lblChange".concat(frm).toUpperCase()) [LN]);
         totalAmount = total;
+        txtDisplay.setText(String.format("%,.2f", total));
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -39,10 +46,22 @@ public class FrmSalePayment extends javax.swing.JDialog {
         btn5 = new javax.swing.JButton();
         btn9 = new javax.swing.JButton();
         btnEnter = new javax.swing.JButton();
+        lblChange = new javax.swing.JLabel();
+        txtChange = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
+        addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                formMouseDragged(evt);
+            }
+        });
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 15, 255)));
@@ -67,9 +86,17 @@ public class FrmSalePayment extends javax.swing.JDialog {
         lblPayment.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblPayment.setText("Payment");
         lblPayment.setOpaque(true);
+        lblPayment.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblPaymentMouseDragged(evt);
+            }
+        });
         lblPayment.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblPaymentMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblPaymentMousePressed(evt);
             }
         });
         jPanel4.add(lblPayment, java.awt.BorderLayout.CENTER);
@@ -94,7 +121,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
                 .addGap(2, 2, 2))
         );
 
-        txtDisplay.setFont(new java.awt.Font("Saysettha OT", 0, 24)); // NOI18N
+        txtDisplay.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         txtDisplay.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         txtDisplay.setText("0");
         txtDisplay.addActionListener(new java.awt.event.ActionListener() {
@@ -297,6 +324,20 @@ public class FrmSalePayment extends javax.swing.JDialog {
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnEnter});
 
+        lblChange.setFont(new java.awt.Font("Saysettha OT", 1, 18)); // NOI18N
+        lblChange.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblChange.setText("Change");
+        lblChange.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblChangeMouseClicked(evt);
+            }
+        });
+
+        txtChange.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
+        txtChange.setForeground(new java.awt.Color(0, 15, 255));
+        txtChange.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        txtChange.setText("0.00");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -306,8 +347,10 @@ public class FrmSalePayment extends javax.swing.JDialog {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDisplay))
-                .addContainerGap())
+                    .addComponent(txtDisplay)
+                    .addComponent(lblChange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtChange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,10 +358,16 @@ public class FrmSalePayment extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(txtDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblChange)
+                .addGap(2, 2, 2)
+                .addComponent(txtChange, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtChange, txtDisplay});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -446,17 +495,41 @@ public class FrmSalePayment extends javax.swing.JDialog {
         } else {
             double a = Double.parseDouble(txtDisplay.getText().replace(",", ""));
             txtDisplay.setText(String.valueOf(String.format("%,.2f", a)));
+            double y = a-totalAmount;
+            txtChange.setText(String.format("%,.2f", y));
         }
     }//GEN-LAST:event_txtDisplayActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
         double s = Double.parseDouble(txtDisplay.getText().replace(",", ""));
+        double c = Double.parseDouble(txtChange.getText().replace(",", ""));
         if(!(s<totalAmount)){
-            FrmSale.paid = s;
+            FrmSale.paid = s-c;
             dispose();
         }
-        
     }//GEN-LAST:event_btnEnterActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_formMousePressed
+
+    private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_formMouseDragged
+
+    private void lblPaymentMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_lblPaymentMousePressed
+
+    private void lblPaymentMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPaymentMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_lblPaymentMouseDragged
+
+    private void lblChangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblChangeMouseClicked
+         if (evt.getModifiers() == 6) {
+            LabelManager.WindowChangeLabel("lblChange", frm);
+        }
+    }//GEN-LAST:event_lblChangeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -517,7 +590,9 @@ public class FrmSalePayment extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel lblChange;
     private javax.swing.JLabel lblPayment;
+    private javax.swing.JLabel txtChange;
     private javax.swing.JTextField txtDisplay;
     // End of variables declaration//GEN-END:variables
 }

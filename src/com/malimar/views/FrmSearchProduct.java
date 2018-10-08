@@ -106,9 +106,17 @@ public class FrmSearchProduct extends javax.swing.JDialog {
         lblSearch.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSearch.setText("Search");
         lblSearch.setOpaque(true);
+        lblSearch.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblSearchMouseDragged(evt);
+            }
+        });
         lblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSearchMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblSearchMousePressed(evt);
             }
         });
         jPanel4.add(lblSearch, java.awt.BorderLayout.CENTER);
@@ -269,6 +277,14 @@ public class FrmSearchProduct extends javax.swing.JDialog {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
+
+    private void lblSearchMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_lblSearchMousePressed
+
+    private void lblSearchMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSearchMouseDragged
+       FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_lblSearchMouseDragged
 
     /**
      * @param args the command line arguments

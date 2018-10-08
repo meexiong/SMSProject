@@ -269,9 +269,17 @@ public class FrmSale extends javax.swing.JFrame {
         lblSaleTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSaleTitle.setText("Sale");
         lblSaleTitle.setOpaque(true);
+        lblSaleTitle.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblSaleTitleMouseDragged(evt);
+            }
+        });
         lblSaleTitle.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSaleTitleMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblSaleTitleMousePressed(evt);
             }
         });
         jPanel4.add(lblSaleTitle, java.awt.BorderLayout.CENTER);
@@ -922,6 +930,14 @@ public class FrmSale extends javax.swing.JFrame {
             LabelManager.WindowChangeLabel("lblGrandTotal", frm);
         }
     }//GEN-LAST:event_lblGrandTotalMouseClicked
+
+    private void lblSaleTitleMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSaleTitleMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_lblSaleTitleMouseDragged
+
+    private void lblSaleTitleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSaleTitleMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_lblSaleTitleMousePressed
 
     /**
      * @param args the command line arguments

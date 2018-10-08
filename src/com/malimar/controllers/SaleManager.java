@@ -4,7 +4,6 @@ package com.malimar.controllers;
 import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.models.Sale;
 import com.malimar.views.FrmMain;
-import com.malimar.views.FrmOpenReport;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,13 +13,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JFrame;
 import javax.swing.table.DefaultTableModel;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.view.JRViewer;
 
 public class SaleManager {
     Connection c = DatabaseManagerSQL.getConnection();
