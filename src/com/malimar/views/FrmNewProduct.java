@@ -167,9 +167,17 @@ public class FrmNewProduct extends javax.swing.JDialog {
         lblNewProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblNewProduct.setText("New Product");
         lblNewProduct.setOpaque(true);
+        lblNewProduct.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblNewProductMouseDragged(evt);
+            }
+        });
         lblNewProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblNewProductMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblNewProductMousePressed(evt);
             }
         });
         jPanel6.add(lblNewProduct, java.awt.BorderLayout.CENTER);
@@ -179,8 +187,8 @@ public class FrmNewProduct extends javax.swing.JDialog {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                .addGap(30, 30, 30)
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 447, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
         );
@@ -649,6 +657,14 @@ public class FrmNewProduct extends javax.swing.JDialog {
             WindowChangeLabel("lblCurrency", frm);
         }
     }//GEN-LAST:event_lblCurrency1MouseClicked
+
+    private void lblNewProductMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewProductMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_lblNewProductMousePressed
+
+    private void lblNewProductMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblNewProductMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_lblNewProductMouseDragged
 
     /**
      * @param args the command line arguments

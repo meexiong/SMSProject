@@ -46,24 +46,25 @@ public class FrmNationality extends javax.swing.JFrame {
         getNationalityLabel();
 //        txtID.setDisabledTextColor(Color.BLACK);
     }
-     public void getNationalityLabel() {
+     private void getNationalityLabel() {
         lblNationalityID.setText(hmapLang.get("lblNationalityID".concat(frm).toUpperCase())[LN]);
         lblNationality_L1.setText(hmapLang.get("lblNationality_L1".concat(frm).toUpperCase())[LN]);
         lblNationality_L2.setText(hmapLang.get("lblNationality_L2".concat(frm).toUpperCase())[LN]);
         btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
         JTableHeader th = jTable1.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            jTable1.getColumnCount();
-            for(int i=0; i < jTable1.getColumnCount(); i++){
-                TableColumn tc = tcm.getColumn(i);            
-                tc.setHeaderValue(hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LN]);
-            }
-            jTable1.setAutoCreateRowSorter(true);
-            th.repaint(); 
+        TableColumnModel tcm = th.getColumnModel();
+        jTable1.getColumnCount();
+        for (int i = 0; i < jTable1.getColumnCount(); i++) {
+            TableColumn tc = tcm.getColumn(i);
+            tc.setHeaderValue(hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase())[LN]);
+        }
+        jTable1.setAutoCreateRowSorter(true);
+        th.repaint();
     }
-     public void clearText(){
-         txtID.setText("New");
-         txtNationality_L1.setText("");
+
+    public void clearText() {
+        txtID.setText("New");
+        txtNationality_L1.setText("");
          txtNationality_L2.setText("");
          txtNationality_L1.requestFocus();
      }

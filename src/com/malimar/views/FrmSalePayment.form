@@ -59,8 +59,11 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel3" max="32767" attributes="0"/>
                       <Component id="txtDisplay" max="32767" attributes="0"/>
-                      <Component id="lblChange" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtChange" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="lblChange" min="-2" pref="176" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
@@ -524,7 +527,7 @@
               <Font name="Saysettha OT" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="4"/>
-            <Property name="text" type="java.lang.String" value="Change"/>
+            <Property name="text" type="java.lang.String" value="Withdraw"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblChangeMouseClicked"/>

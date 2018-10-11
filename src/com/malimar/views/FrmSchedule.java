@@ -301,9 +301,17 @@ public class FrmSchedule extends javax.swing.JFrame {
         lblScheduleInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblScheduleInfo.setText("Schadule");
         lblScheduleInfo.setOpaque(true);
+        lblScheduleInfo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblScheduleInfoMouseDragged(evt);
+            }
+        });
         lblScheduleInfo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblScheduleInfoMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblScheduleInfoMousePressed(evt);
             }
         });
         jPanel6.add(lblScheduleInfo, java.awt.BorderLayout.CENTER);
@@ -911,6 +919,14 @@ public class FrmSchedule extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
+
+    private void lblScheduleInfoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblScheduleInfoMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_lblScheduleInfoMousePressed
+
+    private void lblScheduleInfoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblScheduleInfoMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_lblScheduleInfoMouseDragged
 
     /**
      * @param args the command line arguments

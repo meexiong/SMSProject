@@ -125,9 +125,17 @@ public class FrmProductList extends javax.swing.JFrame {
         lblProudctList.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblProudctList.setText("Product List");
         lblProudctList.setOpaque(true);
+        lblProudctList.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblProudctListMouseDragged(evt);
+            }
+        });
         lblProudctList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblProudctListMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblProudctListMousePressed(evt);
             }
         });
         jPanel6.add(lblProudctList, java.awt.BorderLayout.CENTER);
@@ -375,6 +383,14 @@ public class FrmProductList extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
+
+    private void lblProudctListMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProudctListMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_lblProudctListMousePressed
+
+    private void lblProudctListMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProudctListMouseDragged
+        FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_lblProudctListMouseDragged
 
     /**
      * @param args the command line arguments
