@@ -4,6 +4,8 @@ package com.malimar.views;
 import com.malimar.controllers.LabelManager;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.hmapLang;
+import com.malimar.controllers.PaymentManager;
+import com.malimar.models.Payment;
 import com.malimar.utils.FrameMove;
 
 public class FrmSalePayment extends javax.swing.JDialog {
@@ -13,17 +15,24 @@ public class FrmSalePayment extends javax.swing.JDialog {
     double result;
     String operations;
     double totalAmount;
+    float rateLAK=0;
+    float rateTHB=0;
+    float rateUSD=0;
+    PaymentManager pmm = new PaymentManager();
+    Payment pm = new  Payment();
     public FrmSalePayment(java.awt.Frame parent, boolean modal, double total) {
         super(parent, modal);
         initComponents();
         frm = this.getClass().getSimpleName();
-        lblPayment.setText(hmapLang.get("lblPayment".concat(frm).toUpperCase()) [LN]);
-        lblChange.setText(hmapLang.get("lblChange".concat(frm).toUpperCase()) [LN]);
+        lblPayment.setText(hmapLang.get("lblPayment".concat(frm).toUpperCase())[LN]);
+        lblChange.setText(hmapLang.get("lblChange".concat(frm).toUpperCase())[LN]);
         totalAmount = total;
-        txtDisplay.setText(String.format("%,.2f", total));
-        
+        txtAmountLAK.setText(String.format("%,.2f", total));
+        pmm.loadRate(pm);
+        rateLAK = pm.getRateLAK();
+        rateTHB = pm.getRateTHB();
+        rateUSD = pm.getRateUSD();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -33,7 +42,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
         btnExit = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         lblPayment = new javax.swing.JLabel();
-        txtDisplay = new javax.swing.JTextField();
+        txtAmountLAK = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         btn6 = new javax.swing.JButton();
         btn7 = new javax.swing.JButton();
@@ -121,24 +130,24 @@ public class FrmSalePayment extends javax.swing.JDialog {
                 .addGap(2, 2, 2))
         );
 
-        txtDisplay.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
-        txtDisplay.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        txtDisplay.setText("0");
-        txtDisplay.addActionListener(new java.awt.event.ActionListener() {
+        txtAmountLAK.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
+        txtAmountLAK.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtAmountLAK.setText("0");
+        txtAmountLAK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDisplayActionPerformed(evt);
+                txtAmountLAKActionPerformed(evt);
             }
         });
-        txtDisplay.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAmountLAK.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtDisplayKeyReleased(evt);
+                txtAmountLAKKeyReleased(evt);
             }
         });
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btn6.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn6.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn6.setText("6");
         btn6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn6.setContentAreaFilled(false);
@@ -149,7 +158,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn7.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn7.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn7.setText("7");
         btn7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn7.setContentAreaFilled(false);
@@ -160,7 +169,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn0.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn0.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn0.setText("0");
         btn0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn0.setContentAreaFilled(false);
@@ -171,7 +180,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn3.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn3.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn3.setText("3");
         btn3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn3.setContentAreaFilled(false);
@@ -182,7 +191,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn4.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn4.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn4.setText("4");
         btn4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn4.setContentAreaFilled(false);
@@ -193,7 +202,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn2.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn2.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn2.setText("2");
         btn2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn2.setContentAreaFilled(false);
@@ -204,7 +213,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn1.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn1.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn1.setText("1");
         btn1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn1.setContentAreaFilled(false);
@@ -215,7 +224,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn8.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn8.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn8.setText("8");
         btn8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn8.setContentAreaFilled(false);
@@ -226,7 +235,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn5.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn5.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn5.setText("5");
         btn5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn5.setContentAreaFilled(false);
@@ -237,7 +246,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btn9.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btn9.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btn9.setText("9");
         btn9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btn9.setContentAreaFilled(false);
@@ -248,7 +257,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             }
         });
 
-        btnEnter.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnEnter.setFont(new java.awt.Font("Saysettha OT", 1, 24)); // NOI18N
         btnEnter.setText("Enter");
         btnEnter.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         btnEnter.setContentAreaFilled(false);
@@ -264,33 +273,26 @@ public class FrmSalePayment extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(btn1, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                            .addComponent(btn4, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                            .addComponent(btn7, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE))
+                        .addGap(5, 5, 5)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEnter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btn0, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                            .addComponent(btn5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn8, javax.swing.GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)))
+                    .addComponent(btnEnter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9});
@@ -298,28 +300,28 @@ public class FrmSalePayment extends javax.swing.JDialog {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEnter, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5))
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn0, btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btnEnter});
@@ -347,11 +349,9 @@ public class FrmSalePayment extends javax.swing.JDialog {
                 .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDisplay)
                     .addComponent(txtChange, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblChange, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(lblChange, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtAmountLAK))
                 .addGap(5, 5, 5))
         );
         jPanel1Layout.setVerticalGroup(
@@ -359,7 +359,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
-                .addComponent(txtDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAmountLAK, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblChange)
                 .addGap(2, 2, 2)
@@ -369,7 +369,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
                 .addGap(5, 5, 5))
         );
 
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtChange, txtDisplay});
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {txtAmountLAK, txtChange});
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -388,122 +388,122 @@ public class FrmSalePayment extends javax.swing.JDialog {
     }//GEN-LAST:event_lblPaymentMouseClicked
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
-        if(txtDisplay.getText().equals("0")){
+        if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn0.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn0.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn0.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-         if(txtDisplay.getText().equals("0")){
+         if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn1.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn1.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn1.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        if(txtDisplay.getText().equals("0")){
+        if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn2.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn2.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn2.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        if(txtDisplay.getText().equals("0")){
+        if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn3.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn3.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn3.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-         if(txtDisplay.getText().equals("0")){
+         if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn4.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn4.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn4.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-         if(txtDisplay.getText().equals("0")){
+         if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn5.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn5.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn5.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
-         if(txtDisplay.getText().equals("0")){
+         if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn6.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn6.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn6.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
-         if(txtDisplay.getText().equals("0")){
+         if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn7.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn7.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn7.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
-         if(txtDisplay.getText().equals("0")){
+         if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn8.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn8.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn8.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
-         if(txtDisplay.getText().equals("0")){
+         if(txtAmountLAK.getText().equals("0")){
             String enternumber = btn9.getText();
-            txtDisplay.setText(enternumber);
+            txtAmountLAK.setText(enternumber);
         }else{
-            String enternumber = txtDisplay.getText() + btn9.getText();
-            txtDisplay.setText(enternumber);
+            String enternumber = txtAmountLAK.getText() + btn9.getText();
+            txtAmountLAK.setText(enternumber);
         }
     }//GEN-LAST:event_btn9ActionPerformed
 
-    private void txtDisplayKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDisplayKeyReleased
+    private void txtAmountLAKKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAmountLAKKeyReleased
         
-    }//GEN-LAST:event_txtDisplayKeyReleased
+    }//GEN-LAST:event_txtAmountLAKKeyReleased
 
-    private void txtDisplayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisplayActionPerformed
-        if ("".equals(txtDisplay.getText())) {
-            txtDisplay.setText("0");
+    private void txtAmountLAKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAmountLAKActionPerformed
+        if ("".equals(txtAmountLAK.getText())) {
+            txtAmountLAK.setText("0");
         } else {
-            double a = Double.parseDouble(txtDisplay.getText().replace(",", ""));
-            txtDisplay.setText(String.valueOf(String.format("%,.2f", a)));
-            double y = a-totalAmount;
+            double a = Double.parseDouble(txtAmountLAK.getText().replace(",", ""));
+            txtAmountLAK.setText(String.valueOf(String.format("%,.2f", a)));
+            double y = a - totalAmount;
             txtChange.setText(String.format("%,.2f", y));
         }
-    }//GEN-LAST:event_txtDisplayActionPerformed
+    }//GEN-LAST:event_txtAmountLAKActionPerformed
 
     private void btnEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnterActionPerformed
-        double s = Double.parseDouble(txtDisplay.getText().replace(",", ""));
+        double s = Double.parseDouble(txtAmountLAK.getText().replace(",", ""));
         double c = Double.parseDouble(txtChange.getText().replace(",", ""));
         if(!(s<totalAmount)){
             FrmSale.paid = s-c;
@@ -594,7 +594,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblChange;
     private javax.swing.JLabel lblPayment;
+    private javax.swing.JTextField txtAmountLAK;
     private javax.swing.JLabel txtChange;
-    private javax.swing.JTextField txtDisplay;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,7 +26,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-40,0,0,1,95"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-24,0,0,1,-32"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -58,12 +58,9 @@
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel3" max="32767" attributes="0"/>
-                      <Component id="txtDisplay" max="32767" attributes="0"/>
                       <Component id="txtChange" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="lblChange" min="-2" pref="176" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="lblChange" alignment="1" max="32767" attributes="0"/>
+                      <Component id="txtAmountLAK" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               </Group>
@@ -74,7 +71,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                  <Component id="txtDisplay" linkSize="4" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="txtAmountLAK" linkSize="4" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblChange" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -174,7 +171,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JTextField" name="txtDisplay">
+        <Component class="javax.swing.JTextField" name="txtAmountLAK">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Saysettha OT" size="24" style="1"/>
@@ -183,8 +180,8 @@
             <Property name="text" type="java.lang.String" value="0"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDisplayActionPerformed"/>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDisplayKeyReleased"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtAmountLAKActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtAmountLAKKeyReleased"/>
           </Events>
         </Component>
         <Container class="javax.swing.JPanel" name="jPanel3">
@@ -203,53 +200,43 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btn2" linkSize="2" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                                  <Component id="btn6" linkSize="2" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btn7" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btn8" linkSize="2" min="-2" pref="58" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btn1" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btn0" linkSize="2" min="-2" pref="58" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btn3" linkSize="2" min="-2" pref="60" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btn4" linkSize="2" min="-2" pref="58" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btn5" linkSize="2" min="-2" pref="58" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btn9" linkSize="2" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btnEnter" max="32767" attributes="0"/>
-                          </Group>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btn2" linkSize="2" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="btn3" linkSize="2" alignment="0" min="-2" pref="60" max="-2" attributes="0"/>
+                          <Component id="btn6" linkSize="2" alignment="0" min="-2" pref="58" max="-2" attributes="0"/>
+                          <Component id="btn9" linkSize="2" alignment="0" min="-2" pref="148" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btn1" linkSize="2" alignment="0" pref="60" max="32767" attributes="0"/>
+                                  <Component id="btn4" linkSize="2" alignment="0" pref="58" max="32767" attributes="0"/>
+                                  <Component id="btn7" linkSize="2" alignment="0" pref="60" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btn0" linkSize="2" alignment="0" pref="58" max="32767" attributes="0"/>
+                                  <Component id="btn5" linkSize="2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btn8" linkSize="2" alignment="0" pref="58" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="btnEnter" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btn9" linkSize="3" alignment="3" min="-2" pref="62" max="-2" attributes="0"/>
-                          <Component id="btnEnter" linkSize="3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnEnter" linkSize="3" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="btn9" linkSize="3" min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn6" linkSize="3" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -257,13 +244,13 @@
                               <Component id="btn8" linkSize="3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btn3" linkSize="3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="btn4" linkSize="3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           <Component id="btn5" linkSize="3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="btn2" linkSize="3" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
@@ -271,7 +258,7 @@
                               <Component id="btn0" linkSize="3" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -280,7 +267,7 @@
             <Component class="javax.swing.JButton" name="btn6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="6"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -302,7 +289,7 @@
             <Component class="javax.swing.JButton" name="btn7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="7"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -324,7 +311,7 @@
             <Component class="javax.swing.JButton" name="btn0">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="0"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -346,7 +333,7 @@
             <Component class="javax.swing.JButton" name="btn3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="3"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -368,7 +355,7 @@
             <Component class="javax.swing.JButton" name="btn4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="4"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -390,7 +377,7 @@
             <Component class="javax.swing.JButton" name="btn2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="2"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -412,7 +399,7 @@
             <Component class="javax.swing.JButton" name="btn1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="1"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -434,7 +421,7 @@
             <Component class="javax.swing.JButton" name="btn8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="8"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -456,7 +443,7 @@
             <Component class="javax.swing.JButton" name="btn5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -478,7 +465,7 @@
             <Component class="javax.swing.JButton" name="btn9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="9"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -500,7 +487,7 @@
             <Component class="javax.swing.JButton" name="btnEnter">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Saysettha OT" size="12" style="1"/>
+                  <Font name="Saysettha OT" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Enter"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
