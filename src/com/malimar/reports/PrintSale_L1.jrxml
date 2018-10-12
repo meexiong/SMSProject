@@ -40,63 +40,67 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="59" splitType="Stretch">
+		<band height="91" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="1" width="176" height="20" uuid="d7dcdf5e-fd61-4b62-845a-5be42b40d7cc"/>
+				<reportElement x="0" y="33" width="176" height="20" uuid="d7dcdf5e-fd61-4b62-845a-5be42b40d7cc"/>
 				<textElement textAlignment="Center">
 					<font fontName="Saysettha MX" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SchoolName_L1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="21" width="176" height="12" uuid="024440a3-40c7-463d-b78a-9f1a3110c5ee"/>
+				<reportElement x="0" y="53" width="176" height="12" uuid="024440a3-40c7-463d-b78a-9f1a3110c5ee"/>
 				<textElement textAlignment="Center">
 					<font fontName="Saysettha MX" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SchoolAddress_L1}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="33" width="176" height="12" uuid="d23c5178-a39b-48ec-8874-2d0bc2494f68"/>
+				<reportElement x="0" y="65" width="176" height="12" uuid="d23c5178-a39b-48ec-8874-2d0bc2494f68"/>
 				<textElement textAlignment="Center">
 					<font fontName="Saysettha MX" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SchoolPhone1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="46" width="32" height="12" uuid="9b5d5106-e053-44b3-9006-836f6eace1fc"/>
+				<reportElement x="0" y="78" width="32" height="12" uuid="9b5d5106-e053-44b3-9006-836f6eace1fc"/>
 				<textElement>
 					<font fontName="Saysettha MX" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ເລກທີ່ບິນ:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="32" y="46" width="40" height="12" uuid="8ce8e382-cd5d-43ec-8a56-233792b33bc9"/>
+				<reportElement x="32" y="78" width="40" height="12" uuid="8ce8e382-cd5d-43ec-8a56-233792b33bc9"/>
 				<textElement>
 					<font fontName="Saysettha MX" size="7" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{SaleID}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="114" y="46" width="17" height="12" uuid="b2fb6ae3-51e2-4619-bb7b-1646ca96b3a5"/>
+				<reportElement x="114" y="78" width="17" height="12" uuid="b2fb6ae3-51e2-4619-bb7b-1646ca96b3a5"/>
 				<textElement>
 					<font fontName="Saysettha MX" size="7"/>
 				</textElement>
 				<text><![CDATA[ວັນທີ່:]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy">
-				<reportElement x="132" y="46" width="43" height="12" uuid="10cac79c-5a87-4714-a6fb-83eef487ab5e"/>
+				<reportElement x="132" y="78" width="43" height="12" uuid="10cac79c-5a87-4714-a6fb-83eef487ab5e"/>
 				<textElement>
 					<font fontName="Saysettha MX" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="76" y="46" width="31" height="12" uuid="5b6d5bf3-d602-4d20-9723-b48908bfeecd"/>
+				<reportElement x="76" y="78" width="31" height="12" uuid="5b6d5bf3-d602-4d20-9723-b48908bfeecd"/>
 				<textElement textAlignment="Center">
 					<font fontName="Saysettha MX" size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA["("+$F{Currency_L1}+")"]]></textFieldExpression>
 			</textField>
+			<image scaleImage="FillFrame">
+				<reportElement x="56" y="0" width="64" height="32" uuid="cba625d2-e689-439c-8363-60309cf244b9"/>
+				<imageExpression><![CDATA[$F{SchoolLogo}]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<columnHeader>
@@ -104,7 +108,7 @@
 			<staticText>
 				<reportElement x="1" y="1" width="80" height="12" uuid="d5490bfd-4c27-40bc-9042-f6b2c9838df2"/>
 				<textElement>
-					<font fontName="Saysettha MX" size="7"/>
+					<font fontName="Saysettha MX" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ລາຍລະອຽດ]]></text>
 			</staticText>
@@ -117,21 +121,21 @@
 			<staticText>
 				<reportElement x="83" y="1" width="18" height="12" uuid="72416ab8-e49f-4e93-bad2-f0766f740345"/>
 				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="7"/>
+					<font fontName="Saysettha MX" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ຈ/ນ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="103" y="1" width="28" height="12" uuid="2cc1a2d8-a4fc-40b0-8f04-8fe0ae193f6d"/>
 				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="7"/>
+					<font fontName="Saysettha MX" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ຫົວໜ່ວຍ]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="132" y="1" width="43" height="12" uuid="cc171068-3f25-4694-816a-be7f889caaeb"/>
 				<textElement textAlignment="Right">
-					<font fontName="Saysettha MX" size="7"/>
+					<font fontName="Saysettha MX" size="7" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ລວມ]]></text>
 			</staticText>

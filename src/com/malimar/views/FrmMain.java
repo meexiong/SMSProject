@@ -215,6 +215,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblQuardian.setText(hmapLang.get("lblQuardian".concat(frm).toUpperCase()) [LN]);
         btnMenuRelationship.setText(hmapLang.get("btnMenuRelationship".concat(frm).toUpperCase()) [LN]);
         lblProduct.setText(hmapLang.get("lblProduct".concat(frm).toUpperCase()) [LN]);
+        lblSale.setText(hmapLang.get("lblSale".concat(frm).toUpperCase()) [LN]);
     }
     
     @SuppressWarnings("unchecked")
@@ -1283,13 +1284,13 @@ int cnt=0;
 
     private void lblSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSemesterMouseClicked
         if(evt.getModifiers()==6){
-            WindowChangeLabel("lblExam", frm);
+            WindowChangeLabel("lblSemester", frm);
         }
     }//GEN-LAST:event_lblSemesterMouseClicked
 
     private void lblRegistationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistationMouseClicked
         if(evt.getModifiers()==6){
-            WindowChangeLabel("lblScore", frm);
+            WindowChangeLabel("lblRegistation", frm);
         }
     }//GEN-LAST:event_lblRegistationMouseClicked
 
@@ -1355,7 +1356,9 @@ int cnt=0;
     }//GEN-LAST:event_btnCourseMouseExited
 
     private void lblCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCourseMouseClicked
-        // TODO add your handling code here:
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblCourse", frm);
+        }
     }//GEN-LAST:event_lblCourseMouseClicked
 
     private void btnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCourseMouseClicked
@@ -1425,7 +1428,9 @@ int cnt=0;
     }//GEN-LAST:event_btnQuardianMouseExited
 
     private void lblQuardianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuardianMouseClicked
-        // TODO add your handling code here:
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblQuardian", frm);
+        }
     }//GEN-LAST:event_lblQuardianMouseClicked
 
     private void btnMenuRelationshipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuRelationshipMouseClicked
@@ -1473,7 +1478,7 @@ int cnt=0;
 
     private void lblProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblProductMouseClicked
         if (evt.getModifiers() == 6) {
-            WindowChangeLabel("btnProduct", frm);
+            WindowChangeLabel("lblProduct", frm);
         }
     }//GEN-LAST:event_lblProductMouseClicked
 
@@ -1491,7 +1496,9 @@ int cnt=0;
     }//GEN-LAST:event_btnSaleMouseExited
 
     private void lblSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSaleMouseClicked
-        // TODO add your handling code here:
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblSale", frm);
+        }
     }//GEN-LAST:event_lblSaleMouseClicked
 
 

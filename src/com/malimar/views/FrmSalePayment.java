@@ -360,7 +360,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(txtAmountLAK, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(lblChange)
                 .addGap(2, 2, 2)
                 .addComponent(txtChange, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -528,7 +528,7 @@ public class FrmSalePayment extends javax.swing.JDialog {
     }//GEN-LAST:event_lblPaymentMouseDragged
 
     private void lblChangeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblChangeMouseClicked
-         if (evt.getModifiers() == 6) {
+        if (evt.getModifiers() == 6) {
             LabelManager.WindowChangeLabel("lblChange", frm);
         }
     }//GEN-LAST:event_lblChangeMouseClicked
