@@ -174,7 +174,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             am.saveSeasion(txtUserName.getText());
             userNbr=DatabaseManagerSQL.getUserNbr(txtUserName.getText().trim());
         } else {
-            MsgBox.msgWarning();
+            MsgBox.msgError();
         }
     }
     private void langLao(){

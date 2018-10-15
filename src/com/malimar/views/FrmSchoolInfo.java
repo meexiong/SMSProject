@@ -9,10 +9,12 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.SchoolInfoManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.SchoolInfo;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import static com.malimar.utils.ResizeScall.ResizeScall;
+import static com.malimar.views.FrmMain.userNbr;
 import static com.malimar.views.FrmTeacherAdd.lbl_image;
 import java.awt.Image;
 
@@ -55,7 +57,8 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
         lblFacebook.setText(LabelManager.hmapLang.get("lblfacebook".concat(frm).toUpperCase())[LabelManager.LN]);
         lblAddress.setText(LabelManager.hmapLang.get("lbladdress".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]); 
-        lblAddressL2.setText(LabelManager.hmapLang.get("lblAddressL2".concat(frm).toUpperCase())[LabelManager.LN]);     
+        lblAddressL2.setText(LabelManager.hmapLang.get("lblAddressL2".concat(frm).toUpperCase())[LabelManager.LN]);   
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
 
     /**

@@ -10,10 +10,12 @@ import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.TableAlignmentHeader;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Guardian;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.TableHeader;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Font;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
@@ -69,7 +71,8 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
         //This is setup Table header and Color
         TableHeader.tableHeader(jTable1, th);
         TableHeader.tableHeaderColor(jTable1, jScrollPane1, th);
-        
+        UserPermission.getPermission_N(userNbr, frm, btnNew);
+
     }
 
     /**

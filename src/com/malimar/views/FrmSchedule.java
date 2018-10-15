@@ -157,7 +157,6 @@ public class FrmSchedule extends javax.swing.JFrame {
             });
             cmbCourse.setSelectedIndex(-1);
             AutoCompleteDecorator.decorate(cmbCourse);
-            
         } catch (Exception e) {
         }
     }
@@ -171,7 +170,6 @@ public class FrmSchedule extends javax.swing.JFrame {
             });
             cmbTeacher.setSelectedIndex(-1);
             AutoCompleteDecorator.decorate(cmbTeacher);
-            
         } catch (Exception e) {
         }
     }
@@ -185,7 +183,6 @@ public class FrmSchedule extends javax.swing.JFrame {
             });
             cmbRoom.setSelectedIndex(-1);
             AutoCompleteDecorator.decorate(cmbRoom);
-            
         } catch (Exception e) {
         }
     }
@@ -724,13 +721,13 @@ public class FrmSchedule extends javax.swing.JFrame {
                 sh.setScheduleID(Integer.parseInt(txtID.getText()));
                 sh.setCreatedate(txtCreateDate.getDate());
                 sh.setCreatebyUser(userNbr);
-                if(sm.insert(sh)){
+                if (sm.insert(sh)) {
                     MsgBox.msgInfo();
                 }
             } else {
                 sh.setScheduleID(Integer.parseInt(txtID.getText()));
                 sh.setSchStatus(chStatus.isSelected());
-                if(sm.update(sh)){
+                if (sm.update(sh)) {
                     sm.updateSemesterStatus(sh);
                     MsgBox.msgInfo();
                 }

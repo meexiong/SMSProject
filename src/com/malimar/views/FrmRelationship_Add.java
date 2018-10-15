@@ -10,12 +10,14 @@ import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.RelationshipManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Guardian;
 import com.malimar.models.Relationship;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.TableHeader;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -85,7 +87,7 @@ public class FrmRelationship_Add extends javax.swing.JFrame {
         jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
-        
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     private void showStudent(){
         try {

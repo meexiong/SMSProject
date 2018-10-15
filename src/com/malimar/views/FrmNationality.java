@@ -5,6 +5,7 @@ import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.NationalityManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Nationality;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
@@ -44,6 +45,7 @@ public class FrmNationality extends javax.swing.JFrame {
         jTable1.getTableHeader().setOpaque(false);
         nm.getTableData(jTable1, model);
         getNationalityLabel();
+       
 //        txtID.setDisabledTextColor(Color.BLACK);
     }
      private void getNationalityLabel() {

@@ -7,10 +7,12 @@ import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.OpenPicture;
 import static com.malimar.controllers.OpenPicture.imagePath;
 import com.malimar.controllers.ProductManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Product;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Image;
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +50,7 @@ public class FrmNewProduct extends javax.swing.JDialog {
         lblCurrency1.setText(hmapLang.get("lblCurrency".concat(frm).toUpperCase())[LN]);
         lblUnit.setText(hmapLang.get("lblUnit".concat(frm).toUpperCase())[LN]);
         chInActive.setSelected(true);
-        
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     private void clear(){
         txtProductID.setText("New");

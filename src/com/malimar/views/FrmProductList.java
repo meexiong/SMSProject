@@ -8,9 +8,11 @@ import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.ProductManager;
 import com.malimar.controllers.TableAlignmentHeader;
+import com.malimar.controllers.UserPermission;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
 import com.malimar.utils.FrameMove;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -62,6 +64,7 @@ public class FrmProductList extends javax.swing.JFrame {
         table.getColumnModel().getColumn(5).setCellRenderer(RightRenderer);
         ClearTable.clearFirstLoad(table, model);
         pm.load(model);
+        UserPermission.getPermission_N(userNbr, frm, btnNew);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -9,11 +9,13 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Guardian;
 import com.malimar.models.Student;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.TableHeader;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -81,7 +83,7 @@ public class FrmGuardianParents extends javax.swing.JFrame {
         th.repaint();
 
         TableHeader.tableHeader(jTable1, th);
-        
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
         
         
     }

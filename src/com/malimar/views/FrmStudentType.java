@@ -10,11 +10,13 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.StudentTypeManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.StudentType;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.SetText;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.sql.Connection;
 import javax.swing.table.DefaultTableModel;
@@ -70,7 +72,7 @@ public class FrmStudentType extends javax.swing.JFrame {
         lblName_L2.setText(LabelManager.hmapLang.get("lblName_L2".concat(frm).toUpperCase())[LabelManager.LN]);
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
-        
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     public void showClear(){
         try {

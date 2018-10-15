@@ -48,7 +48,7 @@ public class SchaduleManager {
     public HashMap<String, Object[]>mapTeacher(){
         try {
             HashMap<String, Object[]> tmap = new HashMap<>();
-            String query = "Select TEID, T_Nbr, T_Name_"+LangType+" as teacher from tbl_Teacher";
+            String query = "Select TEID, T_Nbr, T_Name_"+LangType+" as teacher from tbl_Teacher where Teacher=1";
             ResultSet rs = c.createStatement().executeQuery(query);
             while(rs.next()){
                 tmap.put(rs.getString("teacher"), new Object[]{rs.getInt("TEID"), rs.getString("T_Nbr"), rs.getString("teacher")});

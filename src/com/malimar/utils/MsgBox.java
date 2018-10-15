@@ -59,4 +59,11 @@ public class MsgBox {
         }
        return false;
    }
+   public static void msgDBDisconnect() {
+        if ("L1".equals(LangType)) {
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "ຕິດຕໍ່ຖານຂໍ້ມູນບໍ່ໄດ້" + "</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Can not connect to database.." + "</font></p></html>", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 }

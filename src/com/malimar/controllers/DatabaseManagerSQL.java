@@ -28,13 +28,14 @@ public class DatabaseManagerSQL {
                 pass=decrypt(rs.getString("passwords"));
                 port=decrypt(rs.getString("ports"));
             }
-            String Ser=serverName+";"+"DatabaseName="+dbName;
+            String Ser=serverName+";"+"databaseName="+dbName;
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             Connection c = DriverManager.getConnection(Ser, userLogin, pass);
             return c;
             
         } catch (Exception e) {
-            MsgBox.msgError();
+            MsgBox.msgDBDisconnect();
+//            e.printStackTrace();
         }
         return null;
     }  

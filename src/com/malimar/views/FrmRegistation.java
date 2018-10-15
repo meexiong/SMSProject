@@ -9,11 +9,13 @@ import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.RegistrationManager;
 import com.malimar.controllers.TableAlignmentHeader;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Registration;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import com.toedter.calendar.JTextFieldDateEditor;
 import java.awt.Color;
 import java.awt.Font;
@@ -50,6 +52,7 @@ public class FrmRegistation extends javax.swing.JFrame {
         getcmbCurrency();
         txtVAT.setText(String.format("%,.2f", rm.getVatDefault()));
         ((JTextFieldDateEditor)txtRegisterDate.getDateEditor()).setDisabledTextColor(Color.BLACK);
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     private void showRegistation(){
         txtGrandTotalOrg.hide();

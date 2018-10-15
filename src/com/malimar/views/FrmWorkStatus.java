@@ -8,11 +8,13 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
+import com.malimar.controllers.UserPermission;
 import com.malimar.controllers.WorkStatusManager;
 import com.malimar.models.WorkStatus;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -68,7 +70,7 @@ public class FrmWorkStatus extends javax.swing.JFrame {
         }
         jTable1.setAutoCreateRowSorter(true);
         th.repaint();
-        
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     public void showClear(){
         try {

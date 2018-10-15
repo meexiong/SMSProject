@@ -9,10 +9,12 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Guardian;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Frame;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -66,7 +68,7 @@ public class FrmGuardian extends javax.swing.JFrame {
         MoreInfo.setText(LabelManager.hmapLang.get("MoreInfo".concat(frm).toUpperCase())[LabelManager.LN]);
         lblWork.setText(LabelManager.hmapLang.get("lblWork".concat(frm).toUpperCase())[LabelManager.LN]);
         
-        
+        UserPermission.getPermission_SN(userNbr, frm , btnSave, btnNew);
     }
 
     private FrmGuardian(Frame parent, boolean modal) {

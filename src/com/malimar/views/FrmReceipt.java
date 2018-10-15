@@ -6,6 +6,7 @@ import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.ReceiptManager;
 import com.malimar.controllers.TableAlignmentHeader;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Receipt;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
@@ -48,6 +49,7 @@ public class FrmReceipt extends javax.swing.JDialog {
         rct.setRegisterID(Integer.parseInt(txtRegisterID.getText()));
         txtFeeTotal.setText(String.format("%,.2f", fee));
         showTotal();
+        UserPermission.getPermission_P(userNbr, frm, btnPay);
     }
     private void showReceipt(){
         try {

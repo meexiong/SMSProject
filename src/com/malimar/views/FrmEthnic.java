@@ -9,10 +9,12 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.EthnicManager;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Ethnic;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -45,30 +47,30 @@ public class FrmEthnic extends javax.swing.JFrame {
         Logo lg = new Logo();
         lg.getLogo(this);
         txtID.setEnabled(false);
-        
+
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jTable1.setShowGrid(true);
         jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
-        
+
         JTableHeader th = jTable1.getTableHeader();
-            TableColumnModel tcm = th.getColumnModel();
-            jTable1.getColumnCount();
-            for(int i=0; i < jTable1.getColumnCount(); i++){
-                TableColumn tc = tcm.getColumn(i);
-                tc.setHeaderValue(LabelManager.hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase()) [LabelManager.LN]);                
-            }
-               jTable1.setAutoCreateRowSorter(true);
-            th.repaint();
-                
+        TableColumnModel tcm = th.getColumnModel();
+        jTable1.getColumnCount();
+        for (int i = 0; i < jTable1.getColumnCount(); i++) {
+            TableColumn tc = tcm.getColumn(i);
+            tc.setHeaderValue(LabelManager.hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase())[LabelManager.LN]);
+        }
+        jTable1.setAutoCreateRowSorter(true);
+        th.repaint();
+
         lblEthnic_L1.setText(LabelManager.hmapLang.get("lblEthnic_L1".concat(frm).toUpperCase())[LabelManager.LN]);
         lblEthnic_L2.setText(LabelManager.hmapLang.get("lblethnic_L2".concat(frm).toUpperCase())[LabelManager.LN]);
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("BtnSave".concat(frm).toUpperCase())[LabelManager.LN]);
-        
-         etg.showData(jTable1, model);
-        
+
+        etg.showData(jTable1, model);
+         UserPermission.getPermission_S(userNbr, frm , btnSave);
     }
     public void showClear(){
         try {

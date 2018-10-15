@@ -9,9 +9,11 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.StudentParkManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.StudentPark;
 import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -71,7 +73,7 @@ public class FrmStudentPark extends javax.swing.JFrame {
         lblParkL1.setText(LabelManager.hmapLang.get("lblParkL1".concat(frm).toUpperCase())[LabelManager.LN]);
         lblParkL2.setText(LabelManager.hmapLang.get("lblParkL2".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
-
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     private void showClear(){
         try {

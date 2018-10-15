@@ -8,11 +8,13 @@ import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.RoomManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Room;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import com.sun.glass.events.KeyEvent;
 import java.awt.Color;
 import java.awt.Font;
@@ -56,6 +58,7 @@ public class FrmRoom extends javax.swing.JFrame {
         }
         table.setAutoCreateRowSorter(true);
         th.repaint();
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     private void clearText(){
         txtID.setText("New");

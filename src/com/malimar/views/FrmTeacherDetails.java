@@ -9,9 +9,11 @@ import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.TeacherAddManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.TeacherAdd;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
@@ -65,7 +67,7 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
-            
+        UserPermission.getPermission_N(userNbr, frm, btnNew);
     }
 
     /**

@@ -9,10 +9,12 @@ import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.NextCellActioin;
 import com.malimar.controllers.SaleManager;
 import com.malimar.controllers.TableAlignmentHeader;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Sale;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyEvent;
@@ -53,6 +55,7 @@ public class FrmSale extends javax.swing.JFrame {
         txtVAT.setText(String.format("%,.2f", sm.getVat()));
         Date now = new Date();
         txtSaleDate.setDate(now);
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     private void start(){
         frm = this.getClass().getSimpleName();

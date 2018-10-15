@@ -7,11 +7,13 @@ import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.TableAlignmentHeader;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Course;
 import com.malimar.utils.Border;
 import com.malimar.utils.ClearTable;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import java.text.ParseException;
@@ -37,6 +39,7 @@ public class FrmCourse extends javax.swing.JFrame {
         startFrame();
         ClearTable.clearFirstLoad(table, model);
         cm.load(model);
+        UserPermission.getPermission_S(userNbr, frm , btnSave);
     }
     private void startFrame(){
         frm = this.getClass().getSimpleName();

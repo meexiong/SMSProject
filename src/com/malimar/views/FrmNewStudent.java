@@ -12,6 +12,7 @@ import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.OpenPicture;
 import static com.malimar.controllers.OpenPicture.imagePath;
 import com.malimar.controllers.StudentManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.Student;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
@@ -61,7 +62,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         }else{
             showData();
         }
-        
+        UserPermission.getPermission_S(FrmMain.userNbr, frm, btnSave);
     }
     private void getNewStudentLabel(){
         lblStdNbr.setText(hmapLang.get("lblStdNbr".concat(frm).toUpperCase())[LN]);

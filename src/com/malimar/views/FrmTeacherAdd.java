@@ -8,12 +8,14 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.TeacherAddManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.TeacherAdd;
 import com.malimar.utils.Border;
 import com.malimar.utils.ConvertDateSQL;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import static com.malimar.utils.ResizeScall.ResizeScall;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -103,7 +105,7 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         btnNew.setText(LabelManager.hmapLang.get("btnNew".concat(frm).toUpperCase())[LabelManager.LN]);       
         lbltnbr.setText(LabelManager.hmapLang.get("lbltnbr".concat(frm).toUpperCase())[LabelManager.LN]);  
         cbTeacher.setText(LabelManager.hmapLang.get("cbTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
-        
+        UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
     private void getGender(){
         try {
