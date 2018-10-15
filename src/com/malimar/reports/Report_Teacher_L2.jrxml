@@ -50,9 +50,9 @@
 	<pageHeader>
 		<band height="62" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="814" height="26" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
+				<reportElement x="0" y="0" width="814" height="30" uuid="613b0b91-4bdb-4158-b00f-b535fcb9a081"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="18" isBold="true"/>
+					<font fontName="Saysettha MX" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Report Teacher Details]]></text>
 			</staticText>
@@ -63,14 +63,14 @@
 			<textField evaluationTime="Page">
 				<reportElement x="0" y="32" width="702" height="20" uuid="ebf30025-f2ce-477b-be3b-f38fd888e046"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="12" isBold="true"/>
+					<font fontName="Saysettha MX" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Summary Teacher: ("+$V{teid_1}+")  Total: "]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Page" pattern="##,###.00">
-				<reportElement x="445" y="32" width="369" height="20" uuid="464b0fa9-8a05-4c66-ba73-43d11586db22"/>
+				<reportElement x="463" y="32" width="351" height="20" uuid="464b0fa9-8a05-4c66-ba73-43d11586db22"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="12" isBold="true"/>
+					<font fontName="Saysettha MX" size="12" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$V{salary_3}]]></textFieldExpression>
 			</textField>
@@ -234,7 +234,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" "+ $F{t_nbr}]]></textFieldExpression>
 			</textField>
@@ -247,7 +247,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" "+ $F{temail}]]></textFieldExpression>
 			</textField>
@@ -260,7 +260,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" "+ $F{t_name_l2}]]></textFieldExpression>
 			</textField>
@@ -273,7 +273,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{Gen_L2}]]></textFieldExpression>
 			</textField>
@@ -286,7 +286,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{dob}]]></textFieldExpression>
 			</textField>
@@ -299,7 +299,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" "+ $F{tphone1}]]></textFieldExpression>
 			</textField>
@@ -312,7 +312,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" "+ $F{nt_name_l2}]]></textFieldExpression>
 			</textField>
@@ -325,7 +325,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{t_startdate}]]></textFieldExpression>
 			</textField>
@@ -338,7 +338,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{work_name_l2}]]></textFieldExpression>
 			</textField>
@@ -351,7 +351,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{salary}]]></textFieldExpression>
 			</textField>
@@ -364,7 +364,7 @@
 					<rightPen lineWidth="0.75"/>
 				</box>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="9"/>
+					<font fontName="Saysettha MX" size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" "+ $F{tphone2}]]></textFieldExpression>
 			</textField>
@@ -375,42 +375,42 @@
 			<textField>
 				<reportElement x="-11" y="20" width="694" height="10" uuid="1c6718c7-e085-4726-b79d-4e09043e5175"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_address}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="683" y="0" width="80" height="20" uuid="254e0ece-0371-4fce-a883-0462d29b0ed6"/>
 				<textElement textAlignment="Right">
-					<font fontName="Lao Unicode" size="8"/>
+					<font fontName="Saysettha MX" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="763" y="0" width="40" height="20" uuid="36a083c1-7b6c-47da-bd1d-78da227d9e1c"/>
 				<textElement>
-					<font fontName="Lao Unicode" size="8"/>
+					<font fontName="Saysettha MX" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="30" width="694" height="10" uuid="1dbdca7b-a5bb-453f-8ce7-a109f6422290"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA['Tel : '+$F{phone1}+'   '+$F{phone2}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="40" width="695" height="10" uuid="a1b30f77-120c-4445-933d-b0c8f10f2f38"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA['Facebook: '+$F{facebook}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="-11" y="50" width="695" height="10" uuid="5cefc992-dc53-4b96-bde7-d0564761b6df"/>
 				<textElement verticalAlignment="Middle">
-					<font fontName="Lao Unicode" size="6"/>
+					<font fontName="Saysettha MX" size="6"/>
 				</textElement>
 				<textFieldExpression><![CDATA['Web-Site: '+$F{website}]]></textFieldExpression>
 			</textField>

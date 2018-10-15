@@ -18,6 +18,7 @@ import com.malimar.utils.TableHeader;
 import java.awt.Color;
 import java.awt.Font;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -310,6 +311,18 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 });
                 cbbForm.setSelectedIndex(-1);
                 AutoCompleteDecorator.decorate(cbbForm);
+            }else{
+                
+                String x = cbbGroupUser1.getSelectedItem().toString();
+                mapFm = ulm.mapForm(x);
+                Map<String, Object[]> mp = new TreeMap<>(mapFm);
+                cbbForm.removeAllItems();
+                mp.keySet().forEach((s) -> {
+                    cbbForm.addItem(s);
+                });
+                cbbForm.setSelectedIndex(-1);
+                AutoCompleteDecorator.decorate(cbbForm);
+                
             }
 
         } catch (Exception e) {
@@ -846,14 +859,14 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
             },
             new String [] {
-                "FormName", "Checked", "FormName", "Label"
+                "Checked", "FormName", "Label"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Boolean.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, false, false
+                true, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -873,14 +886,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(jTable3);
         if (jTable3.getColumnModel().getColumnCount() > 0) {
-            jTable3.getColumnModel().getColumn(0).setMinWidth(0);
-            jTable3.getColumnModel().getColumn(0).setMaxWidth(0);
-            jTable3.getColumnModel().getColumn(1).setMinWidth(100);
-            jTable3.getColumnModel().getColumn(1).setMaxWidth(100);
-            jTable3.getColumnModel().getColumn(2).setMinWidth(250);
-            jTable3.getColumnModel().getColumn(2).setMaxWidth(250);
-            jTable3.getColumnModel().getColumn(3).setMinWidth(150);
-            jTable3.getColumnModel().getColumn(3).setMaxWidth(150);
+            jTable3.getColumnModel().getColumn(0).setMinWidth(100);
+            jTable3.getColumnModel().getColumn(0).setMaxWidth(100);
+            jTable3.getColumnModel().getColumn(1).setMinWidth(250);
+            jTable3.getColumnModel().getColumn(1).setMaxWidth(250);
+            jTable3.getColumnModel().getColumn(2).setMinWidth(0);
+            jTable3.getColumnModel().getColumn(2).setMaxWidth(0);
         }
 
         jPanel14.add(jScrollPane3, java.awt.BorderLayout.CENTER);
@@ -1607,7 +1618,9 @@ public class FrmUserLogin extends javax.swing.JFrame {
             if (evt.getModifiers() == 6) {
                 LabelManager.WindowChangeLabel("btnShowDataGroupPermission", frm);
             } else {
-                ulm.showDataGroupUserPermission(jTable3, model3);
+                //ulm.showDataGroupUserPermission(jTable3, model3);
+                //ulm.showClickcbbUserLogin(cbbGroupUser.getSelectedItem().toString(), jTable3, model3);
+                ulm.showClickForm(jTable3, model3);
 
             }
         } catch (Exception e) {
@@ -1618,24 +1631,42 @@ public class FrmUserLogin extends javax.swing.JFrame {
         try {
             int index = jTable3.getSelectedRow();
             String gl=cbbGroupUser.getSelectedItem().toString();
-            Boolean x = (Boolean)jTable3.getValueAt(index, 1);
+            Boolean x = (Boolean)jTable3.getValueAt(index, 0);
+            String y = (String) jTable3.getValueAt(index, 1).toString();
             if (x==true){
-                ul.setReads(true);
-                ul.setWrite(true);
-                ul.setDenys(true);
-                ul.setGRUID(Integer.parseInt(mapGL.get(gl)[0].toString()));
-                ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(index, 0).toString()));
-                ulm.updateGroupUsersClickTable(ul);
+                sql = "Select gl.SLangid from tbl_GroupUserLang gl\n" +
+                        "left join tbl_GroupUser gr on gr.GRUID = gl.GRUID\n" +
+                        "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
+                        "left join tbl_SysForm fm on fm.FormID = sl.FormID\n" +
+                        "where fm.Form_Name_"+ LabelManager.LangType +" = N'"+ y +"' and gr.GroupName_"+ LabelManager.LangType +" = N'"+ gl +"'"; 
+                ResultSet rs = c.createStatement().executeQuery(sql);
+                while (rs.next()){
+                    ul.setReads(true);
+                    ul.setWrite(true);
+                    ul.setDenys(true);
+                    ul.setGRUID(Integer.parseInt(mapGL.get(gl)[0].toString()));
+                    ulm.showSLangID(ul, y);     
+                    //ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(index, 0).toString()));
+                    ulm.updateGroupUsersClickTable(ul);
+                }                
             }else{
-                ul.setReads(false);
-                ul.setWrite(false);
-                ul.setDenys(false);
-                ul.setGRUID(Integer.parseInt(mapGL.get(gl)[0].toString()));
-                ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(index, 0).toString()));
-                ulm.updateGroupUsersClickTable(ul);
+                 sql = "Select gl.SLangid from tbl_GroupUserLang gl\n" +
+                        "left join tbl_GroupUser gr on gr.GRUID = gl.GRUID\n" +
+                        "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
+                        "left join tbl_SysForm fm on fm.FormID = sl.FormID\n" +
+                        "where fm.Form_Name_"+ LabelManager.LangType +" = N'"+ y +"' and gr.GroupName_"+ LabelManager.LangType +" = N'"+ gl +"'"; 
+                ResultSet rs = c.createStatement().executeQuery(sql);
+                while (rs.next()){
+                    ul.setReads(false);
+                    ul.setWrite(false);
+                    ul.setDenys(false);
+                    ul.setGRUID(Integer.parseInt(mapGL.get(gl)[0].toString()));                    
+                    ulm.showSLangID(ul, y);                    
+                    //ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(index, 0).toString()));                    
+                    ulm.updateGroupUsersClickTable(ul);
+                }   
             }
-            
-            
+            MsgBox.msgInfo();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1654,7 +1685,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
         try {
             if (cbAll.isSelected() == true) {
                 TableModel m = jTable3.getModel();
-                int cols = 1;
+                int cols = 0;
                 for (int x1 = 0; x1 < m.getRowCount(); x1++) {
                     jTable3.setValueAt(true, x1, cols);
                 }
@@ -1685,15 +1716,24 @@ public class FrmUserLogin extends javax.swing.JFrame {
                         
                 int index = jTable3.getRowCount(); 
                 for (int x1 = 0; x1<index; x1++){
-                    Boolean x = (Boolean) jTable3.getValueAt(x1, 1);
+                    Boolean x = (Boolean) jTable3.getValueAt(x1, 0);
+                    String FormName = (String) jTable3.getValueAt(x1, 1).toString();
+                    
                     if (x == true){                        
-                        ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(x1, 0).toString()));
-                        ul.setGRUID(Integer.parseInt(mapGL.get(gr)[0].toString()));
-                        ul.setCreateDate(ConvertDateSQL.convertUtilDateToSqlDate(dt1));
-                        ul.setReads(true);
-                        ul.setWrite(true);
-                        ul.setDenys(true);                        
-                        ulm.showCheckGroupUserLang(ul);                
+                        sql = "Select s.SLangid from tbl_SysLang s "
+                                + "left join tbl_sysForm f on f.formID = s.formid "
+                                + "where f.Form_Name_"+ LabelManager.LangType +"  = N'"+ FormName +"' and s.Lables = 1";
+                        ResultSet rsc = c.createStatement().executeQuery(sql);
+                        while(rsc.next()){
+                            //ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(x1, 0).toString()));
+                            ul.setSLANGID(rsc.getInt("slangid"));
+                            ul.setGRUID(Integer.parseInt(mapGL.get(gr)[0].toString()));
+                            ul.setCreateDate(ConvertDateSQL.convertUtilDateToSqlDate(dt1));
+                            ul.setReads(true);
+                            ul.setWrite(true);
+                            ul.setDenys(true);                        
+                            ulm.showCheckGroupUserLang(ul);
+                        }                                       
                     }
                 }
                 MsgBox.msgInfo();

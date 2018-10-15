@@ -224,14 +224,74 @@ public class UserLoginManager {
         try {
             RemoveTableIndex.removeTable(table, model);
             //sql = "Select slangid, checked, form_name_"+ LabelManager.LangType +" AS formname, Lang_"+ LabelManager.LangType+" AS LangName from vw_SysFormLang order by SLangid";
-            sql = "Select vw.Slangid, (Select iif(GRUID>0, 'true', 'false') as gruid from tbl_GroupUserLang where SLANGID = vw.SLANGID and GRUID = g.GRUID)AS checked, form_name_"+ LabelManager.LangType +" AS formname, Lang_"+ LabelManager.LangType+" AS LangName \n" +
+//            sql = "Select vw.checked, "
+//                    + "vw.form_name_"+ LabelManager.LangType +" AS formname \n" +
+//                    "from vw_SysFormLang vw \n" +
+//                    "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID "
+//                    + "left join tbl_GroupUser g on g.GRUID = gl.GRUID "
+//                    + "where g.GroupName_"+LabelManager.LangType+" = N'"+ cb +"' "
+//                    + "group by vw.checked, vw.form_name_"+LabelManager.LangType+", g.groupName_"+LabelManager.LangType+"";
+            sql = "Select (Select iif(gl.gulid>0,'true', 'false') from tbl_GroupUserLang gl\n" +
+                    "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
+                    "left join tbl_SysForm f on f.FormID = sl.FormID\n" +
+                    "left join tbl_GroupUser gu on gu.GRUID = gl.GRUID\n" +
+                    "where sl.SLANGID = vw.slangid and gu.GRUID = g.GRUID "
+                    + "group by gl.gulid "
+                    + "having count(gl.gulid) = 1) as checked, "
+                    + "vw.form_name_"+ LabelManager.LangType +" AS formname \n" +
                     "from vw_SysFormLang vw \n" +
                     "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID "
                     + "left join tbl_GroupUser g on g.GRUID = gl.GRUID "
                     + "where g.GroupName_"+LabelManager.LangType+" = N'"+ cb +"'";
+            
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
-                model.addRow(new Object[]{rs.getString("slangid"), rs.getBoolean("checked"), rs.getString("formname"), rs.getString("langname")});
+                //model.addRow(new Object[]{rs.getString("slangid"), rs.getBoolean("checked"), rs.getString("formname"), rs.getString("langname")});
+                model.addRow(new Object[]{rs.getBoolean("checked"), rs.getString("formname")});
+                
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void showSLangID(UserLogin ul, String x){
+        try {
+            sql = "Select gl.SLangid from tbl_GroupUserLang gl "
+                + "left join tbl_GroupUser gr on gr.gruid = gl.gruid "
+                    + "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
+                    "left join tbl_SysForm fm on fm.FormID = sl.FormID "
+                    + "where fm.Form_Name_"+ LabelManager.LangType +"  = N'"+ x +"' and sl.Lables = 1"
+                    + " group by gl.SLANGID, fm.Form_Name_"+ LabelManager.LangType +", sl.Lables";
+                ResultSet rsc = c.createStatement().executeQuery(sql);
+                if (rsc.next()){
+                   ul.setSLANGID(rsc.getInt("SLangid"));
+                }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    public void showClickForm(JTable table, DefaultTableModel model){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+//            sql = "Select 'false' AS checked, \n" +
+//                    "form_name_"+ LabelManager.LangType+" AS formname\n" +
+//                    "from vw_SysFormLang vw \n" +
+//                    "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
+//                    "left join tbl_GroupUser g on g.GRUID = gl.GRUID \n" +
+//                    "group by form_name_"+ LabelManager.LangType+", g.GroupName_"+ LabelManager.LangType+"";
+            
+               sql = "Select 'false' AS checked, \n" +
+                    "form_name_"+ LabelManager.LangType+" AS formname\n" +
+                    "from vw_SysFormLang vw \n" +
+                    "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
+                    "left join tbl_GroupUser g on g.GRUID = gl.GRUID \n" +
+                    "group by form_name_"+ LabelManager.LangType+"";
+            
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+               model.addRow(new Object[]{rs.getBoolean("checked"), rs.getString("formname")});                
             }
             table.setModel(model);
         } catch (Exception e) {
@@ -249,7 +309,7 @@ public class UserLoginManager {
             p.setInt(5, ul.getSLANGID());
             p.executeUpdate();
             p.close();
-            MsgBox.msgInfo();
+            
             return true;
             
         } catch (Exception e) {

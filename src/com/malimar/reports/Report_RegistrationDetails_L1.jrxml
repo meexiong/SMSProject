@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_RegistrationDetails_L1" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="294b509b-4b31-4004-a2b9-3684ea20c11c">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[Exec pd_RegistrationDetails_L1]]>
+	</queryString>
+	<field name="RegisterID" class="java.lang.Integer"/>
+	<field name="stdid" class="java.lang.Integer"/>
+	<field name="stdemail" class="java.lang.String"/>
+	<field name="stdnbr" class="java.lang.String"/>
+	<field name="stdname_l1" class="java.lang.String"/>
+	<field name="gen_l1" class="java.lang.String"/>
+	<field name="stdphone1" class="java.lang.String"/>
+	<field name="stdphone2" class="java.lang.String"/>
+	<field name="stddob" class="java.lang.String"/>
+	<field name="FormatstdStartDate" class="java.lang.String"/>
+	<field name="StdStartDate" class="java.lang.String"/>
+	<field name="stdimg" class="java.lang.Object"/>
+	<field name="nt_name_L1" class="java.lang.String"/>
+	<field name="et_name_l1" class="java.lang.String"/>
+	<field name="re_name_l1" class="java.lang.String"/>
+	<field name="TotalNotVat" class="java.lang.String"/>
+	<field name="VAT" class="java.lang.Double"/>
+	<field name="VatAmount" class="java.lang.String"/>
+	<field name="PayVatTotal" class="java.lang.String"/>
+	<field name="dispc" class="java.lang.Double"/>
+	<field name="disAmount" class="java.lang.Double"/>
+	<field name="currency_L1" class="java.lang.String"/>
+	<field name="registerDate" class="java.lang.String"/>
+	<field name="courseName_L1" class="java.lang.String"/>
+	<field name="coursePrice" class="java.lang.Double"/>
+	<field name="roomNbr" class="java.lang.String"/>
+	<field name="roomMax" class="java.lang.Integer"/>
+	<field name="sun" class="java.lang.Boolean"/>
+	<field name="suntime" class="java.lang.String"/>
+	<field name="mon" class="java.lang.Boolean"/>
+	<field name="montime" class="java.lang.String"/>
+	<field name="tue" class="java.lang.Boolean"/>
+	<field name="tueTime" class="java.lang.String"/>
+	<field name="wed" class="java.lang.Boolean"/>
+	<field name="wedtime" class="java.lang.String"/>
+	<field name="thur" class="java.lang.Boolean"/>
+	<field name="thurTime" class="java.lang.String"/>
+	<field name="fri" class="java.lang.Boolean"/>
+	<field name="fritime" class="java.lang.String"/>
+	<field name="sat" class="java.lang.Boolean"/>
+	<field name="satTime" class="java.lang.String"/>
+	<field name="s_name_l1" class="java.lang.String"/>
+	<field name="nameL2" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phone1" class="java.lang.String"/>
+	<field name="phone2" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="facebook" class="java.lang.String"/>
+	<field name="s_address" class="java.lang.String"/>
+	<field name="s_img" class="java.io.InputStream"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="79" splitType="Stretch">
+			<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+				<reportElement x="0" y="-14" width="88" height="74" uuid="c2964b15-4eeb-4495-9364-1004cb91414a"/>
+				<imageExpression><![CDATA[$F{s_img}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="0" width="814" height="31" uuid="1175bda6-fa5d-47a7-9c23-e4a40aaa018a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ລາຍງານ ການລົງທະບຽນ]]></text>
+			</staticText>
+			<textField evaluationTime="Page">
+				<reportElement x="0" y="31" width="814" height="20" uuid="23e724f1-c35a-4145-8a55-2e8be0e62abc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ນັກຮຽນທັງໝົດ:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="88" height="20" uuid="9df315b7-24c7-4ac2-bae1-12174fd57448"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ເລກ-ລະຫັດ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="88" y="0" width="135" height="20" uuid="717afeee-2922-44a9-a71f-c937e18c1ee9"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ຊື່ ແລະ ນາມສະກຸນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="223" y="0" width="40" height="20" uuid="340aad21-d59d-4a0f-81a5-6cad95c1fdda"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ຊາຍ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="263" y="0" width="78" height="20" uuid="ae8faa0e-b4f6-49bb-bbfe-377cde98d898"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ວັນເດືອນປີ ສະໝັກ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="0" width="260" height="20" uuid="289808db-64f3-407e-ad44-0fdb8662f96a"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ຫຼັກສູດ - ການຮຽນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="601" y="0" width="100" height="20" uuid="8ff1fb44-397c-4d31-98bb-93e02f19c5c5"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ຫ້ອງຮຽນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="701" y="0" width="101" height="20" uuid="b1163072-8ec9-4e28-b78f-753361108012"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ລາຄາ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="88" height="20" uuid="76edee22-977c-4fc0-956f-55680cd21d7e"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$F{stdnbr}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="88" y="0" width="135" height="20" uuid="fcc43184-02ec-40d1-8044-420025673bd0"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" "+$F{stdname_l1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="223" y="0" width="40" height="20" uuid="9c45f405-ed08-4688-a371-6591f0ab7efe"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gen_l1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MM-yyyy">
+				<reportElement x="263" y="0" width="78" height="20" uuid="0142e960-7a4c-4997-af69-4dcd422ebbc0"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registerDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="0" width="260" height="20" uuid="b84d15a1-3516-4129-ae67-973d99df6a61"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["  "+$F{courseName_L1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="601" y="0" width="100" height="20" uuid="7af5fecf-4292-4dde-af6b-988a10b19ecb"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{roomNbr}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###.00  ">
+				<reportElement x="701" y="0" width="101" height="20" uuid="58662ef4-3efc-4c26-9367-3690b5d2ef0a"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{coursePrice}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
