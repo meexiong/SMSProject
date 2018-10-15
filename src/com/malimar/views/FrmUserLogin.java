@@ -1745,7 +1745,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
 
     private void cbbGroupUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbGroupUserActionPerformed
         try {
-            ulm.showClickcbbUserLogin(cbbGroupUser.getSelectedItem().toString(), jTable3, model3);
+           // ulm.showClickcbbUserLogin(cbbGroupUser.getSelectedItem().toString(), jTable3, model3);
         } catch (Exception e) {
            // e.printStackTrace();
         }

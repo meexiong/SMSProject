@@ -175,7 +175,7 @@ public class UserLoginManager {
                     "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
                     "left join tbl_GroupUser gu on gu.GRUID = gl.GRUID\n" +
                     "left join tbl_SysForm f on f.FormID = sl.FormID\n" +
-                    "where gu.GroupName_"+ LangType +" = N'"+ x +"' and gl.reads ='true' and gl.write ='true' and gl.denys ='true'";
+                    "where gu.GroupName_"+ LangType +" = N'"+ x +"'";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
                 mapF.put(rs.getString("formname"), new Object[]{rs.getString("formid"), rs.getString("formname")});
