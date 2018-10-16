@@ -738,7 +738,7 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnSetting" min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="btnUserSetting" min="-2" pref="179" max="-2" attributes="0"/>
                                       <Component id="lblSettingUser" min="-2" pref="179" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -759,7 +759,7 @@
                               <Component id="lblPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Component id="btnPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Component id="lblRegistation" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnScore" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnRegistration" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="27" max="32767" attributes="0"/>
                       </Group>
@@ -778,7 +778,7 @@
                                           <Component id="lblSchedule" min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnScore" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <Component id="btnRegistration" min="-2" pref="150" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                                           <Component id="lblRegistation" min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
@@ -813,7 +813,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnSetting" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Component id="btnUserSetting" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                       <Component id="btnReport" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
@@ -867,7 +867,7 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSemesterMouseExited"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="btnScore">
+                <Component class="javax.swing.JLabel" name="btnRegistration">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -878,9 +878,9 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnScoreMouseMoved"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnScoreMouseClicked"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnScoreMouseExited"/>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnRegistrationMouseMoved"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRegistrationMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRegistrationMouseExited"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblRegistation">
@@ -979,7 +979,7 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnReportMouseExited"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="btnSetting">
+                <Component class="javax.swing.JLabel" name="btnUserSetting">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -990,9 +990,9 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnSettingMouseMoved"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSettingMouseClicked"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSettingMouseExited"/>
+                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnUserSettingMouseMoved"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnUserSettingMouseClicked"/>
+                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnUserSettingMouseExited"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="lblSettingUser">

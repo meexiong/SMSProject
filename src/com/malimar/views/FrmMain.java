@@ -18,6 +18,9 @@ import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  *
@@ -27,6 +30,7 @@ public class FrmMain extends javax.swing.JFrame {
 DatabaseManagerAccess am = new DatabaseManagerAccess();
     String frm;
     public static String userNbr="";
+    String ObjectMenu;
     public FrmMain() {
         initComponents();
         Logo lg = new Logo();
@@ -49,7 +53,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleFalse(btnPayment);
         SetText.setVisibleFalse(btnTeacher);
         SetText.setVisibleFalse(btnSemester);
-        SetText.setVisibleFalse(btnScore);
+        SetText.setVisibleFalse(btnRegistration);
         SetText.setVisibleFalse(lblSchedule);
         SetText.setVisibleFalse(lblStudentInfo);
         SetText.setVisibleFalse(lblPayment);
@@ -60,7 +64,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleFalse(lblReport);
         SetText.setVisibleFalse(lblSettingUser);
         SetText.setVisibleFalse(btnReport);
-        SetText.setVisibleFalse(btnSetting);
+        SetText.setVisibleFalse(btnUserSetting);
         SetText.setVisibleFalse(lblLoginIcon);
         SetText.setVisibleTrue(lblLoginIcon);
         SetText.setVisibleFalse(btnCourse);
@@ -111,7 +115,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleTrue(btnPayment);
         SetText.setVisibleTrue(btnTeacher);
         SetText.setVisibleTrue(btnSemester);
-        SetText.setVisibleTrue(btnScore);
+        SetText.setVisibleTrue(btnRegistration);
         SetText.setVisibleTrue(lblSchedule);
         SetText.setVisibleTrue(lblStudentInfo);
         SetText.setVisibleTrue(lblPayment);
@@ -122,7 +126,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleTrue(lblReport);
         SetText.setVisibleTrue(lblSettingUser);
         SetText.setVisibleTrue(btnReport);
-        SetText.setVisibleTrue(btnSetting);
+        SetText.setVisibleTrue(btnUserSetting);
         SetText.setVisibleTrue(lblLoginIcon);
         SetText.setVisibleFalse(lblLoginIcon);
         SetText.setVisibleTrue(btnCourse);
@@ -177,6 +181,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             MsgBox.msgError();
         }
     }
+
     private void langLao(){
         lblUserName.setText("ເຂົ້າລະບົບ");
         lblPassword.setText("ລະຫັດຜ່ານ");
@@ -217,7 +222,45 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblProduct.setText(hmapLang.get("lblProduct".concat(frm).toUpperCase()) [LN]);
         lblSale.setText(hmapLang.get("lblSale".concat(frm).toUpperCase()) [LN]);
     }
-    
+    private void SetPermission(){
+        try {
+            Connection c = DatabaseManagerSQL.getConnection();
+            String sql = "EXEC pd_Permission " + frm + "," + userNbr + ",0";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()) {
+                ObjectMenu = rs.getString("Sys_Name");
+                switch (ObjectMenu) {
+                    case "btnStudentInfo":
+                        break;
+                    case "btnQuardian":
+                        break;
+                    case "btnSchedule":
+                        break;
+                    case "btnRegistration":
+                        break;
+                    case "btnCourse":
+                        break;
+                    case "btnSemester":
+                        break;
+                    case "btnTeacher":
+                        break;
+                    case "btnPayment":
+                        break;
+                    case "btnReport":
+                        break;
+                    case "btnUserSetting":
+                        break;
+                    case "btnProduct":
+                        break;
+                    case "btnSale":
+                        break;
+                    default:
+                        break;
+                }
+            }
+        } catch (SQLException e) {
+        }
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -258,7 +301,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         jPanel6 = new javax.swing.JPanel();
         lblSemester = new javax.swing.JLabel();
         btnSemester = new javax.swing.JLabel();
-        btnScore = new javax.swing.JLabel();
+        btnRegistration = new javax.swing.JLabel();
         lblRegistation = new javax.swing.JLabel();
         lblStudentInfo = new javax.swing.JLabel();
         btnStudentInfo = new javax.swing.JLabel();
@@ -266,7 +309,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblPayment = new javax.swing.JLabel();
         lblReport = new javax.swing.JLabel();
         btnReport = new javax.swing.JLabel();
-        btnSetting = new javax.swing.JLabel();
+        btnUserSetting = new javax.swing.JLabel();
         lblSettingUser = new javax.swing.JLabel();
         btnCourse = new javax.swing.JLabel();
         lblCourse = new javax.swing.JLabel();
@@ -622,20 +665,20 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
 
-        btnScore.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnScore.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Cash Register_100px.png"))); // NOI18N
-        btnScore.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnScore.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnRegistration.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnRegistration.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Cash Register_100px.png"))); // NOI18N
+        btnRegistration.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistration.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnScoreMouseMoved(evt);
+                btnRegistrationMouseMoved(evt);
             }
         });
-        btnScore.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnRegistration.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnScoreMouseClicked(evt);
+                btnRegistrationMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnScoreMouseExited(evt);
+                btnRegistrationMouseExited(evt);
             }
         });
 
@@ -726,20 +769,20 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
 
-        btnSetting.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Add User Male_100px.png"))); // NOI18N
-        btnSetting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnSetting.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnUserSetting.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnUserSetting.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Add User Male_100px.png"))); // NOI18N
+        btnUserSetting.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnUserSetting.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnSettingMouseMoved(evt);
+                btnUserSettingMouseMoved(evt);
             }
         });
-        btnSetting.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnUserSetting.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSettingMouseClicked(evt);
+                btnUserSettingMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSettingMouseExited(evt);
+                btnUserSettingMouseExited(evt);
             }
         });
 
@@ -940,7 +983,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                             .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUserSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(20, 20, 20)))
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -957,7 +1000,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                     .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblRegistation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnScore, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
 
@@ -965,7 +1008,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSemester, btnStudentInfo, lblSemester, lblStudentInfo});
 
-        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPayment, btnScore, lblPayment, lblRegistation});
+        jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnPayment, btnRegistration, lblPayment, lblRegistation});
 
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -979,7 +1022,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                                 .addGap(2, 2, 2)
                                 .addComponent(lblSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(btnScore, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(2, 2, 2)
                                 .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
@@ -1006,7 +1049,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUserSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1102,9 +1145,9 @@ int cnt=0;
         Border.blueColor(btnSemester);
     }//GEN-LAST:event_btnSemesterMouseMoved
 
-    private void btnScoreMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScoreMouseMoved
-        Border.blueColor(btnScore);
-    }//GEN-LAST:event_btnScoreMouseMoved
+    private void btnRegistrationMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrationMouseMoved
+        Border.blueColor(btnRegistration);
+    }//GEN-LAST:event_btnRegistrationMouseMoved
 
     private void btnPaymentMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseExited
         Border.WhiteColor(btnPayment);
@@ -1114,9 +1157,9 @@ int cnt=0;
         Border.WhiteColor(btnSemester);
     }//GEN-LAST:event_btnSemesterMouseExited
 
-    private void btnScoreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScoreMouseExited
-        Border.WhiteColor(btnScore);
-    }//GEN-LAST:event_btnScoreMouseExited
+    private void btnRegistrationMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrationMouseExited
+        Border.WhiteColor(btnRegistration);
+    }//GEN-LAST:event_btnRegistrationMouseExited
 
     private void MenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MenuMouseClicked
         MenuSlide.setMenu(btnMStudentType);
@@ -1151,13 +1194,13 @@ int cnt=0;
         Border.WhiteColor(btnReport);
     }//GEN-LAST:event_btnReportMouseExited
 
-    private void btnSettingMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSettingMouseMoved
-        Border.blueColor(btnSetting);
-    }//GEN-LAST:event_btnSettingMouseMoved
+    private void btnUserSettingMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSettingMouseMoved
+        Border.blueColor(btnUserSetting);
+    }//GEN-LAST:event_btnUserSettingMouseMoved
 
-    private void btnSettingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSettingMouseExited
-        Border.WhiteColor(btnSetting);
-    }//GEN-LAST:event_btnSettingMouseExited
+    private void btnUserSettingMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSettingMouseExited
+        Border.WhiteColor(btnUserSetting);
+    }//GEN-LAST:event_btnUserSettingMouseExited
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         txtPassword.requestFocus();
@@ -1382,18 +1425,18 @@ int cnt=0;
         fs.setVisible(true);
     }//GEN-LAST:event_btnScheduleMouseClicked
 
-    private void btnSettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSettingMouseClicked
+    private void btnUserSettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSettingMouseClicked
         try {
             FrmUserLogin fl = new FrmUserLogin();
             fl.setVisible(true);
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_btnSettingMouseClicked
+    }//GEN-LAST:event_btnUserSettingMouseClicked
 
-    private void btnScoreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScoreMouseClicked
+    private void btnRegistrationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrationMouseClicked
         FrmRegistation frmRegister = new FrmRegistation();
         frmRegister.setVisible(true);
-    }//GEN-LAST:event_btnScoreMouseClicked
+    }//GEN-LAST:event_btnRegistrationMouseClicked
 
     private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
         FrmReport fr = new FrmReport();
@@ -1556,15 +1599,15 @@ int cnt=0;
     private javax.swing.JLabel btnPayment;
     private javax.swing.JLabel btnProduct;
     private javax.swing.JLabel btnQuardian;
+    private javax.swing.JLabel btnRegistration;
     private javax.swing.JLabel btnReport;
     private javax.swing.JLabel btnSale;
     private javax.swing.JLabel btnSchedule;
-    private javax.swing.JLabel btnScore;
     private javax.swing.JLabel btnSemester;
-    private javax.swing.JLabel btnSetting;
     private javax.swing.JLabel btnSignUP;
     private javax.swing.JLabel btnStudentInfo;
     private javax.swing.JLabel btnTeacher;
+    private javax.swing.JLabel btnUserSetting;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
