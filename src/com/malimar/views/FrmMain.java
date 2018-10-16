@@ -345,8 +345,8 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnStudentInfo = new javax.swing.JLabel();
         btnPayment = new javax.swing.JLabel();
         lblPayment = new javax.swing.JLabel();
-        lblReport = new javax.swing.JLabel();
         btnReport = new javax.swing.JLabel();
+        lblReport = new javax.swing.JLabel();
         btnUserSetting = new javax.swing.JLabel();
         lblSettingUser = new javax.swing.JLabel();
         btnCourse = new javax.swing.JLabel();
@@ -781,15 +781,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
 
-        lblReport.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblReport.setText("Report");
-        lblReport.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblReportMouseClicked(evt);
-            }
-        });
-
         btnReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnReport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Analyze_100px.png"))); // NOI18N
         btnReport.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -804,6 +795,15 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnReportMouseExited(evt);
+            }
+        });
+
+        lblReport.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblReport.setText("Report");
+        lblReport.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblReportMouseClicked(evt);
             }
         });
 
@@ -1208,7 +1208,6 @@ int cnt=0;
         MenuSlide.setMenu(btnMWorkStatus);
         MenuSlide.setMenu(btnMSchoolInfo);
         MenuSlide.setMenu(btnMenuRelationship);
-        
     }//GEN-LAST:event_MenuMouseClicked
 
     private void btnDatasourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatasourceActionPerformed
