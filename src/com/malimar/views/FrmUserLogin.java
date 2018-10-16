@@ -1666,7 +1666,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     ulm.updateGroupUsersClickTable(ul);
                 }   
             }
-            MsgBox.msgInfo();
+            //MsgBox.msgInfo();
         } catch (Exception e) {
             e.printStackTrace();
         }
