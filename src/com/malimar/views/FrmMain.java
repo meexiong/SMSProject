@@ -18,6 +18,7 @@ import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -177,6 +178,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             getMainLabel();
             am.saveSeasion(txtUserName.getText());
             userNbr=DatabaseManagerSQL.getUserNbr(txtUserName.getText().trim());
+            SetPermission();
         } else {
             MsgBox.msgError();
         }
@@ -222,37 +224,73 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblProduct.setText(hmapLang.get("lblProduct".concat(frm).toUpperCase()) [LN]);
         lblSale.setText(hmapLang.get("lblSale".concat(frm).toUpperCase()) [LN]);
     }
-    private void SetPermission(){
+    private void SetPermission() {
         try {
             Connection c = DatabaseManagerSQL.getConnection();
-            String sql = "EXEC pd_Permission " + frm + "," + userNbr + ",0";
+            String sql = "EXEC pd_Permission_Main " + frm + "," + userNbr + "";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()) {
                 ObjectMenu = rs.getString("Sys_Name");
                 switch (ObjectMenu) {
-                    case "btnStudentInfo":
+                    case "lblStudentInfo":
+                        btnStudentInfo.setEnabled(false);
                         break;
-                    case "btnQuardian":
+                    case "lblQuardian":
+                        btnQuardian.setEnabled(false);
                         break;
-                    case "btnSchedule":
+                    case "lblSchedule":
+                        btnSchedule.setEnabled(false);
                         break;
-                    case "btnRegistration":
+                    case "lblRegistation":
+                        btnRegistration.setEnabled(false);
                         break;
-                    case "btnCourse":
+                    case "lblCourse":
+                        btnCourse.setEnabled(false);
                         break;
-                    case "btnSemester":
+                    case "lblSemester":
+                        btnSemester.setEnabled(false);
                         break;
-                    case "btnTeacher":
+                    case "lblTeacher":
+                        btnTeacher.setEnabled(false);
                         break;
-                    case "btnPayment":
+                    case "lblPayment":
+                        btnPayment.setEnabled(false);
                         break;
-                    case "btnReport":
+                    case "lblReport":
+                        btnReport.setEnabled(false);
                         break;
-                    case "btnUserSetting":
+                    case "lblSettingUser":
+                        btnUserSetting.setEnabled(false);
                         break;
-                    case "btnProduct":
+                    case "lblProduct":
+                        btnProduct.setEnabled(false);
                         break;
-                    case "btnSale":
+                    case "lblSale":
+                        btnSale.setEnabled(false);
+                        break;
+                    case "btnMStudentType":
+                        btnMStudentType.setEnabled(false);
+                        break;
+                    case "btnMNationality":
+                        btnMNationality.setEnabled(false);
+                        break;
+                    case "btnMReligion":
+                        btnMReligion.setEnabled(false);
+                        break;
+                    case "btnMEthnic":
+                        btnMEthnic.setEnabled(false);
+                        break;
+                    case "btnMRoom":
+                        btnMRoom.setEnabled(false);
+                        break;
+                    case "btnMWorkStatus":
+                        btnMWorkStatus.setEnabled(false);
+                        break;
+                    case "btnMSchoolInfo":
+                        btnMSchoolInfo.setEnabled(false);
+                        break;
+                    case "btnMenuRelationship":
+                        btnMenuRelationship.setEnabled(false);
                         break;
                     default:
                         break;
@@ -1255,11 +1293,13 @@ int cnt=0;
 
     private void btnMReligionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMReligionMouseClicked
         try {
-            if (evt.getModifiers()==6){
+            if (evt.getModifiers() == 6) {
                 WindowChangeLabel("btnMreligion", frm);
-            }else{
-                FrmRegion fr = new FrmRegion();
-                fr.setVisible(true);
+            } else {
+                if (btnMReligion.isEnabled() == true) {
+                    FrmRegion fr = new FrmRegion();
+                    fr.setVisible(true);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1268,11 +1308,13 @@ int cnt=0;
 
     private void btnMEthnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMEthnicMouseClicked
         try {
-            if (evt.getModifiers()==6){
+            if (evt.getModifiers() == 6) {
                 WindowChangeLabel("btnMEthnic", frm);
-            }else{
-                FrmEthnic fe = new FrmEthnic();
-                fe.setVisible(true);
+            } else {
+                if (btnMEthnic.isEnabled() == true) {
+                    FrmEthnic fe = new FrmEthnic();
+                    fe.setVisible(true);
+                }
             }
         } catch (Exception e) {
         }
@@ -1283,8 +1325,10 @@ int cnt=0;
             if (evt.getModifiers() == 6) {
                 WindowChangeLabel("btnMRoom", frm);
             } else {
-                FrmRoom fc = new FrmRoom();
-                fc.setVisible(true);
+                if (btnMRoom.isEnabled() == true) {
+                    FrmRoom fc = new FrmRoom();
+                    fc.setVisible(true);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1296,8 +1340,10 @@ int cnt=0;
             if (evt.getModifiers() == 6) {
                 WindowChangeLabel("btnMStudentType", frm);
             } else {
-                FrmStudentType styp = new FrmStudentType();
-                styp.setVisible(true);
+                if (btnMStudentType.isEnabled() == true) {
+                    FrmStudentType styp = new FrmStudentType();
+                    styp.setVisible(true);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1308,8 +1354,10 @@ int cnt=0;
         if (evt.getModifiers() == 6) {
             WindowChangeLabel("btnMNationality", frm);
         } else {
-            FrmNationality frmNationality = new FrmNationality();
-            frmNationality.setVisible(true);
+            if (btnMNationality.isEnabled() == true) {
+                FrmNationality frmNationality = new FrmNationality();
+                frmNationality.setVisible(true);
+            }
         }
     }//GEN-LAST:event_btnMNationalityMouseClicked
 
@@ -1355,8 +1403,10 @@ int cnt=0;
 
     private void btnTeacherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTeacherMouseClicked
         try {
-            FrmTeacherDetails fd = new FrmTeacherDetails();
-            fd.setVisible(true);
+            if (btnTeacher.isEnabled() == true) {
+                FrmTeacherDetails fd = new FrmTeacherDetails();
+                fd.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnTeacherMouseClicked
@@ -1370,8 +1420,11 @@ int cnt=0;
     }//GEN-LAST:event_btnStudentInfoMouseExited
 
     private void btnStudentInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseClicked
-        FrmStudent frmStudent = new FrmStudent();
-        frmStudent.setVisible(true);
+        if (btnStudentInfo.isEnabled()==true) {
+            FrmStudent frmStudent = new FrmStudent();
+            frmStudent.setVisible(true);
+        }
+
     }//GEN-LAST:event_btnStudentInfoMouseClicked
 
     private void btnStudentInfoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStudentInfoMouseMoved
@@ -1382,9 +1435,11 @@ int cnt=0;
         try {
             if (evt.getModifiers()==6){
                 WindowChangeLabel("btnMworkstatus", frm);
-            }else{
-                FrmWorkStatus fw = new FrmWorkStatus();
-                fw.setVisible(true);
+            } else {
+                if (btnMWorkStatus.isEnabled() == true) {
+                    FrmWorkStatus fw = new FrmWorkStatus();
+                    fw.setVisible(true);
+                }
             }
         } catch (Exception e) {
         }
@@ -1406,49 +1461,63 @@ int cnt=0;
 
     private void btnCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCourseMouseClicked
         try {
-            FrmCourse frmCourse = new FrmCourse();
-            frmCourse.setVisible(true);
+            if (btnCourse.isEnabled() == true) {
+                FrmCourse frmCourse = new FrmCourse();
+                frmCourse.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnCourseMouseClicked
 
     private void btnSemesterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSemesterMouseClicked
         try {
-            FrmSemester frmSemester = new FrmSemester();
-            frmSemester.setVisible(true);
+            if (btnSemester.isEnabled() == true) {
+                FrmSemester frmSemester = new FrmSemester();
+                frmSemester.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnSemesterMouseClicked
 
     private void btnScheduleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnScheduleMouseClicked
-        FrmSchedule fs = new FrmSchedule();
-        fs.setVisible(true);
+        if (btnSchedule.isEnabled() == true) {
+            FrmSchedule fs = new FrmSchedule();
+            fs.setVisible(true);
+        }
     }//GEN-LAST:event_btnScheduleMouseClicked
 
     private void btnUserSettingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUserSettingMouseClicked
         try {
-            FrmUserLogin fl = new FrmUserLogin();
-            fl.setVisible(true);
+            if (btnUserSetting.isEnabled() == true) {
+                FrmUserLogin fl = new FrmUserLogin();
+                fl.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnUserSettingMouseClicked
 
     private void btnRegistrationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrationMouseClicked
-        FrmRegistation frmRegister = new FrmRegistation();
-        frmRegister.setVisible(true);
+        if (btnRegistration.isEnabled() == true) {
+            FrmRegistation frmRegister = new FrmRegistation();
+            frmRegister.setVisible(true);
+        }
     }//GEN-LAST:event_btnRegistrationMouseClicked
 
     private void btnReportMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportMouseClicked
-        FrmReport fr = new FrmReport();
-        fr.setVisible(true);
+        if (btnReport.isEnabled() == true) {
+            FrmReport fr = new FrmReport();
+            fr.setVisible(true);
+        }
     }//GEN-LAST:event_btnReportMouseClicked
     private void btnMSchoolInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMSchoolInfoMouseClicked
         try {
-            if (evt.getModifiers()==6){
+            if (evt.getModifiers() == 6) {
                 WindowChangeLabel("btnMschoolinfo", frm);
-            }else{
-                FrmSchoolInfo fs = new FrmSchoolInfo();
-                fs.setVisible(true);
+            } else {
+                if (btnMSchoolInfo.isEnabled() == true) {
+                    FrmSchoolInfo fs = new FrmSchoolInfo();
+                    fs.setVisible(true);
+                }
             }
         } catch (Exception e) {
         }
@@ -1460,8 +1529,10 @@ int cnt=0;
 
     private void btnQuardianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuardianMouseClicked
         try {
-            FrmGuardianDetails fgd = new FrmGuardianDetails();
-            fgd.setVisible(true);
+            if (btnQuardian.isEnabled() == true) {
+                FrmGuardianDetails fgd = new FrmGuardianDetails();
+                fgd.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnQuardianMouseClicked
@@ -1478,11 +1549,13 @@ int cnt=0;
 
     private void btnMenuRelationshipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuRelationshipMouseClicked
         try {
-            if (evt.getModifiers()==6){
+            if (evt.getModifiers() == 6) {
                 WindowChangeLabel("btnMenuRelationship", frm);
-            }else{
-                FrmRelationship fr = new FrmRelationship();
-                fr.setVisible(true);
+            } else {
+                if (btnMenuRelationship.isEnabled() == true) {
+                    FrmRelationship fr = new FrmRelationship();
+                    fr.setVisible(true);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1490,8 +1563,10 @@ int cnt=0;
     }//GEN-LAST:event_btnMenuRelationshipMouseClicked
 
     private void btnPaymentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPaymentMouseClicked
-        FrmReceiptList frmpay = new FrmReceiptList();
-        frmpay.setVisible(true);
+        if (btnPayment.isEnabled() == true) {
+            FrmReceiptList frmpay = new FrmReceiptList();
+            frmpay.setVisible(true);
+        }
     }//GEN-LAST:event_btnPaymentMouseClicked
 
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
@@ -1509,8 +1584,10 @@ int cnt=0;
 
     private void btnProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductMouseClicked
         try {
-            FrmProductList fl = new FrmProductList();
-            fl.setVisible(true);
+            if (btnProduct.isEnabled() == true) {
+                FrmProductList fl = new FrmProductList();
+                fl.setVisible(true);
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btnProductMouseClicked
@@ -1530,8 +1607,10 @@ int cnt=0;
     }//GEN-LAST:event_btnSaleMouseMoved
 
     private void btnSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaleMouseClicked
-        FrmSale frmSale = new FrmSale();
-        frmSale.setVisible(true);
+        if (btnSale.isEnabled() == true) {
+            FrmSale frmSale = new FrmSale();
+            frmSale.setVisible(true);
+        }    
     }//GEN-LAST:event_btnSaleMouseClicked
 
     private void btnSaleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaleMouseExited
