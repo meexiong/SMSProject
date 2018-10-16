@@ -326,7 +326,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+           // e.printStackTrace();
         }
     }
     private void showGroupUserPermission(){
@@ -1774,6 +1774,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 ul.setReads((Boolean) jTable4.getValueAt(index, 3));
                 ul.setWrite((Boolean) jTable4.getValueAt(index, 4));
                 ul.setDenys((Boolean) jTable4.getValueAt(index, 5));
+                
                 ulm.checkReads(ul);
                 ulm.checkWrite(ul);
                 ulm.checkDeny(ul);
