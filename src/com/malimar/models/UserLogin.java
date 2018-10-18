@@ -29,6 +29,24 @@ public class UserLogin {
     Date createDate;
     int GULID;
     int GULLID;
+    String email;
+    String UserPwd;    
+
+    public void setUserPwd(String UserPwd) {
+        this.UserPwd = UserPwd;
+    }
+
+    public String getUserPwd() {
+        return UserPwd;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     public void setGULLID(int GULLID) {
         this.GULLID = GULLID;

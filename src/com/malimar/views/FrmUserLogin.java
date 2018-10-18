@@ -1438,7 +1438,17 @@ public class FrmUserLogin extends javax.swing.JFrame {
             int index = jTable1.getSelectedRow();           
             ul.setTeid(Integer.parseInt(jTable1.getValueAt(index, 0).toString()));
             Boolean x = (Boolean) jTable1.getValueAt(index, 1);
-             ul.setUserlogin(x);
+            ul.setEmail(jTable1.getValueAt(index, 2).toString());
+            if (x == true){
+                ul.setUserlogin(true);
+                ulm.insertTbl_User(ul);
+            }else{
+                ul.setUserlogin(false);
+                ulm.updateTbl_User(ul);
+            }
+            
+             ul.setUserlogin(x);             
+             ul.setUserPwd("ChangeMe");             
              ulm.upDateUser(ul);
 
         } catch (Exception e) {

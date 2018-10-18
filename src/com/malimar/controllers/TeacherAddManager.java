@@ -196,10 +196,8 @@ public class TeacherAddManager {
             p.setInt(11, ta.getCLSID());
             p.setInt(12, ta.getNtid());
             p.setInt(13, ta.getEtid());
-            p.setInt(14, ta.getReid());
-            
-            p.setFloat(15, ta.getSalary());
-            
+            p.setInt(14, ta.getReid());            
+            p.setFloat(15, ta.getSalary());            
             p.setString(16, ta.getT_address());
             p.setBoolean(17, ta.gettWorking());
             p.setBoolean(18, ta.gettDailyTeach());            

@@ -13,11 +13,14 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import javax.swing.JCheckBox;
-import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import static net.ucanaccess.converters.Functions.date;
 
 /**
  *
@@ -37,23 +40,75 @@ public class UserLoginManager {
             table.setModel(model);
         } catch (Exception e) {
         }
-    }    
-    public boolean upDateUser(UserLogin ul){
+    } 
+    public boolean deleteTbl_user(UserLogin ul){
         try {
-            //sql = "Update tbl_teacher set userlogin = ?, PasLogin = 'ChangeMe' where teid = (?)";
+            Statement st = null;
+            st = c.createStatement();
+            sql = "Delete tbl_User where EMP_ID = "+ ul.getTeid() +"";
+            st.executeUpdate(sql);
+            return true;
             
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean insertTbl_User(UserLogin ul){
+        try {
+            deleteTbl_user(ul);
+            
+            java.util.Date dt;           
+            LocalDate Ldate = LocalDate.now();
+            String xx = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(Ldate);            
+            dt = new SimpleDateFormat("yyyy-MM-dd").parse(xx);                         
+            GetMaxID gm = new GetMaxID();
+            sql = "Insert into tbl_User (Userid, Emp_ID, UserLogin, User_Pwd, CreateDate, UserLogin_Status) values (?,?,?,?,?,?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setInt(1, gm.getIntID("Tbl_user", "Userid"));
+            p.setInt(2, ul.getTeid());
+            p.setString(3, ul.getEmail());
+            p.setString(4, ul.getUserPwd());
+            p.setDate(5, new java.sql.Date(dt.getDate()));
+            p.setInt(6, 1);
+            p.executeUpdate();
+            p.close();
+            return true;
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean updateTbl_User(UserLogin ul){
+        try {
+            sql = "Update tbl_user set user_pwd = ?, UserLogin_Status = ? where UserLogin = (?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setString(1, "");
+            p.setBoolean(2, false);
+            p.setString(3, ul.getEmail());
+            p.executeUpdate();
+            p.close();
+            return true;            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+    public boolean upDateUser(UserLogin ul){
+        try {       
             if (ul.getUserlogin()==true){
-                sql = "Update tbl_teacher set userlogin = ?, PasLogin = 'ChangeMe' where teid = (?)";
+                sql = "Update tbl_teacher set userlogin = ? where teid = (?)"; 
+                ul.setUserlogin(true);
             }else{
-                sql = "Update tbl_teacher set userlogin = ?, PasLogin = '' where teid = (?)";
-            }
-            
+                sql = "Update tbl_Teacher set userlogin = ? where teid = (?)";
+                ul.setUserlogin(false);
+            }            
             PreparedStatement p = c.prepareStatement(sql);
             p.setBoolean(1, ul.getUserlogin());
             p.setInt(2, ul.getTeid());
             p.executeUpdate();
             p.close();
-            //MsgBox.msgInfo();
             return true;
             
         } catch (Exception e) {
