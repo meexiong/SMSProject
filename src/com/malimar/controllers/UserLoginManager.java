@@ -58,10 +58,8 @@ public class UserLoginManager {
         try {
             deleteTbl_user(ul);
             
-            java.util.Date dt;           
-            LocalDate Ldate = LocalDate.now();
-            String xx = DateTimeFormatter.ofPattern("yyyy-MM-dd").format(Ldate);            
-            dt = new SimpleDateFormat("yyyy-MM-dd").parse(xx);                         
+            java.sql.Timestamp date = new java.sql.Timestamp(new java.util.Date().getTime());
+            
             GetMaxID gm = new GetMaxID();
             sql = "Insert into tbl_User (Userid, Emp_ID, UserLogin, User_Pwd, CreateDate, UserLogin_Status) values (?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(sql);
@@ -69,7 +67,7 @@ public class UserLoginManager {
             p.setInt(2, ul.getTeid());
             p.setString(3, ul.getEmail());
             p.setString(4, "ChangeMe");
-            p.setDate(5, new java.sql.Date(dt.getDate()));
+            p.setTimestamp(5, date);
             p.setBoolean(6, true);
             p.executeUpdate();
             p.close();
