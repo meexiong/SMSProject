@@ -68,9 +68,9 @@ public class UserLoginManager {
             p.setInt(1, gm.getIntID("Tbl_user", "Userid"));
             p.setInt(2, ul.getTeid());
             p.setString(3, ul.getEmail());
-            p.setString(4, ul.getUserPwd());
+            p.setString(4, "ChangeMe");
             p.setDate(5, new java.sql.Date(dt.getDate()));
-            p.setInt(6, 1);
+            p.setBoolean(6, true);
             p.executeUpdate();
             p.close();
             return true;
