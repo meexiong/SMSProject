@@ -1160,7 +1160,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
     }// </editor-fold>//GEN-END:initComponents
 int cnt=0;
     private void btnMaximumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaximumMouseClicked
-        
         if (cnt == 0) {
             this.setExtendedState(FrmMain.MAXIMIZED_BOTH);
             cnt++;
