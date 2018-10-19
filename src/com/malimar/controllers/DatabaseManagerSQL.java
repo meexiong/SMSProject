@@ -6,6 +6,7 @@ import com.malimar.utils.MsgBox;
 import com.malimar.views.FrmChangeMe;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -69,5 +70,25 @@ public class DatabaseManagerSQL {
         } catch (Exception e) {
         }
          return null;
+    }
+    public void createTable(){
+        try {
+            Connection c = getConnection();
+            String query = "Select * from tbl_Registrator where RegistratorID=?";
+            PreparedStatement p = c.prepareStatement(query);
+            p.setInt(1, 1);
+            p.setInt(2, 2);
+            p.setInt(3, 3);
+            p.setInt(4, 4);
+            p.setInt(5, 5);
+            p.setInt(6, 6);
+            p.setInt(7, 7);
+            p.setInt(8, 8);
+            p.setInt(9, 9);
+            p.setInt(10, 10);
+            p.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

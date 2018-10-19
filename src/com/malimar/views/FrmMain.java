@@ -199,7 +199,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblSystemInfo.setText("ລະບົບຈັດການໂຮງຮຽນ");
     }
     private void langEN(){
-//        lblUserName.setText("User Name");
         lblPassword.setText("Password");
         lblUserName.setText("Email");
         btnDatasource.setText("Datasource Setting");
