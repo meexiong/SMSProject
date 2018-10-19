@@ -3,11 +3,13 @@ package com.malimar.controllers;
 
 import static com.malimar.controllers.AESecrp.decrypt;
 import com.malimar.utils.MsgBox;
+import com.malimar.views.FrmChangeMe;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class DatabaseManagerSQL {
      public static String serverName;
@@ -43,10 +45,16 @@ public class DatabaseManagerSQL {
         String pw = null;
         Connection c = getConnection();
         Statement statement = c.createStatement();
-        String query = "select * from Tbl_User where UserLogin ='"+username+"'";
+        String query = "select * from Tbl_User where UserLogin ='"+username+"' and Userlogin_Status=1";
         ResultSet rs = statement.executeQuery(query);
-        while (rs.next()) {
+        if (rs.next()) {
            pw=rs.getString("User_pwd").replaceAll(" ", "");
+           String user = rs.getString("Userlogin");
+           int id = rs.getInt("userid");
+           if(pw.equals("ChangeMe")){
+               FrmChangeMe frmChange = new FrmChangeMe(null, true, id, user);
+               frmChange.setVisible(true);
+           }
         }
         return pw;
     }

@@ -177,10 +177,15 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             afterLogin();
             getMainLabel();
             am.saveSeasion(txtUserName.getText());
-            userNbr=DatabaseManagerSQL.getUserNbr(txtUserName.getText().trim());
+            userNbr = DatabaseManagerSQL.getUserNbr(txtUserName.getText().trim());
             SetPermission();
+            lblPasswordIncorrect.setText("");
         } else {
-            MsgBox.msgError();
+            if(LangType.equals("L1")){
+                lblPasswordIncorrect.setText("ລະຫັດຜ່ານບໍ່ຖຶກຕ້ອງ");
+            }else{
+                lblPasswordIncorrect.setText("Password Incorrect.");
+            }
         }
     }
 
@@ -335,6 +340,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMWorkStatus = new javax.swing.JLabel();
         btnMSchoolInfo = new javax.swing.JLabel();
         btnMenuRelationship = new javax.swing.JLabel();
+        lblPasswordIncorrect = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblSemester = new javax.swing.JLabel();
@@ -672,6 +678,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
         pnLogin.add(btnMenuRelationship, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 314, 200, -1));
+
+        lblPasswordIncorrect.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPasswordIncorrect.setForeground(java.awt.Color.red);
+        lblPasswordIncorrect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pnLogin.add(lblPasswordIncorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 505, 260, 20));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1697,6 +1708,7 @@ int cnt=0;
     private javax.swing.JLabel lblIconUser;
     private javax.swing.JLabel lblLoginIcon;
     private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblPasswordIncorrect;
     private javax.swing.JLabel lblPayment;
     private javax.swing.JLabel lblProduct;
     private javax.swing.JLabel lblQuardian;

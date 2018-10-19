@@ -6,7 +6,6 @@
 package com.malimar.utils;
 
 import static com.malimar.controllers.LabelManager.LangType;
-import static com.malimar.utils.EnumType.L1;
 import javax.swing.JOptionPane;
 
 /**
@@ -64,6 +63,13 @@ public class MsgBox {
             JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "ຕິດຕໍ່ຖານຂໍ້ມູນບໍ່ໄດ້" + "</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.ERROR_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Can not connect to database.." + "</font></p></html>", "MESSAGE", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+   public static void msgPasswordIncorrect() {
+        if ("L1".equals(LangType)) {
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "ລະຫັດບໍ່ຄືກັນ." + "</font></p></html>", "ແຈ້ງເຕືອນ", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Password not match." + "</font></p></html>", "MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }
 }
