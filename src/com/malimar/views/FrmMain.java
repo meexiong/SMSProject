@@ -182,6 +182,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             LabelManager.getLabelForm();
             afterLogin();
             getMainLabel();
+            dlm.insertTbl_DailyLogin(dl);
             am.saveSeasion(txtUserName.getText());
             userNbr = DatabaseManagerSQL.getUserNbr(txtUserName.getText().trim());
             SetPermission();
@@ -1264,7 +1265,7 @@ int cnt=0;
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btnSignUPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUPMouseClicked
-        login();
+        login();        
     }//GEN-LAST:event_btnSignUPMouseClicked
 
     private void radLaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radLaoActionPerformed
@@ -1646,8 +1647,8 @@ int cnt=0;
         try {
             //this is get MainBoard, ComIP, DateLogin to Tbl_dailyLogin
             dlm.showMainBoard(dl);
-            InetAddress IP = InetAddress.getLocalHost();
-            dl.setComIP(IP.toString());
+            dlm.showIPCom(dl);
+            dl.setUserLogin(txtUserName.getText());
             
             
             

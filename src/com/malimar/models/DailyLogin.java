@@ -15,7 +15,6 @@ public class DailyLogin {
     String UserLogin;
     String MainBord;
     String ComIP;
-    Date DateLogin;
 
     public String getUserLogin() {
         return UserLogin;
@@ -27,10 +26,6 @@ public class DailyLogin {
 
     public String getComIP() {
         return ComIP;
-    }
-
-    public Date getDateLogin() {
-        return DateLogin;
     }
 
     public void setUserLogin(String UserLogin) {
@@ -45,9 +40,6 @@ public class DailyLogin {
         this.ComIP = ComIP;
     }
 
-    public void setDateLogin(Date DateLogin) {
-        this.DateLogin = DateLogin;
-    }
     
     
     
