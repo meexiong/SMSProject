@@ -182,6 +182,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             LabelManager.getLabelForm();
             afterLogin();
             getMainLabel();
+            
+            //this is get MainBoard, ComIP, DateLogin to Tbl_dailyLogin
+            dlm.showMainBoard(dl);
+            dlm.showIPCom(dl);
+            dl.setUserLogin(txtUserName.getText());
             dlm.insertTbl_DailyLogin(dl);
             am.saveSeasion(txtUserName.getText());
             userNbr = DatabaseManagerSQL.getUserNbr(txtUserName.getText().trim());
@@ -1645,11 +1650,6 @@ int cnt=0;
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
-            //this is get MainBoard, ComIP, DateLogin to Tbl_dailyLogin
-            dlm.showMainBoard(dl);
-            dlm.showIPCom(dl);
-            dl.setUserLogin(txtUserName.getText());
-            
             
             
         } catch (Exception e) {
