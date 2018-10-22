@@ -1,6 +1,7 @@
 
 package com.malimar.views;
 
+import com.malimar.controllers.DailyLoginManager;
 import com.malimar.controllers.DatabaseManagerAccess;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
@@ -11,12 +12,14 @@ import static com.malimar.controllers.LabelManager.LangType;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.Logo;
+import com.malimar.models.DailyLogin;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.SetText;
 import com.malimar.utils.MenuSlide;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.net.InetAddress;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,6 +33,10 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
     String frm;
     public static String userNbr="";
     String ObjectMenu;
+    
+    DailyLogin dl = new DailyLogin();
+    DailyLoginManager dlm = new DailyLoginManager();
+    
     public FrmMain() {
         initComponents();
         Logo lg = new Logo();
@@ -376,6 +383,11 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -1628,6 +1640,20 @@ int cnt=0;
             WindowChangeLabel("lblSale", frm);
         }
     }//GEN-LAST:event_lblSaleMouseClicked
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        try {
+            //this is get MainBoard, ComIP, DateLogin to Tbl_dailyLogin
+            dlm.showMainBoard(dl);
+            InetAddress IP = InetAddress.getLocalHost();
+            dl.setComIP(IP.toString());
+            
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_formWindowOpened
 
 
     /**
