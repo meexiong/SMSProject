@@ -47,6 +47,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         jPanel5.setLayout( new GridBagLayout() );
         jPanel5.add(jPanel6, new GridBagConstraints());
         radLao.setSelected(true);
+        LangType="L1";
         beforeLogin();
         langLao();
         this.txtUserName.setText(am.getUserLogin());

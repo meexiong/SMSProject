@@ -2,6 +2,7 @@
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerAccess;
+import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.controllers.Logo;
 import com.malimar.models.AccessDatasource;
 import com.malimar.utils.Border;
@@ -15,8 +16,24 @@ public class FrmDatasource extends javax.swing.JFrame {
         initComponents();
         Logo lg = new Logo();
         lg.getLogo(this);
+        if(LangType.equals("L1")){
+            lao();
+        }else{
+            english();
+        }
     }
-
+    private void lao(){
+        lblDatasource.setText("ຕັ້ງຄ່າຖານຂໍ້ມູນ");
+        btnRead.setText("ອ່ານ");
+        btnTest.setText("ທົດລອງ");
+        btnSave.setText("ບັນທຶກ");
+    }
+    private void english(){
+        lblDatasource.setText("Database Setting");
+        btnRead.setText("Read");
+        btnTest.setText("Test");
+        btnSave.setText("Save");
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,10 +57,9 @@ public class FrmDatasource extends javax.swing.JFrame {
         btnTest = new javax.swing.JLabel();
         btnSave = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        btnMinimize = new javax.swing.JLabel();
         btnExit = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        lblSystemInfo = new javax.swing.JLabel();
+        lblDatasource = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -145,15 +161,6 @@ public class FrmDatasource extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 102, 255)));
 
-        btnMinimize.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnMinimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Minimize Window_30px.png"))); // NOI18N
-        btnMinimize.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnMinimize.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnMinimizeMouseClicked(evt);
-            }
-        });
-
         btnExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Close Window_30px.png"))); // NOI18N
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -165,13 +172,13 @@ public class FrmDatasource extends javax.swing.JFrame {
 
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        lblSystemInfo.setBackground(new java.awt.Color(255, 255, 255));
-        lblSystemInfo.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblSystemInfo.setForeground(new java.awt.Color(0, 15, 255));
-        lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSystemInfo.setText("Datasource Setting");
-        lblSystemInfo.setOpaque(true);
-        jPanel4.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
+        lblDatasource.setBackground(new java.awt.Color(255, 255, 255));
+        lblDatasource.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        lblDatasource.setForeground(new java.awt.Color(0, 15, 255));
+        lblDatasource.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDatasource.setText("Datasource Setting");
+        lblDatasource.setOpaque(true);
+        jPanel4.add(lblDatasource, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -179,8 +186,6 @@ public class FrmDatasource extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5))
@@ -190,7 +195,6 @@ public class FrmDatasource extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(2, 2, 2)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnMinimize, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addGap(2, 2, 2))
@@ -298,10 +302,6 @@ public class FrmDatasource extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizeMouseClicked
-        this.setState(FrmDatasource.ICONIFIED);
-    }//GEN-LAST:event_btnMinimizeMouseClicked
-
     private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
         dispose();
     }//GEN-LAST:event_btnExitMouseClicked
@@ -401,7 +401,6 @@ public class FrmDatasource extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
-    private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnRead;
     private javax.swing.JLabel btnSave;
     private javax.swing.JLabel btnTest;
@@ -418,7 +417,7 @@ public class FrmDatasource extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JLabel lblSystemInfo;
+    private javax.swing.JLabel lblDatasource;
     private javax.swing.JTextField txtDatabaseName;
     private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtPort;
