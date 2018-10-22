@@ -1777,7 +1777,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
         try {
             String x = cbbGroupUser1.getSelectedItem().toString();
-            if (!cbbGroupUser1.getSelectedItem().toString().isEmpty()) {
+            if (!cbbGroupUser1.getSelectedItem().toString().isEmpty() || !cbbForm.getSelectedItem().toString().isEmpty()) {
                 String form = cbbForm.getSelectedItem().toString();
                 int index = jTable4.getSelectedRow();
                 ul.setGULID(Integer.parseInt(jTable4.getValueAt(index, 0).toString()));
@@ -1791,7 +1791,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 ulm.showClickComboForm(x, form, jTable4, model4);
             }
             
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jTable4MouseClicked

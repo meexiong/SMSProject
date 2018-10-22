@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class DatabaseManagerSQL {
      public static String serverName;
@@ -67,28 +68,29 @@ public class DatabaseManagerSQL {
             if(rs.next()){
                 return rs.getString("T_Nbr");
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
          return null;
     }
-    public void createTable(){
+    
+    public void loadData(DefaultTableModel model){
         try {
             Connection c = getConnection();
-            String query = "Select * from tbl_Registrator where RegistratorID=?";
-            PreparedStatement p = c.prepareStatement(query);
-            p.setInt(1, 1);
-            p.setInt(2, 2);
-            p.setInt(3, 3);
-            p.setInt(4, 4);
-            p.setInt(5, 5);
-            p.setInt(6, 6);
-            p.setInt(7, 7);
-            p.setInt(8, 8);
-            p.setInt(9, 9);
-            p.setInt(10, 10);
-            p.executeUpdate();
+            String query = "Select * from tbl_Registrator where RegisterID=?";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            if(rs.next()){
+                int id = rs.getInt("RegisterID");
+                String name = rs.getString("RegisterName");
+                String date = rs.getString("Date");
+                double fee = rs.getDouble("Fee");
+                float dis = rs.getFloat("Discount");
+                float disAmount = rs.getFloat("Amount");
+                Object[] obj = new Object[]{id, name, date, fee, dis, disAmount};
+                model.addRow(obj);
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+    
 }

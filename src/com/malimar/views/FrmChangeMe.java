@@ -213,7 +213,6 @@ public class FrmChangeMe extends javax.swing.JDialog {
                 p.executeUpdate();
                 this.dispose();
             }else{
-                
                 MsgBox.msgPasswordIncorrect();
             }
         } catch (SQLException e) {
