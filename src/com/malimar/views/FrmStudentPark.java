@@ -235,6 +235,11 @@ public class FrmStudentPark extends javax.swing.JFrame {
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -255,12 +260,22 @@ public class FrmStudentPark extends javax.swing.JFrame {
 
         lblParkL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblParkL1.setText("ParkStudyL1");
+        lblParkL1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblParkL1MouseClicked(evt);
+            }
+        });
 
         txtParkL1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtParkL1.setBorder(null);
 
         lblParkL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblParkL2.setText("ParkStudyL2");
+        lblParkL2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblParkL2MouseClicked(evt);
+            }
+        });
 
         txtParkL2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtParkL2.setBorder(null);
@@ -479,6 +494,18 @@ public class FrmStudentPark extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+         LabelManager.WindowChangeLabel("lblID", frm);
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblParkL1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblParkL1MouseClicked
+         LabelManager.WindowChangeLabel("lblParkL1", frm);
+    }//GEN-LAST:event_lblParkL1MouseClicked
+
+    private void lblParkL2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblParkL2MouseClicked
+         LabelManager.WindowChangeLabel("lblParkL2", frm);
+    }//GEN-LAST:event_lblParkL2MouseClicked
 
     /**
      * @param args the command line arguments

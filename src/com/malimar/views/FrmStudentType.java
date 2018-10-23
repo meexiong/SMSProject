@@ -239,6 +239,11 @@ public class FrmStudentType extends javax.swing.JFrame {
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -259,12 +264,22 @@ public class FrmStudentType extends javax.swing.JFrame {
 
         lblName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblName_L1.setText("STName_L1");
+        lblName_L1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblName_L1MouseClicked(evt);
+            }
+        });
 
         txtStudentType_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtStudentType_L1.setBorder(null);
 
         lblName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblName_L2.setText("STName_L2");
+        lblName_L2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblName_L2MouseClicked(evt);
+            }
+        });
 
         txtStudentType_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtStudentType_L2.setBorder(null);
@@ -402,22 +417,26 @@ public class FrmStudentType extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        if (txtStudentType_L1.getText().equals("")||txtStudentType_L2.getText().equals("")){
-            MsgBox.msgError();
-            return;
-        }
-        if(txtID.getText().equals("New")){
-            sty.setStname_l1(txtStudentType_L1.getText());
-            sty.setStname_l2(txtStudentType_L2.getText());
-            stm.insertSttype(sty);
-            stm.showData(jTable1, model);
+        if (evt.getModifiers()==6){
+             LabelManager.WindowChangeLabel("btnSave", frm);
         }else{
-            sty.setStycid(Integer.parseInt(txtID.getText()));
-            sty.setStname_l1(txtStudentType_L1.getText().trim());
-            sty.setStname_l2(txtStudentType_L2.getText().trim());
-            stm.updateSttype(sty);
-            stm.showData(jTable1, model);
-        }
+            if (txtStudentType_L1.getText().equals("")||txtStudentType_L2.getText().equals("")){
+                MsgBox.msgError();
+                return;
+            }
+            if(txtID.getText().equals("New")){
+                sty.setStname_l1(txtStudentType_L1.getText());
+                sty.setStname_l2(txtStudentType_L2.getText());
+                stm.insertSttype(sty);
+                stm.showData(jTable1, model);
+            }else{
+                sty.setStycid(Integer.parseInt(txtID.getText()));
+                sty.setStname_l1(txtStudentType_L1.getText().trim());
+                sty.setStname_l2(txtStudentType_L2.getText().trim());
+                stm.updateSttype(sty);
+                stm.showData(jTable1, model);
+            }
+        }        
     }//GEN-LAST:event_btnSaveMouseClicked
 
     private void btnSaveMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseExited
@@ -465,6 +484,18 @@ public class FrmStudentType extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+         LabelManager.WindowChangeLabel("lblID", frm);
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblName_L1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblName_L1MouseClicked
+         LabelManager.WindowChangeLabel("lblName_L1", frm);
+    }//GEN-LAST:event_lblName_L1MouseClicked
+
+    private void lblName_L2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblName_L2MouseClicked
+         LabelManager.WindowChangeLabel("lblName_L2", frm);
+    }//GEN-LAST:event_lblName_L2MouseClicked
 
     /**
      * @param args the command line arguments

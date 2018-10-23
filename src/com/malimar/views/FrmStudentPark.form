@@ -356,6 +356,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="ID"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblIDMouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtID">
                           <Properties>
@@ -386,6 +389,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="ParkStudyL1"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblParkL1MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtParkL1">
                           <Properties>
@@ -406,6 +412,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="ParkStudyL2"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblParkL2MouseClicked"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JTextField" name="txtParkL2">
                           <Properties>

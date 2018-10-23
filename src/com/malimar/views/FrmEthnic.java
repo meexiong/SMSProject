@@ -240,6 +240,11 @@ public class FrmEthnic extends javax.swing.JFrame {
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -260,12 +265,22 @@ public class FrmEthnic extends javax.swing.JFrame {
 
         lblEthnic_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblEthnic_L1.setText("STName_L1");
+        lblEthnic_L1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEthnic_L1MouseClicked(evt);
+            }
+        });
 
         txtEthnic_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtEthnic_L1.setBorder(null);
 
         lblEthnic_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblEthnic_L2.setText("STName_L2");
+        lblEthnic_L2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEthnic_L2MouseClicked(evt);
+            }
+        });
 
         txtEthnic_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtEthnic_L2.setBorder(null);
@@ -416,23 +431,27 @@ public class FrmEthnic extends javax.swing.JFrame {
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         try {
-            if (txtEthnic_L1.getText().equals("")||txtEthnic_L2.getText().equals("")){
-                MsgBox.msgError();
-                return;
-            }
-            if (txtID.getText().equals("New")){
-                et.setEthnic_L1(txtEthnic_L1.getText());
-                et.setEthnic_L2(txtEthnic_L2.getText());
-                etg.insertethnic(et);                
-                showClear();
-                etg.showData(jTable1, model);
+            if (evt.getModifiers()==6){
+                 LabelManager.WindowChangeLabel("btnSave", frm);
             }else{
-                et.setEthnic_L1(txtEthnic_L1.getText());
-                et.setEthnic_L2(txtEthnic_L2.getText());
-                et.setID(Integer.parseInt(txtID.getText()));
-                etg.updateethnic(et);
-                showClear();
-                etg.showData(jTable1, model);
+                if (txtEthnic_L1.getText().equals("")||txtEthnic_L2.getText().equals("")){
+                    MsgBox.msgError();
+                    return;
+                }
+                if (txtID.getText().equals("New")){
+                    et.setEthnic_L1(txtEthnic_L1.getText());
+                    et.setEthnic_L2(txtEthnic_L2.getText());
+                    etg.insertethnic(et);                
+                    showClear();
+                    etg.showData(jTable1, model);
+                }else{
+                    et.setEthnic_L1(txtEthnic_L1.getText());
+                    et.setEthnic_L2(txtEthnic_L2.getText());
+                    et.setID(Integer.parseInt(txtID.getText()));
+                    etg.updateethnic(et);
+                    showClear();
+                    etg.showData(jTable1, model);
+                }
             }
             
         } catch (Exception e) {
@@ -477,6 +496,27 @@ public class FrmEthnic extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+        try {
+            LabelManager.WindowChangeLabel("lblID", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblEthnic_L1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEthnic_L1MouseClicked
+        try {
+            LabelManager.WindowChangeLabel("lblEthnic_L1", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblEthnic_L1MouseClicked
+
+    private void lblEthnic_L2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEthnic_L2MouseClicked
+        try {
+            LabelManager.WindowChangeLabel("lblEthnic_L2", frm);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_lblEthnic_L2MouseClicked
 
     /**
      * @param args the command line arguments

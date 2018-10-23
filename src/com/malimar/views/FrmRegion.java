@@ -245,6 +245,11 @@ public class FrmRegion extends javax.swing.JFrame {
 
         lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIDMouseClicked(evt);
+            }
+        });
 
         txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtID.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -265,12 +270,22 @@ public class FrmRegion extends javax.swing.JFrame {
 
         lblRegion_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblRegion_L1.setText("RegionName_L1");
+        lblRegion_L1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegion_L1MouseClicked(evt);
+            }
+        });
 
         txtRE_Name_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtRE_Name_L1.setBorder(null);
 
         lblRegion_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblRegion_L2.setText("RegionName_L2");
+        lblRegion_L2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegion_L2MouseClicked(evt);
+            }
+        });
 
         txtRE_Name_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtRE_Name_L2.setBorder(null);
@@ -449,23 +464,26 @@ public class FrmRegion extends javax.swing.JFrame {
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         try {
-            if (txtRE_Name_L1.getText().equals("")||txtRE_Name_L2.getText().equals("")){
-                MsgBox.msgError();
-                return;
-            }
-            re.setRE_Name_L1(txtRE_Name_L1.getText());
-            re.setRe_Name_L2(txtRE_Name_L2.getText());
-            if (txtID.getText().equals("New")){                
-                rm.insertRegion(re);
-                rm.showData(jTable1, model);
-                showClear();
+            if (evt.getModifiers()==6){
+                 LabelManager.WindowChangeLabel("btnSave", frm);
             }else{
-                re.setREID(Integer.parseInt(txtID.getText()));               
-                rm.updateRegion(re);
-                rm.showData(jTable1, model); 
-                showClear();
+               if (txtRE_Name_L1.getText().equals("")||txtRE_Name_L2.getText().equals("")){
+                    MsgBox.msgError();
+                    return;
+                }
+                re.setRE_Name_L1(txtRE_Name_L1.getText());
+                re.setRe_Name_L2(txtRE_Name_L2.getText());
+                if (txtID.getText().equals("New")){                
+                    rm.insertRegion(re);
+                    rm.showData(jTable1, model);
+                    showClear();
+                }else{
+                    re.setREID(Integer.parseInt(txtID.getText()));               
+                    rm.updateRegion(re);
+                    rm.showData(jTable1, model); 
+                    showClear();
+                }
             }
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -491,6 +509,18 @@ public class FrmRegion extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+         LabelManager.WindowChangeLabel("lblID", frm);
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblRegion_L1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegion_L1MouseClicked
+         LabelManager.WindowChangeLabel("lblRegion_L1", frm);
+    }//GEN-LAST:event_lblRegion_L1MouseClicked
+
+    private void lblRegion_L2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegion_L2MouseClicked
+         LabelManager.WindowChangeLabel("lblRegion_L2", frm);
+    }//GEN-LAST:event_lblRegion_L2MouseClicked
 
     /**
      * @param args the command line arguments

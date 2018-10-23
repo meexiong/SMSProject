@@ -1017,86 +1017,89 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
         try {
-            if (txtnameL1.getText().equals("")||txtnameL2.getText().equals("")){
-                MsgBox.msgError();
-                return;
-            }
-             String workid = cbbworkstatus.getSelectedItem().toString();
-             String clsid = cbbroom.getSelectedItem().toString();
-             String ntid = cbbNationality.getSelectedItem().toString();
-             String etid = cbbEthnic.getSelectedItem().toString();
-             String reid = cbbregion.getSelectedItem().toString();            
-             String genid = cbbGender.getSelectedItem().toString();
-             
-             
-            if (txtID.getText().equals("New")){ //This is insert tbl_teacher                
-                ta.setTname_l1(txtnameL1.getText());
-                ta.setTname_l2(txtnameL2.getText());
-                ta.setDob(ConvertDateSQL.convertUtilDateToSqlDate(dob.getDate()));
-                ta.setWorkid(Integer.parseInt(mapWorkStatus.get(workid)[0].toString()));
-                ta.settPhone1(txtphone1.getText());
-                ta.settPhone2(txtphone2.getText());
-                ta.settEmail(txtemail.getText());
-                ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));
-                ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));
-                ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
-                ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
-                ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
-                
-                ta.setSalary(sal);
-                //ta.setSalary(Float.parseFloat(txtMoney.getText()));
-                
-                if (cbTeacher.isSelected()==true){
-                    ta.setTeacher(true);
-                }else{
-                    ta.setTeacher(false);
-                }
-                
-                ta.setPath(path);
-                ta.setT_address(txtaddress.getText());
-                ta.settDailyTeach(cbTeachDaily.isSelected());
-                ta.setTeacher(cbTeacher.isSelected());
-                ta.settWorking(cbWorking.isSelected());
-                ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));                
-                ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
-                ta.setT_moreinfo(txtMoreInfo.getText()); 
-                tam.insertTeacher(ta);
-                tam.showT_Nbr(ta, txtnameL1.getText());                
-                txtt_nbr.setText(ta.getT_nbr());
-                
-                
+            if (evt.getModifiers()==6){
+                 LabelManager.WindowChangeLabel("btnSave", frm);
             }else{
-                ta.setTeid(Integer.parseInt(txtID.getText()));
-                ta.setTname_l1(txtnameL1.getText());
-                ta.setTname_l2(txtnameL2.getText());
-                ta.setDob(ConvertDateSQL.convertUtilDateToSqlDate(dob.getDate()));
-                ta.setWorkid(Integer.parseInt(mapWorkStatus.get(workid)[0].toString()));
-                ta.settPhone1(txtphone1.getText());
-                ta.settPhone2(txtphone2.getText());
-                ta.settEmail(txtemail.getText());
-                ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));                
-                ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));                
-                ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
-                ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
-                ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));                
-                ta.setSalary(sal);
-                
-                //ta.setTeacher(cbTeacher.isSelected());
-                if (cbTeacher.isSelected()==true){
-                    ta.setTeacher(true);
-                }else{
-                    ta.setTeacher(false);
+                if (txtnameL1.getText().equals("")||txtnameL2.getText().equals("")){
+                    MsgBox.msgError();
+                    return;
                 }
-                
-                ta.setT_address(txtaddress.getText());
-                ta.settDailyTeach(cbTeachDaily.isSelected());
-                ta.settWorking(cbWorking.isSelected());
-                ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));                
-                ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
-                ta.setT_moreinfo(txtMoreInfo.getText());                
-                tam.updateTeacherAdd(ta);                
+                 String workid = cbbworkstatus.getSelectedItem().toString();
+                 String clsid = cbbroom.getSelectedItem().toString();
+                 String ntid = cbbNationality.getSelectedItem().toString();
+                 String etid = cbbEthnic.getSelectedItem().toString();
+                 String reid = cbbregion.getSelectedItem().toString();            
+                 String genid = cbbGender.getSelectedItem().toString();
+
+
+                if (txtID.getText().equals("New")){ //This is insert tbl_teacher                
+                    ta.setTname_l1(txtnameL1.getText());
+                    ta.setTname_l2(txtnameL2.getText());
+                    ta.setDob(ConvertDateSQL.convertUtilDateToSqlDate(dob.getDate()));
+                    ta.setWorkid(Integer.parseInt(mapWorkStatus.get(workid)[0].toString()));
+                    ta.settPhone1(txtphone1.getText());
+                    ta.settPhone2(txtphone2.getText());
+                    ta.settEmail(txtemail.getText());
+                    ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));
+                    ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));
+                    ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
+                    ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
+                    ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));
+
+                    ta.setSalary(sal);
+                    //ta.setSalary(Float.parseFloat(txtMoney.getText()));
+
+                    if (cbTeacher.isSelected()==true){
+                        ta.setTeacher(true);
+                    }else{
+                        ta.setTeacher(false);
+                    }
+
+                    ta.setPath(path);
+                    ta.setT_address(txtaddress.getText());
+                    ta.settDailyTeach(cbTeachDaily.isSelected());
+                    ta.setTeacher(cbTeacher.isSelected());
+                    ta.settWorking(cbWorking.isSelected());
+                    ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));                
+                    ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
+                    ta.setT_moreinfo(txtMoreInfo.getText()); 
+                    tam.insertTeacher(ta);
+                    tam.showT_Nbr(ta, txtnameL1.getText());                
+                    txtt_nbr.setText(ta.getT_nbr());
+
+
+                }else{
+                    ta.setTeid(Integer.parseInt(txtID.getText()));
+                    ta.setTname_l1(txtnameL1.getText());
+                    ta.setTname_l2(txtnameL2.getText());
+                    ta.setDob(ConvertDateSQL.convertUtilDateToSqlDate(dob.getDate()));
+                    ta.setWorkid(Integer.parseInt(mapWorkStatus.get(workid)[0].toString()));
+                    ta.settPhone1(txtphone1.getText());
+                    ta.settPhone2(txtphone2.getText());
+                    ta.settEmail(txtemail.getText());
+                    ta.setGenid(Integer.parseInt(mapGender.get(genid)[0].toString()));                
+                    ta.setCLSID(Integer.parseInt(mapClassRoom.get(clsid)[0].toString()));                
+                    ta.setNtid(Integer.parseInt(mapInternationality.get(ntid)[0].toString()));
+                    ta.setEtid(Integer.parseInt(mapEthnic.get(etid)[0].toString()));
+                    ta.setReid(Integer.parseInt(mapRegion.get(reid)[0].toString()));                
+                    ta.setSalary(sal);
+
+                    //ta.setTeacher(cbTeacher.isSelected());
+                    if (cbTeacher.isSelected()==true){
+                        ta.setTeacher(true);
+                    }else{
+                        ta.setTeacher(false);
+                    }
+
+                    ta.setT_address(txtaddress.getText());
+                    ta.settDailyTeach(cbTeachDaily.isSelected());
+                    ta.settWorking(cbWorking.isSelected());
+                    ta.setT_Startdate(ConvertDateSQL.convertUtilDateToSqlDate(startwork.getDate()));                
+                    ta.setT_EndDate(ConvertDateSQL.convertUtilDateToSqlDate(leaveDate.getDate()));               
+                    ta.setT_moreinfo(txtMoreInfo.getText());                
+                    tam.updateTeacherAdd(ta);                
+                }
             }
-            
         } catch (Exception e) {
             e.printStackTrace();
         }
