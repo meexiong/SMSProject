@@ -199,6 +199,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 lblPasswordIncorrect.setText("Password Incorrect.");
             }
         }
+        
+        txtPassword.setText("");
+        
     }
 
     private void langLao(){
