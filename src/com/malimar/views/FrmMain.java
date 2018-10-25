@@ -1272,7 +1272,17 @@ int cnt=0;
     }//GEN-LAST:event_txtUserNameActionPerformed
 
     private void btnSignUPMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignUPMouseClicked
-        login();        
+      try {
+            login(); 
+            
+            //Try coding backup            
+//            String javaPath = "C:\\Users\\Malimar\\Desktop\\TestBackup";
+//            Runtime.getRuntime().exec("mysqldump -u " + "root" + " -p" + "password" + " databasename -r " + javaPath);          
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }//GEN-LAST:event_btnSignUPMouseClicked
 
     private void radLaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radLaoActionPerformed
