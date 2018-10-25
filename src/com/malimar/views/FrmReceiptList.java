@@ -57,7 +57,7 @@ public class FrmReceiptList extends javax.swing.JFrame {
             lblReceiptList.setText(hmapLang.get("lblReceiptList".concat(frm).toUpperCase())[LN]);
             lblSemester.setText(hmapLang.get("lblSemester".concat(frm).toUpperCase())[LN]);
             lblCourse.setText(hmapLang.get("lblCourse".concat(frm).toUpperCase())[LN]);
-            lblRegistrationID.setText(hmapLang.get("lblRegistrationID".concat(frm).toUpperCase())[LN]);
+            lblRegistrationID.setText(hmapLang.get("lblReceiptNo".concat(frm).toUpperCase())[LN]);
             JTableHeader th = table.getTableHeader();
             TableColumnModel tcm = th.getColumnModel();
             table.getColumnCount();

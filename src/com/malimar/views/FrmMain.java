@@ -198,8 +198,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }else{
                 lblPasswordIncorrect.setText("Password Incorrect.");
             }
-        }
-        
+        }        
         txtPassword.setText("");
         
     }
