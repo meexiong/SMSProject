@@ -667,6 +667,9 @@
               </Border>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtVATActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtVatAmount">
           <Properties>

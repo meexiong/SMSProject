@@ -46,6 +46,8 @@ public class FrmSale extends javax.swing.JFrame {
     Sale sale = new Sale();
     public static int prodID;
     public static double paid;
+    String pt;
+    String cr;
     public FrmSale() {
         initComponents();
         start();
@@ -110,8 +112,11 @@ public class FrmSale extends javax.swing.JFrame {
             cmbCurrency.removeAllItems();
             ms.keySet().forEach((s) -> {
                 cmbCurrency.addItem(s);
+                if((int) mapCurrency.get(s)[7]==1){
+                    cr =(String) mapCurrency.get(s)[1];
+                }
             });
-//            cmbCurrency.setSelectedIndex(-1);
+            cmbCurrency.setSelectedItem(cr);
             AutoCompleteDecorator.decorate(cmbCurrency);
         } catch (Exception e) {
         }
@@ -123,8 +128,11 @@ public class FrmSale extends javax.swing.JFrame {
             cmbPaymentType.removeAllItems();
             ms.keySet().forEach((s) -> {
                 cmbPaymentType.addItem(s);
+                if((int) mapPayment.get(s)[4]==1){
+                    pt =(String) mapPayment.get(s)[3];
+                }
             });
-            cmbPaymentType.setSelectedIndex(-1);
+            cmbPaymentType.setSelectedItem(pt);
             AutoCompleteDecorator.decorate(cmbPaymentType);
         } catch (Exception e) {
         }
@@ -155,7 +163,7 @@ public class FrmSale extends javax.swing.JFrame {
             txtGrandTotal.setText(String.format("%,.2f", total - dam));
             double gt = Double.parseDouble(txtGrandTotal.getText().replace(",", ""));
             float vat = Float.parseFloat(txtVAT.getText().replace(",", ""));
-            txtVatAmount.setText(String.format("%,.2f", (gt * vat) / 100));
+            txtVatAmount.setText(String.format("%,.2f", (gt * 100) / (100+vat)));
             double vm = Double.parseDouble(txtVatAmount.getText().replace(",", ""));
             txtSubTotal.setText(String.format("%,.2f", gt - vm));
         } catch (NumberFormatException e) {
@@ -482,6 +490,11 @@ public class FrmSale extends javax.swing.JFrame {
         txtVAT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtVAT.setText("0.00");
         txtVAT.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtVAT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVATActionPerformed(evt);
+            }
+        });
 
         txtVatAmount.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         txtVatAmount.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -941,6 +954,10 @@ public class FrmSale extends javax.swing.JFrame {
     private void lblSaleTitleMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSaleTitleMousePressed
         FrameMove.mousePressed(evt);
     }//GEN-LAST:event_lblSaleTitleMousePressed
+
+    private void txtVATActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVATActionPerformed
+        calculate();
+    }//GEN-LAST:event_txtVATActionPerformed
 
     /**
      * @param args the command line arguments

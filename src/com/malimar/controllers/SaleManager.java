@@ -42,7 +42,7 @@ public class SaleManager {
             String sql = "Select * from tbl_RecType where RecType='CUR'";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
-                smap.put(rs.getString("RecType_"+LangType+""), new Object[]{rs.getInt("RecTypeID"),rs.getString("RecType_"+LangType+""),rs.getString("RecType_L1"),rs.getString("RecType_L2"), rs.getFloat("RecTypeLAK"), rs.getFloat("RecTypeTHB"), rs.getFloat("RecTypeUSD")});
+                smap.put(rs.getString("RecType_"+LangType+""), new Object[]{rs.getInt("RecTypeID"),rs.getString("RecType_"+LangType+""),rs.getString("RecType_L1"),rs.getString("RecType_L2"), rs.getFloat("RecTypeLAK"), rs.getFloat("RecTypeTHB"), rs.getFloat("RecTypeUSD"),rs.getInt("RecTypeDefault")});
             }
             rs.close();
             return smap;            
@@ -57,7 +57,7 @@ public class SaleManager {
             String sql = "exec pd_RecTypeInfor 'PMT'";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
-                smap.put(rs.getString("RecType_"+LangType+""), new Object[]{rs.getInt("RecTypeID"), rs.getString("RecType_L1"), rs.getString("RecType_L2")});
+                smap.put(rs.getString("RecType_"+LangType+""), new Object[]{rs.getInt("RecTypeID"), rs.getString("RecType_L1"), rs.getString("RecType_L2"), rs.getString("RecType_"+LangType+""), rs.getInt("RecTypeDefault")});
             }
             rs.close();
             return smap;            
