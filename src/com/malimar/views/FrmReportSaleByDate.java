@@ -19,6 +19,7 @@ import java.util.Map;
 import javax.swing.JFrame;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import com.malimar.models.Report;
 
 /**
  *
@@ -27,12 +28,15 @@ import net.sf.jasperreports.engine.JasperPrint;
 public class FrmReportSaleByDate extends javax.swing.JFrame {
     String frm;
     Connection c = DatabaseManagerSQL.getConnection();
+    
+    Report rp = new Report();
+    
     public FrmReportSaleByDate() {
         initComponents();
         Logo lg = new Logo();
         lg.getLogo(this);
         frm = this.getClass().getSimpleName();
-        lblReportTitle.setText(LabelManager.hmapLang.get("lblReportTitle".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblReportTitle.setText(LabelManager.hmapLang.get("lblReportTitle".concat(frm).toUpperCase())[LabelManager.LN]);     
         lblStartDate.setText(LabelManager.hmapLang.get("lblStartDate".concat(frm).toUpperCase())[LabelManager.LN]);
         lblEndDate.setText(LabelManager.hmapLang.get("lblEndDate".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReport.setText(LabelManager.hmapLang.get("btnReport".concat(frm).toUpperCase())[LabelManager.LN]);
@@ -63,6 +67,14 @@ public class FrmReportSaleByDate extends javax.swing.JFrame {
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 formMousePressed(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
@@ -173,7 +185,7 @@ public class FrmReportSaleByDate extends javax.swing.JFrame {
                     .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,7 +199,7 @@ public class FrmReportSaleByDate extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblEndDate)
                     .addComponent(txtEndDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(10, 10, 10)
                 .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
@@ -212,7 +224,12 @@ public class FrmReportSaleByDate extends javax.swing.JFrame {
 
     private void lblReportTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblReportTitleMouseClicked
         if(evt.getModifiers()==6){
-            WindowChangeLabel("lblReportTitle", frm);
+            if (rp.getReportID()==1){
+                WindowChangeLabel("lblReportTitle", frm);
+            }else if (rp.getReportID()==2){
+                WindowChangeLabel("TitleIncomebySale", frm);
+            }
+            
         }
     }//GEN-LAST:event_lblReportTitleMouseClicked
 
@@ -262,6 +279,14 @@ public class FrmReportSaleByDate extends javax.swing.JFrame {
     private void formMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseDragged
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+       
+    }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
