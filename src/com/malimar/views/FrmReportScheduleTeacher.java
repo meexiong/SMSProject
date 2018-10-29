@@ -280,6 +280,27 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
 
         cbbCourse.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cbbCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbbCourse.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbbCourseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                cbbCourseMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                cbbCourseMousePressed(evt);
+            }
+        });
+        cbbCourse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbCourseActionPerformed(evt);
+            }
+        });
+        cbbCourse.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbbCourseKeyPressed(evt);
+            }
+        });
 
         lblYear.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblYear.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -456,6 +477,33 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_txtYearKeyReleased
+
+    private void cbbCourseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbCourseActionPerformed
+        
+    }//GEN-LAST:event_cbbCourseActionPerformed
+
+    private void cbbCourseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbCourseMouseClicked
+       
+    }//GEN-LAST:event_cbbCourseMouseClicked
+
+    private void cbbCourseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbCourseMouseEntered
+         
+    }//GEN-LAST:event_cbbCourseMouseEntered
+
+    private void cbbCourseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbbCourseKeyPressed
+        
+    }//GEN-LAST:event_cbbCourseKeyPressed
+
+    private void cbbCourseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbCourseMousePressed
+        try {
+            rst.setYear(txtYear.getText());
+            String coursename = cbbCourse.getSelectedItem().toString();
+            rstm.showSearchCourse(jTable1, model, rst.getYear(), coursename);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_cbbCourseMousePressed
 
     /**
      * @param args the command line arguments

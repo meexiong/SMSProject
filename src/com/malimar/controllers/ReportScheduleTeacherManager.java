@@ -48,10 +48,6 @@ public class ReportScheduleTeacherManager {
                     "group by stdate, enddate, CourseName_"+ LangType +", SemesterName\n" +
                     "order by stdate, endDate";
             
-//            sql = "Select courseName_"+LangType+" AS coursename from vw_ScheduleTeacher\n" +                    
-//                    "group by stdate, enddate, CourseName_"+ LangType +", SemesterName\n" +
-//                    "order by stdate, endDate";
-            
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
                 map.put(rs.getString("coursename"), new Object[]{rs.getString("coursename"), rs.getString("coursename"), rs.getString("coursename")});
@@ -63,6 +59,26 @@ public class ReportScheduleTeacherManager {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    public boolean showSearchCourse(JTable table, DefaultTableModel model, String year, String coursename){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            sql = "Select stdate, enddate, courseName_"+ LangType +" As coursename, semesterName, sum(price) as sumprice \n" +
+                    "from vw_ScheduleTeacher\n" +
+                    "where SubString(stDate, 7, 10) = '"+ year +"' and courseName_"+ LangType +" = N'"+ coursename +"'\n" +
+                    "group by stdate, enddate, courseName_"+ LangType +", SemesterName\n" +
+                    "order by stdate, endDate";
+            ResultSet rs = c.createStatement().executeQuery(sql);
+            while (rs.next()){
+                model.addRow(new Object[]{rs.getString("stdate"), rs.getString("enddate"), rs.getString("coursename"), rs.getString("semesterName"), rs.getDouble("sumprice")});
+            }
+            rs.close();
+            return true;
+            
+        } catch (Exception e) {
+        }
+        return false;
     }
     
 }
