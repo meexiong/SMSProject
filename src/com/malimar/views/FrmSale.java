@@ -168,7 +168,6 @@ public class FrmSale extends javax.swing.JFrame {
             double vm = Double.parseDouble(txtVatAmount.getText().replace(",", ""));
             txtSubTotal.setText(String.format("%,.2f", gt - vm));
         } catch (NumberFormatException e) {
-            e.printStackTrace();
         }
     }
 
