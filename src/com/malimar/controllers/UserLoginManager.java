@@ -228,7 +228,8 @@ public class UserLoginManager {
                     "left join tbl_SysLang sl on sl.SLANGID = gl.SLANGID\n" +
                     "left join tbl_GroupUser gu on gu.GRUID = gl.GRUID\n" +
                     "left join tbl_SysForm f on f.FormID = sl.FormID\n" +
-                    "where gu.GroupName_"+ LangType +" = N'"+ x +"'";
+                    "where gu.GroupName_"+ LangType +" = N'"+ x +"' and not f.FormID is null "
+                    + "Group by f.formid, f.form_name_"+ LangType +", gu.groupname_"+ LangType +"";
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
                 mapF.put(rs.getString("formname"), new Object[]{rs.getString("formid"), rs.getString("formname")});
@@ -382,8 +383,7 @@ public class UserLoginManager {
             while (rs.next()){
                 model.addRow(new Object[]{rs.getString("GULID"), rs.getString("formname"), rs.getString("LangName"), rs.getBoolean("Reads"), rs.getBoolean("write"), rs.getBoolean("denys")});
             }
-            table.setModel(model);
-            
+            table.setModel(model);            
         } catch (Exception e) {
             e.printStackTrace();
         }

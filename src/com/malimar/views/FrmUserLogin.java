@@ -7,6 +7,7 @@ package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.UserLoginManager;
 import com.malimar.models.UserLogin;
@@ -264,8 +265,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 cbbGroupUser1.addItem(s);
             });
             cbbGroupUser1.setSelectedIndex(-1);
-            AutoCompleteDecorator.decorate(cbbGroupUser1);
-            
+            AutoCompleteDecorator.decorate(cbbGroupUser1);           
             
         } catch (Exception e) {
         }
@@ -301,8 +301,8 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }
     private void showForm() {
         try {
-            if (cbbGroupUser1.getSelectedItem().toString().isEmpty()) {
-                String x = cbbGroupUser1.getSelectedItem().toString();
+            String x = cbbGroupUser1.getSelectedItem().toString();
+            if (x.equals("")) {                
                 mapFm = ulm.mapForm(x);
                 Map<String, Object[]> mp = new TreeMap<>(mapFm);
                 cbbForm.removeAllItems();
@@ -311,9 +311,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 });
                 cbbForm.setSelectedIndex(-1);
                 AutoCompleteDecorator.decorate(cbbForm);
-            }else{
-                
-                String x = cbbGroupUser1.getSelectedItem().toString();
+            }else{                
                 mapFm = ulm.mapForm(x);
                 Map<String, Object[]> mp = new TreeMap<>(mapFm);
                 cbbForm.removeAllItems();
@@ -321,12 +319,11 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     cbbForm.addItem(s);
                 });
                 cbbForm.setSelectedIndex(-1);
-                AutoCompleteDecorator.decorate(cbbForm);
-                
+                AutoCompleteDecorator.decorate(cbbForm);                
             }
-
+                       
         } catch (Exception e) {
-           // e.printStackTrace();
+            e.printStackTrace();
         }
     }
     private void showGroupUserPermission(){
@@ -942,7 +939,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                         .addComponent(btnShowDataGroupPermission, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnUpdateGroupPermission, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 304, Short.MAX_VALUE)))
+                        .addGap(304, 304, 304)))
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
@@ -1495,7 +1492,6 @@ public class FrmUserLogin extends javax.swing.JFrame {
                     ulm.showTeacherUser(jTable5, model5);
                 }else if (jTabbedPane1.getSelectedIndex()==5){
                     showGroupUser3();
-                    
                 }
             }
         } catch (Exception e) {
