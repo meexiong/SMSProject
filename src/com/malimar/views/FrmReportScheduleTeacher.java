@@ -11,11 +11,24 @@ package com.malimar.views;
  */
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
+import static com.malimar.controllers.LabelManager.LN;
+import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.Logo;
+import com.malimar.controllers.ReportScheduleTeacherManager;
+import com.malimar.models.ReportScheduleTeacher;
 import com.malimar.utils.Border;
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Label;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class FrmReportScheduleTeacher extends javax.swing.JFrame {
 
@@ -26,17 +39,64 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     String sql, frm;
     DefaultTableModel model= new DefaultTableModel();
             
+    ReportScheduleTeacherManager rstm = new ReportScheduleTeacherManager();
+    ReportScheduleTeacher rst = new ReportScheduleTeacher();
+    
+    HashMap<String, Object[]> mapC = null;
+    
     public FrmReportScheduleTeacher() {
         initComponents();
         frm = this.getClass().getSimpleName();
+        
         Logo lg = new Logo();
         lg.getLogo(this);
         
         Border.blueColor(btnOpen);
         
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
+        jTable1.setShowGrid(true);
+        jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
+        jTable1.getTableHeader().setForeground(Color.WHITE);
+        jTable1.getTableHeader().setOpaque(false);
+        
+        
+        
         model = (DefaultTableModel)jTable1.getModel();        
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         
+        lblSystemInfo.setText(LabelManager.hmapForm.get("FrmReportScheduleTeacher".toUpperCase())[LabelManager.LN]);
+        lblYear.setText(LabelManager.hmapLang.get("lblYear".concat(frm).toUpperCase())[LabelManager.LN]);
+        lblCourse.setText(LabelManager.hmapLang.get("lblCourse".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnOpen.setText(LabelManager.hmapLang.get("btnOpen".concat(frm).toUpperCase())[LabelManager.LN]);
+              
+        
+        JTableHeader th = jTable1.getTableHeader();
+            TableColumnModel tcm = th.getColumnModel();
+            jTable1.getColumnCount();
+            for(int i=0; i < jTable1.getColumnCount(); i++){
+                TableColumn tc = tcm.getColumn(i);            
+            tc.setHeaderValue(hmapLang.get(jTable1.getModel().getColumnName(i).concat(frm).toUpperCase())[LN]);
+        }
+        jTable1.setAutoCreateRowSorter(true);
+        th.repaint();
+        
+    }
+    public void showCourse(){
+        try {
+            rst.setYear(txtYear.getText());
+            mapC = rstm.getmapCourse(rst.getYear());
+            
+            Map<String, Object[]> smap = new TreeMap<>(mapC);
+            cbbCourse.removeAllItems();
+            smap.keySet().forEach((s)->{
+            cbbCourse.addItem(s);
+        });
+            cbbCourse.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cbbCourse);            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -63,9 +123,10 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         lblCourse = new javax.swing.JLabel();
         btnOpen = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbCourse = new javax.swing.JComboBox<>();
         lblYear = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtYear = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -143,15 +204,22 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         jTable1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null}
+                {null, null, null, null, null}
             },
             new String [] {
-                "lblID", "lblRelationship_L1", "lblRelationsip_L2"
+                "stDate", "endDate", "courseName", "semesterName", "Price"
             }
         ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
@@ -169,6 +237,18 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(0).setMaxWidth(80);
+            jTable1.getColumnModel().getColumn(1).setMinWidth(80);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(80);
+            jTable1.getColumnModel().getColumn(2).setMinWidth(220);
+            jTable1.getColumnModel().getColumn(2).setMaxWidth(220);
+            jTable1.getColumnModel().getColumn(3).setMinWidth(150);
+            jTable1.getColumnModel().getColumn(3).setMaxWidth(150);
+            jTable1.getColumnModel().getColumn(4).setMinWidth(140);
+            jTable1.getColumnModel().getColumn(4).setMaxWidth(140);
+        }
 
         jPanel8.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -198,8 +278,8 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cbbCourse.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        cbbCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         lblYear.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblYear.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -210,8 +290,14 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtYear.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtYear.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtYear.setBorder(null);
+        txtYear.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtYearKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -224,12 +310,18 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(lblYear, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(140, 140, 140)
-                        .addComponent(lblCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(btnOpen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
+                            .addComponent(txtYear))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addGap(140, 140, 140)
+                                .addComponent(lblCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbbCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                                .addGap(336, 336, 336)
+                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -240,14 +332,19 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
                         .addGap(2, 2, 2)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblCourse)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(cbbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblYear)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(9, 9, 9)
-                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, 506, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -349,6 +446,17 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblYearMouseClicked
 
+    private void txtYearKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearKeyReleased
+        try {
+            rst.setYear(txtYear.getText());
+            rstm.showScheduleTeacher(jTable1, model, rst.getYear());
+            showCourse();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_txtYearKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -388,7 +496,7 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnOpen;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbbCourse;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -398,10 +506,11 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblCourse;
     private javax.swing.JLabel lblSystemInfo;
     private javax.swing.JLabel lblYear;
+    private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
 }
