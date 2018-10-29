@@ -493,8 +493,8 @@ public class FrmReport extends javax.swing.JFrame {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnReportIncomebyProduct", frm);
             }else{
-                FrmReportSaleByDate framR = new FrmReportSaleByDate();
-                framR.setVisible(true);               
+                FrmReportbyDate fr = new FrmReportbyDate();
+                fr.setVisible(true);
                 
             }
         } catch (Exception e) {

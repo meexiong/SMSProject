@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_IncomebySale_L2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="4ce3a90e-2f18-4f11-8a77-9184b3bd7959">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="stDate" class="java.lang.String"/>
+	<parameter name="endDate" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[exec pd_ReportbySale_L2 @st_saleDate = $P{stDate}, @End_SaleDate = $P{endDate}]]>
+	</queryString>
+	<field name="SaleDid" class="java.lang.Integer"/>
+	<field name="saleID" class="java.lang.Integer"/>
+	<field name="createDate" class="java.lang.String"/>
+	<field name="SaleDate" class="java.lang.String"/>
+	<field name="fCreateDate" class="java.lang.String"/>
+	<field name="fSaleDate" class="java.lang.String"/>
+	<field name="Bar1" class="java.lang.String"/>
+	<field name="ProductName_L2" class="java.lang.String"/>
+	<field name="UnitName_l2" class="java.lang.String"/>
+	<field name="priceA" class="java.lang.Double"/>
+	<field name="SaleQty" class="java.lang.Double"/>
+	<field name="saleTotal" class="java.lang.Double"/>
+	<field name="Currency_L2" class="java.lang.String"/>
+	<field name="paymentType_l2" class="java.lang.String"/>
+	<field name="DisPercentage" class="java.lang.Double"/>
+	<field name="DisAmount" class="java.lang.Double"/>
+	<field name="VatPercentage" class="java.lang.Double"/>
+	<field name="VatAmount" class="java.lang.Double"/>
+	<field name="shouldPaid" class="java.lang.Double"/>
+	<field name="Paid" class="java.lang.Double"/>
+	<field name="s_name_l1" class="java.lang.String"/>
+	<field name="nameL2" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phone1" class="java.lang.String"/>
+	<field name="phone2" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="facebook" class="java.lang.String"/>
+	<field name="s_address" class="java.lang.String"/>
+	<field name="s_addressL2" class="java.lang.String"/>
+	<field name="s_img" class="java.lang.Object"/>
+	<variable name="Paid_1" class="java.lang.Double" resetType="Group" resetGroup="SaleDate" calculation="Sum">
+		<variableExpression><![CDATA[$F{Paid}]]></variableExpression>
+	</variable>
+	<variable name="ListCount" class="java.lang.Integer" resetType="Group" resetGroup="SaleDate" calculation="Count">
+		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
+	</variable>
+	<variable name="VatAmount_1" class="java.lang.Double" resetType="Group" resetGroup="SaleDate" calculation="Sum">
+		<variableExpression><![CDATA[$F{VatAmount}]]></variableExpression>
+	</variable>
+	<variable name="VatPercentage_1" class="java.lang.Double" resetType="Group" resetGroup="SaleDate" calculation="Sum">
+		<variableExpression><![CDATA[$F{VatPercentage}]]></variableExpression>
+	</variable>
+	<variable name="saleTotal_1" class="java.lang.Double" resetType="Group" resetGroup="SaleDate" calculation="Sum">
+		<variableExpression><![CDATA[$F{saleTotal}]]></variableExpression>
+	</variable>
+	<variable name="SaleQty_1" class="java.lang.Double" resetType="Group" resetGroup="SaleDate" calculation="Sum">
+		<variableExpression><![CDATA[$F{SaleQty}]]></variableExpression>
+	</variable>
+	<variable name="priceA_1" class="java.lang.Double" resetType="Group" resetGroup="SaleDate" calculation="Sum">
+		<variableExpression><![CDATA[$F{priceA}]]></variableExpression>
+	</variable>
+	<variable name="priceA_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{priceA}]]></variableExpression>
+	</variable>
+	<variable name="Paid_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{Paid}]]></variableExpression>
+	</variable>
+	<variable name="VatAmount_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{VatAmount}]]></variableExpression>
+	</variable>
+	<variable name="SaleQty_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{SaleQty}]]></variableExpression>
+	</variable>
+	<variable name="saleTotal_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{saleTotal}]]></variableExpression>
+	</variable>
+	<variable name="VatPercentage_2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{VatPercentage}]]></variableExpression>
+	</variable>
+	<group name="SaleDate">
+		<groupExpression><![CDATA[$F{fSaleDate}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="20" uuid="1622d933-53ad-4910-81b9-c402fd2cf3bc"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" Date :   "+$F{fSaleDate}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="20">
+				<textField pattern="#,### ">
+					<reportElement x="435" y="0" width="120" height="20" uuid="e67523f9-18c2-4e2a-8091-01b6d2c41333"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{Paid_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,###">
+					<reportElement x="402" y="0" width="33" height="20" uuid="29076d2a-bf5c-449e-ae4b-65ec4313afeb"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{SaleQty_1}]]></textFieldExpression>
+				</textField>
+				<textField pattern="#,### ">
+					<reportElement x="335" y="0" width="67" height="20" uuid="4be5b937-9c41-402f-abb9-d95b262038f6"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{priceA_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="335" height="20" uuid="3d49a27c-8234-44db-a077-d6bc1681074f"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="8" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total     ]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="CatePaid">
+		<groupExpression><![CDATA[$F{paymentType_l2}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="0" y="0" width="555" height="20" uuid="3d94088a-b8db-407e-a862-0ece13f064f9"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="9" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["     "+$F{paymentType_l2}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="73" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="33" uuid="d822df1f-2473-4d8b-bae5-d53127fd7d79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Income Details]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="33" width="67" height="20" uuid="9e69f665-48ca-4671-81f1-cad0cbde52f3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX"/>
+				</textElement>
+				<text><![CDATA[Date : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="418" y="33" width="67" height="20" uuid="337c94c3-6876-4728-9318-1ecf18f6adbe"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{stDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="497" y="33" width="58" height="20" uuid="f168bc3e-0a47-47b5-a113-83ba6fdbfbdd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{endDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="485" y="33" width="12" height="20" uuid="cf7abe86-9745-4b23-809e-e068fa84aef4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="351" y="53" width="134" height="20" uuid="9db4c240-1460-4a2c-9b64-ac4899bc0a67"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX"/>
+				</textElement>
+				<text><![CDATA[Print : ]]></text>
+			</staticText>
+			<textField pattern="yyyy/MM/dd">
+				<reportElement x="485" y="53" width="70" height="20" uuid="1c7405c9-e7c3-4397-bbc7-8321e5cc6633"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="31" y="15" width="93" height="20" uuid="405da624-8bae-431c-8fda-aa74f3dc8f2f"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Barcode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="15" width="211" height="20" uuid="a89cfac1-930f-434d-8875-355e1255feb1"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Product]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="15" width="67" height="20" uuid="224a0c89-d369-4341-ab9c-b76e7682c305"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="15" width="33" height="20" uuid="b500fbf6-70ee-4154-a1e3-53b37a995b10"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="15" width="120" height="20" uuid="30038c6a-2438-4299-b810-c06b08bba50a"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="15" width="31" height="20" uuid="82d805d6-41c9-42e7-87f8-8f9ed7400ac2"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[List]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="31" y="0" width="93" height="20" uuid="4515278d-ec3f-4155-9579-9e6308438457"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Bar1} +" "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="211" height="20" uuid="19c8b9c8-dc0f-4bb4-b735-599fc349e854"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["    "+$F{ProductName_L2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,### ">
+				<reportElement x="335" y="0" width="67" height="20" uuid="85225968-03bc-4359-bd83-863401232247"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{priceA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,###">
+				<reportElement x="402" y="0" width="33" height="20" uuid="b6d572b2-fdd4-4981-88ff-c7093499775b"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SaleQty}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##,### ">
+				<reportElement x="435" y="0" width="120" height="20" uuid="606dce7c-ed64-4ed4-a1d3-e05b73cd3a0f"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Paid}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="31" height="20" uuid="b50444f3-b75e-4715-827a-7514956c155d"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{ListCount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="22" width="555" height="10" uuid="f4aeaa15-d647-4084-af7a-98be324a05cd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{s_name_l1}+', '+$F{s_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="1" width="80" height="20" uuid="fa949c18-2c9e-4515-ad18-03b0fc7a393f"/>
+				<textElement textAlignment="Right">
+					<font fontName="Lao Unicode" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="1" width="40" height="20" uuid="5d95c14d-1fc5-4885-b6b7-f26eb3266c52"/>
+				<textElement>
+					<font fontName="Lao Unicode" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="32" width="555" height="10" uuid="99f99ea9-52bc-45b1-aa33-4a9cdee2d6bb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Tel : '+$F{phone1}+'   '+$F{phone2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="42" width="555" height="10" uuid="b72b470e-7857-4ffb-9289-91e346e00dc5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Facebook: '+$F{facebook}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="52" width="555" height="10" uuid="d4a0212f-540a-4cd7-a474-058f1bada4b7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Web-Site: '+$F{website}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="21" width="555" height="1" uuid="092260b5-a315-49a3-8cbd-2abbacec98dc"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="20">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="335" height="20" backcolor="#00CC33" uuid="41d3763b-bbfe-494a-8dbc-7eefa61cb2e4"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Summary     ]]></text>
+			</staticText>
+			<textField pattern="#,### ">
+				<reportElement mode="Opaque" x="335" y="0" width="67" height="20" backcolor="#00CC33" uuid="cba40f07-1a9d-4f2d-a478-b450bc534b3c"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{priceA_2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,### ">
+				<reportElement mode="Opaque" x="435" y="0" width="120" height="20" backcolor="#00CC33" uuid="dbd77891-3cbc-42c6-910d-975b8405ff54"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Paid_2}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,###">
+				<reportElement mode="Opaque" x="402" y="0" width="33" height="20" backcolor="#00CC33" uuid="72e5c7ec-3a1d-4f87-9074-005ffff0360b"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{SaleQty_2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
