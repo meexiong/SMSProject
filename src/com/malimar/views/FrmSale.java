@@ -163,7 +163,8 @@ public class FrmSale extends javax.swing.JFrame {
             txtGrandTotal.setText(String.format("%,.2f", total - dam));
             double gt = Double.parseDouble(txtGrandTotal.getText().replace(",", ""));
             float vat = Float.parseFloat(txtVAT.getText().replace(",", ""));
-            txtVatAmount.setText(String.format("%,.2f", (gt * 100) / (100+vat)));
+            double a =  (gt * 100) / (100+vat);
+            txtVatAmount.setText(String.format("%,.2f", gt-a));
             double vm = Double.parseDouble(txtVatAmount.getText().replace(",", ""));
             txtSubTotal.setText(String.format("%,.2f", gt - vm));
         } catch (NumberFormatException e) {
