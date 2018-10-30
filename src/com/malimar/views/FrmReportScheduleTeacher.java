@@ -549,13 +549,13 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
                 
                 if (LabelManager.LangType.equals("L1")){
                    fm.setTitle("ລາຍງານ ຕາຕາລາງການສອນ");                   
-                   JasperPrint p = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L1.jasper", param,c);                   
-                   fm.setContentPane(new JRViewer(p));
+                   JasperPrint pr = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L1.jasper", param, c);                   
+                   fm.setContentPane(new JRViewer(pr));
                    fm.setVisible(true);                   
                 }else{
                    fm.setTitle("Report Schedule Teacher");
-                   JasperPrint p = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L2.jasper", param,c);
-                   fm.setContentPane(new JRViewer(p));
+                   JasperPrint pr = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L2.jasper", param, c);
+                   fm.setContentPane(new JRViewer(pr));
                    fm.setVisible(true);
                 }   
             }
