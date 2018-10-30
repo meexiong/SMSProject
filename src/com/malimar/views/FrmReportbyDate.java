@@ -252,14 +252,16 @@ public class FrmReportbyDate extends javax.swing.JFrame {
                 Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
                 int h = (int)d.getHeight();
                 int w = (int)d.getWidth();
-                frm.setTitle("ລາຍງານ ລາຍຮັບຈາກການຂາຍ");
+                
                 frm.setBounds(0,0,w,h);
                 
                 if (LabelManager.LangType.equals("L1")){
+                   frm.setTitle("ລາຍງານ ລາຍຮັບຈາກການຂາຍ");
                    JasperPrint p = JasperFillManager.fillReport(PathReport.path+"Report_IncomebySale_L1.Jasper", param, c);
                    frm.setContentPane(new JRViewer(p));
                    frm.setVisible(true);                    
                 }else{
+                   frm.setTitle("Report Income by Sale");
                    JasperPrint p = JasperFillManager.fillReport(PathReport.path+"Report_IncomebySale_L2.Jasper", param, c);
                    frm.setContentPane(new JRViewer(p));
                    frm.setVisible(true);  

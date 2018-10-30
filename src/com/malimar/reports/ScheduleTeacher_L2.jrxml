@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ScheduleTeacher_L2" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryWithPageHeaderAndFooter="true" uuid="2916cce7-a3bf-4bab-9762-c99aa1f3b746">
+	<property name="ireport.zoom" value="1.7715610000000017"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="year" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[Select *,
+(Select S_name_L1 from tbl_SchoolInfo) AS s_name_l1, (Select s_name_l2 from tbl_SchoolInfo) AS nameL2,
+(Select website from tbl_SchoolInfo) AS website, (Select phone1 from tbl_SchoolInfo) as phone1, (Select phone2 from tbl_SchoolInfo)as phone2,
+(select fax from tbl_SchoolInfo) as fax, (select facebook from tbl_SchoolInfo) as facebook, (select s_address_L1 from tbl_SchoolInfo) as s_address,  (select s_address_L2 from tbl_SchoolInfo) as s_addressL2,
+(select S_img from tbl_schoolinfo) as s_img from vw_ScheduleTeacher
+where SubString(stDate, 7, 10) = $P{year}
+order by Coursename_l1, roomnbr]]>
+	</queryString>
+	<field name="scdid" class="java.lang.Integer"/>
+	<field name="courseName_l1" class="java.lang.String"/>
+	<field name="courseName_l2" class="java.lang.String"/>
+	<field name="semesterName" class="java.lang.String"/>
+	<field name="stDate" class="java.lang.String"/>
+	<field name="endDate" class="java.lang.String"/>
+	<field name="t_nbr" class="java.lang.String"/>
+	<field name="t_name_l1" class="java.lang.String"/>
+	<field name="t_name_l2" class="java.lang.String"/>
+	<field name="gen_l1" class="java.lang.String"/>
+	<field name="gen_l2" class="java.lang.String"/>
+	<field name="RoomNbr" class="java.lang.String"/>
+	<field name="RoomMax" class="java.lang.Integer"/>
+	<field name="price" class="java.lang.Double"/>
+	<field name="Sunday" class="java.lang.Boolean"/>
+	<field name="suntime" class="java.lang.String"/>
+	<field name="Monday" class="java.lang.Boolean"/>
+	<field name="montime" class="java.lang.String"/>
+	<field name="Tuesday" class="java.lang.Boolean"/>
+	<field name="tuetime" class="java.lang.String"/>
+	<field name="Wednesday" class="java.lang.Boolean"/>
+	<field name="wedTime" class="java.lang.String"/>
+	<field name="Thursday" class="java.lang.Boolean"/>
+	<field name="thurtime" class="java.lang.String"/>
+	<field name="Friday" class="java.lang.Boolean"/>
+	<field name="fritime" class="java.lang.String"/>
+	<field name="Saturday" class="java.lang.Boolean"/>
+	<field name="satTime" class="java.lang.String"/>
+	<field name="s_name_l1" class="java.lang.String"/>
+	<field name="nameL2" class="java.lang.String"/>
+	<field name="website" class="java.lang.String"/>
+	<field name="phone1" class="java.lang.String"/>
+	<field name="phone2" class="java.lang.String"/>
+	<field name="fax" class="java.lang.String"/>
+	<field name="facebook" class="java.lang.String"/>
+	<field name="s_address" class="java.lang.String"/>
+	<field name="s_addressL2" class="java.lang.String"/>
+	<field name="s_img" class="java.lang.Object"/>
+	<variable name="price_1" class="java.lang.Double" resetType="Group" resetGroup="Room" calculation="Sum">
+		<variableExpression><![CDATA[$F{price}]]></variableExpression>
+	</variable>
+	<variable name="countList" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$V{REPORT_COUNT}]]></variableExpression>
+	</variable>
+	<group name="CourseName">
+		<groupExpression><![CDATA[$F{courseName_l1}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement mode="Transparent" x="16" y="0" width="539" height="20" backcolor="#FF00FF" uuid="fee04d78-8e1c-423d-be04-ae2ead70fdff"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA["  "+$F{courseName_l2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Transparent" x="0" y="0" width="16" height="20" backcolor="#FF00FF" uuid="da936a25-ae84-454a-bcd1-c7ba06bad1c9"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="8" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[( $V{countList} ? $V{countList} : 1 )]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Room">
+		<groupExpression><![CDATA[$F{RoomNbr}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement x="0" y="0" width="205" height="20" uuid="cd5cf388-b22c-4a1a-adde-513452953720"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="8" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["      Room :   "+$F{RoomNbr} +" Teacher : "+$F{t_name_l1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="205" y="20" width="50" height="20" uuid="9d15c049-8bad-43a5-8009-0678aa071c2a"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sun]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="255" y="20" width="50" height="20" uuid="d39ff2aa-e261-4b0b-8d3c-3f7ecc7e85c3"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Mon]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="305" y="20" width="50" height="20" uuid="ab04b3cc-827b-491e-a57e-e993157e10e3"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Tue]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="355" y="20" width="50" height="20" uuid="e002beea-db6c-4aee-989a-a89387dec413"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Wed]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="405" y="20" width="50" height="20" uuid="6d14f960-bc42-4f71-ba6a-0bb9cb97c269"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Thu]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="455" y="20" width="50" height="20" uuid="abc356b0-c774-4f16-9818-da7231592504"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Fri]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="505" y="20" width="50" height="20" uuid="f4b77943-7cce-4448-bc9a-04c1704dcf19"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Sat]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="205" y="0" width="350" height="20" uuid="7c68c831-a31d-4a86-9a85-05d44297cde3"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.75"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Details Teacher]]></text>
+				</staticText>
+				<textField evaluationTime="Group" evaluationGroup="Room" pattern="##,###">
+					<reportElement x="62" y="20" width="143" height="20" uuid="dbaa29bf-c6e5-4ccc-8abf-2e9231b21a34"/>
+					<box>
+						<bottomPen lineWidth="0.75"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{price_1}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="20" width="77" height="20" uuid="9c9b010f-e386-46e4-8cd2-5897f5d44e42"/>
+					<box>
+						<topPen lineWidth="0.75"/>
+						<leftPen lineWidth="0.75"/>
+						<bottomPen lineWidth="0.75"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Saysettha MX" size="7" isBold="false"/>
+					</textElement>
+					<text><![CDATA[        Total   ]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="31" uuid="ee8fe58c-1d6a-4199-a461-81c04bc04db5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Schedule Teacher by Year]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="31" width="555" height="31" uuid="929f5c7e-648a-4565-89a5-65256a2b749f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="205" y="0" width="50" height="20" uuid="351b2170-2d4a-4bfa-8bb7-63d080a6ddaa"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{suntime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="255" y="0" width="50" height="20" uuid="3874622c-44a3-4750-88c7-7af68a48bbc5"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{montime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="0" width="50" height="20" uuid="6b4dcab0-f740-452d-a130-ee9508526192"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tuetime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="355" y="0" width="50" height="20" uuid="80aeed56-b6c3-4dda-94bf-4230594128a4"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{wedTime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="0" width="50" height="20" uuid="afdb91cd-7bf4-4669-87b7-4dada5df8d47"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{thurtime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="50" height="20" uuid="aec1eb82-55c2-41b0-9100-0dc814656c2e"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fritime}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="505" y="0" width="50" height="20" uuid="28365af7-d30f-4bd0-baa2-45d8885dfd3f"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{satTime}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="62" height="20" uuid="eccec128-81a4-451d-bf93-0a8972eff1a9"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<leftPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<text><![CDATA[        Max]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="62" y="0" width="143" height="20" uuid="80402365-51cb-4652-807c-de5d3bea90f0"/>
+				<box>
+					<topPen lineWidth="0.75"/>
+					<bottomPen lineWidth="0.75"/>
+					<rightPen lineWidth="0.75"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Saysettha MX" size="7" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RoomMax}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="62" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="22" width="555" height="10" uuid="b9341ebc-b1f1-4399-88e0-c5d6f269bd24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nameL2}+', '+$F{s_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="1" width="80" height="20" uuid="4457ced1-327e-497b-9fc1-ed87c13c9800"/>
+				<textElement textAlignment="Right">
+					<font fontName="Lao Unicode" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="1" width="40" height="20" uuid="c3248884-0af1-410e-bd7e-7e4feae53cdd"/>
+				<textElement>
+					<font fontName="Lao Unicode" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="32" width="555" height="10" uuid="1196d234-852b-4c1a-9bdf-2c31787bf8ad"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Tel : '+$F{phone1}+'   '+$F{phone2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="42" width="555" height="10" uuid="2298303c-3d30-4e0b-8b44-95690cc5bed8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Facebook: '+$F{facebook}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="52" width="555" height="10" uuid="619228d7-d6ea-4867-adf1-765341e9ec8c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lao Unicode" size="6"/>
+				</textElement>
+				<textFieldExpression><![CDATA['Web-Site: '+$F{website}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="21" width="555" height="1" uuid="c4bef7a2-3607-4459-abf6-2af958b6bb40"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

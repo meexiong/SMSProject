@@ -17,9 +17,13 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.ReportScheduleTeacherManager;
 import com.malimar.models.ReportScheduleTeacher;
 import com.malimar.utils.Border;
+import com.malimar.utils.PathReport;
+import static com.malimar.utils.PathReport.path;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Label;
+import java.awt.Toolkit;
 import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +32,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JRViewer;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class FrmReportScheduleTeacher extends javax.swing.JFrame {
@@ -530,11 +537,30 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         try {
             if (evt.getModifiers()==6){
                 LabelManager.WindowChangeLabel("btnOpen", frm);
-            }else{
+            }else{                
+                FrmOpenReport fm = new FrmOpenReport();
+                Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+                int h = (int)d.getHeight();
+                int w = (int)d.getWidth();
+                fm.setBounds(0,0,w,h);
                 
+                Map param = new HashMap();
+                param.put("year", txtYear.getText());
                 
+                if (LabelManager.LangType.equals("L1")){
+                   fm.setTitle("ລາຍງານ ຕາຕາລາງການສອນ");
+                   JasperPrint p = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L1.jasper", param,c);
+                   fm.setContentPane(new JRViewer(p));
+                   fm.setVisible(true);                   
+                }else{
+                   fm.setTitle("Report Schedule Teacher");
+                   JasperPrint p = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L2.jasper", param,c);
+                   fm.setContentPane(new JRViewer(p));
+                   fm.setVisible(true);
+                }   
             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btnOpenMouseClicked
 
