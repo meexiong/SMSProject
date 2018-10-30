@@ -51,6 +51,7 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         Logo lg = new Logo();
         lg.getLogo(this);
         
+        Border.blueColor(btnOK);
         Border.blueColor(btnOpen);
         
         jScrollPane1.getViewport().setBackground(Color.WHITE);
@@ -68,6 +69,7 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         lblYear.setText(LabelManager.hmapLang.get("lblYear".concat(frm).toUpperCase())[LabelManager.LN]);
         lblCourse.setText(LabelManager.hmapLang.get("lblCourse".concat(frm).toUpperCase())[LabelManager.LN]);
         btnOpen.setText(LabelManager.hmapLang.get("btnOpen".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnOK.setText(LabelManager.hmapLang.get("btnOK".concat(frm).toUpperCase())[LabelManager.LN]);
               
         
         JTableHeader th = jTable1.getTableHeader();
@@ -122,11 +124,12 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         lblCourse = new javax.swing.JLabel();
-        btnOpen = new javax.swing.JLabel();
+        btnOK = new javax.swing.JLabel();
         cbbCourse = new javax.swing.JComboBox<>();
         lblYear = new javax.swing.JLabel();
         txtYear = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
+        btnOpen = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -260,21 +263,21 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
             }
         });
 
-        btnOpen.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        btnOpen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnOpen.setText("Open");
-        btnOpen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnOpen.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+        btnOK.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnOK.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnOK.setText("Open");
+        btnOK.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOK.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnOpenMouseMoved(evt);
+                btnOKMouseMoved(evt);
             }
         });
-        btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnOK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnOpenMouseClicked(evt);
+                btnOKMouseClicked(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnOpenMouseExited(evt);
+                btnOKMouseExited(evt);
             }
         });
 
@@ -320,6 +323,24 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
             }
         });
 
+        btnOpen.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnOpen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnOpen.setText("Preview");
+        btnOpen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnOpen.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnOpenMouseMoved(evt);
+            }
+        });
+        btnOpen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnOpenMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnOpenMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -341,28 +362,29 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbbCourse, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                                .addGap(336, 336, 336)
-                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblCourse)
-                            .addComponent(cbbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblYear)
-                            .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblCourse)
+                        .addComponent(cbbCourse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblYear)
+                        .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(9, 9, 9)
-                        .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnOpen, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -440,25 +462,27 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblCourseMouseClicked
 
-    private void btnOpenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseMoved
+    private void btnOKMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOKMouseMoved
 
-    }//GEN-LAST:event_btnOpenMouseMoved
+    }//GEN-LAST:event_btnOKMouseMoved
 
-    private void btnOpenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseClicked
-        try {
-            if (evt.getModifiers()==6){
-                LabelManager.WindowChangeLabel("btnOpen", frm);
-            }else{
-                
-                
-            }
+    private void btnOKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOKMouseClicked
+         try {           
+             if (evt.getModifiers()==6){
+                 LabelManager.WindowChangeLabel("btnOK", frm);
+             }else{
+                rst.setYear(txtYear.getText());
+                String coursename = cbbCourse.getSelectedItem().toString();
+                rstm.showSearchCourse(jTable1, model, rst.getYear(), coursename);         
+             }
         } catch (Exception e) {
+            e.printStackTrace();
         }
-    }//GEN-LAST:event_btnOpenMouseClicked
+    }//GEN-LAST:event_btnOKMouseClicked
 
-    private void btnOpenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseExited
+    private void btnOKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOKMouseExited
 
-    }//GEN-LAST:event_btnOpenMouseExited
+    }//GEN-LAST:event_btnOKMouseExited
 
     private void lblYearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblYearMouseClicked
         try {
@@ -495,15 +519,28 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbCourseKeyPressed
 
     private void cbbCourseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbbCourseMousePressed
-        try {
-            rst.setYear(txtYear.getText());
-            String coursename = cbbCourse.getSelectedItem().toString();
-            rstm.showSearchCourse(jTable1, model, rst.getYear(), coursename);
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+       
     }//GEN-LAST:event_cbbCourseMousePressed
+
+    private void btnOpenMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOpenMouseMoved
+
+    private void btnOpenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnOpen", frm);
+            }else{
+                
+                
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btnOpenMouseClicked
+
+    private void btnOpenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnOpenMouseExited
 
     /**
      * @param args the command line arguments
@@ -543,6 +580,7 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnMinimize;
+    private javax.swing.JLabel btnOK;
     private javax.swing.JLabel btnOpen;
     private javax.swing.JComboBox<String> cbbCourse;
     private javax.swing.JPanel jPanel1;
