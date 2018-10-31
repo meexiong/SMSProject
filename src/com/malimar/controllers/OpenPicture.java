@@ -15,6 +15,7 @@ import javax.swing.JFileChooser;
  */
 public class OpenPicture {
     public static String imagePath=null;
+    public static int num=0;
     public static ImageIcon getImage(int w, int h) {
         try {
             JFileChooser choose = new JFileChooser();
@@ -30,15 +31,23 @@ public class OpenPicture {
         }
         return null;
     }
-
+    public static ImageIcon getImageAuto(int w, int h) {
+        try {
+            imagePath = "src/com/malimar/images/picture_"+num+".png";
+            Image img = new ImageIcon(imagePath).getImage();
+            Image ic = ResizeScall(img, w, h);
+            return new ImageIcon(ic);
+        } catch (HeadlessException e) {
+        }
+        return null;
+    }
     public static BufferedImage ResizeScall(Image img, int w, int h) {
         try {
             BufferedImage ims  = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
             Graphics2D g = ims.createGraphics();
             g.drawImage(img,0,0,w,h,null);
             g.dispose();
-            return ims;            
-            
+            return ims;                
         } catch (Exception e) {
         }
         return null;

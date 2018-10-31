@@ -19,6 +19,7 @@ import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import java.awt.Color;
 import java.awt.Image;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
@@ -91,6 +92,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         lblStdNote.setText(hmapLang.get("lblStdNote".concat(frm).toUpperCase())[LN]);
         lblNewStudentTitle.setText(hmapLang.get("lblNewStudentTitle".concat(frm).toUpperCase())[LN]);
         btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
+        lblImage.setText(hmapLang.get("lblImage".concat(frm).toUpperCase())[LN]);
     }
     private void showGenderComboBox() {
         try {
@@ -314,6 +316,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         jSeparator3 = new javax.swing.JSeparator();
         btnSave = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
+        btnTake = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -815,6 +818,24 @@ public class FrmNewStudent extends javax.swing.JDialog {
             .addGap(0, 6, Short.MAX_VALUE)
         );
 
+        btnTake.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnTake.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnTake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Camera_24px.png"))); // NOI18N
+        btnTake.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTake.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnTakeMouseMoved(evt);
+            }
+        });
+        btnTake.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTakeMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTakeMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -828,7 +849,10 @@ public class FrmNewStudent extends javax.swing.JDialog {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
-                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnTake)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -839,10 +863,12 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addComponent(btnTake, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1097,6 +1123,24 @@ public class FrmNewStudent extends javax.swing.JDialog {
         FrameMove.mouseDragded(evt, this);
     }//GEN-LAST:event_formMouseDragged
 
+    private void btnTakeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTakeMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTakeMouseMoved
+
+    private void btnTakeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTakeMouseClicked
+//        int a =OpenPicture.num-1;
+//        File file = new File("src/com/malimar/images/picture_"+a+".png");
+//        file.delete();
+        FrmTakePhoto f = new FrmTakePhoto(null, rootPaneCheckingEnabled);
+        f.setVisible(true);
+//        lblImage.setIcon(null);
+        lblImage.setIcon(OpenPicture.getImageAuto(lblImage.getWidth(), lblImage.getHeight()));
+    }//GEN-LAST:event_btnTakeMouseClicked
+
+    private void btnTakeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTakeMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTakeMouseExited
+    
     /**
      * @param args the command line arguments
      */
@@ -1142,6 +1186,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnSave;
+    private javax.swing.JLabel btnTake;
     private javax.swing.JCheckBox chDiseases;
     private javax.swing.JCheckBox chStdStudying;
     private javax.swing.JComboBox<String> cmbBloodGroup;
