@@ -17,6 +17,7 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.ReportScheduleTeacherManager;
 import com.malimar.models.ReportScheduleTeacher;
 import com.malimar.utils.Border;
+import com.malimar.utils.FrameMove;
 import com.malimar.utils.PathReport;
 import static com.malimar.utils.PathReport.path;
 import java.awt.Color;
@@ -180,6 +181,16 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         lblSystemInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSystemInfo.setText("Report Schedule Teacher");
         lblSystemInfo.setOpaque(true);
+        lblSystemInfo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                lblSystemInfoMouseDragged(evt);
+            }
+        });
+        lblSystemInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblSystemInfoMousePressed(evt);
+            }
+        });
         jPanel6.add(lblSystemInfo, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -455,7 +466,34 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitMouseClicked
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        
+        try {
+            if (evt.getClickCount()==2){
+                int indx = jTable1.getSelectedRow();
+                String course = jTable1.getValueAt(indx, 2).toString();
+                Map param = new HashMap();
+                param.put("CourseName", course);
+                FrmOpenReport fp = new FrmOpenReport();
+                Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+                int h = (int)d.getHeight();
+                int w = (int)d.getWidth();
+                fp.setBounds(0,0,w,h);
+                
+                if (LabelManager.LangType.equals("L1")){
+                    fp.setTitle("ລາຍງານຫຼັກສູດການຮຽນ");
+                    JasperPrint p = JasperFillManager.fillReport(PathReport.path +"Report_Schedule_CourseName_L1.Jasper", param,c);
+                    fp.getContentPane().add(new JRViewer(p));
+                    fp.setVisible(true);                    
+                }else{
+                    fp.setTitle("Report Course Study");
+                    JasperPrint p = JasperFillManager.fillReport(PathReport.path +"Report_Schedule_CourseName_L2.Jasper", param,c);
+                    fp.getContentPane().add(new JRViewer(p));
+                    fp.setVisible(true);
+                }
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
@@ -549,7 +587,7 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
                 
                 if (LabelManager.LangType.equals("L1")){
                    fm.setTitle("ລາຍງານ ຕາຕາລາງການສອນ");                   
-                   JasperPrint pr = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L1.jasper", param, c);                   
+                   JasperPrint pr = JasperFillManager.fillReport(PathReport.path+"ScheduleTeacher_L1_Up.jasper", param, c);                   
                    fm.setContentPane(new JRViewer(pr));
                    fm.setVisible(true);                   
                 }else{
@@ -567,6 +605,14 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     private void btnOpenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnOpenMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnOpenMouseExited
+
+    private void lblSystemInfoMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemInfoMouseDragged
+          FrameMove.mouseDragded(evt, this);
+    }//GEN-LAST:event_lblSystemInfoMouseDragged
+
+    private void lblSystemInfoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSystemInfoMousePressed
+        FrameMove.mousePressed(evt);
+    }//GEN-LAST:event_lblSystemInfoMousePressed
 
     /**
      * @param args the command line arguments
