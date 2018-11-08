@@ -45,7 +45,7 @@ public class FrmNationality extends javax.swing.JFrame {
         jTable1.getTableHeader().setOpaque(false);
         nm.getTableData(jTable1, model);
         getNationalityLabel();
-       
+       UserPermission.getPermission_S(FrmMain.userNbr, frm, btnSave);
 //        txtID.setDisabledTextColor(Color.BLACK);
     }
      private void getNationalityLabel() {

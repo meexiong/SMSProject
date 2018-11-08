@@ -113,6 +113,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMWorkStatus.setVisible(false);
         btnMSchoolInfo.setVisible(false);
         btnMenuRelationship.setVisible(false);
+        btnMenuChangeRate.setVisible(false);
     }
 
     private void afterLogin() {
@@ -165,6 +166,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMWorkStatus.setVisible(true);
         btnMSchoolInfo.setVisible(true);
         btnMenuRelationship.setVisible(true);
+        btnMenuChangeRate.setVisible(true);
     }
     private void login(){
         if(radLao.isSelected()){
@@ -241,6 +243,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMenuRelationship.setText(hmapLang.get("btnMenuRelationship".concat(frm).toUpperCase()) [LN]);
         lblProduct.setText(hmapLang.get("lblProduct".concat(frm).toUpperCase()) [LN]);
         lblSale.setText(hmapLang.get("lblSale".concat(frm).toUpperCase()) [LN]);
+        btnMenuChangeRate.setText(hmapLang.get("btnMenuChangeRate".concat(frm).toUpperCase()) [LN]);
     }
     private void SetPermission() {
         try {
@@ -310,6 +313,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                     case "btnMenuRelationship":
                         btnMenuRelationship.setEnabled(false);
                         break;
+                    case "btnMenuChangeRate":
+                        btnMenuChangeRate.setVisible(false);
+                        break;
                     default:
                         break;
                 }
@@ -354,6 +360,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMSchoolInfo = new javax.swing.JLabel();
         btnMenuRelationship = new javax.swing.JLabel();
         lblPasswordIncorrect = new javax.swing.JLabel();
+        btnMenuChangeRate = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         lblSemester = new javax.swing.JLabel();
@@ -695,12 +702,24 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 btnMenuRelationshipMouseClicked(evt);
             }
         });
-        pnLogin.add(btnMenuRelationship, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 314, 200, -1));
+        pnLogin.add(btnMenuRelationship, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 314, 180, -1));
 
         lblPasswordIncorrect.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblPasswordIncorrect.setForeground(java.awt.Color.red);
         lblPasswordIncorrect.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pnLogin.add(lblPasswordIncorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 505, 260, 20));
+
+        btnMenuChangeRate.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnMenuChangeRate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnMenuChangeRate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Currency Exchange_24px.png"))); // NOI18N
+        btnMenuChangeRate.setText("Change Rate");
+        btnMenuChangeRate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMenuChangeRate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMenuChangeRateMouseClicked(evt);
+            }
+        });
+        pnLogin.add(btnMenuChangeRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(-200, 350, 180, -1));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1236,6 +1255,7 @@ int cnt=0;
         MenuSlide.setMenu(btnMWorkStatus);
         MenuSlide.setMenu(btnMSchoolInfo);
         MenuSlide.setMenu(btnMenuRelationship);
+        MenuSlide.setMenu(btnMenuChangeRate);
     }//GEN-LAST:event_MenuMouseClicked
 
     private void btnDatasourceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDatasourceActionPerformed
@@ -1669,6 +1689,18 @@ int cnt=0;
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void btnMenuChangeRateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuChangeRateMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("btnMenuChangeRate", frm);
+        } else {
+            if (btnMenuChangeRate.isEnabled() == true) {
+                FrmCurrency f = new FrmCurrency();
+                f.setVisible(true);
+            }
+
+        }
+    }//GEN-LAST:event_btnMenuChangeRateMouseClicked
+
 
     /**
      * @param args the command line arguments
@@ -1719,6 +1751,7 @@ int cnt=0;
     private javax.swing.JLabel btnMStudentType;
     private javax.swing.JLabel btnMWorkStatus;
     private javax.swing.JLabel btnMaximum;
+    private javax.swing.JLabel btnMenuChangeRate;
     private javax.swing.JLabel btnMenuRelationship;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnPayment;
