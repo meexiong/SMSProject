@@ -42,8 +42,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         Logo lg = new Logo();
         lg.getLogo(this);
         frm = this.getClass().getSimpleName();
-        //this.setExtendedState(FrmMain.MAXIMIZED_BOTH);
-//        jPanel5.setAlignmentX(Component.CENTER_ALIGNMENT);
         jPanel5.setLayout( new GridBagLayout() );
         jPanel5.add(jPanel6, new GridBagConstraints());
         radLao.setSelected(true);
@@ -1697,7 +1695,6 @@ int cnt=0;
                 FrmCurrency f = new FrmCurrency();
                 f.setVisible(true);
             }
-
         }
     }//GEN-LAST:event_btnMenuChangeRateMouseClicked
 

@@ -10,7 +10,9 @@ import com.malimar.controllers.LabelManager;
 import static com.malimar.controllers.LabelManager.LangType;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.UserLoginManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.UserLogin;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.ConvertDateSQL;
 import com.malimar.utils.FrameMove;
@@ -28,6 +30,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
+import javax.swing.JTabbedPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
@@ -61,10 +64,26 @@ public class FrmUserLogin extends javax.swing.JFrame {
     HashMap<String, Object[]>mapGL = null;
     HashMap<String, Object[]>mapFm = null;
     HashMap<String, Object[]>mapUser = null;
+    
+    UserPermissions up = new UserPermissions();
 
     public FrmUserLogin() {
         initComponents();
         frm = this.getClass().getSimpleName();
+        
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, jTabbedPane1);
+                 
+        //btnShowData.setVisible(false);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowData);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnUpdateGroup);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnGroupShowData);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowDataGroupPermission);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnUpdateGroupPermission);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowFormData);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnAddGroup);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnDataEmployee);
+        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowPermission);
+        
         model1 = (DefaultTableModel) jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         Logo lg = new Logo();
