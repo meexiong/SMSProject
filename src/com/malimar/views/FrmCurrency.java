@@ -42,6 +42,8 @@ public class FrmCurrency extends javax.swing.JFrame {
         lblRateLAK.setText(hmapLang.get("lblRateLAK".concat(frm).toUpperCase())[LN]);
         lblRateTHB.setText(hmapLang.get("lblRateTHB".concat(frm).toUpperCase())[LN]);
         lblRateUSD.setText(hmapLang.get("lblRateUSD".concat(frm).toUpperCase())[LN]);
+        btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
+        
         JTableHeader th = table.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         table.getColumnCount();
@@ -270,7 +272,7 @@ public class FrmCurrency extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtRateUSD)
                                 .addComponent(lblRateUSD, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblRateLAK, txtRateLAK});

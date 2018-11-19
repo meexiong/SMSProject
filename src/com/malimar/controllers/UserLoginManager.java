@@ -328,21 +328,15 @@ public class UserLoginManager {
     }
     public void showClickForm(JTable table, DefaultTableModel model){
         try {
-            RemoveTableIndex.removeTable(table, model);
-//            sql = "Select 'false' AS checked, \n" +
+            RemoveTableIndex.removeTable(table, model);            
+//               sql = "Select 'false' AS checked, \n" +
 //                    "form_name_"+ LabelManager.LangType+" AS formname\n" +
 //                    "from vw_SysFormLang vw \n" +
 //                    "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
 //                    "left join tbl_GroupUser g on g.GRUID = gl.GRUID \n" +
-//                    "group by form_name_"+ LabelManager.LangType+", g.GroupName_"+ LabelManager.LangType+"";
-            
-               sql = "Select 'false' AS checked, \n" +
-                    "form_name_"+ LabelManager.LangType+" AS formname\n" +
-                    "from vw_SysFormLang vw \n" +
-                    "left join tbl_GroupUserLang gl on gl.SLANGID = vw.SLANGID\n" +
-                    "left join tbl_GroupUser g on g.GRUID = gl.GRUID \n" +
-                    "group by form_name_"+ LabelManager.LangType+"";
-            
+//                    "group by form_name_"+ LabelManager.LangType+"";
+               sql = "Select 'false' AS checked, form_Name_"+ LabelManager.LangType +" AS formname from tbl_sysForm group by form_Name_"+ LabelManager.LangType +" order by form_Name_"+ LabelManager.LangType +"";
+                           
             ResultSet rs = c.createStatement().executeQuery(sql);
             while (rs.next()){
                model.addRow(new Object[]{rs.getBoolean("checked"), rs.getString("formname")});                
