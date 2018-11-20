@@ -11,6 +11,15 @@ package com.malimar.models;
  */
 public class UserPermissions {
     String jTab;
+    int w;
+
+    public void setW(int w) {
+        this.w = w;
+    }
+
+    public int getW() {
+        return w;
+    }
 
     public void setjTab(String jTab) {
         this.jTab = jTab;

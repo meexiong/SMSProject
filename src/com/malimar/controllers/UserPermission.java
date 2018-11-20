@@ -4,6 +4,8 @@ package com.malimar.controllers;
 import com.malimar.models.UserPermissions;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
@@ -378,70 +380,19 @@ public class UserPermission {
         }
     }
     
-    public static void getPermission_UserLoginTab(String empID, String frm, UserPermissions up, JTabbedPane tab){
+    public static void getPermission_UserLoginTab(String empID, String frm, UserPermissions up, String item){
         try {
             String ObjectMenu;
             int Write;
-            int Deny;
             Connection c = DatabaseManagerSQL.getConnection();
-            String sql = "exec pd_permission_Tab @teachernbr = "+ empID +", @frm = "+ frm +"";
+            String sql = "exec pd_permission_Tab @teachernbr = "+ empID +", @frm = "+ frm +", @Sys_Name = "+ item +"";
             ResultSet rs = c.createStatement().executeQuery(sql);
-             while (rs.next()) {
+             if (rs.next()) {
                 ObjectMenu = rs.getString("Sys_Name");
                 Write = rs.getInt("Write");
-                Deny = rs.getInt("Denys");
-                 
-                if ("TabUser".equals(ObjectMenu) && Write == 0 && Deny == 1) {
-                    tab.setEnabledAt(0, true);
-                } else if ("TabUser".equals(ObjectMenu) && Write == 0 && Deny == 0) {                    
-                    tab.setEnabledAt(0, false);
-                } else if ("TabUser".equals(ObjectMenu) && Write == 1 && Deny == 0) {
-                    tab.setEnabledAt(0, false);
-                } else if ("TabUser".equals(ObjectMenu) && Write == 1 && Deny == 1) {
-                    tab.setEnabledAt(0, true);                    
-                }else if ("TabCreateGroup".equals(ObjectMenu) && Write == 0 && Deny == 1) {
-                    tab.setEnabledAt(1, true);
-                } else if ("TabCreateGroup".equals(ObjectMenu) && Write == 0 && Deny == 0) {
-                    tab.setEnabledAt(1, true);
-                } else if ("TabCreateGroup".equals(ObjectMenu) && Write == 1 && Deny == 0) {
-                    tab.setEnabledAt(1, true);
-                } else if ("TabCreateGroup".equals(ObjectMenu) && Write == 1 && Deny == 1) {
-                    tab.setEnabledAt(1, true);
-                } else if ("TabAddGroupToLang".equals(ObjectMenu) && Write == 0 && Deny == 1) {
-                    tab.setEnabledAt(2, true);
-                } else if ("TabAddGroupToLang".equals(ObjectMenu) && Write == 0 && Deny == 0) {
-                    tab.setEnabledAt(2, true);
-                } else if ("TabAddGroupToLang".equals(ObjectMenu) && Write == 1 && Deny == 0) {
-                    tab.setEnabledAt(2, true);
-                } else if ("TabAddGroupToLang".equals(ObjectMenu) && Write == 1 && Deny == 1) {
-                    tab.setEnabledAt(3, true);
-                }else if ("TabGrouptoPermission".equals(ObjectMenu) && Write == 0 && Deny == 1) {
-                    tab.setEnabledAt(3, true);
-                } else if ("TabGrouptoPermission".equals(ObjectMenu) && Write == 0 && Deny == 0) {
-                    tab.setEnabledAt(3, true);
-                } else if ("TabGrouptoPermission".equals(ObjectMenu) && Write == 1 && Deny == 0) {
-                    tab.setEnabledAt(3, true);
-                } else if ("TabGrouptoPermission".equals(ObjectMenu) && Write == 1 && Deny == 1) {
-                    tab.setEnabledAt(4, true);
-                }else if ("TabEmployeetoGroup".equals(ObjectMenu) && Write == 0 && Deny == 1) {
-                    tab.setEnabledAt(4, true);
-                } else if ("TabEmployeetoGroup".equals(ObjectMenu) && Write == 0 && Deny == 0) {
-                    tab.setEnabledAt(4, true);
-                } else if ("TabEmployeetoGroup".equals(ObjectMenu) && Write == 1 && Deny == 0) {
-                    tab.setEnabledAt(4, true);
-                } else if ("TabEmployeetoGroup".equals(ObjectMenu) && Write == 1 && Deny == 1) {
-                    tab.setEnabledAt(5, true);
-                }else if ("TabEmployeePermission".equals(ObjectMenu) && Write == 0 && Deny == 1) {
-                    tab.setEnabledAt(5, true);
-                } else if ("TabEmployeePermission".equals(ObjectMenu) && Write == 0 && Deny == 0) {
-                    tab.setEnabledAt(5, true);
-                } else if ("TabEmployeePermission".equals(ObjectMenu) && Write == 1 && Deny == 0) {
-                    tab.setEnabledAt(5, true);
-                } else if ("TabEmployeePermission".equals(ObjectMenu) && Write == 1 && Deny == 1) {
-                    tab.setEnabledAt(5, true);
-                }                
-                
+                up.setW(Write);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -71,18 +71,75 @@ public class FrmUserLogin extends javax.swing.JFrame {
         initComponents();
         frm = this.getClass().getSimpleName();
         
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, jTabbedPane1);
+        jTabbedPane1.setEnabledAt(0, false);
+        jTabbedPane1.setEnabledAt(1, false);
+        jTabbedPane1.setEnabledAt(2, false);
+        jTabbedPane1.setEnabledAt(3, false);
+        jTabbedPane1.setEnabledAt(4, false);
+        jTabbedPane1.setEnabledAt(5, false);
+        
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabUser");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(0, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabCreateGroup");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(1, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabAddGroupToLang");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(2, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabGrouptoPermission");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(3, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabEmployeetoGroup");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(4, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabEmployeePermission");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
                  
         //btnShowData.setVisible(false);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowData);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnUpdateGroup);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnGroupShowData);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowDataGroupPermission);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnUpdateGroupPermission);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowFormData);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnAddGroup);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnDataEmployee);
-        UserPermission.getPermission_UserLogin(FrmMain.userNbr, frm, btnShowPermission);
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowData");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnUpdateGroup");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnGroupShowData");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowDataGroupPermission");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnUpdateGroupPermission");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowFormData");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnAddGroup");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnDataEmployee");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
+        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowPermission");
+        if (up.getW()==1){
+            jTabbedPane1.setEnabledAt(5, true);
+        }
         
         model1 = (DefaultTableModel) jTable1.getModel();
         jTable1.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
@@ -1012,7 +1069,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, true, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -1038,12 +1095,12 @@ public class FrmUserLogin extends javax.swing.JFrame {
             jTable4.getColumnModel().getColumn(1).setMaxWidth(200);
             jTable4.getColumnModel().getColumn(2).setMinWidth(300);
             jTable4.getColumnModel().getColumn(2).setMaxWidth(300);
-            jTable4.getColumnModel().getColumn(3).setMinWidth(100);
-            jTable4.getColumnModel().getColumn(3).setMaxWidth(100);
-            jTable4.getColumnModel().getColumn(4).setMinWidth(100);
-            jTable4.getColumnModel().getColumn(4).setMaxWidth(100);
-            jTable4.getColumnModel().getColumn(5).setMinWidth(100);
-            jTable4.getColumnModel().getColumn(5).setMaxWidth(100);
+            jTable4.getColumnModel().getColumn(3).setMinWidth(0);
+            jTable4.getColumnModel().getColumn(3).setMaxWidth(0);
+            jTable4.getColumnModel().getColumn(4).setMinWidth(0);
+            jTable4.getColumnModel().getColumn(4).setMaxWidth(0);
+            jTable4.getColumnModel().getColumn(5).setMinWidth(0);
+            jTable4.getColumnModel().getColumn(5).setMaxWidth(0);
         }
 
         jPanel15.add(jScrollPane4, java.awt.BorderLayout.CENTER);
@@ -1790,25 +1847,25 @@ public class FrmUserLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_cbbGroupUser1ActionPerformed
 
     private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
-        try {
-            String x = cbbGroupUser1.getSelectedItem().toString();
-            if (!cbbGroupUser1.getSelectedItem().toString().isEmpty() || !cbbForm.getSelectedItem().toString().isEmpty()) {
-                String form = cbbForm.getSelectedItem().toString();
-                int index = jTable4.getSelectedRow();
-                ul.setGULID(Integer.parseInt(jTable4.getValueAt(index, 0).toString()));
-                ul.setReads((Boolean) jTable4.getValueAt(index, 3));
-                ul.setWrite((Boolean) jTable4.getValueAt(index, 4));
-                ul.setDenys((Boolean) jTable4.getValueAt(index, 5));
-                
-                ulm.checkReads(ul);
-                ulm.checkWrite(ul);
-                ulm.checkDeny(ul);
-                ulm.showClickComboForm(x, form, jTable4, model4);
-            }
-            
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            String x = cbbGroupUser1.getSelectedItem().toString();
+//            if (!cbbGroupUser1.getSelectedItem().toString().isEmpty() || !cbbForm.getSelectedItem().toString().isEmpty()) {
+//                String form = cbbForm.getSelectedItem().toString();
+//                int index = jTable4.getSelectedRow();
+//                ul.setGULID(Integer.parseInt(jTable4.getValueAt(index, 0).toString()));
+//                ul.setReads((Boolean) jTable4.getValueAt(index, 3));
+//                ul.setWrite((Boolean) jTable4.getValueAt(index, 4));
+//                ul.setDenys((Boolean) jTable4.getValueAt(index, 5));
+//                
+//                ulm.checkReads(ul);
+//                ulm.checkWrite(ul);
+//                ulm.checkDeny(ul);
+//                ulm.showClickComboForm(x, form, jTable4, model4);
+//            }
+//            
+//        } catch (NumberFormatException e) {
+//            e.printStackTrace();
+//        }
     }//GEN-LAST:event_jTable4MouseClicked
 
     private void lblFormMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFormMouseClicked
