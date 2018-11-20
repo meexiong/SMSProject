@@ -1816,7 +1816,7 @@ public class FrmUserLogin extends javax.swing.JFrame {
                                 + "left join tbl_sysForm f on f.formID = s.formid "
                                 + "where f.Form_Name_"+ LabelManager.LangType +"  = N'"+ FormName +"' and s.Lables = 1";
                         ResultSet rsc = c.createStatement().executeQuery(sql);
-                        while(rsc.next()){
+                        if(rsc.next()){
                             //ul.setSLANGID(Integer.parseInt(jTable3.getValueAt(x1, 0).toString()));
                             ul.setSLANGID(rsc.getInt("slangid"));
                             ul.setGRUID(Integer.parseInt(mapGL.get(gr)[0].toString()));

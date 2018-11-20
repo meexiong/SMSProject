@@ -455,7 +455,7 @@ public class FrmStudentType extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         stm.showData(jTable1, model);
-        lblSystemInfo.setText(LabelManager.hmapForm.get("FRMSTCATEGORY".toUpperCase())[LabelManager.LN]);    
+        lblSystemInfo.setText(LabelManager.hmapForm.get("FrmStudentType".toUpperCase())[LabelManager.LN]);    
     }//GEN-LAST:event_formWindowOpened
 
     private void txtIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseClicked

@@ -48,6 +48,7 @@ public class FrmNationality extends javax.swing.JFrame {
         nm.getTableData(jTable1, model);
         getNationalityLabel();
        UserPermission.getPermission_S(FrmMain.userNbr, frm, btnSave);
+       
        Border.blueColor(btnSave);
        btnSave.setVisible(false);
        UserPermissions up = new UserPermissions();
