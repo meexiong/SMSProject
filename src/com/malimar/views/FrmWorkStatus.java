@@ -10,6 +10,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.UserPermission;
 import com.malimar.controllers.WorkStatusManager;
+import com.malimar.models.UserPermissions;
 import com.malimar.models.WorkStatus;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
@@ -70,7 +71,18 @@ public class FrmWorkStatus extends javax.swing.JFrame {
         }
         jTable1.setAutoCreateRowSorter(true);
         th.repaint();
-        UserPermission.getPermission_S(userNbr, frm, btnSave);
+        
+         Border.blueColor(btnSave);
+         btnSave.setVisible(false);
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
+        
+        
     }
     public void showClear(){
         try {

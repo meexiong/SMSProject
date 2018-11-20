@@ -11,6 +11,7 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.RegionManager;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.Region;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
@@ -71,7 +72,15 @@ public class FrmRegion extends javax.swing.JFrame {
             }
                jTable1.setAutoCreateRowSorter(true);
             th.repaint();
-        UserPermission.getPermission_S(userNbr, frm, btnSave);
+        
+            btnSave.setVisible(false);
+            UserPermissions up = new UserPermissions();
+            UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+            if (up.getW()==1){
+                btnSave.setVisible(true);
+            }else if (up.getDenys()==1){
+                btnSave.setVisible(false);
+            }
     }
     public void showClear(){
         try {

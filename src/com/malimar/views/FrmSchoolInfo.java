@@ -11,6 +11,7 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.SchoolInfoManager;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.SchoolInfo;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import static com.malimar.utils.ResizeScall.ResizeScall;
@@ -58,7 +59,18 @@ public class FrmSchoolInfo extends javax.swing.JFrame {
         lblAddress.setText(LabelManager.hmapLang.get("lbladdress".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]); 
         lblAddressL2.setText(LabelManager.hmapLang.get("lblAddressL2".concat(frm).toUpperCase())[LabelManager.LN]);   
+        
+        btnSave.setVisible(false);
         UserPermission.getPermission_S(userNbr, frm, btnSave);
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
+        
+        
     }
 
     /**

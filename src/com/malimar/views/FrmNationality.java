@@ -7,10 +7,12 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.NationalityManager;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.Nationality;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import com.malimar.utils.SetText;
+import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.table.DefaultTableModel;
@@ -46,7 +48,16 @@ public class FrmNationality extends javax.swing.JFrame {
         nm.getTableData(jTable1, model);
         getNationalityLabel();
        UserPermission.getPermission_S(FrmMain.userNbr, frm, btnSave);
-//        txtID.setDisabledTextColor(Color.BLACK);
+       Border.blueColor(btnSave);
+       btnSave.setVisible(false);
+       UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
+       
     }
      private void getNationalityLabel() {
         lblNationalityID.setText(hmapLang.get("lblNationalityID".concat(frm).toUpperCase())[LN]);

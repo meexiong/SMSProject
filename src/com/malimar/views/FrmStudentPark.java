@@ -11,6 +11,7 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.StudentParkManager;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.StudentPark;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.MsgBox;
 import static com.malimar.views.FrmMain.userNbr;
@@ -73,7 +74,15 @@ public class FrmStudentPark extends javax.swing.JFrame {
         lblParkL1.setText(LabelManager.hmapLang.get("lblParkL1".concat(frm).toUpperCase())[LabelManager.LN]);
         lblParkL2.setText(LabelManager.hmapLang.get("lblParkL2".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
-        UserPermission.getPermission_S(userNbr, frm, btnSave);
+        
+        btnSave.setVisible(false);
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
     }
     private void showClear(){
         try {
