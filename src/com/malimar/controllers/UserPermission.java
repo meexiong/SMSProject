@@ -384,13 +384,16 @@ public class UserPermission {
         try {
             String ObjectMenu;
             int Write;
+            int Denys;
             Connection c = DatabaseManagerSQL.getConnection();
             String sql = "exec pd_permission_Tab @teachernbr = "+ empID +", @frm = "+ frm +", @Sys_Name = "+ item +"";
             ResultSet rs = c.createStatement().executeQuery(sql);
              if (rs.next()) {
                 ObjectMenu = rs.getString("Sys_Name");
                 Write = rs.getInt("Write");
+                Denys = rs.getInt("Denys");
                 up.setW(Write);
+                up.setDenys(Denys);
             }
 
         } catch (Exception e) {

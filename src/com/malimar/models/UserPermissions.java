@@ -12,6 +12,15 @@ package com.malimar.models;
 public class UserPermissions {
     String jTab;
     int w;
+    int denys;
+
+    public void setDenys(int denys) {
+        this.denys = denys;
+    }
+
+    public int getDenys() {
+        return denys;
+    }
 
     public void setW(int w) {
         this.w = w;

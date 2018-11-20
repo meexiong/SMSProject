@@ -11,6 +11,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.Ethnic;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
@@ -70,7 +71,18 @@ public class FrmEthnic extends javax.swing.JFrame {
         btnSave.setText(LabelManager.hmapLang.get("BtnSave".concat(frm).toUpperCase())[LabelManager.LN]);
 
         etg.showData(jTable1, model);
-         UserPermission.getPermission_S(userNbr, frm , btnSave);
+        //UserPermission.getPermission_S(userNbr, frm , btnSave);
+        
+        Border.blueColor(btnSave);
+        btnSave.setVisible(false);        
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
+        
     }
     public void showClear(){
         try {
