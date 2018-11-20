@@ -380,7 +380,7 @@ public class UserPermission {
         }
     }
     
-    public static void getPermission_UserLoginTab(String empID, String frm, UserPermissions up, String item){
+    public static void getPermission_UserAllForm(String empID, String frm, UserPermissions up, String item){
         try {
             String ObjectMenu;
             int Write;

@@ -78,67 +78,77 @@ public class FrmUserLogin extends javax.swing.JFrame {
         jTabbedPane1.setEnabledAt(4, false);
         jTabbedPane1.setEnabledAt(5, false);
         
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabUser");
+        btnShowData.setVisible(false);
+        btnUpdateGroup.setVisible(false);
+        btnGroupShowData.setVisible(false);
+        btnShowDataGroupPermission.setVisible(false);
+        btnUpdateGroupPermission.setVisible(false);
+        btnShowFormData.setVisible(false);
+        btnAddGroup.setVisible(false);
+        btnDataEmployee.setVisible(false);
+        btnShowPermission.setVisible(false);
+        
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "TabUser");
         if (up.getW()==1){
             jTabbedPane1.setEnabledAt(0, true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabCreateGroup");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "TabCreateGroup");
         if (up.getW()==1){
             jTabbedPane1.setEnabledAt(1, true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabAddGroupToLang");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "TabAddGroupToLang");
         if (up.getW()==1){
             jTabbedPane1.setEnabledAt(2, true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabGrouptoPermission");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "TabGrouptoPermission");
         if (up.getW()==1){
             jTabbedPane1.setEnabledAt(3, true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabEmployeetoGroup");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "TabEmployeetoGroup");
         if (up.getW()==1){
             jTabbedPane1.setEnabledAt(4, true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "TabEmployeePermission");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "TabEmployeePermission");
         if (up.getW()==1){
             jTabbedPane1.setEnabledAt(5, true);
         }
                  
         //btnShowData.setVisible(false);
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowData");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnShowData");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnShowData.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnUpdateGroup");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnUpdateGroup");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnUpdateGroup.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnGroupShowData");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnGroupShowData");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnGroupShowData.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowDataGroupPermission");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnShowDataGroupPermission");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnShowDataGroupPermission.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnUpdateGroupPermission");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnUpdateGroupPermission");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnUpdateGroupPermission.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowFormData");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnShowFormData");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnShowFormData.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnAddGroup");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnAddGroup");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnAddGroup.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnDataEmployee");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnDataEmployee");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnDataEmployee.setVisible(true);
         }
-        UserPermission.getPermission_UserLoginTab(FrmMain.userNbr, frm, up, "btnShowPermission");
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnShowPermission");
         if (up.getW()==1){
-            jTabbedPane1.setEnabledAt(5, true);
+            btnShowPermission.setVisible(true);
         }
         
         model1 = (DefaultTableModel) jTable1.getModel();
