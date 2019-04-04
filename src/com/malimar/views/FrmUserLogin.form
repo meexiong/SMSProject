@@ -1030,9 +1030,9 @@
                                                 <Column editable="false" title="FormNames" type="java.lang.Object"/>
                                                 <Column editable="false" title="FormNames" type="java.lang.Object"/>
                                                 <Column editable="false" title="LangName" type="java.lang.Object"/>
-                                                <Column editable="true" title="Reads" type="java.lang.Boolean"/>
-                                                <Column editable="true" title="Write" type="java.lang.Boolean"/>
-                                                <Column editable="true" title="Denys" type="java.lang.Boolean"/>
+                                                <Column editable="false" title="Reads" type="java.lang.Boolean"/>
+                                                <Column editable="false" title="Write" type="java.lang.Boolean"/>
+                                                <Column editable="false" title="Denys" type="java.lang.Boolean"/>
                                               </Table>
                                             </Property>
                                             <Property name="autoResizeMode" type="int" value="0"/>
@@ -1053,17 +1053,17 @@
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="0" minWidth="0" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="0" minWidth="0" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>
                                                 </Column>
-                                                <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                                                <Column maxWidth="0" minWidth="0" prefWidth="-1" resizable="true">
                                                   <Title/>
                                                   <Editor/>
                                                   <Renderer/>

@@ -10,6 +10,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.TeacherAddManager;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.TeacherAdd;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.ConvertDateSQL;
 import com.malimar.utils.FrameMove;
@@ -105,7 +106,22 @@ public class FrmTeacherAdd extends javax.swing.JDialog {
         btnNew.setText(LabelManager.hmapLang.get("btnNew".concat(frm).toUpperCase())[LabelManager.LN]);       
         lbltnbr.setText(LabelManager.hmapLang.get("lbltnbr".concat(frm).toUpperCase())[LabelManager.LN]);  
         cbTeacher.setText(LabelManager.hmapLang.get("cbTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
-        UserPermission.getPermission_S(userNbr, frm, btnSave);
+        
+        btnSave.setVisible(false);
+        btnNew.setVisible(false);
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnNew");
+        if (up.getW()==1){
+            btnNew.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnNew.setVisible(false);
+        }
     }
     private void getGender(){
         try {

@@ -11,6 +11,7 @@ import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.Guardian;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
@@ -68,7 +69,21 @@ public class FrmGuardian extends javax.swing.JFrame {
         MoreInfo.setText(LabelManager.hmapLang.get("MoreInfo".concat(frm).toUpperCase())[LabelManager.LN]);
         lblWork.setText(LabelManager.hmapLang.get("lblWork".concat(frm).toUpperCase())[LabelManager.LN]);
         
-        UserPermission.getPermission_SN(userNbr, frm , btnSave, btnNew);
+        btnSave.setVisible(false);
+        btnNew.setVisible(false);
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnNew");
+        if (up.getW()==1){
+            btnNew.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnNew.setVisible(false);
+        }
     }
 
     private FrmGuardian(Frame parent, boolean modal) {

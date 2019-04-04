@@ -15,7 +15,9 @@ import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.hmapLang;
 import com.malimar.controllers.Logo;
 import com.malimar.controllers.ReportScheduleTeacherManager;
+import com.malimar.controllers.UserPermission;
 import com.malimar.models.ReportScheduleTeacher;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.PathReport;
@@ -52,6 +54,8 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
     
     HashMap<String, Object[]> mapC = null;
     
+    UserPermissions up = new UserPermissions();    
+    
     public FrmReportScheduleTeacher() {
         initComponents();
         frm = this.getClass().getSimpleName();
@@ -61,6 +65,25 @@ public class FrmReportScheduleTeacher extends javax.swing.JFrame {
         
         Border.blueColor(btnOK);
         Border.blueColor(btnOpen);
+        btnOK.setVisible(false);
+        btnOpen.setVisible(false);
+        
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnOK");
+        if (up.getW()==1){
+            btnOK.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnOK.setVisible(false);
+        }
+        
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnOpen");
+        if (up.getW()==1){
+            btnOpen.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnOpen.setVisible(false);
+        }
+        
+        
+        
         
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         jTable1.setShowGrid(true);

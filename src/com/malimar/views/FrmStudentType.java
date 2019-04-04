@@ -12,6 +12,7 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.StudentTypeManager;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.StudentType;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
@@ -72,7 +73,16 @@ public class FrmStudentType extends javax.swing.JFrame {
         lblName_L2.setText(LabelManager.hmapLang.get("lblName_L2".concat(frm).toUpperCase())[LabelManager.LN]);
         lblID.setText(LabelManager.hmapLang.get("lblID".concat(frm).toUpperCase())[LabelManager.LN]);
         btnSave.setText(LabelManager.hmapLang.get("btnSave".concat(frm).toUpperCase())[LabelManager.LN]);
-        UserPermission.getPermission_S(userNbr, frm, btnSave);
+        
+        Border.blueColor(btnSave);
+        btnSave.setVisible(false);
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnSave");
+        if (up.getW()==1){
+            btnSave.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnSave.setVisible(false);
+        }
     }
     public void showClear(){
         try {
@@ -445,7 +455,7 @@ public class FrmStudentType extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         stm.showData(jTable1, model);
-        lblSystemInfo.setText(LabelManager.hmapForm.get("FRMSTCATEGORY".toUpperCase())[LabelManager.LN]);    
+        lblSystemInfo.setText(LabelManager.hmapForm.get("FrmStudentType".toUpperCase())[LabelManager.LN]);    
     }//GEN-LAST:event_formWindowOpened
 
     private void txtIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtIDMouseClicked

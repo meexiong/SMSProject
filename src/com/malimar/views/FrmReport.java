@@ -12,6 +12,7 @@ package com.malimar.views;
 import com.malimar.controllers.DatabaseManagerSQL;
 import com.malimar.controllers.LabelManager;
 import com.malimar.controllers.Logo;
+import com.malimar.controllers.UserPermission;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.PathReport;
 import java.awt.Dimension;
@@ -21,6 +22,8 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.swing.JRViewer;
 import com.malimar.models.Report;
+import com.malimar.models.UserPermissions;
+import static com.malimar.views.FrmMain.userNbr;
 
 public class FrmReport extends javax.swing.JFrame {
 
@@ -31,12 +34,87 @@ public class FrmReport extends javax.swing.JFrame {
     String frm, sql;
     
     Report rpt = new Report();
+    UserPermissions up = new UserPermissions();
     
     public FrmReport() {
         initComponents();
         frm = this.getClass().getSimpleName();
         Logo lg = new Logo();
         lg.getLogo(this);
+        
+        btnReportTeacher.setVisible(false);
+        btnReportEmployee.setVisible(false);
+        btnReportStudentAll.setVisible(false);      
+        btnReportStudentRegistration.setVisible(false);        
+        btnReportStudentPayment.setVisible(false);        
+        btnReportAmountReveivedByDate.setVisible(false);       
+        btnReportSaleByDate.setVisible(false);
+        btnReportIncomebyProduct.setVisible(false);        
+        btnReportSchedule.setVisible(false);        
+        btnReportRevenueSharing.setVisible(false);
+        
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportTeacher");
+        if (up.getW()==1){
+            btnReportTeacher.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportTeacher.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportEmployee");
+        if (up.getW()==1){
+            btnReportEmployee.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportEmployee.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportStudentAll");
+        if (up.getW()==1){
+            btnReportStudentAll.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportStudentAll.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportStudentRegistration");
+        if (up.getW()==1){
+            btnReportStudentRegistration.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportStudentRegistration.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportStudentPayment");
+        if (up.getW()==1){
+            btnReportStudentPayment.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportStudentPayment.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportAmountReveivedByDate");
+        if (up.getW()==1){
+            btnReportAmountReveivedByDate.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportAmountReveivedByDate.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportSaleByDate");
+        if (up.getW()==1){
+            btnReportSaleByDate.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportSaleByDate.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportIncomebyProduct");
+        if (up.getW()==1){
+            btnReportIncomebyProduct.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportIncomebyProduct.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportSchedule");
+        if (up.getW()==1){
+            btnReportSchedule.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportSchedule.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(FrmMain.userNbr, frm, up, "btnReportRevenueSharing");
+        if (up.getW()==1){
+            btnReportRevenueSharing.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnReportRevenueSharing.setVisible(false);
+        }             
+        
+                
         lblSystemInfo.setText(LabelManager.hmapForm.get(frm.toUpperCase())[LabelManager.LN]);
         btnReportTeacher.setText(LabelManager.hmapLang.get("btnReportTeacher".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportEmployee.setText(LabelManager.hmapLang.get("btnReportEmployee".concat(frm).toUpperCase())[LabelManager.LN]);
@@ -48,6 +126,11 @@ public class FrmReport extends javax.swing.JFrame {
         btnReportSaleByDate.setText(LabelManager.hmapLang.get("btnReportSaleByDate".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportIncomebyProduct.setText(LabelManager.hmapLang.get("btnReportIncomebyProduct".concat(frm).toUpperCase())[LabelManager.LN]);
         btnReportSchedule.setText(LabelManager.hmapLang.get("btnReportSchedule".concat(frm).toUpperCase())[LabelManager.LN]);
+        btnReportRevenueSharing.setText(LabelManager.hmapLang.get("btnReportRevenueSharing".concat(frm).toUpperCase())[LabelManager.LN]);
+        
+        
+        
+        
         
         
     }
@@ -72,6 +155,7 @@ public class FrmReport extends javax.swing.JFrame {
         btnReportSaleByDate = new com.xzq.osc.JocHyperlink();
         btnReportIncomebyProduct = new com.xzq.osc.JocHyperlink();
         btnReportSchedule = new com.xzq.osc.JocHyperlink();
+        btnReportRevenueSharing = new com.xzq.osc.JocHyperlink();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -274,6 +358,21 @@ public class FrmReport extends javax.swing.JFrame {
             }
         });
 
+        btnReportRevenueSharing.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Payment History_24px.png"))); // NOI18N
+        btnReportRevenueSharing.setText("Report Revenue Sharing");
+        btnReportRevenueSharing.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnReportRevenueSharing.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnReportRevenueSharing.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnReportRevenueSharingMouseClicked(evt);
+            }
+        });
+        btnReportRevenueSharing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReportRevenueSharingActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -289,7 +388,8 @@ public class FrmReport extends javax.swing.JFrame {
                     .addComponent(btnReportAmountReveivedByDate, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                     .addComponent(btnReportSaleByDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                     .addComponent(btnReportIncomebyProduct, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                    .addComponent(btnReportSchedule, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
+                    .addComponent(btnReportSchedule, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                    .addComponent(btnReportRevenueSharing, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -313,6 +413,8 @@ public class FrmReport extends javax.swing.JFrame {
                 .addComponent(btnReportIncomebyProduct, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnReportSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnReportRevenueSharing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -543,6 +645,25 @@ public class FrmReport extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnReportScheduleActionPerformed
 
+    private void btnReportRevenueSharingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportRevenueSharingMouseClicked
+        try {
+            if (evt.getModifiers()==6){
+                LabelManager.WindowChangeLabel("btnReportRevenueSharing", frm);
+            }else{
+                
+                
+            }
+            
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnReportRevenueSharingMouseClicked
+
+    private void btnReportRevenueSharingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReportRevenueSharingActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnReportRevenueSharingActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -584,6 +705,7 @@ public class FrmReport extends javax.swing.JFrame {
     private com.xzq.osc.JocHyperlink btnReportAmountReveivedByDate;
     private com.xzq.osc.JocHyperlink btnReportEmployee;
     private com.xzq.osc.JocHyperlink btnReportIncomebyProduct;
+    private com.xzq.osc.JocHyperlink btnReportRevenueSharing;
     private com.xzq.osc.JocHyperlink btnReportSaleByDate;
     private com.xzq.osc.JocHyperlink btnReportSchedule;
     private com.xzq.osc.JocHyperlink btnReportStudentAll;

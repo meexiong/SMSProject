@@ -12,6 +12,7 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.TableAlignmentHeader;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.Guardian;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.TableHeader;
@@ -71,7 +72,30 @@ public class FrmGuardianDetails extends javax.swing.JFrame {
         //This is setup Table header and Color
         TableHeader.tableHeader(jTable1, th);
         TableHeader.tableHeaderColor(jTable1, jScrollPane1, th);
-        UserPermission.getPermission_N(userNbr, frm, btnNew);
+        
+        btnNew.setVisible(false);
+        btnRefresh.setVisible(false);
+        btnAddStudent.setVisible(false);        
+        
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnNew");
+        if (up.getW()==1){
+            btnNew.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnNew.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnRefresh");
+        if (up.getW()==1){
+            btnRefresh.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnRefresh.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnAddStudent");
+        if (up.getW()==1){
+            btnAddStudent.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnAddStudent.setVisible(false);
+        }
 
     }
 

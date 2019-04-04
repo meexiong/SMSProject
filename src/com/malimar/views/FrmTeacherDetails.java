@@ -11,6 +11,7 @@ import com.malimar.controllers.Logo;
 import com.malimar.controllers.TeacherAddManager;
 import com.malimar.controllers.UserPermission;
 import com.malimar.models.TeacherAdd;
+import com.malimar.models.UserPermissions;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import static com.malimar.views.FrmMain.userNbr;
@@ -67,7 +68,23 @@ public class FrmTeacherDetails extends javax.swing.JFrame {
         jTable1.getTableHeader().setBackground(Color.decode("#4169E1"));
         jTable1.getTableHeader().setForeground(Color.WHITE);
         jTable1.getTableHeader().setOpaque(false);
-        UserPermission.getPermission_N(userNbr, frm, btnNew);
+        
+        btnNew.setVisible(false);
+        btnRefresh.setVisible(false);
+        UserPermissions up = new UserPermissions();
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnNew");
+        if (up.getW()==1){
+            btnNew.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnNew.setVisible(false);
+        }
+        UserPermission.getPermission_UserAllForm(userNbr, frm, up, "btnRefresh");
+        if (up.getW()==1){
+            btnRefresh.setVisible(true);
+        }else if (up.getDenys()==1){
+            btnRefresh.setVisible(false);
+        }
+        
     }
 
     /**
