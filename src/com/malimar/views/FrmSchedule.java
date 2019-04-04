@@ -155,8 +155,8 @@ public class FrmSchedule extends javax.swing.JFrame {
             ms.keySet().forEach((s)->{
                 cmbCourse.addItem(s);
             });
-            cmbCourse.setSelectedIndex(-1);
-            AutoCompleteDecorator.decorate(cmbCourse);
+//            cmbCourse.setSelectedIndex(-1);
+//            AutoCompleteDecorator.decorate(cmbCourse);
         } catch (Exception e) {
         }
     }
@@ -168,8 +168,8 @@ public class FrmSchedule extends javax.swing.JFrame {
             ms.keySet().forEach((s)->{
                 cmbTeacher.addItem(s);
             });
-            cmbTeacher.setSelectedIndex(-1);
-            AutoCompleteDecorator.decorate(cmbTeacher);
+//            cmbTeacher.setSelectedIndex(-1);
+//            AutoCompleteDecorator.decorate(cmbTeacher);
         } catch (Exception e) {
         }
     }
@@ -181,8 +181,8 @@ public class FrmSchedule extends javax.swing.JFrame {
             ms.keySet().forEach((s)->{
                 cmbRoom.addItem(s);
             });
-            cmbRoom.setSelectedIndex(-1);
-            AutoCompleteDecorator.decorate(cmbRoom);
+//            cmbRoom.setSelectedIndex(-1);
+//            AutoCompleteDecorator.decorate(cmbRoom);
         } catch (Exception e) {
         }
     }
