@@ -768,7 +768,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
 
         lblRegistation.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblRegistation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblRegistation.setText("Registation");
+        lblRegistation.setText("Registration");
         lblRegistation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblRegistationMouseClicked(evt);
@@ -1002,7 +1002,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
 
         lblProduct.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblProduct.setText("Item");
+        lblProduct.setText("Hourly Course");
         lblProduct.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblProductMouseClicked(evt);
@@ -1028,7 +1028,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
 
         lblSale.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSale.setText("Sale");
+        lblSale.setText("Hourly Registration");
         lblSale.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblSaleMouseClicked(evt);

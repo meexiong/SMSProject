@@ -1,14 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.malimar.models;
 
-/**
- *
- * @author Malimar
- */
 public class Guardian {
     int id;
     String GuardianL1;
@@ -21,11 +13,19 @@ public class Guardian {
     String Moreinfo;
     String Gud_Work;
     String genderName;
-    
+    String studentNbr;
     int GPDID;
     int GUDID;
     int stdID;
     int RLTID;
+
+    public String getStudentNbr() {
+        return studentNbr;
+    }
+
+    public void setStudentNbr(String studentNbr) {
+        this.studentNbr = studentNbr;
+    }
 
     public void setGenderName(String genderName) {
         this.genderName = genderName;

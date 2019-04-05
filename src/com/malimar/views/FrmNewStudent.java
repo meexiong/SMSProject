@@ -5,6 +5,7 @@
  */
 package com.malimar.views;
 
+import com.malimar.controllers.GuardianManager;
 import com.malimar.controllers.LabelManager;
 import static com.malimar.controllers.LabelManager.LN;
 import static com.malimar.controllers.LabelManager.WindowChangeLabel;
@@ -13,17 +14,22 @@ import com.malimar.controllers.OpenPicture;
 import static com.malimar.controllers.OpenPicture.imagePath;
 import com.malimar.controllers.StudentManager;
 import com.malimar.controllers.UserPermission;
+import com.malimar.models.Guardian;
 import com.malimar.models.Student;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 /**
@@ -31,6 +37,7 @@ import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
  * @author Malimar
  */
 public class FrmNewStudent extends javax.swing.JDialog {
+
     String frm;
     StudentManager sm = new StudentManager();
     Student sd = new Student();
@@ -40,32 +47,44 @@ public class FrmNewStudent extends javax.swing.JDialog {
     HashMap<String, Object[]> mapEthnic = null;
     HashMap<String, Object[]> mapReligion = null;
     HashMap<String, Object[]> mapPark = null;
+    HashMap<String, Object[]> mapGender1 = null;
+    Guardian gd = new Guardian();
+    GuardianManager gdm = new GuardianManager();
+
     String stdnbr;
+    DefaultTableModel model = new DefaultTableModel();
+
     public FrmNewStudent(java.awt.Frame parent, boolean modal, String nbr) {
         super(parent, modal);
         initComponents();
-        stdnbr=nbr;
+        stdnbr = nbr;
         frm = this.getClass().getSimpleName();
+        model = (DefaultTableModel) table.getModel();
+        table.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         getNewStudentLabel();
         showGenderComboBox();
+        showGenderComboBox1();
         showStudentTypeComboBox();
         showNationalComboBox();
         showEthnicComboBox();
         showReligionComboBox();
         showParkComboBox();
         txtStdNbr.setText(nbr);
-        if("New".equals(nbr)) {
+        if ("New".equals(nbr)) {
             chStdStudying.setSelected(true);
             cmbBloodGroup.setSelectedIndex(-1);
             txtStdDiseases.setEnabled(false);
             txtStdDiseases.setOpaque(false);
             txtStdDiseases.setDisabledTextColor(Color.BLACK);
-        }else{
+//            tabInfo.setEnabledAt(1, false);
+        } else {
             showData();
+            gdm.loadGuardian(table, model, nbr);
         }
         UserPermission.getPermission_S(FrmMain.userNbr, frm, btnSave);
     }
-    private void getNewStudentLabel(){
+
+    private void getNewStudentLabel() {
         lblStdNbr.setText(hmapLang.get("lblStdNbr".concat(frm).toUpperCase())[LN]);
         lblStdName_L1.setText(hmapLang.get("lblStdName_L1".concat(frm).toUpperCase())[LN]);
         lblStdName_L2.setText(hmapLang.get("lblStdName_L2".concat(frm).toUpperCase())[LN]);
@@ -93,7 +112,36 @@ public class FrmNewStudent extends javax.swing.JDialog {
         lblNewStudentTitle.setText(hmapLang.get("lblNewStudentTitle".concat(frm).toUpperCase())[LN]);
         btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
         lblImage.setText(hmapLang.get("lblImage".concat(frm).toUpperCase())[LN]);
+        tabInfo.setTitleAt(1, hmapLang.get("tabQuardianInfo".concat(frm).toUpperCase())[LN]);
+        tabInfo.setTitleAt(0, hmapLang.get("tabStudentInfo".concat(frm).toUpperCase())[LN]);
+
+        lblID.setText(hmapLang.get("lblID".concat(frm).toUpperCase())[LN]);
+        lblGuardian_L1.setText(hmapLang.get("lblGuardian_L1".concat(frm).toUpperCase())[LN]);
+        lblGuardian_L2.setText(hmapLang.get("lblGuardian_L2".concat(frm).toUpperCase())[LN]);
+        lblGender1.setText(hmapLang.get("lblGender1".concat(frm).toUpperCase())[LN]);
+        lblPhoneNumber.setText(hmapLang.get("lblPhoneNumber".concat(frm).toUpperCase())[LN]);
+        lblPhoneNumber2.setText(hmapLang.get("lblPhoneNumber2".concat(frm).toUpperCase())[LN]);
+        lblEmail.setText(hmapLang.get("lblEmail".concat(frm).toUpperCase())[LN]);
+        lblWorklocation.setText(hmapLang.get("lblWorklocation".concat(frm).toUpperCase())[LN]);
+        lblAddress_L1.setText(hmapLang.get("lblAddress_L1".concat(frm).toUpperCase())[LN]);
+        lblAddress_L2.setText(hmapLang.get("lblAddress_L2".concat(frm).toUpperCase())[LN]);
+        btnSaveG.setText(hmapLang.get("btnSaveG".concat(frm).toUpperCase())[LN]);
+        JTableHeader th = table.getTableHeader();
+        TableColumnModel tcm = th.getColumnModel();
+        table.getColumnCount();
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            TableColumn tc = tcm.getColumn(i);
+            tc.setHeaderValue(hmapLang.get(table.getModel().getColumnName(i).concat(frm).toUpperCase())[LN]);
+        }
+        table.setAutoCreateRowSorter(true);
+        th.repaint();
+        jScrollPane2.getViewport().setBackground(Color.WHITE);
+        table.setShowGrid(true);
+        table.getTableHeader().setBackground(Color.decode("#4169E1"));
+        table.getTableHeader().setForeground(Color.WHITE);
+        table.getTableHeader().setOpaque(false);
     }
+
     private void showGenderComboBox() {
         try {
             mapGender = sm.GenderComboBox();
@@ -107,6 +155,21 @@ public class FrmNewStudent extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
+
+    private void showGenderComboBox1() {
+        try {
+            mapGender1 = gdm.mapGender();
+            Map<String, Object[]> SortMap = new TreeMap<>(mapGender1);
+            cmdGender.removeAllItems();
+            SortMap.keySet().forEach((s) -> {
+                cmdGender.addItem(s);
+            });
+            cmdGender.setSelectedIndex(-1);
+            AutoCompleteDecorator.decorate(cmdGender);
+        } catch (Exception e) {
+        }
+    }
+
     private void showStudentTypeComboBox() {
         try {
             mapStudentType = sm.StudentTypeComboBox();
@@ -120,6 +183,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
+
     private void showNationalComboBox() {
         try {
             mapNational = sm.NationalityComboBox();
@@ -133,6 +197,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
+
     private void showEthnicComboBox() {
         try {
             mapEthnic = sm.EthnicComboBox();
@@ -146,6 +211,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
+
     private void showReligionComboBox() {
         try {
             mapReligion = sm.ReligionComboBox();
@@ -159,6 +225,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
+
     private void showParkComboBox() {
         try {
             mapPark = sm.StudentParkComboBox();
@@ -172,7 +239,8 @@ public class FrmNewStudent extends javax.swing.JDialog {
         } catch (Exception e) {
         }
     }
-    private void clearText(){
+
+    private void clearText() {
         txtStdNbr.setText("New");
         txtStdName_L1.setText("");
         txtStdName_L2.setText("");
@@ -203,6 +271,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         txtStdDiseases.setOpaque(false);
         txtStdDiseases.setDisabledTextColor(Color.BLACK);
     }
+
     private void showData() {
         sd.setStdNbr(stdnbr);
         sm.LoadEdit(sd);
@@ -238,6 +307,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
             lblImage.setIcon(new ImageIcon(ic));
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -250,6 +320,20 @@ public class FrmNewStudent extends javax.swing.JDialog {
         lblNewStudentTitle = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblImage = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        txtStdNbr = new javax.swing.JTextField();
+        lblStdNbr = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        txtStdName_L2 = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        lblStdName_L2 = new javax.swing.JLabel();
+        txtStdName_L1 = new javax.swing.JTextField();
+        lblStdName_L1 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        btnSave = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        btnTake = new javax.swing.JLabel();
+        tabInfo = new com.xzq.osc.JocTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         txtStdEmail = new javax.swing.JTextField();
         lblStdDOB = new javax.swing.JLabel();
@@ -304,19 +388,31 @@ public class FrmNewStudent extends javax.swing.JDialog {
         lblStdNote = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtStdNote = new javax.swing.JTextArea();
-        jPanel4 = new javax.swing.JPanel();
-        txtStdNbr = new javax.swing.JTextField();
-        lblStdNbr = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        txtStdName_L2 = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        lblStdName_L2 = new javax.swing.JLabel();
-        txtStdName_L1 = new javax.swing.JTextField();
-        lblStdName_L1 = new javax.swing.JLabel();
-        jSeparator3 = new javax.swing.JSeparator();
-        btnSave = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
-        btnTake = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        lblID = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        lblGuardian_L1 = new javax.swing.JLabel();
+        txtQuardian_L1 = new javax.swing.JTextField();
+        txtQuardian_L2 = new javax.swing.JTextField();
+        lblGuardian_L2 = new javax.swing.JLabel();
+        lblGender1 = new javax.swing.JLabel();
+        cmdGender = new javax.swing.JComboBox<>();
+        lblPhoneNumber = new javax.swing.JLabel();
+        txtPhoneNumber = new javax.swing.JTextField();
+        lblPhoneNumber2 = new javax.swing.JLabel();
+        txtPhoneNumber2 = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        lblWorklocation = new javax.swing.JLabel();
+        txtWorkLocation = new javax.swing.JTextField();
+        lblAddress_L1 = new javax.swing.JLabel();
+        txtAddress_L1 = new javax.swing.JTextField();
+        lblAddress_L2 = new javax.swing.JLabel();
+        txtAddress_L2 = new javax.swing.JTextField();
+        btnSaveG = new com.xzq.osc.JocHyperlink();
+        jPanel9 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
 
         jInternalFrame1.setVisible(true);
 
@@ -404,6 +500,117 @@ public class FrmNewStudent extends javax.swing.JDialog {
             }
         });
         jPanel2.add(lblImage, java.awt.BorderLayout.CENTER);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtStdNbr.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtStdNbr.setText("New");
+        txtStdNbr.setBorder(null);
+        txtStdNbr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        txtStdNbr.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtStdNbr.setEnabled(false);
+        txtStdNbr.setOpaque(false);
+        txtStdNbr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtStdNbrMouseClicked(evt);
+            }
+        });
+        jPanel4.add(txtStdNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 8, 140, 25));
+
+        lblStdNbr.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblStdNbr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblStdNbr.setText("Student#");
+        lblStdNbr.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStdNbrMouseClicked(evt);
+            }
+        });
+        jPanel4.add(lblStdNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 77, 25));
+        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 33, 140, 10));
+
+        txtStdName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtStdName_L2.setBorder(null);
+        jPanel4.add(txtStdName_L2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 200, 25));
+        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 125, 200, 10));
+
+        lblStdName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblStdName_L2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblStdName_L2.setText("Student Name(EN)");
+        lblStdName_L2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStdName_L2MouseClicked(evt);
+            }
+        });
+        jPanel4.add(lblStdName_L2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 110, 25));
+
+        txtStdName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtStdName_L1.setBorder(null);
+        jPanel4.add(txtStdName_L1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 200, 25));
+
+        lblStdName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblStdName_L1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblStdName_L1.setText("Student Name(Lao)");
+        lblStdName_L1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblStdName_L1MouseClicked(evt);
+            }
+        });
+        jPanel4.add(lblStdName_L1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, 25));
+        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 75, 200, 10));
+
+        btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnSave.setText("Save");
+        btnSave.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSaveMouseMoved(evt);
+            }
+        });
+        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSaveMouseExited(evt);
+            }
+        });
+        jPanel4.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 90, -1));
+
+        jPanel7.setBackground(new java.awt.Color(0, 15, 255));
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 6, Short.MAX_VALUE)
+        );
+
+        btnTake.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
+        btnTake.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btnTake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Camera_24px.png"))); // NOI18N
+        btnTake.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTake.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnTakeMouseMoved(evt);
+            }
+        });
+        btnTake.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnTakeMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnTakeMouseExited(evt);
+            }
+        });
+
+        tabInfo.setShowCloseButton(false);
+        tabInfo.setShowListButton(false);
+        tabInfo.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -729,112 +936,305 @@ public class FrmNewStudent extends javax.swing.JDialog {
 
         jPanel3.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 400, 120));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        tabInfo.addTab("Student Info", jPanel3);
 
-        txtStdNbr.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtStdNbr.setText("New");
-        txtStdNbr.setBorder(null);
-        txtStdNbr.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        txtStdNbr.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtStdNbr.setEnabled(false);
-        txtStdNbr.setOpaque(false);
-        txtStdNbr.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblID.setText("ID");
+        lblID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtStdNbrMouseClicked(evt);
+                lblIDMouseClicked(evt);
             }
         });
-        jPanel4.add(txtStdNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 8, 140, 25));
 
-        lblStdNbr.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblStdNbr.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblStdNbr.setText("Student#");
-        lblStdNbr.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtID.setText("New");
+        txtID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtID.setEnabled(false);
+        txtID.setOpaque(false);
+
+        lblGuardian_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblGuardian_L1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGuardian_L1.setText("Quardian Lao");
+        lblGuardian_L1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblStdNbrMouseClicked(evt);
+                lblGuardian_L1MouseClicked(evt);
             }
         });
-        jPanel4.add(lblStdNbr, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 8, 77, 25));
-        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 33, 140, 10));
 
-        txtStdName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtStdName_L2.setBorder(null);
-        jPanel4.add(txtStdName_L2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 200, 25));
-        jPanel4.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 125, 200, 10));
+        txtQuardian_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtQuardian_L1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtQuardian_L1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        lblStdName_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblStdName_L2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblStdName_L2.setText("Student Name(EN)");
-        lblStdName_L2.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtQuardian_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtQuardian_L2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtQuardian_L2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        lblGuardian_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblGuardian_L2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGuardian_L2.setText("Quardian EN");
+        lblGuardian_L2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblStdName_L2MouseClicked(evt);
+                lblGuardian_L2MouseClicked(evt);
             }
         });
-        jPanel4.add(lblStdName_L2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 110, 25));
 
-        txtStdName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtStdName_L1.setBorder(null);
-        jPanel4.add(txtStdName_L1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 200, 25));
-
-        lblStdName_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        lblStdName_L1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        lblStdName_L1.setText("Student Name(Lao)");
-        lblStdName_L1.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblGender1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblGender1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblGender1.setText("Gender");
+        lblGender1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblStdName_L1MouseClicked(evt);
+                lblGender1MouseClicked(evt);
             }
         });
-        jPanel4.add(lblStdName_L1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 110, 25));
-        jPanel4.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 75, 200, 10));
 
-        btnSave.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        btnSave.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSave.setText("Save");
-        btnSave.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnSaveMouseMoved(evt);
-            }
-        });
-        btnSave.addMouseListener(new java.awt.event.MouseAdapter() {
+        cmdGender.setEditable(true);
+        cmdGender.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+
+        lblPhoneNumber.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPhoneNumber.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPhoneNumber.setText("Phone number");
+        lblPhoneNumber.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSaveMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSaveMouseExited(evt);
+                lblPhoneNumberMouseClicked(evt);
             }
         });
-        jPanel4.add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 90, -1));
 
-        jPanel7.setBackground(new java.awt.Color(0, 15, 255));
+        txtPhoneNumber.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtPhoneNumber.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtPhoneNumber.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        lblPhoneNumber2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPhoneNumber2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblPhoneNumber2.setText("Phone number");
+        lblPhoneNumber2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblPhoneNumber2MouseClicked(evt);
+            }
+        });
+
+        txtPhoneNumber2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtPhoneNumber2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtPhoneNumber2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        txtEmail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtEmail.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtEmail.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        lblEmail.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEmail.setText("Email");
+        lblEmail.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEmailMouseClicked(evt);
+            }
+        });
+
+        lblWorklocation.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblWorklocation.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblWorklocation.setText("Work");
+        lblWorklocation.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblWorklocationMouseClicked(evt);
+            }
+        });
+
+        txtWorkLocation.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtWorkLocation.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtWorkLocation.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        lblAddress_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblAddress_L1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAddress_L1.setText("Address Lao");
+        lblAddress_L1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddress_L1MouseClicked(evt);
+            }
+        });
+
+        txtAddress_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtAddress_L1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtAddress_L1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        lblAddress_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblAddress_L2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblAddress_L2.setText("Address EN");
+        lblAddress_L2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblAddress_L2MouseClicked(evt);
+            }
+        });
+
+        txtAddress_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtAddress_L2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtAddress_L2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+
+        btnSaveG.setText("Save");
+        btnSaveG.setUnvisitColor(new java.awt.Color(0, 0, 0));
+        btnSaveG.setVisitedColor(new java.awt.Color(0, 0, 0));
+        btnSaveG.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnSaveG.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaveGMouseClicked(evt);
+            }
+        });
+        btnSaveG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveGActionPerformed(evt);
+            }
+        });
+
+        jPanel9.setLayout(new java.awt.BorderLayout());
+
+        table.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "lblID", "lblGuardian_L1", "lblGuardian_L2", "lblGender", "lblPhoneNumber", "lblPhoneNumber2", "lblEmail", "lblWorklocation", "lblAddress_L1", "lblAddress_L2"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        table.setGridColor(new java.awt.Color(204, 204, 204));
+        table.setRowHeight(25);
+        table.setSelectionBackground(new java.awt.Color(204, 204, 204));
+        table.setSelectionForeground(java.awt.Color.red);
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setMinWidth(0);
+            table.getColumnModel().getColumn(0).setMaxWidth(0);
+            table.getColumnModel().getColumn(1).setMinWidth(200);
+            table.getColumnModel().getColumn(1).setMaxWidth(200);
+            table.getColumnModel().getColumn(2).setMinWidth(200);
+            table.getColumnModel().getColumn(2).setMaxWidth(200);
+            table.getColumnModel().getColumn(3).setMinWidth(100);
+            table.getColumnModel().getColumn(3).setMaxWidth(100);
+            table.getColumnModel().getColumn(4).setMinWidth(150);
+            table.getColumnModel().getColumn(4).setMaxWidth(150);
+            table.getColumnModel().getColumn(5).setMinWidth(150);
+            table.getColumnModel().getColumn(5).setMaxWidth(150);
+            table.getColumnModel().getColumn(6).setMinWidth(150);
+            table.getColumnModel().getColumn(6).setMaxWidth(150);
+            table.getColumnModel().getColumn(7).setMinWidth(150);
+            table.getColumnModel().getColumn(7).setMaxWidth(150);
+            table.getColumnModel().getColumn(8).setMinWidth(200);
+            table.getColumnModel().getColumn(8).setMaxWidth(200);
+            table.getColumnModel().getColumn(9).setMinWidth(200);
+            table.getColumnModel().getColumn(9).setMaxWidth(200);
+        }
+
+        jPanel9.add(jScrollPane2, java.awt.BorderLayout.CENTER);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblAddress_L2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblAddress_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblWorklocation, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhoneNumber2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGender1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGuardian_L2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblGuardian_L1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblID, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtAddress_L2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtAddress_L1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtWorkLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtPhoneNumber2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtQuardian_L2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtQuardian_L1)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btnSaveG, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(10, 10, 10)
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 6, Short.MAX_VALUE)
+
+        jPanel8Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblAddress_L1, lblAddress_L2, lblEmail, lblGender1, lblGuardian_L1, lblGuardian_L2, lblID, lblPhoneNumber, lblPhoneNumber2, lblWorklocation});
+
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGuardian_L1)
+                    .addComponent(txtQuardian_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGuardian_L2)
+                    .addComponent(txtQuardian_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGender1)
+                    .addComponent(cmdGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhoneNumber)
+                    .addComponent(txtPhoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPhoneNumber2)
+                    .addComponent(txtPhoneNumber2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblWorklocation)
+                    .addComponent(txtWorkLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddress_L1)
+                    .addComponent(txtAddress_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddress_L2)
+                    .addComponent(txtAddress_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(btnSaveG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
-        btnTake.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        btnTake.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnTake.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Camera_24px.png"))); // NOI18N
-        btnTake.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTake.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnTakeMouseMoved(evt);
-            }
-        });
-        btnTake.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTakeMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnTakeMouseExited(evt);
-            }
-        });
+        jPanel8Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmdGender, lblAddress_L1, lblAddress_L2, lblEmail, lblGender1, lblGuardian_L1, lblGuardian_L2, lblID, lblPhoneNumber, lblPhoneNumber2, lblWorklocation, txtAddress_L1, txtAddress_L2, txtEmail, txtID, txtPhoneNumber, txtPhoneNumber2, txtQuardian_L1, txtQuardian_L2, txtWorkLocation});
+
+        tabInfo.addTab("Add Quardian", jPanel8);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -844,15 +1244,15 @@ public class FrmNewStudent extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnTake)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(tabInfo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -867,8 +1267,8 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 .addComponent(btnTake, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addComponent(tabInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -887,10 +1287,10 @@ public class FrmNewStudent extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSaveMouseMoved
 
     private void btnSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveMouseClicked
-        if(evt.getModifiers() == 6) {
+        if (evt.getModifiers() == 6) {
             LabelManager.WindowChangeLabel("btnSave", frm);
         } else {
-            if (cmbGender.getSelectedItem() == null || cmbBloodGroup.getSelectedItem()==null || cmbStdEthnic.getSelectedItem()==null || cmbStdNationality.getSelectedItem()==null || cmbStdPark.getSelectedItem()==null || cmbStdReligion.getSelectedItem()==null || cmbStdType.getSelectedItem()==null) {
+            if (cmbGender.getSelectedItem() == null || cmbBloodGroup.getSelectedItem() == null || cmbStdEthnic.getSelectedItem() == null || cmbStdNationality.getSelectedItem() == null || cmbStdPark.getSelectedItem() == null || cmbStdReligion.getSelectedItem() == null || cmbStdType.getSelectedItem() == null) {
                 MsgBox.msgError();
             } else {
                 String gender = cmbGender.getSelectedItem().toString();
@@ -927,16 +1327,17 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 if (txtStdNbr.getText().equals("New")) {
                     if (sm.insertStudent(sd)) {
                         MsgBox.msgInfo();
-                        clearText();
-                    }else{
+                        tabInfo.setEnabledAt(1, false);
+//                        clearText();
+                    } else {
                         MsgBox.msgError();
                     }
                 } else {
                     if (sm.updateStudent(sd)) {
                         sm.updateStudentPicture(sd);
                         MsgBox.msgInfo();
-                        clearText();
-                    }else{
+//                        clearText();
+                    } else {
                         MsgBox.msgError();
                     }
                 }
@@ -949,16 +1350,16 @@ public class FrmNewStudent extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSaveMouseExited
 
     private void lblImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblImageMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblImage", frm);
-        }else if(evt.getClickCount()==2){
+        } else if (evt.getClickCount() == 2) {
             lblImage.setText("");
             lblImage.setIcon(OpenPicture.getImage(lblImage.getWidth(), lblImage.getHeight()));
         }
     }//GEN-LAST:event_lblImageMouseClicked
 
     private void txtStdNbrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtStdNbrMouseClicked
- 
+
     }//GEN-LAST:event_txtStdNbrMouseClicked
 
     private void cmbGenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGenderActionPerformed
@@ -972,145 +1373,145 @@ public class FrmNewStudent extends javax.swing.JDialog {
     }//GEN-LAST:event_chDiseasesActionPerformed
 
     private void lblStdNbrMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdNbrMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdNbr", frm);
         }
     }//GEN-LAST:event_lblStdNbrMouseClicked
 
     private void lblStdName_L1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdName_L1MouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdName_L1", frm);
         }
     }//GEN-LAST:event_lblStdName_L1MouseClicked
 
     private void lblStdName_L2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdName_L2MouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdName_L2", frm);
         }
     }//GEN-LAST:event_lblStdName_L2MouseClicked
 
     private void lblGenderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenderMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblGender", frm);
         }
     }//GEN-LAST:event_lblGenderMouseClicked
 
     private void lblStdTypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdTypeMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdType", frm);
         }
     }//GEN-LAST:event_lblStdTypeMouseClicked
 
     private void lblStdMobileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdMobileMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdMobile", frm);
         }
     }//GEN-LAST:event_lblStdMobileMouseClicked
 
     private void lblHomeNumberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHomeNumberMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblHomeNumber", frm);
         }
     }//GEN-LAST:event_lblHomeNumberMouseClicked
 
     private void lblStdEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdEmailMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdEmail", frm);
         }
     }//GEN-LAST:event_lblStdEmailMouseClicked
 
     private void lblStdDOBMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdDOBMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdDOB", frm);
         }
     }//GEN-LAST:event_lblStdDOBMouseClicked
 
     private void lblStdStartDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdStartDateMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdStartDate", frm);
         }
     }//GEN-LAST:event_lblStdStartDateMouseClicked
 
     private void lblStdEndDateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdEndDateMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdEndDate", frm);
         }
     }//GEN-LAST:event_lblStdEndDateMouseClicked
 
     private void lblStdNationalityMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdNationalityMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdNationality", frm);
         }
     }//GEN-LAST:event_lblStdNationalityMouseClicked
 
     private void lblStdEthnicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdEthnicMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdEthnic", frm);
         }
     }//GEN-LAST:event_lblStdEthnicMouseClicked
 
     private void lblStdReligionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdReligionMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdReligion", frm);
         }
     }//GEN-LAST:event_lblStdReligionMouseClicked
 
     private void lblStdStudyingMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdStudyingMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdStudying", frm);
         }
     }//GEN-LAST:event_lblStdStudyingMouseClicked
 
     private void lblBloodGroupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBloodGroupMouseClicked
-       if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblBloodGroup", frm);
         }
     }//GEN-LAST:event_lblBloodGroupMouseClicked
 
     private void lblParkMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblParkMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblPark", frm);
         }
     }//GEN-LAST:event_lblParkMouseClicked
 
     private void lblStdWeightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdWeightMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdWeight", frm);
         }
     }//GEN-LAST:event_lblStdWeightMouseClicked
 
     private void lblStdHeightMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdHeightMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdHeight", frm);
         }
     }//GEN-LAST:event_lblStdHeightMouseClicked
 
     private void lblStdDiseaseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdDiseaseMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdDisease", frm);
         }
     }//GEN-LAST:event_lblStdDiseaseMouseClicked
 
     private void lblStdSchoolNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdSchoolNameMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdSchoolName", frm);
         }
     }//GEN-LAST:event_lblStdSchoolNameMouseClicked
 
     private void lblSchoolLevelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSchoolLevelMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblSchoolLevel", frm);
         }
     }//GEN-LAST:event_lblSchoolLevelMouseClicked
 
     private void lblSchoolMobileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSchoolMobileMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblSchoolMobile", frm);
         }
     }//GEN-LAST:event_lblSchoolMobileMouseClicked
 
     private void lblStdNoteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblStdNoteMouseClicked
-        if(evt.getModifiers()==6){
+        if (evt.getModifiers() == 6) {
             WindowChangeLabel("lblStdNote", frm);
         }
     }//GEN-LAST:event_lblStdNoteMouseClicked
@@ -1140,7 +1541,104 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private void btnTakeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTakeMouseExited
         // TODO add your handling code here:
     }//GEN-LAST:event_btnTakeMouseExited
-    
+
+    private void lblIDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIDMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblID", frm);
+        }
+    }//GEN-LAST:event_lblIDMouseClicked
+
+    private void lblGuardian_L1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardian_L1MouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblGuardian_L1", frm);
+        }
+    }//GEN-LAST:event_lblGuardian_L1MouseClicked
+
+    private void lblGuardian_L2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGuardian_L2MouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblGuardian_L2", frm);
+        }
+    }//GEN-LAST:event_lblGuardian_L2MouseClicked
+
+    private void lblGender1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGender1MouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblGender1", frm);
+        }
+    }//GEN-LAST:event_lblGender1MouseClicked
+
+    private void lblPhoneNumberMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhoneNumberMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblPhoneNumber", frm);
+        }
+    }//GEN-LAST:event_lblPhoneNumberMouseClicked
+
+    private void lblPhoneNumber2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblPhoneNumber2MouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblPhoneNumber2", frm);
+        }
+    }//GEN-LAST:event_lblPhoneNumber2MouseClicked
+
+    private void lblEmailMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEmailMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblEmail", frm);
+        }
+    }//GEN-LAST:event_lblEmailMouseClicked
+
+    private void lblWorklocationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblWorklocationMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblWorklocation", frm);
+        }
+    }//GEN-LAST:event_lblWorklocationMouseClicked
+
+    private void lblAddress_L1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddress_L1MouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblAddress_L1", frm);
+        }
+    }//GEN-LAST:event_lblAddress_L1MouseClicked
+
+    private void lblAddress_L2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddress_L2MouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("lblAddress_L2", frm);
+        }
+    }//GEN-LAST:event_lblAddress_L2MouseClicked
+
+    private void btnSaveGMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaveGMouseClicked
+        if (evt.getModifiers() == 6) {
+            WindowChangeLabel("btnSaveG", frm);
+        }
+    }//GEN-LAST:event_btnSaveGMouseClicked
+
+    private void btnSaveGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveGActionPerformed
+        try {
+            String gender = cmdGender.getSelectedItem().toString();
+            gd.setGuardianL1(txtQuardian_L1.getText());
+            gd.setGuardianL2(txtQuardian_L2.getText());
+            gd.setGenid(Integer.parseInt(mapGender.get(gender)[0].toString()));
+            gd.setPhone1(txtPhoneNumber.getText());
+            gd.setPhone2(txtPhoneNumber2.getText());
+            gd.setEmail(txtEmail.getText());
+            gd.setGud_Work(txtWorkLocation.getText());
+            gd.setAddress(txtAddress_L1.getText());
+            gd.setAddress(txtAddress_L2.getText());
+            gd.setStudentNbr(txtStdNbr.getText());
+            gdm.insertGuardian(gd);
+            gdm.loadGuardian(table, model, txtStdNbr.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_btnSaveGActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        try {
+            int row = table.getSelectedRow();
+            txtID.setText(table.getValueAt(row, 0).toString());
+            txtQuardian_L1.setText(table.getValueAt(row, 1).toString());
+            txtQuardian_L2.setText(table.getValueAt(row, 2).toString());
+            cmdGender.setSelectedItem(table.getValueAt(row, 3).toString());
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tableMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1171,7 +1669,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmNewStudent dialog = new FrmNewStudent(new javax.swing.JFrame(), true,null);
+                FrmNewStudent dialog = new FrmNewStudent(new javax.swing.JFrame(), true, null);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1186,6 +1684,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnSave;
+    private com.xzq.osc.JocHyperlink btnSaveG;
     private javax.swing.JLabel btnTake;
     private javax.swing.JCheckBox chDiseases;
     private javax.swing.JCheckBox chStdStudying;
@@ -1196,6 +1695,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JComboBox<String> cmbStdPark;
     private javax.swing.JComboBox<String> cmbStdReligion;
     private javax.swing.JComboBox<String> cmbStdType;
+    private javax.swing.JComboBox<String> cmdGender;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -1204,7 +1704,10 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
@@ -1217,12 +1720,21 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lblAddress_L1;
+    private javax.swing.JLabel lblAddress_L2;
     private javax.swing.JLabel lblBloodGroup;
+    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblGender1;
+    private javax.swing.JLabel lblGuardian_L1;
+    private javax.swing.JLabel lblGuardian_L2;
     private javax.swing.JLabel lblHomeNumber;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblNewStudentTitle;
     private javax.swing.JLabel lblPark;
+    private javax.swing.JLabel lblPhoneNumber;
+    private javax.swing.JLabel lblPhoneNumber2;
     private javax.swing.JLabel lblSchoolLevel;
     private javax.swing.JLabel lblSchoolMobile;
     private javax.swing.JLabel lblStdDOB;
@@ -1243,7 +1755,18 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JLabel lblStdStudying;
     private javax.swing.JLabel lblStdType;
     private javax.swing.JLabel lblStdWeight;
+    private javax.swing.JLabel lblWorklocation;
+    private com.xzq.osc.JocTabbedPane tabInfo;
+    private javax.swing.JTable table;
+    private javax.swing.JTextField txtAddress_L1;
+    private javax.swing.JTextField txtAddress_L2;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtHmoneNumber;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtPhoneNumber;
+    private javax.swing.JTextField txtPhoneNumber2;
+    private javax.swing.JTextField txtQuardian_L1;
+    private javax.swing.JTextField txtQuardian_L2;
     private com.toedter.calendar.JDateChooser txtStdDOB;
     private javax.swing.JTextField txtStdDiseases;
     private javax.swing.JTextField txtStdEmail;
@@ -1259,5 +1782,6 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JTextField txtStdSchoolName;
     private com.toedter.calendar.JDateChooser txtStdStartDate;
     private javax.swing.JTextField txtStdWeight;
+    private javax.swing.JTextField txtWorkLocation;
     // End of variables declaration//GEN-END:variables
 }

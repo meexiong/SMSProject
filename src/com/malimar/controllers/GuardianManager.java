@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.malimar.controllers;
 
 import com.malimar.models.Guardian;
@@ -82,8 +78,8 @@ public class GuardianManager {
     public boolean insertGuardian(Guardian gd){
         try {
             GetMaxID gds = new GetMaxID();            
-            sql = "Insert into tbl_Guardian (GUDID, GUD_name_l1, gud_name_l2, genid, gud_phone1, gud_phone2, gud_email, gud_work, gud_address_L1, gud_address_L2) "
-                    + "values (?,?,?,?,?,?,?,?,?,?)";
+            sql = "Insert into tbl_Guardian (GUDID, GUD_name_l1, gud_name_l2, genid, gud_phone1, gud_phone2, gud_email, gud_work, gud_address_L1, gud_address_L2, StdNbr) "
+                    + "values (?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement p = c.prepareStatement(sql);
             p.setInt(1, gds.getIntID("tbl_Guardian", "GUDID"));
             p.setString(2, gd.getGuardianL1());
@@ -95,6 +91,7 @@ public class GuardianManager {
             p.setString(8, gd.getGud_Work());
             p.setString(9, gd.getAddress());
             p.setString(10, gd.getMoreinfo());
+            p.setString(11, gd.getStudentNbr());
             p.executeUpdate();
             p.close();
             MsgBox.msgInfo();
@@ -236,5 +233,35 @@ public class GuardianManager {
             e.printStackTrace();
         }
         return false;
+    }
+    
+    public void loadGuardian(JTable table, DefaultTableModel model, String std){
+        try {
+            RemoveTableIndex.removeTable(table, model);
+            String query = "SELECT dbo.tbl_Guardian.GUDID, dbo.tbl_Guardian.GUD_Name_L1, dbo.tbl_Guardian.GUD_Name_L2, \n" +
+            "dbo.tbl_Gender.Gen_"+LabelManager.LangType+" as sex, dbo.tbl_Guardian.GUD_Phone1, dbo.tbl_Guardian.GUD_Phone2, \n" +
+            "dbo.tbl_Guardian.GUD_Email, dbo.tbl_Guardian.GUD_Work, \n" +
+            "dbo.tbl_Guardian.GUD_Address_L1, dbo.tbl_Guardian.GUD_Address_L2\n" +
+            "FROM dbo.tbl_Guardian INNER JOIN\n" +
+            "dbo.tbl_Gender ON dbo.tbl_Guardian.Genid = dbo.tbl_Gender.Genid where StdNbr='"+std+"'";
+            ResultSet rs = c.createStatement().executeQuery(query);
+            while(rs.next()){
+                int id = rs.getInt("GUDID");
+                String name1 = rs.getString("GUD_Name_L1");
+                String name2 = rs.getString("GUD_Name_L2");
+                String sex = rs.getString("Sex");
+                String phone1 = rs.getString("GUD_Phone1");
+                String phone2 = rs.getString("GUD_Phone2");
+                String email = rs.getString("GUD_Email");
+                String work = rs.getString("GUD_Work");
+                String address1 = rs.getString("GUD_Address_L1");
+                String address2 = rs.getString("GUD_Address_L2");
+                Object[] obj = new Object[]{id, name1, name2, sex, phone1, phone2, email, work, address1, address2};
+                model.addRow(obj);
+            }
+            table.setModel(model);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
