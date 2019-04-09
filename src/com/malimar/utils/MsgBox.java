@@ -72,4 +72,19 @@ public class MsgBox {
             JOptionPane.showMessageDialog(null, "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Password not match." + "</font></p></html>", "MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }
+   
+   public static boolean msgConfirm(){
+        if ("L1".equals(LangType)) {
+            int joption = JOptionPane.showConfirmDialog(null,  "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "ທ່ານຕ້ອງການຍົກເລີກບໍ ?" + "</font></p></html>", "ແຈ້ງເຕືອນ",JOptionPane.YES_NO_OPTION);
+            if(joption==0){
+                return true;
+            }
+        }else{
+           int joption = JOptionPane.showConfirmDialog(null,  "<html><p><font color=\"#000\"size=\"3\" face=\"Saysettha OT\">" + "Do you want to Void ?" + "</font></p></html>", "MESSAGE",JOptionPane.YES_NO_OPTION);
+            if(joption==0){
+                return true;
+            } 
+        }
+        return false;
+   }
 }

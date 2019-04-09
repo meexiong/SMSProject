@@ -1,4 +1,3 @@
-
 package com.malimar.views;
 
 import com.malimar.controllers.DatabaseManagerSQL;
@@ -13,7 +12,7 @@ import com.malimar.controllers.UserPermission;
 import com.malimar.models.Sale;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
-import com.malimar.utils.MsgBox;
+import com.malimar.utils.Variables;
 import static com.malimar.views.FrmMain.userNbr;
 import java.awt.Color;
 import java.awt.Font;
@@ -36,18 +35,20 @@ import javax.swing.table.TableColumnModel;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class FrmSale extends javax.swing.JFrame {
+
     String frm;
     DefaultTableModel model = new DefaultTableModel();
     Connection c = DatabaseManagerSQL.getConnection();
-    HashMap<String, Object[]>mapCurrency = null;
-    HashMap<String, Object[]>mapSaleMan = null;
-    HashMap<String, Object[]>mapPayment = null;
+    HashMap<String, Object[]> mapCurrency = null;
+    HashMap<String, Object[]> mapSaleMan = null;
+    HashMap<String, Object[]> mapPayment = null;
     SaleManager sm = new SaleManager();
     Sale sale = new Sale();
     public static int prodID;
     public static double paid;
     String pt;
     String cr;
+
     public FrmSale() {
         initComponents();
         start();
@@ -57,29 +58,30 @@ public class FrmSale extends javax.swing.JFrame {
         txtVAT.setText(String.format("%,.2f", sm.getVat()));
         Date now = new Date();
         txtSaleDate.setDate(now);
+        cmbSalePerson.setSelectedItem(sm.getLoginUser());
         UserPermission.getPermission_S(userNbr, frm, btnSave);
     }
-    private void start(){
+
+    private void start() {
         frm = this.getClass().getSimpleName();
-        table.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD,12));
+        table.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
         model = (DefaultTableModel) table.getModel();
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         table.setShowGrid(true);
         table.getTableHeader().setBackground(Color.decode("#4169E1"));
         table.getTableHeader().setForeground(Color.WHITE);
         table.getTableHeader().setOpaque(false);
-        lblSaleTitle.setText(hmapLang.get("lblSaleTitle".concat(frm).toUpperCase()) [LN]);
-        lblSaleID.setText(hmapLang.get("lblSaleID".concat(frm).toUpperCase()) [LN]);
-        lblSalePerson.setText(hmapLang.get("lblSalePerson".concat(frm).toUpperCase()) [LN]);
-        lblCurrency.setText(hmapLang.get("lblCurrency".concat(frm).toUpperCase()) [LN]);
-        lblSaleDate.setText(hmapLang.get("lblSaleDate".concat(frm).toUpperCase()) [LN]);
-        lblPaymentType.setText(hmapLang.get("lblPaymentType".concat(frm).toUpperCase()) [LN]);
-        lblSubTotal.setText(hmapLang.get("lblSubTotal".concat(frm).toUpperCase()) [LN]);
-        lblDiscount.setText(hmapLang.get("lblDiscount".concat(frm).toUpperCase()) [LN]);
-        lblVAT.setText(hmapLang.get("lblVAT".concat(frm).toUpperCase()) [LN]);
-        lblGrandTotal.setText(hmapLang.get("lblGrandTotal".concat(frm).toUpperCase()) [LN]);
-        btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase()) [LN]);
-        btnVoid.setText(hmapLang.get("btnVoid".concat(frm).toUpperCase()) [LN]);
+        lblSaleTitle.setText(hmapLang.get("lblSaleTitle".concat(frm).toUpperCase())[LN]);
+        lblSaleID.setText(hmapLang.get("lblSaleID".concat(frm).toUpperCase())[LN]);
+        lblSalePerson.setText(hmapLang.get("lblSalePerson".concat(frm).toUpperCase())[LN]);
+        lblCurrency.setText(hmapLang.get("lblCurrency".concat(frm).toUpperCase())[LN]);
+        lblSaleDate.setText(hmapLang.get("lblSaleDate".concat(frm).toUpperCase())[LN]);
+        lblPaymentType.setText(hmapLang.get("lblPaymentType".concat(frm).toUpperCase())[LN]);
+        lblSubTotal.setText(hmapLang.get("lblSubTotal".concat(frm).toUpperCase())[LN]);
+        lblDiscount.setText(hmapLang.get("lblDiscount".concat(frm).toUpperCase())[LN]);
+        lblVAT.setText(hmapLang.get("lblVAT".concat(frm).toUpperCase())[LN]);
+        lblGrandTotal.setText(hmapLang.get("lblGrandTotal".concat(frm).toUpperCase())[LN]);
+        btnSave.setText(hmapLang.get("btnSave".concat(frm).toUpperCase())[LN]);
         JTableHeader th = table.getTableHeader();
         TableColumnModel tcm = th.getColumnModel();
         table.getColumnCount();
@@ -105,6 +107,7 @@ public class FrmSale extends javax.swing.JFrame {
         table.getColumnModel().getColumn(3).setCellRenderer(CenterRenderer);
         table.getColumnModel().getColumn(5).setCellRenderer(CenterRenderer);
     }
+
     private void getcmbCurrency() {
         try {
             mapCurrency = sm.mapCurrency();
@@ -112,8 +115,8 @@ public class FrmSale extends javax.swing.JFrame {
             cmbCurrency.removeAllItems();
             ms.keySet().forEach((s) -> {
                 cmbCurrency.addItem(s);
-                if((int) mapCurrency.get(s)[7]==1){
-                    cr =(String) mapCurrency.get(s)[1];
+                if ((int) mapCurrency.get(s)[7] == 1) {
+                    cr = (String) mapCurrency.get(s)[1];
                 }
             });
             cmbCurrency.setSelectedItem(cr);
@@ -121,6 +124,7 @@ public class FrmSale extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+
     private void getcmbPaymentType() {
         try {
             mapPayment = sm.mapPaymentType();
@@ -128,8 +132,8 @@ public class FrmSale extends javax.swing.JFrame {
             cmbPaymentType.removeAllItems();
             ms.keySet().forEach((s) -> {
                 cmbPaymentType.addItem(s);
-                if((int) mapPayment.get(s)[4]==1){
-                    pt =(String) mapPayment.get(s)[3];
+                if ((int) mapPayment.get(s)[4] == 1) {
+                    pt = (String) mapPayment.get(s)[3];
                 }
             });
             cmbPaymentType.setSelectedItem(pt);
@@ -137,6 +141,7 @@ public class FrmSale extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+
     private void getcmbSalePerson() {
         try {
             mapSaleMan = sm.mapEmp();
@@ -150,6 +155,7 @@ public class FrmSale extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+
     private void calculate() {
         try {
             int rowCount = table.getRowCount();
@@ -163,8 +169,8 @@ public class FrmSale extends javax.swing.JFrame {
             txtGrandTotal.setText(String.format("%,.2f", total - dam));
             double gt = Double.parseDouble(txtGrandTotal.getText().replace(",", ""));
             float vat = Float.parseFloat(txtVAT.getText().replace(",", ""));
-            double a =  (gt * 100) / (100+vat);
-            txtVatAmount.setText(String.format("%,.2f", gt-a));
+            double a = (gt * 100) / (100 + vat);
+            txtVatAmount.setText(String.format("%,.2f", gt - a));
             double vm = Double.parseDouble(txtVatAmount.getText().replace(",", ""));
             txtSubTotal.setText(String.format("%,.2f", gt - vm));
         } catch (NumberFormatException e) {
@@ -183,8 +189,8 @@ public class FrmSale extends javax.swing.JFrame {
                 model.setValueAt(0, i, 5);
                 model.setValueAt(0.00, i, 6);
             }
-            int index = table.getRowCount()-1;
-            while(index >9){
+            int index = table.getRowCount() - 1;
+            while (index > 9) {
                 model.removeRow(index--);
             }
             txtSubTotal.setText("0.00");
@@ -197,6 +203,7 @@ public class FrmSale extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -233,7 +240,7 @@ public class FrmSale extends javax.swing.JFrame {
         btnSave = new javax.swing.JLabel();
         btnNewRow = new javax.swing.JButton();
         btnDeleteRow = new javax.swing.JButton();
-        btnVoid = new javax.swing.JLabel();
+        btnSearch = new com.xzq.osc.JocHyperlink();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -278,7 +285,7 @@ public class FrmSale extends javax.swing.JFrame {
         lblSaleTitle.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
         lblSaleTitle.setForeground(new java.awt.Color(0, 15, 255));
         lblSaleTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSaleTitle.setText("Sale");
+        lblSaleTitle.setText("Hourly Registration");
         lblSaleTitle.setOpaque(true);
         lblSaleTitle.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -352,6 +359,7 @@ public class FrmSale extends javax.swing.JFrame {
         });
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        table.setGridColor(new java.awt.Color(204, 204, 204));
         table.setRowHeight(25);
         table.setSelectionBackground(new java.awt.Color(204, 204, 204));
         table.setSelectionForeground(java.awt.Color.red);
@@ -389,6 +397,7 @@ public class FrmSale extends javax.swing.JFrame {
         jPanel3.add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
         lblSaleID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblSaleID.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSaleID.setText("SaleID");
         lblSaleID.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -404,6 +413,7 @@ public class FrmSale extends javax.swing.JFrame {
         txtSaleID.setOpaque(false);
 
         lblSaleDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblSaleDate.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSaleDate.setText("Sale Date");
         lblSaleDate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -412,6 +422,7 @@ public class FrmSale extends javax.swing.JFrame {
         });
 
         lblSalePerson.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblSalePerson.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblSalePerson.setText("Sale Person");
         lblSalePerson.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -422,11 +433,13 @@ public class FrmSale extends javax.swing.JFrame {
         cmbSalePerson.setEditable(true);
         cmbSalePerson.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         cmbSalePerson.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        cmbSalePerson.setEnabled(false);
 
         txtSaleDate.setDateFormatString("dd-MM-yyyy");
         txtSaleDate.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
 
         lblPaymentType.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblPaymentType.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPaymentType.setText("Payment Type");
         lblPaymentType.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -476,6 +489,11 @@ public class FrmSale extends javax.swing.JFrame {
         txtDisPC.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtDisPC.setText("0.00");
         txtDisPC.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtDisPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDisPCActionPerformed(evt);
+            }
+        });
 
         lblVAT.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblVAT.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -527,6 +545,7 @@ public class FrmSale extends javax.swing.JFrame {
         });
 
         lblCurrency.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        lblCurrency.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblCurrency.setText("Currency");
         lblCurrency.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -572,21 +591,10 @@ public class FrmSale extends javax.swing.JFrame {
             }
         });
 
-        btnVoid.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        btnVoid.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnVoid.setText("Void");
-        btnVoid.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVoid.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnVoidMouseMoved(evt);
-            }
-        });
-        btnVoid.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnVoidMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnVoidMouseExited(evt);
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Search_24px.png"))); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
             }
         });
 
@@ -607,7 +615,9 @@ public class FrmSale extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtSaleDate, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
                             .addComponent(txtSaleID))
-                        .addGap(54, 54, 54)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblSalePerson, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -623,17 +633,9 @@ public class FrmSale extends javax.swing.JFrame {
                         .addComponent(cmbCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(lblGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnNewRow, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(btnDeleteRow, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnVoid, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnNewRow, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
+                        .addComponent(btnDeleteRow, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -651,7 +653,12 @@ public class FrmSale extends javax.swing.JFrame {
                                 .addComponent(txtDisPC)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDisAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lblGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -661,11 +668,13 @@ public class FrmSale extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSaleID)
-                            .addComponent(txtSaleID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSalePerson)
-                            .addComponent(cmbSalePerson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblSaleID)
+                                .addComponent(txtSaleID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblSalePerson)
+                                .addComponent(cmbSalePerson, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(lblCurrency)
                         .addComponent(cmbCurrency, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -685,26 +694,21 @@ public class FrmSale extends javax.swing.JFrame {
                         .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btnNewRow)
                     .addComponent(btnDeleteRow))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDisAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDiscount)
-                            .addComponent(txtDisPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtVatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblVAT)
-                            .addComponent(txtVAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnVoid, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDisAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDiscount)
+                    .addComponent(txtDisPC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtVatAmount, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblVAT)
+                    .addComponent(txtVAT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtGrandTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblGrandTotal))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmbCurrency, cmbSalePerson, lblCurrency, lblSaleDate, lblSaleID, lblSalePerson, txtSaleDate, txtSaleID});
@@ -745,7 +749,7 @@ public class FrmSale extends javax.swing.JFrame {
                 model.setValueAt(1, row, 5);
                 float qty = Float.parseFloat(table.getValueAt(row, 5).toString());
                 model.setValueAt(df.format(sale.getPrice() * qty), row, 6);
-                 calculate();
+                calculate();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -767,7 +771,7 @@ public class FrmSale extends javax.swing.JFrame {
                 model.setValueAt(df.format(price * qty), row, 6);
                 calculate();
             } else if (col == 6 && evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                
+
                 InputMap im = table.getInputMap();
                 im.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "Action.NextCell");
                 im.put(KeyStroke.getKeyStroke(KeyEvent.VK_TAB, 0), "Action.NextCell");
@@ -807,7 +811,7 @@ public class FrmSale extends javax.swing.JFrame {
         if (evt.getModifiers() == 6) {
             WindowChangeLabel("btnSave", frm);
         } else {
-            
+
             FrmSalePayment frmCalculator = new FrmSalePayment(null, rootPaneCheckingEnabled, Double.parseDouble(txtGrandTotal.getText().replace(",", "")));
             frmCalculator.setVisible(true);
             sale.setSaleDate(txtSaleDate.getDate());
@@ -826,21 +830,22 @@ public class FrmSale extends javax.swing.JFrame {
             sale.setVatAmount(Double.parseDouble(txtVatAmount.getText().replace(",", "")));
             sale.setGrandTotal(Double.parseDouble(txtGrandTotal.getText().replace(",", "")));
             sale.setPaidTotal(paid);
-            if (sm.insert(sale)) {
-                int row = table.getRowCount();
-                for (int i = 0; i < row; i++) {
-                    double price = Double.parseDouble(table.getValueAt(i, 4).toString().replace(",", ""));
-                    if (price > 0) {
-                        sale.setProductID(Integer.parseInt(table.getValueAt(i, 1).toString()));
-                        sale.setPrice(Double.parseDouble(table.getValueAt(i, 4).toString().replace(",", "")));
-                        sale.setQty(Float.parseFloat(table.getValueAt(i, 5).toString().replace(",", "")));
-                        sale.setTotal(Double.parseDouble(table.getValueAt(i, 6).toString().replace(",", "")));
-                        sm.insertDetails(sale);
+            if (txtSaleID.getText().equals("New")) {
+                if (sm.insert(sale)) {
+                    int row = table.getRowCount();
+                    for (int i = 0; i < row; i++) {
+                        double price = Double.parseDouble(table.getValueAt(i, 4).toString().replace(",", ""));
+                        if (price > 0) {
+                            sale.setProductID(Integer.parseInt(table.getValueAt(i, 1).toString()));
+                            sale.setPrice(Double.parseDouble(table.getValueAt(i, 4).toString().replace(",", "")));
+                            sale.setQty(Float.parseFloat(table.getValueAt(i, 5).toString().replace(",", "")));
+                            sale.setTotal(Double.parseDouble(table.getValueAt(i, 6).toString().replace(",", "")));
+                            sm.insertDetails(sale);
+                        }
                     }
+                    clearValues();
+                    sm.printBill(sale);
                 }
-//                MsgBox.msgInfo();
-                clearValues();
-                sm.printBill(sale);
             }
         }
     }//GEN-LAST:event_btnSaveMouseClicked
@@ -855,29 +860,12 @@ public class FrmSale extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNewRowActionPerformed
 
     private void btnDeleteRowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRowActionPerformed
-        int row = table.getRowCount()-1;
-        double a =  Double.parseDouble(table.getValueAt(row, 4).toString().replace(",", ""));
-        if(a==0.00){
+        int row = table.getRowCount() - 1;
+        double a = Double.parseDouble(table.getValueAt(row, 4).toString().replace(",", ""));
+        if (a == 0.00) {
             model.removeRow(row--);
         }
     }//GEN-LAST:event_btnDeleteRowActionPerformed
-
-    private void btnVoidMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoidMouseMoved
-        Border.blueColor(btnVoid);
-    }//GEN-LAST:event_btnVoidMouseMoved
-
-    private void btnVoidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoidMouseClicked
-        if (evt.getModifiers() == 6) {
-            WindowChangeLabel("btnVoid", frm);
-        } else {
-            FrmVoidBill frmVoid = new  FrmVoidBill(null, rootPaneCheckingEnabled);
-            frmVoid.setVisible(true);
-        }
-    }//GEN-LAST:event_btnVoidMouseClicked
-
-    private void btnVoidMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoidMouseExited
-        Border.WhiteColor(btnVoid);
-    }//GEN-LAST:event_btnVoidMouseExited
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         FrameMove.mousePressed(evt);
@@ -888,7 +876,7 @@ public class FrmSale extends javax.swing.JFrame {
     }//GEN-LAST:event_formMouseDragged
 
     private void lblSaleTitleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSaleTitleMouseClicked
-         if (evt.getModifiers() == 6) {
+        if (evt.getModifiers() == 6) {
             LabelManager.WindowChangeLabel("lblSaleTitle", frm);
         }
     }//GEN-LAST:event_lblSaleTitleMouseClicked
@@ -959,6 +947,32 @@ public class FrmSale extends javax.swing.JFrame {
         calculate();
     }//GEN-LAST:event_txtVATActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        Variables.billID = 0;
+        FrmSearchHourRegistration f = new FrmSearchHourRegistration(null, rootPaneCheckingEnabled);
+        f.setVisible(true);
+        if (Variables.billID > 0) {
+            txtSaleID.setText(String.valueOf(Variables.billID));
+            sale.setSaleid(Integer.parseInt(txtSaleID.getText()));
+            sm.load(sale);
+            txtSaleDate.setDate(sale.getSaleDate());
+            cmbPaymentType.setSelectedItem(sale.getPaymentType());
+            cmbCurrency.setSelectedItem(sale.getCurrency());
+            txtSubTotal.setText(String.format("%,.2f", sale.getSubTotal()));
+            txtDisPC.setText(String.format("%,.2f", sale.getDiscountPercentage()));
+            txtDisAmount.setText(String.format("%,.2f", sale.getDiscountAmount()));
+            txtVAT.setText(String.format("%,.2f", sale.getVatPercentage()));
+            txtVatAmount.setText(String.format("%,.2f", sale.getVatAmount()));
+            txtGrandTotal.setText(String.format("%,.2f", sale.getGrandTotal()));
+            sm.load(table, model, sale);
+        }
+
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void txtDisPCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDisPCActionPerformed
+        calculate();
+    }//GEN-LAST:event_txtDisPCActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1000,7 +1014,7 @@ public class FrmSale extends javax.swing.JFrame {
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JButton btnNewRow;
     private javax.swing.JLabel btnSave;
-    private javax.swing.JLabel btnVoid;
+    private com.xzq.osc.JocHyperlink btnSearch;
     private javax.swing.JComboBox<String> cmbCurrency;
     private javax.swing.JComboBox<String> cmbPaymentType;
     private javax.swing.JComboBox<String> cmbSalePerson;

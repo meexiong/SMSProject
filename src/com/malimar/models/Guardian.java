@@ -18,7 +18,16 @@ public class Guardian {
     int GUDID;
     int stdID;
     int RLTID;
+    String GuardianName;
 
+    public String getGuardianName() {
+        return GuardianName;
+    }
+
+    public void setGuardianName(String GuardianName) {
+        this.GuardianName = GuardianName;
+    }
+    
     public String getStudentNbr() {
         return studentNbr;
     }

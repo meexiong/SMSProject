@@ -745,63 +745,39 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblCourse" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btnCourse" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="lblStudentInfo" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btnStudentInfo" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblSemester" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                              <Component id="btnSemester" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lblQuardian" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                              <Component id="btnQuardian" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="btnReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnUserSetting" min="-2" pref="179" max="-2" attributes="0"/>
-                                      <Component id="lblSettingUser" min="-2" pref="179" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnReport" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblSemester" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnSemester" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblStudentInfo" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnStudentInfo" linkSize="2" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                              <Component id="btnSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblSettingUser" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnUserSetting" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblCourse" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnCourse" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblRegistation" linkSize="3" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnRegistration" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblTeacher" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Component id="btnTeacher" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Component id="lblProduct" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Component id="btnProduct" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblSale" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnSale" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblSale" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                              <Component id="btnSale" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="lblSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
+                              <Component id="btnSchedule" linkSize="1" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Component id="lblPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                               <Component id="btnPayment" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
-                              <Component id="lblRegistation" linkSize="3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnRegistration" linkSize="3" alignment="0" min="-2" pref="179" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="27" max="32767" attributes="0"/>
+                          <EmptySpace pref="29" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -809,45 +785,57 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnSchedule" min="-2" pref="150" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="lblSchedule" min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="btnStudentInfo" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="lblStudentInfo" min="-2" pref="20" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnRegistration" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="lblRegistation" min="-2" pref="20" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnSale" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                              <Component id="lblSale" min="-2" pref="20" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnRegistration" min="-2" pref="150" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="btnPayment" min="-2" pref="150" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Component id="lblRegistation" min="-2" pref="20" max="-2" attributes="0"/>
+                                          <Component id="lblPayment" min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnStudentInfo" min="-2" pref="150" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                      <Component id="lblStudentInfo" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btnSemester" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                              <Component id="btnCourse" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="lblSemester" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
+                                              <Component id="lblCourse" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="btnProduct" min="-2" pref="150" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                                          <Component id="lblProduct" min="-2" pref="20" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="btnQuardian" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="btnSchedule" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="lblQuardian" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="lblSchedule" min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="btnPayment" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="btnTeacher" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="btnSemester" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="btnCourse" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblSemester" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="lblTeacher" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="lblPayment" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
-                              <Component id="lblCourse" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -863,14 +851,9 @@
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="btnProduct" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="btnTeacher" min="-2" pref="150" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="lblProduct" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Component id="btnSale" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                  <Component id="lblSale" min="-2" pref="20" max="-2" attributes="0"/>
+                                  <Component id="lblTeacher" min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -1131,39 +1114,11 @@
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnScheduleMouseExited"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JLabel" name="btnQuardian">
-                  <Properties>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/malimar/icons/Guardian_100px.png"/>
-                    </Property>
-                    <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                      <Color id="Hand Cursor"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="btnQuardianMouseMoved"/>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnQuardianMouseClicked"/>
-                    <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnQuardianMouseExited"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="lblQuardian">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Saysettha OT" size="12" style="1"/>
-                    </Property>
-                    <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Quardian"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblQuardianMouseClicked"/>
-                  </Events>
-                </Component>
                 <Component class="javax.swing.JLabel" name="btnProduct">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/malimar/icons/Product_100px.png"/>
+                      <Image iconType="3" name="/com/malimar/icons/Course Assign_100px.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>
@@ -1191,7 +1146,7 @@
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/malimar/icons/Buying_100px.png"/>
+                      <Image iconType="3" name="/com/malimar/icons/Cash Register1_100px.png"/>
                     </Property>
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                       <Color id="Hand Cursor"/>

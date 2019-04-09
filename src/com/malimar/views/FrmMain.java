@@ -74,8 +74,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleTrue(lblLoginIcon);
         SetText.setVisibleFalse(btnCourse);
         SetText.setVisibleFalse(lblCourse);
-        SetText.setVisibleFalse(btnQuardian);
-        SetText.setVisibleFalse(lblQuardian);
         SetText.setVisibleFalse(btnProduct);
         SetText.setVisibleFalse(lblProduct);
         SetText.setVisibleFalse(btnSale);
@@ -137,8 +135,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         SetText.setVisibleFalse(lblLoginIcon);
         SetText.setVisibleTrue(btnCourse);
         SetText.setVisibleTrue(lblCourse);
-        SetText.setVisibleTrue(btnQuardian);
-        SetText.setVisibleTrue(lblQuardian);
         SetText.setVisibleTrue(btnProduct);
         SetText.setVisibleTrue(lblProduct);
         SetText.setVisibleTrue(btnSale);
@@ -237,7 +233,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         btnMWorkStatus.setText(hmapLang.get("btnMWorkStatus".concat(frm).toUpperCase()) [LN]);
         lblCourse.setText(hmapLang.get("lblCourse".concat(frm).toUpperCase()) [LN]);
         btnMSchoolInfo.setText(hmapLang.get("btnMSchoolInfo".concat(frm).toUpperCase()) [LN]);
-        lblQuardian.setText(hmapLang.get("lblQuardian".concat(frm).toUpperCase()) [LN]);
         btnMenuRelationship.setText(hmapLang.get("btnMenuRelationship".concat(frm).toUpperCase()) [LN]);
         lblProduct.setText(hmapLang.get("lblProduct".concat(frm).toUpperCase()) [LN]);
         lblSale.setText(hmapLang.get("lblSale".concat(frm).toUpperCase()) [LN]);
@@ -253,9 +248,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                 switch (ObjectMenu) {
                     case "lblStudentInfo":
                         btnStudentInfo.setEnabled(false);
-                        break;
-                    case "lblQuardian":
-                        btnQuardian.setEnabled(false);
                         break;
                     case "lblSchedule":
                         btnSchedule.setEnabled(false);
@@ -379,8 +371,6 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         lblTeacher = new javax.swing.JLabel();
         lblSchedule = new javax.swing.JLabel();
         btnSchedule = new javax.swing.JLabel();
-        btnQuardian = new javax.swing.JLabel();
-        lblQuardian = new javax.swing.JLabel();
         btnProduct = new javax.swing.JLabel();
         lblProduct = new javax.swing.JLabel();
         btnSale = new javax.swing.JLabel();
@@ -957,34 +947,8 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             }
         });
 
-        btnQuardian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnQuardian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Guardian_100px.png"))); // NOI18N
-        btnQuardian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnQuardian.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnQuardianMouseMoved(evt);
-            }
-        });
-        btnQuardian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnQuardianMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnQuardianMouseExited(evt);
-            }
-        });
-
-        lblQuardian.setFont(new java.awt.Font("Saysettha OT", 1, 12)); // NOI18N
-        lblQuardian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblQuardian.setText("Quardian");
-        lblQuardian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblQuardianMouseClicked(evt);
-            }
-        });
-
         btnProduct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Product_100px.png"))); // NOI18N
+        btnProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Course Assign_100px.png"))); // NOI18N
         btnProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProduct.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -1010,7 +974,7 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
         });
 
         btnSale.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Buying_100px.png"))); // NOI18N
+        btnSale.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Cash Register1_100px.png"))); // NOI18N
         btnSale.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSale.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -1042,50 +1006,35 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblQuardian, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnQuardian, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18))))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnUserSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)))
+                    .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReport, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUserSetting, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblRegistation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSale, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSale, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRegistation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                    .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         jPanel6Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnSchedule, btnTeacher, lblSchedule, lblTeacher});
@@ -1098,37 +1047,44 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(lblSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(2, 2, 2)
-                                .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                            .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(2, 2, 2)
-                            .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnQuardian, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(btnStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(2, 2, 2)
+                                    .addComponent(lblStudentInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(btnRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(2, 2, 2)
+                                    .addComponent(lblRegistation, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createSequentialGroup()
+                                    .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(2, 2, 2)
+                                    .addComponent(lblSale, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(lblPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(2, 2, 2)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblSemester, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(btnProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)
+                                .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(btnSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(lblQuardian, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnPayment, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSemester, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSemester, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTeacher, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPayment, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblSchedule, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
@@ -1140,13 +1096,9 @@ DatabaseManagerAccess am = new DatabaseManagerAccess();
                             .addComponent(lblSettingUser, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblReport, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)
-                        .addComponent(lblProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)
-                        .addComponent(lblSale, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblTeacher, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -1578,30 +1530,6 @@ int cnt=0;
         }
     }//GEN-LAST:event_btnMSchoolInfoMouseClicked
 
-    private void btnQuardianMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuardianMouseMoved
-        Border.blueColor(btnQuardian);
-    }//GEN-LAST:event_btnQuardianMouseMoved
-
-    private void btnQuardianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuardianMouseClicked
-        try {
-            if (btnQuardian.isEnabled() == true) {
-                FrmGuardianDetails fgd = new FrmGuardianDetails();
-                fgd.setVisible(true);
-            }
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_btnQuardianMouseClicked
-
-    private void btnQuardianMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQuardianMouseExited
-        Border.WhiteColor(btnQuardian);
-    }//GEN-LAST:event_btnQuardianMouseExited
-
-    private void lblQuardianMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblQuardianMouseClicked
-        if (evt.getModifiers() == 6) {
-            WindowChangeLabel("lblQuardian", frm);
-        }
-    }//GEN-LAST:event_lblQuardianMouseClicked
-
     private void btnMenuRelationshipMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenuRelationshipMouseClicked
         try {
             if (evt.getModifiers() == 6) {
@@ -1753,7 +1681,6 @@ int cnt=0;
     private javax.swing.JLabel btnMinimize;
     private javax.swing.JLabel btnPayment;
     private javax.swing.JLabel btnProduct;
-    private javax.swing.JLabel btnQuardian;
     private javax.swing.JLabel btnRegistration;
     private javax.swing.JLabel btnReport;
     private javax.swing.JLabel btnSale;
@@ -1777,7 +1704,6 @@ int cnt=0;
     private javax.swing.JLabel lblPasswordIncorrect;
     private javax.swing.JLabel lblPayment;
     private javax.swing.JLabel lblProduct;
-    private javax.swing.JLabel lblQuardian;
     private javax.swing.JLabel lblRegistation;
     private javax.swing.JLabel lblReport;
     private javax.swing.JLabel lblSale;

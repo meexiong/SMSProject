@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
     <Container class="javax.swing.JInternalFrame" name="jInternalFrame1">
       <Properties>
@@ -1287,9 +1287,13 @@
                               <Component id="txtEmail" alignment="0" pref="207" max="32767" attributes="0"/>
                               <Component id="txtPhoneNumber2" alignment="0" pref="207" max="32767" attributes="0"/>
                               <Component id="txtPhoneNumber" alignment="0" pref="207" max="32767" attributes="0"/>
-                              <Component id="txtQuardian_L2" alignment="0" pref="207" max="32767" attributes="0"/>
-                              <Component id="txtQuardian_L1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtID" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                              <Component id="txtGuardian_L2" alignment="0" pref="207" max="32767" attributes="0"/>
+                              <Component id="txtGuardian_L1" alignment="0" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="txtGuardianID" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnSearch" min="-2" pref="33" max="-2" attributes="0"/>
+                              </Group>
                               <Component id="cmdGender" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -1308,17 +1312,18 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblID" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtID" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtGuardianID" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSearch" pref="29" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblGuardian_L1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtQuardian_L1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtGuardian_L1" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="lblGuardian_L2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtQuardian_L2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtGuardian_L2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1355,7 +1360,7 @@
                               <Component id="lblAddress_L2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtAddress_L2" linkSize="2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="33" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="btnSaveG" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       </Group>
@@ -1379,7 +1384,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblIDMouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtID">
+                <Component class="javax.swing.JTextField" name="txtGuardianID">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Saysettha OT" size="12" style="0"/>
@@ -1411,7 +1416,7 @@
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblGuardian_L1MouseClicked"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtQuardian_L1">
+                <Component class="javax.swing.JTextField" name="txtGuardian_L1">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Saysettha OT" size="12" style="0"/>
@@ -1428,7 +1433,7 @@
                     </Property>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="txtQuardian_L2">
+                <Component class="javax.swing.JTextField" name="txtGuardian_L2">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Saysettha OT" size="12" style="0"/>
@@ -1781,12 +1786,32 @@
                           </Properties>
                           <Events>
                             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tableMouseClicked"/>
+                            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="tableKeyReleased"/>
                           </Events>
                         </Component>
                       </SubComponents>
                     </Container>
                   </SubComponents>
                 </Container>
+                <Component class="com.xzq.osc.JocHyperlink" name="btnSearch">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/com/malimar/icons/Search_24px.png"/>
+                    </Property>
+                    <Property name="unvisitColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="visitedColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="0" green="0" red="0" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Saysettha OT" size="12" style="0"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSearchActionPerformed"/>
+                  </Events>
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

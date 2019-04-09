@@ -24,7 +24,45 @@ public class Sale {
     double total;
     String unitName;
     double paidTotal;
+    String currency;
+    String paymentType;
+    Date voidDate;
+    String loginBy;
 
+    public String getLoginBy() {
+        return loginBy;
+    }
+
+    public void setLoginBy(String loginBy) {
+        this.loginBy = loginBy;
+    }
+    
+    public Date getVoidDate() {
+        return voidDate;
+    }
+
+    public void setVoidDate(Date voidDate) {
+        this.voidDate = voidDate;
+    }
+    
+    
+    
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public String getPaymentType() {
+        return paymentType;
+    }
+
+    public void setPaymentType(String paymentType) {
+        this.paymentType = paymentType;
+    }
+    
     public void setPaidTotal(double paidTotal) {
         this.paidTotal = paidTotal;
     }

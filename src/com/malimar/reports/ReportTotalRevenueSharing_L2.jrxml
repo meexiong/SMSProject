@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportRevenueSharing_L1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6691beb2-54af-44d1-95e9-8924b9bb09a0">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Monthly" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[exec pd_SaringReceived $P{Monthly}]]>
+	</queryString>
+	<field name="Monthly" class="java.lang.String"/>
+	<field name="Hourly" class="java.lang.Double"/>
+	<field name="Registration" class="java.lang.Double"/>
+	<field name="Total" class="java.lang.Double"/>
+	<field name="sharing" class="java.lang.Double"/>
+	<field name="SchoolLogo" class="java.io.InputStream"/>
+	<field name="SchoolName_L1" class="java.lang.String"/>
+	<field name="SchoolName_L2" class="java.lang.String"/>
+	<field name="SchoolPhone1" class="java.lang.String"/>
+	<field name="SchoolPhone2" class="java.lang.String"/>
+	<field name="SchoolAddress_L1" class="java.lang.String"/>
+	<field name="SchoolAddress_L2" class="java.lang.String"/>
+	<variable name="TotalShare" class="java.lang.Double">
+		<variableExpression><![CDATA[($F{Total}*$F{sharing})/100]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="139" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="228" y="0" width="100" height="53" uuid="1952325b-9541-4f7e-b212-58e9a40d2b54"/>
+				<imageExpression><![CDATA[$F{SchoolLogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="0" y="0" width="207" height="17" uuid="b7656679-3362-478d-9d44-ebdcfa54917a"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SchoolName_L2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="41" width="205" height="12" uuid="ed89d874-4a0e-4d5d-a862-28c11a931fc4"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SchoolAddress_L2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="18" y="29" width="75" height="12" uuid="619d2156-a76b-469d-92ff-bae0fa3c40fd"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SchoolPhone2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="17" width="18" height="12" uuid="85a6cbe8-e500-4050-9caa-e06df3414eac"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tel:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="29" width="18" height="12" uuid="ef096d96-f06d-4c8a-8efb-5db2fab7875c"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="7" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Tel:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="18" y="17" width="75" height="12" uuid="0c5754d0-2a65-4779-9889-56e12be85210"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SchoolPhone1}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="498" y="41" width="55" height="17" uuid="76b61723-dd42-403d-be52-6ec1796edb39"/>
+				<textElement>
+					<font fontName="Saysettha MX"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="396" y="41" width="100" height="17" uuid="3fc70e27-0824-4943-8b7e-18bd365e0b89"/>
+				<textElement textAlignment="Right">
+					<font fontName="Saysettha MX" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Print Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="87" width="555" height="23" uuid="3c154e00-fe96-4d1d-b043-8355cd037fea"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Revenue sharing report in month "+$P{Monthly}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="247" splitType="Stretch">
+			<textField pattern="#,##0.00">
+				<reportElement x="259" y="24" width="151" height="23" uuid="9cb4c6dd-b123-4a66-9da8-ea098541c58a"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="259" y="51" width="151" height="23" uuid="32a815f1-089a-4699-8a64-5f2bb9a8da16"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sharing}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement x="259" y="78" width="151" height="23" uuid="87249b6c-af3e-474c-bc51-c295874083ce"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{TotalShare}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="74" y="24" width="129" height="23" uuid="f4a2e92a-daed-4dcf-a080-1c2b32cceb0e"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="51" width="129" height="23" uuid="e87026a3-41ff-496f-9d1b-a2968f5f6acc"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rate(%)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="78" width="129" height="23" uuid="ba54ef02-1c72-4860-a80c-11bdcb8cd94d"/>
+				<textElement>
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Revenue sharing]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="24" width="31" height="23" uuid="d91f78ab-e0a3-4f03-a313-9dcb786a8dbd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="51" width="31" height="23" uuid="14d06407-b4dc-4802-980b-a5f4202a02bd"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="206" y="78" width="31" height="23" uuid="1e342dfa-a210-409a-9ace-318ad298aac1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[=]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="154" width="170" height="20" uuid="618f76a8-7b7e-480b-8271-d572900e2b51"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Finance's itecc]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="5" backcolor="#CCCCCC" uuid="dfed8799-9c3f-4c5c-b851-b820eb298d23"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="41" y="154" width="165" height="20" uuid="b42572b0-5af7-4ba0-b62e-e71a1b25aca9"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Customer's Signature]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="24" width="31" height="23" uuid="939706e4-30a8-4e64-86fa-15a9b9fb884a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="51" width="31" height="23" uuid="769d77ee-6f1e-475c-86f0-667621eff242"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAK]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="78" width="31" height="23" uuid="2ab75e80-17f6-4033-a05f-e1f389482f44"/>
+				<textElement textAlignment="Center">
+					<font fontName="Saysettha MX" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LAK]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

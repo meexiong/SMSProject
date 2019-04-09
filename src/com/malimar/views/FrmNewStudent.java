@@ -19,6 +19,7 @@ import com.malimar.models.Student;
 import com.malimar.utils.Border;
 import com.malimar.utils.FrameMove;
 import com.malimar.utils.MsgBox;
+import com.malimar.utils.Variables;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
@@ -60,7 +61,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         stdnbr = nbr;
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel) table.getModel();
-        table.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
+        table.getTableHeader().setFont(new Font("Saysettha OT", Font.PLAIN, 12));
         getNewStudentLabel();
         showGenderComboBox();
         showGenderComboBox1();
@@ -272,6 +273,19 @@ public class FrmNewStudent extends javax.swing.JDialog {
         txtStdDiseases.setDisabledTextColor(Color.BLACK);
     }
 
+    private void clearGuardian() {
+        txtGuardianID.setText("New");
+        txtGuardian_L1.setText("");
+        txtGuardian_L2.setText("");
+        cmdGender.setSelectedIndex(-1);
+        txtPhoneNumber.setText("");
+        txtPhoneNumber2.setText("");
+        txtEmail.setText("");
+        txtWorkLocation.setText("");
+        txtAddress_L1.setText("");
+        txtAddress_L2.setText("");
+    }
+
     private void showData() {
         sd.setStdNbr(stdnbr);
         sm.LoadEdit(sd);
@@ -390,10 +404,10 @@ public class FrmNewStudent extends javax.swing.JDialog {
         txtStdNote = new javax.swing.JTextArea();
         jPanel8 = new javax.swing.JPanel();
         lblID = new javax.swing.JLabel();
-        txtID = new javax.swing.JTextField();
+        txtGuardianID = new javax.swing.JTextField();
         lblGuardian_L1 = new javax.swing.JLabel();
-        txtQuardian_L1 = new javax.swing.JTextField();
-        txtQuardian_L2 = new javax.swing.JTextField();
+        txtGuardian_L1 = new javax.swing.JTextField();
+        txtGuardian_L2 = new javax.swing.JTextField();
         lblGuardian_L2 = new javax.swing.JLabel();
         lblGender1 = new javax.swing.JLabel();
         cmdGender = new javax.swing.JComboBox<>();
@@ -413,6 +427,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
         jPanel9 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
+        btnSearch = new com.xzq.osc.JocHyperlink();
 
         jInternalFrame1.setVisible(true);
 
@@ -949,12 +964,12 @@ public class FrmNewStudent extends javax.swing.JDialog {
             }
         });
 
-        txtID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtID.setText("New");
-        txtID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
-        txtID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtID.setEnabled(false);
-        txtID.setOpaque(false);
+        txtGuardianID.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtGuardianID.setText("New");
+        txtGuardianID.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtGuardianID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtGuardianID.setEnabled(false);
+        txtGuardianID.setOpaque(false);
 
         lblGuardian_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblGuardian_L1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -965,13 +980,13 @@ public class FrmNewStudent extends javax.swing.JDialog {
             }
         });
 
-        txtQuardian_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtQuardian_L1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
-        txtQuardian_L1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtGuardian_L1.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtGuardian_L1.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtGuardian_L1.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
-        txtQuardian_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
-        txtQuardian_L2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
-        txtQuardian_L2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtGuardian_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        txtGuardian_L2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(160, 160, 160)));
+        txtGuardian_L2.setDisabledTextColor(new java.awt.Color(0, 0, 0));
 
         lblGuardian_L2.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
         lblGuardian_L2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1116,6 +1131,11 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 tableMouseClicked(evt);
             }
         });
+        table.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tableKeyReleased(evt);
+            }
+        });
         jScrollPane2.setViewportView(table);
         if (table.getColumnModel().getColumnCount() > 0) {
             table.getColumnModel().getColumn(0).setMinWidth(0);
@@ -1142,6 +1162,16 @@ public class FrmNewStudent extends javax.swing.JDialog {
 
         jPanel9.add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
+        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/malimar/icons/Search_24px.png"))); // NOI18N
+        btnSearch.setUnvisitColor(new java.awt.Color(0, 0, 0));
+        btnSearch.setVisitedColor(new java.awt.Color(0, 0, 0));
+        btnSearch.setFont(new java.awt.Font("Saysettha OT", 0, 12)); // NOI18N
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
@@ -1167,9 +1197,12 @@ public class FrmNewStudent extends javax.swing.JDialog {
                     .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                     .addComponent(txtPhoneNumber2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                     .addComponent(txtPhoneNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                    .addComponent(txtQuardian_L2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                    .addComponent(txtQuardian_L1)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtGuardian_L2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                    .addComponent(txtGuardian_L1)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(txtGuardianID, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(cmdGender, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -1187,15 +1220,16 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGuardianID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGuardian_L1)
-                    .addComponent(txtQuardian_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGuardian_L1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGuardian_L2)
-                    .addComponent(txtQuardian_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtGuardian_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGender1)
@@ -1224,7 +1258,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblAddress_L2)
                     .addComponent(txtAddress_L2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(33, 33, 33)
                 .addComponent(btnSaveG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29))
             .addGroup(jPanel8Layout.createSequentialGroup()
@@ -1232,7 +1266,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
                 .addGap(2, 2, 2))
         );
 
-        jPanel8Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmdGender, lblAddress_L1, lblAddress_L2, lblEmail, lblGender1, lblGuardian_L1, lblGuardian_L2, lblID, lblPhoneNumber, lblPhoneNumber2, lblWorklocation, txtAddress_L1, txtAddress_L2, txtEmail, txtID, txtPhoneNumber, txtPhoneNumber2, txtQuardian_L1, txtQuardian_L2, txtWorkLocation});
+        jPanel8Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {cmdGender, lblAddress_L1, lblAddress_L2, lblEmail, lblGender1, lblGuardian_L1, lblGuardian_L2, lblID, lblPhoneNumber, lblPhoneNumber2, lblWorklocation, txtAddress_L1, txtAddress_L2, txtEmail, txtGuardianID, txtGuardian_L1, txtGuardian_L2, txtPhoneNumber, txtPhoneNumber2, txtWorkLocation});
 
         tabInfo.addTab("Add Quardian", jPanel8);
 
@@ -1611,18 +1645,24 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private void btnSaveGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveGActionPerformed
         try {
             String gender = cmdGender.getSelectedItem().toString();
-            gd.setGuardianL1(txtQuardian_L1.getText());
-            gd.setGuardianL2(txtQuardian_L2.getText());
+            gd.setGuardianL1(txtGuardian_L1.getText());
+            gd.setGuardianL2(txtGuardian_L2.getText());
             gd.setGenid(Integer.parseInt(mapGender.get(gender)[0].toString()));
             gd.setPhone1(txtPhoneNumber.getText());
             gd.setPhone2(txtPhoneNumber2.getText());
             gd.setEmail(txtEmail.getText());
             gd.setGud_Work(txtWorkLocation.getText());
             gd.setAddress(txtAddress_L1.getText());
-            gd.setAddress(txtAddress_L2.getText());
+            gd.setMoreinfo(txtAddress_L2.getText());
             gd.setStudentNbr(txtStdNbr.getText());
-            gdm.insertGuardian(gd);
+            if (txtGuardianID.getText().equals("New")) {
+                gdm.insertGuardian(gd);
+            } else {
+                gd.setId(Integer.parseInt(txtGuardianID.getText()));
+                gdm.updateGuardian(gd);
+            }
             gdm.loadGuardian(table, model, txtStdNbr.getText());
+            clearGuardian();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1631,13 +1671,48 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         try {
             int row = table.getSelectedRow();
-            txtID.setText(table.getValueAt(row, 0).toString());
-            txtQuardian_L1.setText(table.getValueAt(row, 1).toString());
-            txtQuardian_L2.setText(table.getValueAt(row, 2).toString());
+            txtGuardianID.setText(table.getValueAt(row, 0).toString());
+            txtGuardian_L1.setText(table.getValueAt(row, 1).toString());
+            txtGuardian_L2.setText(table.getValueAt(row, 2).toString());
             cmdGender.setSelectedItem(table.getValueAt(row, 3).toString());
+            txtPhoneNumber.setText(table.getValueAt(row, 4).toString());
+            txtPhoneNumber2.setText(table.getValueAt(row, 5).toString());
+            txtEmail.setText(table.getValueAt(row, 6).toString());
+            txtWorkLocation.setText(table.getValueAt(row, 7).toString());
+            txtAddress_L1.setText(table.getValueAt(row, 8).toString());
+            txtAddress_L2.setText(table.getValueAt(row, 9).toString());
         } catch (Exception e) {
         }
     }//GEN-LAST:event_tableMouseClicked
+
+    private void tableKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tableKeyReleased
+        try {
+            int row = table.getSelectedRow();
+            int id = Integer.parseInt(table.getValueAt(row, 0).toString());
+            gd.setGUDID(id);
+            gdm.deleteGuardian(gd);
+            this.clearGuardian();
+            gdm.loadGuardian(table, model, txtStdNbr.getText());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_tableKeyReleased
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        FrmSearchGuardian f = new FrmSearchGuardian(null, rootPaneCheckingEnabled);
+        f.setVisible(true);
+        gd.setGuardianName(Variables.guardianName);
+        gdm.loadGuardian(gd);
+        txtGuardian_L1.setText(gd.getGuardianL1());
+        txtGuardian_L2.setText(gd.getGuardianL2());
+        cmdGender.setSelectedItem(gd.getGenderName());
+        txtPhoneNumber.setText(gd.getPhone1());
+        txtPhoneNumber2.setText(gd.getPhone2());
+        txtEmail.setText(gd.getEmail());
+        txtWorkLocation.setText(gd.getGud_Work());
+        txtAddress_L1.setText(gd.getAddress());
+        txtAddress_L2.setText(gd.getMoreinfo());
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1685,6 +1760,7 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JLabel btnExit;
     private javax.swing.JLabel btnSave;
     private com.xzq.osc.JocHyperlink btnSaveG;
+    private com.xzq.osc.JocHyperlink btnSearch;
     private javax.swing.JLabel btnTake;
     private javax.swing.JCheckBox chDiseases;
     private javax.swing.JCheckBox chStdStudying;
@@ -1761,12 +1837,12 @@ public class FrmNewStudent extends javax.swing.JDialog {
     private javax.swing.JTextField txtAddress_L1;
     private javax.swing.JTextField txtAddress_L2;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtGuardianID;
+    private javax.swing.JTextField txtGuardian_L1;
+    private javax.swing.JTextField txtGuardian_L2;
     private javax.swing.JTextField txtHmoneNumber;
-    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtPhoneNumber;
     private javax.swing.JTextField txtPhoneNumber2;
-    private javax.swing.JTextField txtQuardian_L1;
-    private javax.swing.JTextField txtQuardian_L2;
     private com.toedter.calendar.JDateChooser txtStdDOB;
     private javax.swing.JTextField txtStdDiseases;
     private javax.swing.JTextField txtStdEmail;

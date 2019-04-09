@@ -238,7 +238,7 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="147" splitType="Stretch">
+		<band height="126" splitType="Stretch">
 			<line>
 				<reportElement x="328" y="3" width="227" height="1" uuid="905f2aa4-4042-4036-9277-2e29566574bf"/>
 			</line>
@@ -256,43 +256,8 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$V{PaidTotal_1}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="296" y="27" width="110" height="20" uuid="c3935449-826a-415d-9b3a-d4367d28345d"/>
-				<textElement textAlignment="Right">
-					<font fontName="Saysettha MX" size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Revenue Sharing:]]></text>
-			</staticText>
 			<textField>
-				<reportElement x="408" y="27" width="27" height="20" uuid="2323540c-de51-49c1-9841-dc84fbb6a925"/>
-				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{revenueSharing}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="435" y="27" width="15" height="20" uuid="2418b0d4-0427-4003-8e5e-d53b805d3992"/>
-				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="12"/>
-				</textElement>
-				<text><![CDATA[%]]></text>
-			</staticText>
-			<textField pattern="#,##0.00">
-				<reportElement x="453" y="27" width="100" height="20" uuid="efeb0739-9ce9-4d69-b56f-8292dbdd17b7"/>
-				<textElement textAlignment="Right">
-					<font fontName="Saysettha MX" size="12"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$V{Amount}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="21" y="65" width="94" height="20" uuid="f6dd52d6-00e4-452a-99ae-e20fde869404"/>
-				<textElement textAlignment="Center">
-					<font fontName="Saysettha MX" size="12" isUnderline="true"/>
-				</textElement>
-				<text><![CDATA[Finance's itecc]]></text>
-			</staticText>
-			<textField>
-				<reportElement x="362" y="65" width="163" height="20" uuid="0a84cd20-9cdf-489b-ab0e-36dbf11652ac"/>
+				<reportElement x="390" y="44" width="163" height="20" uuid="0a84cd20-9cdf-489b-ab0e-36dbf11652ac"/>
 				<textElement textAlignment="Center">
 					<font fontName="Saysettha MX" size="12" isUnderline="true"/>
 				</textElement>

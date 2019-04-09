@@ -37,7 +37,7 @@ public class FrmStudent extends javax.swing.JFrame {
     private void getStduentLabel() {
         frm = this.getClass().getSimpleName();
         model = (DefaultTableModel) table.getModel();
-        table.getTableHeader().setFont(new Font("Saysettha OT", Font.BOLD, 12));
+        table.getTableHeader().setFont(new Font("Saysettha OT", Font.PLAIN, 12));
         jScrollPane1.getViewport().setBackground(Color.WHITE);
         table.setShowGrid(true);
         table.getTableHeader().setBackground(Color.decode("#4169E1"));
@@ -200,6 +200,7 @@ public class FrmStudent extends javax.swing.JFrame {
         });
         table.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         table.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        table.setGridColor(new java.awt.Color(204, 204, 204));
         table.setRowHeight(27);
         table.setSelectionBackground(new java.awt.Color(204, 204, 204));
         table.setSelectionForeground(java.awt.Color.red);
